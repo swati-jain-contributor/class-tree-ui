@@ -1,0 +1,162 @@
+.vendor-block {
+    // input{
+    //     margin-bottom: 10px;
+    // }
+    .filter-box{
+        width: 100%;
+        padding: 0 10px;
+        div{
+            width: 100% !Important;
+        }
+        .menu-item{
+            text-transform: capitalize;
+        }
+    }
+}
+.vendor-row{
+    background-color: #fff; 
+    border: 1px solid #d9d9d9;
+    // .col-xs-3{
+    //     padding: 0px;
+    // }
+    .name{
+        color: green;
+        vertical-align: top;
+        margin-right: 41px;
+        font-size: 16px;
+    }
+    .type{
+        font-weight: normal;
+        color: #129A86;
+        padding-left: 8px;
+        text-transform: capitalize;
+    }
+    .no-padding{
+        padding: 0px;
+        .icon-menu{
+            text-align: right;
+            float: right;
+            margin-top: 20px;
+            margin-right: -5px;
+            button{
+                padding: 0px !important;
+                margin-top: -20px !important;
+                width: 24px !important;
+                height: 24px !important;
+            }
+            
+        }
+    }
+    .number{
+            float: right;
+            margin-left: 10px;
+            div{
+                display: inline-block;
+                width: 30px;
+                height: 30px;
+                background-size:cover; 
+                cursor: pointer;
+            }
+            div.call-icon{
+                background-image: url('../images/call.png');
+            }
+            div.wp-icon{
+                background-image: url('../images/whatsapp.svg');
+                margin-left: 10px;
+            }
+    }
+    .fa{
+        font-size: 30px;
+        margin-left: 10px;
+        color: lightseagreen;
+        float: right;
+    }
+    .fa.fa-trash{
+        color: #FF5454;
+    }
+    .added{
+        // position: absolute;
+        text-transform: capitalize;
+        color: darkred;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        // top: 35px;
+        font-size: 13px;
+    }
+    .review{
+        
+        display: inline-block;
+        margin-right: 16px;
+        font-weight: bold;
+        text-align: center;
+        .likes{
+            width: 30px;
+            height: 30px;
+            background-image: url('../images/smile.png');
+            background-size: cover;
+            margin-bottom: 1px;
+            cursor: pointer;
+           // opacity: 0.5;
+        }
+        .unlikes{
+            width: 30px;
+            height: 30px;
+            background-image: url('../images/sad.png');
+            background-size: cover;
+            margin-bottom: 1px;
+            cursor: pointer;
+           // opacity: 0.5;
+        }
+        .selected{
+             width: 34px;
+             height: 34px;
+            // opacity: 1;
+        }
+    }
+    .review + .review{
+        margin-right: 0px;
+    }
+    .pic{
+        background-size: contain;
+        height: 100px;
+        background-repeat: no-repeat;
+        width: 80px;
+    }
+    // .milk-man{        
+    //     background-image: url('../images/milk-man.png');        
+    // }
+    // .maid{
+    //     background-image: url('../images/maid.jpg');    
+    // }
+    // .carpenter{
+    //     background-image: url('../images/carpenter.gif');    
+    // }
+    // .plumber{
+    //     background-image: url('../images/plumber.gif');    
+    // }
+    // .electrician{
+    //     background-image: url('../images/electrician.png');    
+    // }
+    .content{
+        padding: 10px;
+        position: relative;
+    }  
+}
+.vendor-row:nth-child(even) {
+    background-color: #ececec;
+    .col-xs-3{
+        float: right;
+    }
+}
+.vendor-row:nth-child(2n+2) .name{
+    color:dodgerblue;
+}
+.vendor-row:nth-child(3n+3) .name{
+        color:blueviolet;
+    }
+.vendor-row:nth-child(4n+4) .name{
+        color: crimson;
+    }
+.vendor-row:nth-child(5n+5) .name{
+        color:midnightblue;
+    }

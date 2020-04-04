@@ -1,0 +1,346 @@
+.col-block{
+    
+    .bottom-bar{
+        position: fixed;
+        bottom: 0px;
+        width: 100%;
+    }
+    .group-title{
+        padding-top: 10px;
+    }
+    .group-title+.group-title{
+        padding-top: 0px;
+    }
+    .group-title{        
+        .thick{
+            border:1px solid gray;
+            border-left-width: 10px;
+            border-left-color: orange;
+            padding:10px 20px;
+            cursor:pointer;
+            
+            label{
+                display: block;
+                text-transform: capitalize;
+                font-size: 18px;
+                margin: 0;
+                color: orange;
+            }
+            span{
+                color: gray;
+            }
+            .fa{
+                font-size: 20px;
+                margin-left: 10px;
+                color: lightseagreen;
+                float: right;
+                margin-top: -5px;
+            }
+            .fa-trash{
+                color: #FF5454;
+                margin-right: -10px;
+            }
+        }
+        .notice-row.thick{
+            border-left-width: 5px;
+            span.material-icons{
+                float: left;
+                margin-left: -26px;
+                margin-top: -3px;
+                margin-right: 10px;
+            }
+            span.notice-date{
+                font-size: 12px;
+                color:#12A986;                
+                float: right;                
+            }
+            span.notice-date.isPresi{
+                margin-right: 60px;
+            }
+            span.actions{
+                float: right;
+            }
+            span.material-icons .fa{
+                color: orange;
+            }
+            .fa-pencil-square-o,.fa-trash{                
+                margin-top: -20px;
+            }
+            .fa-pencil-square-o{
+                margin-right: 10px;
+            }
+            .fa-bullhorn{
+                margin-top: 0px;
+                margin-left: 0px;
+            }
+        }
+    }
+    .chat-panel{
+        background-color: #ececec;
+        z-index: 200;
+        padding-bottom: 100px;
+        height: 100vh;  
+        position: fixed;
+        width: 100%;
+        top: 0;        
+        .title-box{
+            padding: 10px 10px;
+            background-color: #12A986;
+            color: #fff;
+            font-weight: bold;
+            font-size: 16px;
+            height: 7vh;
+            min-height: 35px;
+            .fa{
+                cursor: pointer;
+                margin-right: 5px;
+            }
+        }
+            .outer-msg{
+                position: relative;
+                .overlay-msg{
+                    position: absolute;
+                    top: 0px;
+                    height: 100%;
+                    background-color: lightblue;
+                    width: 100vw;
+                    opacity: 0.6;
+                }
+            }
+            .tri-right.left-top:before{
+                content: ' ';
+                position: absolute;
+                width: 0;
+                height: 0;
+                left: 0px;
+                right: auto;
+                top: 0px;
+                bottom: auto;
+                border: 12px solid;
+                border-color: #fff transparent transparent transparent;
+                margin-top: 10px;
+            }
+            .tri-right.right-top:before{
+                content: ' ';
+                position: absolute;
+                width: 0;
+                height: 0;
+                left:auto;
+                right: 0;
+                top: 0px;
+                bottom: auto;
+                border: 12px solid;
+                border-color: #DFFECC transparent transparent transparent;
+                margin-top: 10px;
+            }
+            .msg-box{
+                position: relative;
+                height: 103%;
+                overflow: auto;
+                padding-top: 10px;
+                .date{
+                    text-align: center;
+                    width: 106px;
+                    margin-left: auto;
+                    margin-right: auto;
+                    background-color: lightblue;
+                    color: gray;
+                    padding-top: 4px;
+                    padding-bottom: 4px;
+                    border-radius: 6px;
+                }
+            }
+            .msg{
+                width: 80%;
+                border-radius: 4px;
+                color: black;
+                background-color: #fff;
+                float: left;
+                
+                margin: 10px;
+                margin-left: 10px;
+                padding: 5px 10px;
+                label{
+                    display: block;
+                    font-weight: bold;
+                    position: absolute;
+                    color: crimson;
+                }
+                
+                span{
+                    display: block;
+                    margin-top: 20px;
+                }
+                span.hideName{
+                    margin-top: 0px;
+                }
+                .msg-time{
+                    float: right;
+                    font-size: 11px;
+                    color: gray;
+                    margin-top: 0px;
+                }
+            }
+            .msg.inactive,.msg.inactive.me{
+                color: lightgrey;                
+            }
+            .outer-msg:nth-child(even) label{
+                color: darkorchid;
+            }
+            .outer-msg:nth-child(3n+3) label{
+                color: darkturquoise;
+            }
+            .outer-msg:nth-child(4n+4) label{
+                color: olive;
+            }
+            .outer-msg:nth-child(5n+5) label{
+                color: cornflowerblue
+            }
+            .outer-msg:nth-child(6n+6) label{
+                color: lightcoral;
+            }
+            .msg.me{
+                float: right;
+                background-color: #DFFECC;
+                margin-right: 10px;
+                min-height: 35px;
+                color: black;
+                span{
+                    margin: 0;
+                }
+            }
+            .form-box{
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                z-index: 200;
+                height: 8vh;
+                height: 40px;
+                .option-div{
+                    height: 40px;
+                    text-align: center;
+                    font-size: 18px;
+                    color: #12A986;
+                    height: 80px;
+                    background-color: #fff;
+                    padding: 20px;                    
+                    div{
+                        padding: 0px;
+                    }
+                    span{
+                        display: block;
+                        font-size: 12px;
+                    }
+                }
+                .chat-input{
+                    width: 80% !important;
+                }
+                input{
+                    width: 85%;
+                    display: inline-block;
+                    background-color: #fff !important;
+                    border:1px solid gray;
+                    height: 40px !important;
+                }
+                button{
+                    width: 20%;
+                    float: right;
+                    background-color: #12A986;
+                    display: inline-block;
+                    color: #fff;
+                    text-align: center;
+                    padding: 5px;
+                    height: 40px;
+                    margin: 0;
+                }
+            }
+            .form-box.option{
+                height: 60px;
+            }            
+    }
+    .chat-panel.hide-panel{
+         left: 500px
+    }
+    .group-title:nth-child(2n+2) .thick{
+            border-left-color:dodgerblue;
+            label,span.material-icons .fa{
+                color: dodgerblue;
+            }
+            
+    }
+    .group-title:nth-child(3n+3) .thick{
+            border-left-color:blueviolet;
+            label,span.material-icons .fa {
+                color: blueviolet;
+            }
+        }
+    .group-title:nth-child(4n+4) .thick{
+            border-left-color: crimson;
+            label,span.material-icons .fa{
+                color: crimson;
+            }
+        }
+    .group-title:nth-child(5n+5) .thick{
+            border-left-color:midnightblue;
+            label,span.material-icons .fa{
+                color: midnightblue;
+            }
+        }
+}
+
+.content-container{        
+    background-color: #12A986 !important;
+    color: #fff !important;
+    padding-left: 10px;
+    div{       
+        padding-bottom: 20px !important;   
+        background-color: #12A986 !important;
+        color: #fff !important;     
+        padding-left: 10px;
+        padding-right: 10px; 
+        border-left: 2px solid darkgray !important; 
+        box-shadow: none !important;  
+        h3.title{
+            border-bottom: 2px solid #fff !important;
+            color: #fff !important;
+            padding: 10px 5px !important;            
+            background-color: #12A986 !important;
+            color: #fff !important;
+            font-size: 18px !important;
+            font-weight: bold !important;
+            text-transform: capitalize;            
+            .pin{
+                width: 30px;
+                height: 30px;
+                float: left;
+                background-size: cover;
+                margin-left: -10px;
+                margin-right: 10px;
+                background-image: url('../images/pushpin.png');
+            }
+            .notice-dialog-date{
+                    font-size: 12px;                    
+                    display: block;
+                    margin-top: 0px;
+                    line-height: 12px;                    
+                    text-align: right;
+            }
+        }
+        .body{
+            padding: 5px;
+            border-bottom: 1px solid #fff !important;
+            margin-bottom: 20px !important;
+                               
+            background-color: #12A986 !important;
+            color: #fff !important;
+            padding: 5px !important;
+            border-left: none !important;
+            margin-bottom: 0px !important;
+            padding-bottom: 20px !important;
+            padding-top: 20px !important;  
+            label{
+                display: block;
+            }
+        }
+    }
+}

@@ -1,0 +1,355 @@
+.dashboard-page{
+    background-image: url('../images/bg-society.jpg');
+    background-size: cover;
+    .header{
+        background-color: grey;
+        text-align: center;
+        padding: 15px;
+        height: 20vh;
+        color: #fff;
+    }
+    .menu-btn{
+        position: fixed;
+        bottom: 10px;
+        right: 10px;                
+        button{
+            background-color: #129A86 !important;    
+            .fa.fa-home{
+                font-size: 24px;
+            }        
+        }
+    }
+    .fixed-box{
+        background-color: rgba(0,0,0,0.8);
+    }
+    .request-btn,.help-btn{
+        // position: fixed;
+        // bottom: 10px;
+        // right: 10px;
+        border-radius: 0% !important;
+        
+        button{
+            background-color: #129A86 !important;
+            border-radius: 0% !important;
+            height: 30px !important;
+            width: 150px !important;
+            span{
+                float: left;
+                padding-left: 10px;
+                border-right: 2px solid #fff;
+                padding-right: 10px;
+                line-height: 30px !important;
+                width: 70%;
+            }
+            span+span{
+                border-right: none;
+                width: 29%;
+            }
+        }
+        
+        margin-top: 10px;
+        padding-bottom: 10px;
+    }    
+    .help-btn{
+        left: 10px; 
+        width: 30px;   
+        margin-left: 10px;            
+        button{
+            background-color: red !important;
+            color: #fff;
+            width: 100px !important;
+            border-radius: 15px !important;  
+            span{
+                border: none;
+                width: 100%;
+            }
+        }          
+    }
+    .request-btn{
+        float: right;
+        margin-right: 10px;
+    }
+    .bg-apt{
+        // background-image: url('../images/bg-society.jpg');
+        // background-size: cover;
+        // min-height: 100vh;
+        padding-top: 40px;
+        height: ~"calc(100vh - 50px)"; 
+        overflow-y: scroll;
+        background-color: rgba(0,0,0,0.8);
+        .share-btn{
+            color: #fff;
+            font-size: 23px;
+            float: right;
+            margin-top: -30px;
+            display: block;
+            margin-right: 22px;
+            cursor: pointer;
+        }
+    }
+    .bg-apt.fullheight{
+        min-height: 100vh;
+        overflow-y: initial;
+        height: initial;
+    }
+    .blk{
+    .abs-block{
+        color:  #FF5454;
+        text-align: center;
+        margin-bottom: 35px;
+        margin-left: 10px;
+        cursor:pointer;
+        position: relative;
+        height: 70px;
+        .icon{
+            height: 50px;
+            width: 50px;
+            background-size: cover;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .circle{
+            width: 70px;
+            height: 70px;
+            border-radius: 35px;
+            background-color: #FFF;
+            padding-top: 10px;
+            position: absolute;
+            z-index: 2;
+        }
+        .top-box{
+            height: 27px;
+            background-color: #fff;
+            width: 50%;
+            left: 35px;
+            border-radius: 0 25px 25px 0;
+            color: black;
+            padding: 0px 40px;
+            padding-top: 3px;
+            display: inline-block;
+            width: auto;
+            padding-right: 18px;
+            text-align: left;
+            position: absolute;
+            top: 0px;
+            span{
+                text-align: left;
+            }
+        }
+        .bottom-box{
+            height: 30px;
+            background-color: #129A86;
+            width: 80%;
+            margin-top: -4px;
+            margin-left: 30px;
+            border-radius: 0 25px 25px 0;
+            color: #fff;
+            padding: 0px 40px;
+            padding-top: 6px;
+            position: absolute;
+            width: auto;
+            padding-left: 50px;
+            padding-top: 3px;
+            font-size: 18px;
+            position: absolute;
+            top: 27px;
+            span{
+                text-transform: capitalize;
+                font-size: 11px;
+            }
+        }
+        .bank-icon{
+            background-image: url('../images/pig-coin-2.png');
+        }
+        .dir-icon{
+            background-image: url('../images/pb-3.ico');
+        }
+        .vendor-icon{
+            background-image: url('../images/truck.png');
+        }
+        .col-icon{
+            background-image: url('../images/col-2.png');
+        }
+        .forum-icon{
+            background-image: url('../images/forum.png');
+        }
+        .not-icon{
+            background-image: url('../images/not.png');
+        }
+        .com-icon{
+            background-image: url('../images/com.ico');
+        }
+        
+    }
+    .abs-block.last{
+        margin-bottom: 0px;
+    }
+    .abs-block.selected{
+        margin-bottom: 0px;
+        margin-left: 0px;
+        width: ~"calc(100% - 50px)";
+    }
+    .view-holder{
+            background-color: #fff;
+            min-height: ~"calc(100vh - 35px)";
+            margin-top: -35px;
+            padding-top: 40px;
+            h3{
+                margin: 0;
+                display: none;
+            }
+            width: 100%;
+            border-top-right-radius:8px; 
+        }
+    }
+    .help-block{
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+    .request-block,.help-block,.alarm-box{
+        .pop{
+            position: absolute;
+            top:-100vh;
+            z-index: 3;
+            width: 100%;
+            .popup-content{
+                background-color: #ececec;
+                min-height: 100vh;
+                padding: 10px 0px;
+                border-radius: 4px;
+                .popup-title{
+                    margin-left: 10px;
+                    font-size: 20px;
+                    margin-bottom: 10px;
+                    color: #fff;
+                    background-color: #129A86;
+                    padding: 5px;
+                }
+                .fa-times{
+                    float: right;
+                    margin-right: 10px;
+                    font-size: 20px;
+                    color: #129A86;
+                    cursor: pointer;
+                }
+                .request-div{
+                    background-color: #fff;
+                    margin-bottom: 20px;
+                    padding: 10px 5px;
+                    margin-left: 5px;
+                    margin-right: 5px;
+                    .house{
+                        color: #129A86;
+                    }
+                    button{
+                        width: 46%;
+                        margin-left: 10px;
+                        display: inline-block;
+                    }
+                    button.sec{                        
+                        border: 1px solid #FF5454;
+                    }
+                }
+            }
+        }
+        .pop.loads{
+            top:0px;           
+        }
+    }
+    .help-block,.alarm-box{
+        .pop.loads{
+            background-color: #000;
+            color: #fff;
+            .popup-content{
+                background-color: transparent;
+                display: table;
+                width: 100%;
+                height: 100vh;
+                .fa-times{
+                    color: #fff;
+                    
+                }
+                label,span{
+                    display: block;
+                    text-align: center;
+                    span{
+                        display: inline;
+                    }
+                }                
+                label{
+                    font-size: 24px;
+                }
+                .alarm-container{
+                    margin-top: 20px;
+                    display: table-row;
+                    vertical-align: middle;
+                    .help-box{
+                        width: 80px;
+                        height: 80px;
+                        border-radius: 50%;
+                        background-image: url("../images/help.png");
+                        background-size: cover;
+                        margin-left: auto;
+                        margin-right: auto;
+                        margin-bottom: 20px;                        
+                    }
+                    .info{
+                        font-size: 17px;
+                    }
+                    .fine{
+                        margin-top: 30px;
+                        font-weight: bold;
+                        font-size: 22px;
+                    }
+                }
+                span.big{
+                    font-size: 20px;
+                    margin-top: 10px;
+                    margin-bottom: 10px;
+                }
+                .alarm-btn{
+                    width: 100px;
+                    height: 100px;
+                    border-radius: 50%;
+                    background-color: gray;
+                    text-align: center;
+                    padding: 10px;
+                    margin-left: auto;
+                    margin-right: auto;
+                    margin-top: 30px;
+                    .inner-round{
+                        width: 80px;
+                        height: 80px;
+                        border-radius: 50%;
+                        background-color: red;
+                        margin-left: auto;
+                        margin-right: auto;
+                        color: #fff;
+                        font-size: 16px;
+                        span{
+                            display: block;
+                            text-align: center;
+                            line-height: 80px;
+                        }
+                    }
+                }
+            }            
+        }
+    }
+    .alarm-box{
+        span{
+            font-size: 16px;
+        }
+        table{
+            width: 70%;
+            margin-top: 20px;
+            margin-left: auto;
+            margin-right: auto;
+            td{
+                width:50%;
+                height: 30px;
+            }
+        }
+    }
+
+}
