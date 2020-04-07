@@ -117,7 +117,7 @@ class Tutor extends React.Component {
         
         <div>
           {!this.props.email ?
-            <div className="content-box">
+            <div className="content-box clearfix">
               <div className="banner"><span>A <b>Teacher</b> plants a seed of knowledge to produce <b>Tomorrow's Dreams</b></span></div>
               <div className="thank-note"><span>We appreciate efforts you are making to make people learn.. &nbsp;&nbsp;   <i className="fa fa-thumbs-up" aria-hidden="true"></i></span></div>
               
@@ -129,7 +129,7 @@ class Tutor extends React.Component {
               <button type="submit" className="submit-btn" onClick={this.getClasses}>Submit</button> </div> : null}
 
           {this.props.classes && this.props.classes.length == 0 && this.props.email && !this.props.name ?
-            <div className="content-box">
+            <div className="content-box clearfix">
               <div className="banner"><span>A <b>Teacher</b> plants a seed of knowledge to produce <b>Tomorrow's Dreams</b></span></div>
               <div className="thank-note"><span>We appreciate efforts you are making to make people learn.. &nbsp;&nbsp;   <i className="fa fa-thumbs-up" aria-hidden="true"></i></span></div>
               <br/>
@@ -147,17 +147,17 @@ class Tutor extends React.Component {
               <br/>
               
               <label className="big-label">Phone Number</label><br/>
-              <input className="big-input" placeholder="Phone Number" maxLength="10" type="text" name="phoneNo" value={this.state.classData.phoneNo} onChange={this.onChange} /><br/>
+              <input className="big-input" max="999999999" placeholder="Phone Number" maxLength="10" type="number" name="phoneNo" value={this.state.classData.phoneNo} onChange={this.onChange} /><br/>
               <br/>
               <br/>
               <button  type="submit" className="submit-btn" onClick={this.addName} >Submit</button>
             </div> : null
           }
         </div>
-        {this.props.name && this.props.email ? <div className="content-box">
+        {this.props.name && this.props.email ? <div className="content-box clearfix">
         <div className="banner"><span>A <b>Teacher</b> plants a seed of knowledge to produce <b>Tomorrow's Dreams</b></span></div>
               <div className="thank-note"><span>We appreciate efforts you are making to make people learn.. &nbsp;&nbsp;   <i className="fa fa-thumbs-up" aria-hidden="true"></i></span></div>  
-          <h1>Hello {this.props.name}</h1>
+          <h1 className="greet-user">Hello {this.props.name}</h1>
           <div className="card">
             {/* {this.state.step == 0 ? <div className=" add-more"><span>Do you want to Want to teach ?? </span>
               <button className="submit-btn" onClick={() => { this.setState({ step: 1 }); }}>Add Class</button></div> : null} */}
@@ -170,7 +170,7 @@ class Tutor extends React.Component {
                 <label>Description</label><br />
                 <textarea type="text" maxLength="200" placeholder="Type about your experience and topics you are going to cover in your class" rows="4" name="description" value={this.state.classData.description} onChange={this.onChange} />
               </div>
-              <div><label>Date</label>
+              <div><label>When</label>
                 <input type="text" name="date" value={this.state.classData.date} onChange={this.onChange} /></div>
               <div className="time-row">
         
@@ -197,22 +197,24 @@ class Tutor extends React.Component {
           {this.props.classes.map((cl, i) => <div className="card" key={i}>
 
             <div className="topic">{cl.Topic}</div>
-            <b className="sublabel" style={{marginTop:"18px"}}>About:</b>
-            <div className="desc">{cl.Description}</div>
-            <span className="sublabel"><b>Class Time:</b> &nbsp;&nbsp;{new Date(cl.Date).toDateString("en-US")}</span>
+            <span className="sublabel" style={{marginTop:"18px"}}><b>Class Time:</b> &nbsp;&nbsp;{new Date(cl.Date).toDateString("en-US")}</span>
             <span>{cl.StartTime}  to {cl.EndTime}</span>
+            <b className="sublabel" >About:</b>
+            <div className="desc">{cl.Description}</div>
             <br/>
             <div><b>By:</b> {cl.TutorName}</div>
             <span className="tag">{cl.Attendee + ' / ' + cl.MaxStudents}</span>
             <br/>
             {cl.Attendee + ' Students Registered So far'}
             <br/>
+            {cl.active?<div className="registered-user-msg"><b>Thank you for teaching!</b> <p>We will share class joining details via email soon.</p></div>:null}
             <br/>
             <span>Share it with your friends - </span>
             <div>
             <a style={{marginRight:"8px"}} href="http://www.facebook.com/sharer.php?u=http://www.classtree.in" target="_blank"><img src="https://image.flaticon.com/icons/svg/1384/1384053.svg" alt="Facebook" className="shared-svg"/></a>
             <a href="http://www.linkedin.com/shareArticle?mini=true&url=http://www.classtree.in" target="_blank"><img src="https://image.flaticon.com/icons/svg/174/174857.svg" alt="Linkedin" className="shared-svg"/></a>
             </div>
+            {!cl.active ? <button style={{backgroundColor: "lightgrey", fontWeight:"bold", fontSize:"20px" }}className="card-btn">Registration closed</button>:null}
             {/* <button className="card-btn"></button> */}
           </div>)}
         </div> : null}

@@ -34,7 +34,7 @@ class App extends React.Component {
     if (this.state.start) {
       if (this.state.step>=1) {
         document.querySelector('.col-block').animate({
-          top: ['1000px', '40px']
+          top: ['1000px', (window.innerWidth<700 ? '50px': '40px')]
         }, 1000);
 
         //objDiv.scrollTop = objDiv.scrollHeight;
