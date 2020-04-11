@@ -9,6 +9,9 @@ import { bindActionCreators } from 'redux';
 import * as classActions from '../../actions/classActions';
 import AddDiscussion from '../overlays/AddDiscussion';
 import ValidationService from '../common/Validation';
+import LoginEmail from '../LoginEmail/LoginEmail';
+import LoginName from '../LoginName/LoginName';
+import Card from '../Card/Card';
 
 class Student extends React.Component {
   componentWillReceiveProps(nextProps){
@@ -96,77 +99,30 @@ class Student extends React.Component {
     this.props.cancel();
   }
   render() {
+    let banner = (<div><div className="banner"><span>Beautiful thing about <b>Learning</b> is that no one can take it away from you...</span></div>
+    <div className="thank-note"><span>We appreciate efforts you are making to grow yourself.. &nbsp;&nbsp;   <i className="fa fa-thumbs-up" aria-hidden="true"></i></span></div></div>);
     return (
       <div className="col-block  view-holder">
         {!this.props.email ?
             <div className="content-box clearfix">
-              <div className="banner"><span>Beautiful thing about <b>Learning</b> is that no one can take it away from you...</span></div>
-              <div className="thank-note"><span>We appreciate efforts you are making to grow yourself.. &nbsp;&nbsp;   <i className="fa fa-thumbs-up" aria-hidden="true"></i></span></div>
-              
-              <br/>
-              <br/>
-              <br/>
-              <label className="big-label">Your Email Address</label> &nbsp;&nbsp;&nbsp;&nbsp;<br/>
-              <input className="big-input" placeholder="Email" type="text" name="email" value={this.state.classData.email} onChange={this.onChange} /> <br/>
-              <button type="submit" className="submit-btn" onClick={this.getClasses}>Submit</button> </div> : null}
+              {banner}
+              <LoginEmail type="C"/>
+              </div> : null}
 
               {this.props.email && !this.props.name ?
             <div className="content-box clearfix">
-              <div className="banner"><span>Beautiful thing about <b>Learning</b> is that no one can take it away from you...</span></div>
-              <div className="thank-note"><span>We appreciate efforts you are making to make people learn.. &nbsp;&nbsp;   <i className="fa fa-thumbs-up" aria-hidden="true"></i></span></div>
-              <br/>
-              <br/>
-              <span style={{fontSize:"18px"}} >Hey! Welcome to <b>ClassTree!!</b></span>
-              <br/>
-              <br/>
-              <span>You are a <b>new member</b>, please help us with your name and phone number to create an account for you!</span>
-
-              <br/>
-              <br/>
-              <label className="big-label">Name</label><br/>
-              <input className="big-input" maxLength="50" type="text" name="name" value={this.state.classData.name} onChange={this.onChange} /><br/>
-              <br/>
-              <br/>
-              
-              <label className="big-label">Phone Number</label><br/>
-              <input className="big-input" maxLength="10" type="number" name="phoneNo" value={this.state.classData.phoneNo} onChange={this.onChange} /><br/>
-              <br/>
-              <br/>
-              <button  type="submit" className="submit-btn" onClick={this.addName} >Submit</button>
+              {banner}
+              <LoginName type="C"/>
             </div> : null
           }
         
         {this.props.name && this.props.email ? <div className="content-box clearfix">
-        <div className="banner"><span>Beautiful thing about <b>Learning</b> is that no one can take it away from you...</span></div>
-              <div className="thank-note"><span>We appreciate efforts you are making to grow yourself.. &nbsp;&nbsp;   <i className="fa fa-thumbs-up" aria-hidden="true"></i></span></div>
+          {banner}
 
           <h1 className="greet-user">Hello {this.props.name}</h1>
           <input className="big-input search-box" placeholder="I'd like to learn about.." type="text" name="search" value={this.state.search} onChange={this.search} /><br/>
-          {this.state.classes.map((cl, i) => <div className="card" key={i}>
+          {this.state.classes.map((cl, i) => <Card type="C" key={i} class={cl}/>)}
 
-          <div className="topic" style={!cl.active ? {backgroundColor:'gray'}:{}}>{cl.Topic}</div>
-            
-            <span className="sublabel"  style={{marginTop:"45px"}}><b>Class Time:</b> &nbsp;&nbsp;{new Date(cl.Date).toDateString("en-US")}</span>
-            <span>{cl.StartTime}  to {cl.EndTime}</span>
-            <b className="sublabel">About:</b>
-            <div className="desc">{cl.Description}</div>
-            <br/>
-            <div><b>Price:</b> FREE</div>
-            <div><b>By:</b> {cl.TutorName}</div>
-            {cl.StudentEmail?<span className="tag">Registered</span>:null}
-            <br/>
-            <br/>
-            {cl.StudentEmail?<div className="registered-user-msg"><b>Thank you for registering!</b> <p>We will share class joining details via email soon.</p></div>:null}
-            <br/>
-            <span>Share it with your friends - </span>
-            <div>
-            <a style={{marginRight:"8px"}} href="http://www.facebook.com/sharer.php?u=http://www.classtree.in" target="_blank"><img src="https://image.flaticon.com/icons/svg/1384/1384053.svg" alt="Facebook" className="shared-svg"/></a>
-            <a href="http://www.linkedin.com/shareArticle?mini=true&url=http://www.classtree.in" target="_blank"><img src="https://image.flaticon.com/icons/svg/174/174857.svg" alt="Linkedin" className="shared-svg"/></a>
-            </div>
-            {!cl.active ? <button style={{backgroundColor: "lightgrey", fontWeight:"bold", fontSize:"20px" }}className="card-btn">Registration closed</button>:null}
-            {!cl.StudentEmail && cl.active?
-            <button className="card-btn" onClick={()=>this.bookClass(cl)}>Book Class</button>:null}
-          </div>)}
         </div> : null}
       </div>
     );

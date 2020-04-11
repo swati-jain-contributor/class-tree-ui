@@ -8,6 +8,7 @@ import * as loginActions from '../actions/loginActions';
 import Snackbar from 'material-ui/Snackbar';
 import Tutor from '../components/Tutor/Tutor';
 import Student from '../components/Student/Student';
+import { green100 } from 'material-ui/styles/colors';
 
 class App extends React.Component {
   // componentWillReceiveProps(nextProps) {
@@ -60,6 +61,9 @@ class App extends React.Component {
   render() {
     return (
       <div className="ss-root">
+        <Header
+          loading={this.props.loading}
+        />
         <div className="ss-header">By Learning you will teach, By teaching you will learn..</div>
         <img className="bg-image" src={`https://raw.githubusercontent.com/swati-jain-contributor/privacy-policy/master/${this.state.imageCode}.jpg`}></img>
         <div className="overlay"></div>
@@ -69,7 +73,7 @@ class App extends React.Component {
         </div>
         {this.state.step==1?<Tutor onCancel={()=>this.setState({ step: 0, start:true })}/>:null}
         {this.state.step==2?<Student/>:null}
-        <p className="disclaimer">ClassTree is a knowledge sharing platform, open to people to share their knowledge with people who are interested in learning. It’s a social platform and meant only for learning and sharing..</p>
+        <p className="disclaimer">Welcome to ClassTree!, A Knowledge sharing Platform. <br/><br/> Gaining knowledge, is the first step to wisdom. <br/> Sharing it, is the first step to humanity.<br/> <br/> Come forward to enhance your knowledge everyday. What to wait for, <br/><span style={{textAlign:"center", color:"#1e856d", display:"block", marginTop:"5px"}}>Add or book your class</span> </p>
       </div>
 
     );
@@ -87,11 +91,11 @@ App.contextTypes = {
 function mapStateToProps(state, ownProps) { 
   console.log(state.ajaxCallsInProgress); 
   return {
-    loading:  state.ajaxCallsInProgress > 0,
-    isAuthenticated: state.session.authenticationStatus,
-    username: state.session.aptId + "-" + state.session.userId,
-    errorMsg: state.session.errorMsg,
-    open: state.session.open
+    loading:  state.ajaxCallsInProgress > 0
+    // isAuthenticated: state.session.authenticationStatus,
+    // username: state.session.aptId + "-" + state.session.userId,
+    // errorMsg: state.session.errorMsg,
+    // open: state.session.open
   };
 }
 function mapDispatchToProps(dispatch) {

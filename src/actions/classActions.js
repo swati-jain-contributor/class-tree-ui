@@ -17,6 +17,10 @@ export function addClass(collData) {
         dispatch(addClassSuccess(data.response));
       else
         dispatch(addClassFailure(data.errorDesc));
+        dispatch(getClasses({
+          email:collData.email,
+          type:'T'
+        }));
     }).catch(error => {
       dispatch(resetErrorMessage("Please check your internet connection"));
       dispatch(ajaxCallError(error));

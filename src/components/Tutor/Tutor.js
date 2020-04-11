@@ -9,68 +9,40 @@ import { bindActionCreators } from 'redux';
 import * as classActions from '../../actions/classActions';
 import AddDiscussion from '../overlays/AddDiscussion';
 import ValidationService from '../common/Validation';
-import TimePicker from 'react-time-picker';
-// import 'bootstrap-material-datetimepicker/dist/index';
-// // import {
-// //   MuiPickersUtilsProvider,
-// //   KeyboardTimePicker,
-// //   KeyboardDatePicker
-// // } from '@material-ui/pickers';
-// import TimeInput from 'material-ui-time-picker';
+import LoginEmail  from '../LoginEmail/LoginEmail';
+import LoginName from '../LoginName/LoginName';
+import AddClass from './AddClass';
+import Card from '../Card/Card';
 
+let initialClass ={
+  startTime: "05:00 PM",
+  maxStudents:40,
+  date:"",
+  description:"",
+  topic:"",
+  name:"",
+  phoneNo:"",
+  email:""
+  
+};
 
 class Tutor extends React.Component {
-  componentDidMount() {
-    
-    // this.$el = $(this.el);
-    // this.$el.timepicker({
-    //         uiLibrary: 'bootstrap4'
-    //     });
-  }
-  componentWillUnmount() {
-    // this.$el.timepicker('destroy');
-  }
-
 
   constructor(props, context) {
     super(props, context);
     this.state = {
-      classData: {
-        topic: "",
-        description: ""
-      },
-      step: 1
+      classData: JSON.parse(JSON.stringify(initialClass)) ,
+      timeList: ["12:00 AM", "12:30 AM", "01:00 AM", "01:30 AM", "02:00 AM", "02:30 AM", "03:00 AM", "03:30 AM", "04:00 AM", "04:30 AM", "05:00 AM", "05:30 AM", "06:00 AM", "06:30 AM", "07:00 AM", "07:30 AM", "08:00 AM", "08:30 AM", "09:00 AM", "09:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "01:00 PM", "01:30 PM", "02:00 PM", "02:30 PM", "03:00 PM", "03:30 PM", "04:00 PM", "04:30 PM", "05:00 PM", "05:30 PM", "06:00 PM", "06:30 PM", "07:00 PM", "07:30 PM", "08:00 PM", "08:30 PM", "09:00 PM", "09:30 PM", "10:00 PM", "10:30 PM", "11:00 PM", "11:30 PM"]
     };
     this.addClass = this.addClass.bind(this);
     this.closeClass = this.closeClass.bind(this);
     this.onChange = this.onChange.bind(this);
     this.getClasses = this.getClasses.bind(this);
     this.addName = this.addName.bind(this);
-    // this.initiateDatepicker=this.initiateDatepicker.bind(window);
-    // this.addTimepicker=this.addTimepicker.bind(this);
-    
-  }
+    this.checkValidity = this.checkValidity.bind(this);
+    this.checkELValidity = this.checkELValidity.bind(this);
 
-  
-  componentDidUpdate() {
-    window.initiateDatepicker(this);
-    // console.log("kashd");
-    // setTimeout(()=>{
-    //   if($('[name="startTime"]').length>0){
-    //     $('[name="startTime"]').timepicker({
-    //       uiLibrary: 'bootstrap4'
-    //   });
-    // }
-    //   if($('[name="endTime"]').length>0){
-    //     $('[name="endTime"]').timepicker({
-    //       uiLibrary: 'bootstrap4'
-    //   });
-    //   }
-    // },0);
-    
   }
-    
-  
   onChange(event) {
     const field = event.target.name;
     let classData = this.state.classData;
@@ -78,145 +50,131 @@ class Tutor extends React.Component {
     return this.setState({ classData: classData });
   }
   addClass(event) {
-    this.state.classData.date = new Date(this.state.classData.date );
-    this.props.actions.addClass(this.state.classData);
-    this.setState({ classData: {
-      email:this.props.email,
-      name: this.state.classData.name,
-      phoneNo:this.state.classData.phoneNo
-    } });
-    this.getClasses();
+    event.preventDefault();
+    if (this.checkValidity(event)) {
+      let classData = {
+        email: this.props.email,
+        name: this.props.name,
+        phoneNo: this.props.phoneNo,
+        date: new Date(this.state.classData.date).toUTCString(),
+        topic: this.state.classData.topic,
+        description: this.state.classData.description,
+        maxStudents: this.state.classData.maxStudents,
+        startTime: this.state.classData.startTime
+      };
+      this.props.actions.addClass(classData);
+      this.setState({
+        classData: JSON.parse(JSON.stringify(initialClass)) 
+      });
+    }
+    event.target.form.reset();
+    window.initiateDatepicker(this);
   }
   addName(event) {
-    this.props.actions.addTeacherData({
-      email:this.props.email,
-      name: this.state.classData.name,
-      phoneNo:this.state.classData.phoneNo
-    });
+    event.preventDefault();
+    if ((event && this.checkValidity(event)) || !event) {
+      this.props.actions.addTeacherData({
+        email: this.props.email,
+        name: this.state.classData.name,
+        phoneNo: this.state.classData.phoneNo
+      });
+    }
   }
-  getClasses() {
-    this.props.actions.addTeacherData({
-      email:this.state.classData.email,
-      name: null,
-      phoneNo:null
-    });
-    this.props.actions.getClasses({
-      email: this.state.classData.email,
-      type: "T"
-    });
-    this.setState({ step: 1 });
+  getClasses(event) {
+    event && event.preventDefault();
+    if ((event && this.checkValidity(event)) || !event) {
+      if(!this.props.name){
+        this.props.actions.addTeacherData({
+          email: this.state.classData.email || this.props.email,
+          name: null,
+          phoneNo: null
+        });
+      }
+      this.props.actions.getClasses({
+        email: this.state.classData.email,
+        type: "T"
+      });
+    }
   }
   closeClass() {
     this.props.cancel();
   }
-  
+  checkValidity(event) {
+    if (event.target.form.checkValidity()) {
+      this.setState({ errors: {} });
+      for (let i in event.target.form.elements) {
+        let el = event.target.form.elements[i];
+        if (el.tagName == "INPUT" || el.tagName == "TEXTAREA")
+          el.style.borderColor = "black";
+      }
+      return true;
+
+    }
+    else {
+      let errors = {};
+      for (let i in event.target.form.elements) {
+        let el = event.target.form.elements[i];
+        this.checkELValidity(el);
+      }
+      return false;
+    }
+  }
+
+  checkELValidity(event) {
+    var el;
+    if (!event.target)
+      el = event;
+    else
+      el = event.target;
+    var errors = JSON.parse(JSON.stringify(this.state.errors || {}));
+
+    if (el.tagName == "INPUT" || el.tagName == "TEXTAREA") {
+      let name = el.getAttribute("name");
+      if (!el.checkValidity()) {
+        if (el.validity.valueMissing)
+          errors[name] = "Required";
+        else if (name == "email")
+          errors[name] = "Invalid email address";
+        else
+          errors[name] = "Invalid value";
+        el.style.borderColor = "red";
+      }
+      else {
+        errors[name] = void 0;
+        el.style.borderColor = "black";
+      }
+    }
+    this.setState({ errors });
+  }
   render() {
+    var banner = (<div> <div className="banner"><span>A <b>Teacher</b> plants a seed of knowledge to produce <b>Tomorrow's Dreams</b></span></div>
+    <div className="thank-note"><span>We appreciate efforts you are making to make people learn.. &nbsp;&nbsp;   <i className="fa fa-thumbs-up" aria-hidden="true"></i></span></div></div>);
     return (
       <div className="col-block  view-holder">
-        
-        
+
+
         <div>
-          {!this.props.email ?
+          {(!this.props.email) ?
             <div className="content-box clearfix">
-              <div className="banner"><span>A <b>Teacher</b> plants a seed of knowledge to produce <b>Tomorrow's Dreams</b></span></div>
-              <div className="thank-note"><span>We appreciate efforts you are making to make people learn.. &nbsp;&nbsp;   <i className="fa fa-thumbs-up" aria-hidden="true"></i></span></div>
-              
-              <br/>
-              <br/>
-              <br/>
-              <label className="big-label">Your Email Address</label> &nbsp;&nbsp;&nbsp;&nbsp;<br/>
-              <input className="big-input" placeholder="Email" type="text" name="email" value={this.state.classData.email} onChange={this.onChange} /> <br/>
-              <button type="submit" className="submit-btn" onClick={this.getClasses}>Submit</button> </div> : null}
+              {banner}
+              <LoginEmail type="T"/>
+            </div>
+            : null}
 
-          {this.props.classes && this.props.classes.length == 0 && this.props.email && !this.props.name ?
+          {(this.props.classes && this.props.classes.length == 0 && this.props.email && !this.props.name) ?
             <div className="content-box clearfix">
-              <div className="banner"><span>A <b>Teacher</b> plants a seed of knowledge to produce <b>Tomorrow's Dreams</b></span></div>
-              <div className="thank-note"><span>We appreciate efforts you are making to make people learn.. &nbsp;&nbsp;   <i className="fa fa-thumbs-up" aria-hidden="true"></i></span></div>
-              <br/>
-              <br/>
-              <span style={{fontSize:"18px"}} >Hey! Welcome to <b>ClassTree!!</b></span>
-              <br/>
-              <br/>
-              <span>You are a <b>new member</b>, please help us with your name and phone number to create an account for you!</span>
-
-              <br/>
-              <br/>
-              <label className="big-label">Name</label><br/>
-              <input className="big-input" placeholder="name" maxLength="50" type="text" name="name" value={this.state.classData.name} onChange={this.onChange} /><br/>
-              <br/>
-              <br/>
-              
-              <label className="big-label">Phone Number</label><br/>
-              <input className="big-input" max="999999999" placeholder="Phone Number" maxLength="10" type="number" name="phoneNo" value={this.state.classData.phoneNo} onChange={this.onChange} /><br/>
-              <br/>
-              <br/>
-              <button  type="submit" className="submit-btn" onClick={this.addName} >Submit</button>
+              {banner}
+              <LoginName type="T"/>
             </div> : null
           }
         </div>
-        {this.props.name && this.props.email ? <div className="content-box clearfix">
-        <div className="banner"><span>A <b>Teacher</b> plants a seed of knowledge to produce <b>Tomorrow's Dreams</b></span></div>
-              <div className="thank-note"><span>We appreciate efforts you are making to make people learn.. &nbsp;&nbsp;   <i className="fa fa-thumbs-up" aria-hidden="true"></i></span></div>  
+        {(this.props.name && this.props.email) ? <div className="content-box clearfix">
+          {banner}
           <h1 className="greet-user">Hello {this.props.name}</h1>
           <div className="card">
-            {/* {this.state.step == 0 ? <div className=" add-more"><span>Do you want to Want to teach ?? </span>
-              <button className="submit-btn" onClick={() => { this.setState({ step: 1 }); }}>Add Class</button></div> : null} */}
-            {this.state.step == 1 ? <div>
-              <div>
-                <label>Topic</label><br />
-                <input type="text" name="topic" value={this.state.classData.topic} onChange={this.onChange} />
-              </div>
-              <div>
-                <label>Description</label><br />
-                <textarea type="text" maxLength="200" placeholder="Type about your experience and topics you are going to cover in your class" rows="4" name="description" value={this.state.classData.description} onChange={this.onChange} />
-              </div>
-              <div><label>When</label>
-                <input type="text" name="date" value={this.state.classData.date} onChange={this.onChange} /></div>
-              <div className="time-row">
-        
-                <input type="text" style={{width:"100px", float:"left"}} name="startTime" value={this.state.classData.startTime} onChange={this.onChange} />
-                <span>to</span>
-              
-                <input style={{width:"100px", float:"right"}} type="text" name="endTime" value={this.state.classData.endTime} onChange={this.onChange} />
-                </div>
-              <div><label>Max Students</label>
-                <input type="number" min="1" max="40" name="maxStudents" value={this.state.classData.maxStudents} onChange={this.onChange} /></div>
-                <button className="card-btn" onClick={this.addClass}>Add Class</button>
-            </div>
-              
-            : null}
-{/* 
-            {this.state.step == 3 ?
-              <div>
-                <span>Class Added Successfully</span>
-                <i className="fa fa-times" aria-hidden="true" onClick={this.getClasses}></i>
-              </div> : null
-            } */}
-
+            <AddClass/>
           </div>
-          {this.props.classes.map((cl, i) => <div className="card" key={i}>
-
-            <div className="topic">{cl.Topic}</div>
-            <span className="sublabel" style={{marginTop:"18px"}}><b>Class Time:</b> &nbsp;&nbsp;{new Date(cl.Date).toDateString("en-US")}</span>
-            <span>{cl.StartTime}  to {cl.EndTime}</span>
-            <b className="sublabel" >About:</b>
-            <div className="desc">{cl.Description}</div>
-            <br/>
-            <div><b>By:</b> {cl.TutorName}</div>
-            <span className="tag">{cl.Attendee + ' / ' + cl.MaxStudents}</span>
-            <br/>
-            {cl.Attendee + ' Students Registered So far'}
-            <br/>
-            {cl.active?<div className="registered-user-msg"><b>Thank you for teaching!</b> <p>We will share class joining details via email soon.</p></div>:null}
-            <br/>
-            <span>Share it with your friends - </span>
-            <div>
-            <a style={{marginRight:"8px"}} href="http://www.facebook.com/sharer.php?u=http://www.classtree.in" target="_blank"><img src="https://image.flaticon.com/icons/svg/1384/1384053.svg" alt="Facebook" className="shared-svg"/></a>
-            <a href="http://www.linkedin.com/shareArticle?mini=true&url=http://www.classtree.in" target="_blank"><img src="https://image.flaticon.com/icons/svg/174/174857.svg" alt="Linkedin" className="shared-svg"/></a>
-            </div>
-            {!cl.active ? <button style={{backgroundColor: "lightgrey", fontWeight:"bold", fontSize:"20px" }}className="card-btn">Registration closed</button>:null}
-            {/* <button className="card-btn"></button> */}
-          </div>)}
+          {this.props.classes.map((cl, i) => <Card type="T" class={cl} key={i}/>)}
         </div> : null}
       </div>
     );
@@ -232,86 +190,10 @@ function mapStateToProps(state, ownProps) {
     phoneNo: state.classes.teacherPhone
   };
 }
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(classActions, dispatch)
-  };
-}
+  function mapDispatchToProps(dispatch) {
+    return {
+      actions: bindActionCreators(classActions, dispatch)
+    };
+  }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Tutor);
-
-
-// <i className="fa fa-times" aria-hidden="true" onClick={this.props.onCancel}></i>
-// <h1>Thank you for putting time in this noble cause <i className="fa fa-thumbs-up" aria-hidden="true"></i></h1>
-// {!this.state.classAdded ? 
-// <form id="group-form">
-// <div className="col-xs-6">
-//   <TextField hintText="Topic" name="topic"  value={this.state.classData.topic} onChange={this.onChange} >
-//     <input required name="topic"  maxLength="100"/>
-//   </TextField>
-//   </div>
-//   <div className="col-xs-6">
-//   <TextField hintText="Maximum number Of students" name="maxStudents"  value={this.state.classData.maxStudents} onChange={this.onChange} >
-//     <input required name="maxStudents"  maxLength="100"/>
-//   </TextField>
-//   </div>
-//   <div className="col-xs-12">
-//   <TextField
-//   id="standard-multiline-static"
-//   label="Multiline"
-//   hintText="Description"
-//   name="description"
-//   onChange={this.onChange} 
-// />
-
-//   </div>
-//   <div className="col-xs-6">
-//   <TextField hintText="Start Time" name="startTime"  value={this.state.classData.startTime} onChange={this.onChange} >
-//     <input required name="startTime"  maxLength="100"/>
-//   </TextField>
-//   </div>
-//   <div className="col-xs-6">
-//   <TextField hintText="End Time" name="endTime"  value={this.state.classData.endTime} onChange={this.onChange} >
-//     <input required name="endTime"  maxLength="100"/>
-//   </TextField>
-//   </div>
-//   <div className="col-xs-6">
-//   <TextField hintText="Date" name="date"  value={this.state.classData.date} onChange={this.onChange} >
-//     <input required name="date"  maxLength="100"/>
-//   </TextField>
-//   </div>
-// <div className="col-xs-12">
-//   <button type="button"  className=" sec-button" onClick={this.addClass}>Register Class</button>
-//   <button type="button" className="sec sec-button" onClick={this.props.onCancel}>Cancel</button>
-// </div>
-// </form>
-// :null}
-// {this.state.classAdded?<div>Class added successfully. You will get an email shortly.
-//   You can share your class to people.
-
-// <a href="http://www.facebook.com/sharer.php?u=http://www.example.com" target="_blank">Share to FaceBook</a>
-
-
-// <a href="http://twitter.com/share?url=http://www.example.com&text=Simple Share Buttons&hashtags=simplesharebuttons" target="_blank">Twitter</a>
-
-
-// <a href="https://plus.google.com/share?url=http://www.example.com" target="_blank">Google+</a>
-
-
-// <a href="http://www.digg.com/submit?url=http://www.example.com" target="_blank">Digg</a>
-
-
-// <a href="http://reddit.com/submit?url=http://www.example.com&title=Simple Share Buttons" target="_blank">Reddit</a>
-
-
-// <a href="http://www.linkedin.com/shareArticle?mini=true&url=http://www.example.com" target="_blank">LinkedIn</a>
-
-
-// <a href="javascript:void((function()%7Bvar%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','http://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)%7D)());">Pinterest</a>
-
-
-// <a href="http://www.stumbleupon.com/submit?url=http://www.example.com&title=Simple Share Buttons" target="_blank">StumbleUpon</a>
-
-
-// <a href="mailto:?Subject=Simple Share Buttons&Body=I%20saw%20this%20and%20thought%20of%20you!%20 http://www.example.com">Email</a>
-// </div>:null}
+  export default connect(mapStateToProps, mapDispatchToProps)(Tutor);

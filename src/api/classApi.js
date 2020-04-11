@@ -22,7 +22,8 @@ class ClassApi {
           phoneNo: collData.phoneNo,
           date: collData.date,
           topic: collData.topic,
-          email: collData.email
+          email: collData.email,
+          timezone: new Date().getTimezoneOffset()
         })
       })
       .then((resp) => resp.json())
@@ -51,7 +52,8 @@ class ClassApi {
           email: collData.email,
           phoneNo: collData.phoneNo,
           rating: collData.rating,
-          name: collData.name
+          name: collData.name,
+          timezone: new Date().getTimezoneOffset()
         })
       })
       .then((resp) => resp.json())

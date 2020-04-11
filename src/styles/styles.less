@@ -68,8 +68,8 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .error{
   color: red;
-  font-size: 12px;
-  margin-top: -20px;
+  font-size: 15px;
+  margin-top: 4px;
   display: block;
 }
 .createdBy{
@@ -192,15 +192,15 @@ textarea input select a {
      display: block; 
     }
 }
-form{
-  width: 100%;
-  max-width: 700px;
-  border: 1px solid #ececec;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 60px;
-  border: none;
-}
+// form{
+//   width: 100%;
+//   max-width: 700px;
+//   border: 1px solid #ececec;
+//   margin-left: auto;
+//   margin-right: auto;
+//   margin-top: 60px;
+//   border: none;
+// }
 .sec-button{
   background-color: RGB(30,133,109);
   color: #fff;
@@ -293,6 +293,7 @@ form{
 input,textarea{
   width: 100%;
   padding: 5px 5px;
+  resize: none;
   // max-width: 200px;
 }
 
@@ -300,12 +301,16 @@ input,textarea{
   padding: 15px;
     color: white;
     position: absolute;
-    bottom: 15px;
+    
     font-size: 16px;
     z-index: 700;
     font-style: italic;
     /* font-family: cursive; */
     letter-spacing: 2px;
+    width: 500px;
+    left: 12%;
+    top: 40%;
+    font-size: 20px;
 }
 
 .banner{
@@ -361,7 +366,7 @@ input,textarea{
 .tag{
   position: absolute;
     right: 0;
-    top: 45px;
+    top: 55px;
     background-color: skyblue;
     padding: 5px 10px;
     color: #fff;
@@ -381,6 +386,21 @@ input,textarea{
   color: skyblue;
     font-weight: bold;
 }
+
+.gj-datepicker-md{
+    border-color: black;
+    width: 50%;
+    overflow: hidden;
+}
+
+.gj-dropdown{
+    width: 40%;
+    overflow: hidden;
+    margin-top: -10px;
+    border-color: black;
+    display: inline-flex;
+    margin-left: 10px;
+}
 @tablet-down: ~'(max-width: 767px)';
 @media @tablet-down  {
   .ss-header{
@@ -392,7 +412,9 @@ input,textarea{
   .btn-box{
     left: 0;
     width: 100%;
-    top: 30%;
+    // top: 30%;
+    top: auto;
+    bottom: 10px;
   }
   .main-primary{
     width: 80%;
@@ -406,13 +428,17 @@ input,textarea{
 
   }
   .disclaimer{
-    font-size: 14px;
+    font-size: 18px;
+    top: 60px;
+    max-width: 100%;
+    left: 0;
   }
   .col-block{
     top: 50px;
   }
   input, textarea{
     border: 1px solid black;
+    resize: none;
   }
   .banner{
     margin-top: 15px;

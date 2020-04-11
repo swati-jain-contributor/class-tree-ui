@@ -33,10 +33,58 @@
   <script src="/bundle.js"></script>
   <script>
    function initiateDatepicker(context){
-    $('[name="startTime"]').timepicker({ footer: false,change: context.onChange});
-    $('[name="endTime"]').timepicker({ footer: false,change: context.onChange});
-    $('[name="date"]').datepicker({change: context.onChange});
+    var today = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
+    today.setDate(today.getDate() + 1);
+    $('[name="date"]').datepicker({minDate: today, change: context.onChange,close: context.checkELValidity});
+    
+    $('[name="startTime"]').dropdown({change: context.onChange});
+    $('[name="maxStudents"]').dropdown({change: context.onChange});
   }
+
+  Date.prototype.toMysqlFormat = function() {
+    return this.getUTCFullYear() + "-" + twoDigits(1 + this.getUTCMonth()) + "-" + twoDigits(this.getUTCDate()) + " " + twoDigits(this.getUTCHours()) + ":" + twoDigits(this.getUTCMinutes()) + ":" + twoDigits(this.getUTCSeconds());
+};
+function twoDigits(d) {
+    if(0 <= d && d < 10) return "0" + d.toString();
+    if(-10 < d && d < 0) return "-0" + (-1*d).toString();
+    return d.toString();
+}
+
+function getMySQLDate(date,time){
+    let year = parseInt(date.split("/")[2]);
+    let month = parseInt(date.split("/")[0]);
+    let day = parseInt(date.split("/")[1]);
+    let hours= parseInt(time.substring(0,2)) + (time.indexOf("PM")>-1 ? 12:0);
+    let minutes= parseInt(time.substring(3,5));
+    console.log(year+","+month+","+day+","+hours+","+minutes)
+    return new Date(year,month-1,day,hours,minutes).toMysqlFormat();
+  }
+  function getUserLocalDate(date){
+    return new Date(Date.parse((date + " UTC").replace(/-/g, '/')));
+  }
+  function addMinutes(date, minutes) {
+    return new Date(date.getTime() + minutes*60000);
+}
+function formatAMPM(date) {
+  var hours = date.getHours();
+  var minutes = date.getMinutes();
+  var ampm = hours >= 12 ? 'PM' : 'AM';
+  hours = hours % 12;
+  hours = hours ? hours : 12; // the hour '0' should be '12'
+  minutes = minutes < 10 ? '0'+minutes : minutes;
+  var strTime = hours + ':' + minutes + ' ' + ampm;
+  return strTime;
+}
+
+//   Query for sending email
+//Select Name, MeetingLink, Email from Student as S cross join Class as CL on S.ClassId = CL.id
+//  where S.ClassId IN (Select id from shareskill.Class C
+// where active = 1 and  
+// INSERT INTO `shareskill`.`EmailDetails` (`Media`, `Type`, `StudentId`, `ClassId`) VALUES ('Email', 'CLASS_JOINING_DETAILS', '70', '99');
+// INSERT INTO `shareskill`.`EmailDetails` (`Media`, `Type`, `StudentId`, `ClassId`) VALUES ('Email', 'CLASS_JOINING_DETAILS', '71', '99');
+
+//   (TIMESTAMPDIFF(HOUR,UTC_TIMESTAMP(),C.date) <6) AND (C.date >UTC_TIMESTAMP())  and MeetingLink is not null);
+
   </script>
 </body>
 
