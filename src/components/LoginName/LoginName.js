@@ -96,13 +96,13 @@ class LoginName extends React.Component {
 
   render() {
     return (
-      <div>
-        <br />
-        <br />
+      <div className="popup">
+        {/* <br /> */}
+        {/* <br />
         <span style={{ fontSize: "18px" }} >Hey! Welcome to <b>ClassTree!!</b></span>
         <br />
         <br />
-        <span>You are a <b>new member</b>, please help us with your name and phone number to create an account for you!</span>
+        <span>You are a <b>new member</b>, please help us with your name and phone number to create an account for you!</span> */}
 
         <br />
         <br />
@@ -131,9 +131,9 @@ function mapStateToProps(state, ownProps) {
 
   return {
     classes: state.classes.TeacherClasses,
-    email: ownProps.type=="T" ? state.classes.teacherEmail : state.classes.studentEmail,
-    name: ownProps.type=="T" ?state.classes.teacherName:state.classes.studentName,
-    phoneNo: ownProps.type=="T" ?state.classes.teacherPhone:state.classes.studentPhone
+    email: ownProps.type=="T" ? state.classes.userEmail : state.classes.userEmail,
+    name: ownProps.type=="T" ?state.classes.userName:state.classes.userName,
+    phoneNo: ownProps.type=="T" ?state.classes.userPhone:state.classes.userPhone
   };
 }
 function mapDispatchToProps(dispatch) {

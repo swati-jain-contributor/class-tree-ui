@@ -7,74 +7,72 @@ import { browserHistory } from 'react-router';
 import * as loginActions from '../actions/loginActions';
 import Snackbar from 'material-ui/Snackbar';
 import Tutor from '../components/Tutor/Tutor';
+import About from '../components/about/About';
 import Student from '../components/Student/Student';
-import { green100 } from 'material-ui/styles/colors';
+import Contact from '../components/contact/Contact';
+import Registered from '../components/Registered/Registered';
+import { Route, IndexRoute, Switch } from 'react-router';
+
 
 class App extends React.Component {
-  // componentWillReceiveProps(nextProps) {
-    
-  //   if (nextProps.errorMsg && nextProps.errorMsg !="") {
-  //     console.log("Props Updated");
-  //     this.setState({
-  //       open: true,
-  //       errorMsg:nextProps.errorMsg
-  //     });
-  //     setTimeout(function () {
-  //       this.props.actions.resetErrorMessage("");
-  //       this.setState({
-  //         open: false,
-  //         errorMsg:""
-  //       });
-  //     }.bind(this), 5000);
-  //   }
-  // }
-  componentDidUpdate() {
-    //document.querySelector(".msg-box").scrollTop=document.querySelector(".msg-box").scrollHeight();
-    // const node = this.refs;
-    // console.log(node);
-    if (this.state.start) {
-      if (this.state.step>=1) {
-        document.querySelector('.col-block').animate({
-          top: ['1000px', (window.innerWidth<700 ? '50px': '40px')]
-        }, 1000);
-
-        //objDiv.scrollTop = objDiv.scrollHeight;
-      } else {
-        document.querySelector('.chat-panel').animate({
-          left: ['40', '1000px']
-        }, 1000);
-      }
-      this.setState({
-        start: false
-      });
-      
-    }
-  }
   constructor(context) {
     super(context);
-    this.state={
-      step:0,
-      imageCode: Math.floor(Math.random()*9) + 1
+    this.state = {
+      step: 0,
+      imageCode: Math.floor(Math.random() * 9) + 1
     };
-    
+
   }
   render() {
+    let path = location.pathname.replace(/\//g, '');
+    let child;
+    switch (path) {
+
+      case 'student': child = <Student search={this.state.search} />; break;
+      case 'tutor': child = <Tutor search={this.state.search} />; break;
+      case 'registered': child = <Registered search={this.state.search} />; break;
+      case 'about': child = <About search={this.state.search} />; break;
+      case 'contact': child = <Contact search={this.state.search} />; break;
+      default: child = <Student search={this.state.search} />; break;
+    }
+
+    let isMobile = window.innerWidth < 700;
+    let iconBox = (<div className="icon-box">
+      <i role="button" aria-controls="search" className="fa fa-search" aria-hidden="true" data-toggle="collapse" href="#search" aria-expanded="false"  ></i>
+      <div className="dropdown">
+        <i className="fa fa-bars" aria-hidden="true" id="menudropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></i>
+        <ul className="dropdown-menu dropdown-menu-right">
+          <li className="dropdown-item" onClick={() => this.context.router.push('/about')}>Who we are</li>
+          <li className="dropdown-item" onClick={() => this.context.router.push('/registered')}>My registered classes</li>
+          <li className="dropdown-item" onClick={() => this.context.router.push('/tutor')}>My offered classes</li>
+          <li className="dropdown-item" onClick={() => this.context.router.push('/student')}>Learn more</li>
+          <li className="dropdown-item" onClick={() => this.context.router.push('/contact')}>Contact us</li>
+        </ul>
+      </div>
+    </div>);
+    let menubar = (
+        <ul className="menubar">
+          <li style={{width:'500px'}}><input className="big-input search-box" placeholder="I'd like to learn about.." type="text" name="search" value={this.state.search} onChange={(evt) => this.setState({ search: evt.target.value })} /></li>
+          <li className={path == "about" ? "active" : ""} onClick={() => this.context.router.push('/about')}>Who we are</li>
+          <li className={path == "registered" ? "active" : ""} onClick={() => this.context.router.push('/registered')}>My registered classes</li>
+          <li className={path == "tutor" ? "active" : ""} onClick={() => this.context.router.push('/tutor')}>My offered classes</li>
+          <li className={path == "student" ? "active" : ""} onClick={() => this.context.router.push('/student')}>Learn more</li>
+          <li className={path == "contact" ? "active" : ""} onClick={() => this.context.router.push('/contact')}>Contact us</li>
+        </ul>
+    );
     return (
       <div className="ss-root">
-        <Header
-          loading={this.props.loading}
-        />
-        <div className="ss-header">By Learning you will teach, By teaching you will learn..</div>
-        <img className="bg-image" src={`https://raw.githubusercontent.com/swati-jain-contributor/privacy-policy/master/${this.state.imageCode}.jpg`}></img>
-        <div className="overlay"></div>
-        <div className="btn-box">
-          <button className="main-primary" onClick={()=>this.setState({ step: 2, start:true })}>STUDENT<span>I want to learn</span></button>
-          <button className="main-secondary" onClick={()=>this.setState({ step: 1 , start:true})}>TEACHER<span>I want to teach</span></button>
+
+        <b className="morning">Good morning</b><br />
+        <span className="heading-helper">What are you learning today?</span>
+
+        {isMobile ? iconBox : menubar}
+
+        <div id="search" className={"collapse "+ (isMobile ? "show":"")}>
+          <input className="big-input search-box" placeholder="I'd like to learn about.." type="text" name="search" value={this.state.search} onChange={(evt) => this.setState({ search: evt.target.value })} />
         </div>
-        {this.state.step==1?<Tutor onCancel={()=>this.setState({ step: 0, start:true })}/>:null}
-        {this.state.step==2?<Student/>:null}
-        <p className="disclaimer">Welcome to ClassTree!, A Knowledge sharing Platform. <br/><br/> Gaining knowledge, is the first step to wisdom. <br/> Sharing it, is the first step to humanity.<br/> <br/> Come forward to enhance your knowledge everyday. What to wait for, <br/><span style={{textAlign:"center", color:"#1e856d", display:"block", marginTop:"5px"}}>Add or book your class</span> </p>
-      </div>
+        {child}
+      </div >
 
     );
   }
@@ -88,10 +86,10 @@ App.contextTypes = {
   router: React.PropTypes.func.isRequired
 };
 
-function mapStateToProps(state, ownProps) { 
-  console.log(state.ajaxCallsInProgress); 
+function mapStateToProps(state, ownProps) {
+  console.log(state.ajaxCallsInProgress);
   return {
-    loading:  state.ajaxCallsInProgress > 0
+    loading: state.ajaxCallsInProgress > 0
     // isAuthenticated: state.session.authenticationStatus,
     // username: state.session.aptId + "-" + state.session.userId,
     // errorMsg: state.session.errorMsg,

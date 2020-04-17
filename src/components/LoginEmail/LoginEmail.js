@@ -100,7 +100,7 @@ class LoginEmail extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className="popup">
         <br />
         <br />
         <br />
@@ -120,9 +120,9 @@ function mapStateToProps(state, ownProps) {
 
   return {
     classes: state.classes.TeacherClasses,
-    email: state.classes.teacherEmail,
-    name: state.classes.teacherName,
-    phoneNo: state.classes.teacherPhone
+    email: state.classes.userEmail,
+    name: state.classes.userName,
+    phoneNo: state.classes.userPhone
   };
 }
 function mapDispatchToProps(dispatch) {

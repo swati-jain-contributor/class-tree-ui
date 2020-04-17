@@ -61,6 +61,7 @@ class AddClass extends React.Component {
       this.setState({
         classData: JSON.parse(JSON.stringify(initialClass)) 
       });
+      this.props.onClose();
     }
     event.target.form.reset();
     window.initiateDatepicker(this);
@@ -141,8 +142,9 @@ class AddClass extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="popup add-class">
       <form>
+        <label><b>Please provide class details-</b></label>
         <div>
           <label>Topic</label><br />
           <input type="text" maxLength="40" onBlur={this.checkELValidity} name="topic" required value={this.state.classData.topic} onChange={this.onChange} />
@@ -174,7 +176,7 @@ class AddClass extends React.Component {
             {[40, 30, 20, 10].map((tl,i) => <option  key={i} value={tl}>{tl}</option>)}
           </select>
         </div>
-        <button type="submit" className="card-btn" onClick={this.addClass}>Add Class</button>
+        <button type="submit" className="submit-btn" onClick={this.addClass}>Add Class</button>
       </form>
     </div>
   
@@ -187,9 +189,9 @@ function mapStateToProps(state, ownProps) {
 
   return {
     classes: state.classes.TeacherClasses,
-    email: state.classes.teacherEmail,
-    name: state.classes.teacherName,
-    phoneNo: state.classes.teacherPhone
+    email: state.classes.userEmail,
+    name: state.classes.userName,
+    phoneNo: state.classes.userPhone
   };
 }
 function mapDispatchToProps(dispatch) {

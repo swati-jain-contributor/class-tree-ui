@@ -79,7 +79,7 @@ export function getClasses(collData) {
     dispatch(beginAjaxCall());
     return ClassApi.getClasses(collData).then(data => {
       if (data.status == "SUCCESS")
-      {if(collData.type=='T')
+      {if(collData.type=='T' || collData.type=='R')
         dispatch(getClassTeacherSuccess(data.response));
       else
         dispatch(getClassStudentSuccess(data.response));}

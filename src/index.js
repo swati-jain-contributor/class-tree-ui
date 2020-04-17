@@ -17,14 +17,10 @@ import { addMessageSuccess } from './actions/collaborateActions';
 import { authenticationSuccess } from './actions/loginActions';
 import throttle from 'lodash/throttle';
 
-import $ from 'jquery';
-import 'bootstrap';
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import '../node_modules/toastr/build/toastr.min.css';
-import '../node_modules/font-awesome/css/font-awesome.css';
 import './styles/styles.less';
-import './styles/login.less';
-import './styles/dashboard.less';
+
+// import './styles/login.less';
+// import './styles/dashboard.less';
 
 const store = configureStore();
 // store.dispatch(loadCourses());
@@ -139,3 +135,14 @@ function startApp() {
     document.getElementById('app')
   );
 }
+
+
+//   Query for sending email
+//Select Name, MeetingLink, Email from Student as S cross join Class as CL on S.ClassId = CL.id
+//  where S.ClassId IN (Select id from shareskill.Class C
+// where active = 1 and  
+// INSERT INTO `shareskill`.`EmailDetails` (`Media`, `Type`, `StudentId`, `ClassId`) VALUES ('Email', 'CLASS_JOINING_DETAILS', '70', '99');
+// INSERT INTO `shareskill`.`EmailDetails` (`Media`, `Type`, `StudentId`, `ClassId`) VALUES ('Email', 'CLASS_JOINING_DETAILS', '71', '99');
+
+//   (TIMESTAMPDIFF(HOUR,UTC_TIMESTAMP(),C.date) <6) AND (C.date >UTC_TIMESTAMP())  and MeetingLink is not null);
+

@@ -9,29 +9,57 @@ import { bindActionCreators } from 'redux';
 import * as classActions from '../../actions/classActions';
 import AddDiscussion from '../overlays/AddDiscussion';
 import ValidationService from '../common/Validation';
-import LoginEmail  from '../LoginEmail/LoginEmail';
+import LoginEmail from '../LoginEmail/LoginEmail';
 import LoginName from '../LoginName/LoginName';
 import AddClass from './AddClass';
 import Card from '../Card/Card';
 
-let initialClass ={
+let initialClass = {
   startTime: "05:00 PM",
-  maxStudents:40,
-  date:"",
-  description:"",
-  topic:"",
-  name:"",
-  phoneNo:"",
-  email:""
-  
+  maxStudents: 40,
+  date: "",
+  description: "",
+  topic: "",
+  name: "",
+  phoneNo: "",
+  email: ""
+
 };
 
 class Tutor extends React.Component {
 
+  componentWillReceiveProps(nextProps) {
+    let classesNP = nextProps.classes;
+    if (!classesNP)
+      classesNP = [];
+    if (nextProps.search) {
+      let classes = classesNP.filter(cl =>
+        this.checkParam(cl, 'Topic', nextProps.search) || this.checkParam(cl, 'Description', nextProps.search) || this.checkParam(cl, 'TutorName', nextProps.search));
+      this.setState({ classes });
+    }
+    else
+      this.setState({ classes: classesNP });
+    if ((nextProps.email && nextProps.name) || (!nextProps.email && !nextProps.name))
+      this.setState({ popup: false, showEmail: false, showName: false });
+    else
+      this.setState({ popup: true, showEmail: false, showName: true });
+  }
+
+  componentDidMount() {
+    if (this.props.email) {
+      this.props.actions.getClasses({
+        email: this.props.email,
+        type: 'T'
+      });
+    }
+  }
+  checkParam(cl, field, search) {
+    return cl[field] && cl[field].toLowerCase().indexOf(search.toLowerCase()) > -1;
+  }
   constructor(props, context) {
     super(props, context);
     this.state = {
-      classData: JSON.parse(JSON.stringify(initialClass)) ,
+      classData: JSON.parse(JSON.stringify(initialClass)),
       timeList: ["12:00 AM", "12:30 AM", "01:00 AM", "01:30 AM", "02:00 AM", "02:30 AM", "03:00 AM", "03:30 AM", "04:00 AM", "04:30 AM", "05:00 AM", "05:30 AM", "06:00 AM", "06:30 AM", "07:00 AM", "07:30 AM", "08:00 AM", "08:30 AM", "09:00 AM", "09:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "01:00 PM", "01:30 PM", "02:00 PM", "02:30 PM", "03:00 PM", "03:30 PM", "04:00 PM", "04:30 PM", "05:00 PM", "05:30 PM", "06:00 PM", "06:30 PM", "07:00 PM", "07:30 PM", "08:00 PM", "08:30 PM", "09:00 PM", "09:30 PM", "10:00 PM", "10:30 PM", "11:00 PM", "11:30 PM"]
     };
     this.addClass = this.addClass.bind(this);
@@ -64,8 +92,9 @@ class Tutor extends React.Component {
       };
       this.props.actions.addClass(classData);
       this.setState({
-        classData: JSON.parse(JSON.stringify(initialClass)) 
+        classData: JSON.parse(JSON.stringify(initialClass))
       });
+
     }
     event.target.form.reset();
     window.initiateDatepicker(this);
@@ -83,7 +112,7 @@ class Tutor extends React.Component {
   getClasses(event) {
     event && event.preventDefault();
     if ((event && this.checkValidity(event)) || !event) {
-      if(!this.props.name){
+      if (!this.props.name) {
         this.props.actions.addTeacherData({
           email: this.state.classData.email || this.props.email,
           name: null,
@@ -148,11 +177,53 @@ class Tutor extends React.Component {
   }
   render() {
     var banner = (<div> <div className="banner"><span>A <b>Teacher</b> plants a seed of knowledge to produce <b>Tomorrow's Dreams</b></span></div>
-    <div className="thank-note"><span>We appreciate efforts you are making to make people learn.. &nbsp;&nbsp;   <i className="fa fa-thumbs-up" aria-hidden="true"></i></span></div></div>);
+      <div className="thank-note"><span>We appreciate efforts you are making to make people learn.. &nbsp;&nbsp;   <i className="fa fa-thumbs-up" aria-hidden="true"></i></span></div></div>);
     return (
       <div className="col-block  view-holder">
+        {(!this.props.email || !this.props.name) ?
+          <div>
+            {banner}
+            <br />
+            <br />
 
+            <span>Please login, so we can get your details</span>
+            <br />
+            <button className="submit-btn secondary" onClick={() =>
+              !this.props.email ?
+                this.setState({ showEmail: true, showName: false, popup: true }) :
+                this.setState({ showEmail: false, showName: true, popup: true })} >Login</button>
+          </div> :
+          <div>
+            {(this.state.classes.length == 0) ?
+              <div>
+                {this.props.classes.length == 0 ?
+                  <span>
+                    You have not added a class yet.
+                <br />
+                    Make your first contribution now.
+              </span> :
+                  <span>
+                    No added classes are found.
+              <br />
+                    Change your search criteria or add a class now.
+            </span>
+                }
 
+                <button className="submit-btn" onClick={() => this.setState({ popup: true, showAddClass: true })}>+ Add Class</button>
+              </div> :
+              <div>
+                <button className="add-class-btn" onClick={() => this.setState({ popup: true, showAddClass: true })}><span>{window.innerWidth>700?'Add Class' : '+'}</span></button>
+                <div className="content-box">
+                  {this.state.classes.map((cl, i) => <Card type="T" key={i} class={cl} bookClass={this.bookClass} />)}
+                </div>
+              </div>}
+          </div>}
+        <div className={this.state.popup ? "overlay" : ""}></div>
+        {this.state.showEmail ? <LoginEmail type="T" /> : null}
+        {this.state.showName ? <LoginName type="T" /> : null}
+        {this.state.showAddClass ? <AddClass onClose={() => { this.setState({ popup: false, showAddClass: false }); window.showSuccessToast("Thanks! Your class scheduled successfully!"); }} /> : null}
+
+        {/* 
         <div>
           {(!this.props.email) ?
             <div className="content-box clearfix">
@@ -169,13 +240,13 @@ class Tutor extends React.Component {
           }
         </div>
         {(this.props.name && this.props.email) ? <div className="content-box clearfix">
-          {banner}
-          <h1 className="greet-user">Hello {this.props.name}</h1>
+          {/* <h1 className="greet-user">Hello {this.props.name}</h1>
           <div className="card">
             <AddClass/>
-          </div>
+          </div> */}
+        {/* {this.props.classes.length==0 ? <div>{banner}</div>:""}
           {this.props.classes.map((cl, i) => <Card type="T" class={cl} key={i}/>)}
-        </div> : null}
+        </div> : null} */}
       </div>
     );
   }
@@ -185,15 +256,15 @@ function mapStateToProps(state, ownProps) {
 
   return {
     classes: state.classes.TeacherClasses,
-    email: state.classes.teacherEmail,
-    name: state.classes.teacherName,
-    phoneNo: state.classes.teacherPhone
+    email: state.classes.userEmail,
+    name: state.classes.userName,
+    phoneNo: state.classes.userPhone
   };
 }
-  function mapDispatchToProps(dispatch) {
-    return {
-      actions: bindActionCreators(classActions, dispatch)
-    };
-  }
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(classActions, dispatch)
+  };
+}
 
-  export default connect(mapStateToProps, mapDispatchToProps)(Tutor);
+export default connect(mapStateToProps, mapDispatchToProps)(Tutor);

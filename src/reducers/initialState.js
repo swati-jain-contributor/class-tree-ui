@@ -19,9 +19,9 @@ const defaultState= {
   },
   classes:{
     TeacherClasses:[],
-    teacherEmail:null,
-    teacherPhone:null,
-    teacherName:null
+    userEmail:null,
+    userPhone:null,
+    userName:null
   
   },
   session:

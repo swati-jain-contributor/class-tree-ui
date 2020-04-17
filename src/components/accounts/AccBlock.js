@@ -8,10 +8,10 @@ import MaintainFunds from './MaintainFunds';
 import '../../styles/account.less';
 import * as accountsActions from '../../actions/accountsActions';
 import AddMaintainence from '../overlays/AddMaintainence';
-import ValidationService from '../common/Validation'
+import ValidationService from '../common/Validation';
 
 import 'jquery';
-import 'bootstrap';
+// import 'bootstrap';
 class AccBlock extends React.Component {
 
   componentDidMount() {
@@ -63,7 +63,7 @@ class AccBlock extends React.Component {
   payMaintainence(ids) {
     console.log(ids);
     this.props.actions.payMaintainence({ ids: ids });
-  };
+  }
   load(i) {
     this.setState({ index: i });
     this.setState({ start: true });

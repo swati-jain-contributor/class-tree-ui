@@ -11,20 +11,26 @@ import AddDiscussion from '../overlays/AddDiscussion';
 import ValidationService from '../common/Validation';
 import LoginEmail from '../LoginEmail/LoginEmail';
 import LoginName from '../LoginName/LoginName';
+import AddClass from '../Tutor/AddClass';
 import Card from '../Card/Card';
 
 class Student extends React.Component {
   componentWillReceiveProps(nextProps){
+    
     let classesNP = nextProps.classes;
     if(!classesNP)
       classesNP=[];
-   if(this.state.search){
+   if(nextProps.search){
      let classes = classesNP.filter(cl=>
-      this.checkParam(cl,'Topic') || this.checkParam(cl,'Description') || this.checkParam(cl,'TutorName') );
+      this.checkParam(cl,'Topic',nextProps.search) || this.checkParam(cl,'Description',nextProps.search) || this.checkParam(cl,'TutorName',nextProps.search) );
      this.setState({classes});
    } 
    else
     this.setState({classes: classesNP});
+    if((nextProps.email && nextProps.name) || (!nextProps.email && !nextProps.name))
+      this.setState({popup:false, showEmail:false,showName:false});
+    else
+    this.setState({popup:true, showEmail:false,showName:true});
   }
   constructor(props, context) {
     super(props, context);
@@ -36,24 +42,27 @@ class Student extends React.Component {
       step: 0
     };
     this.closeClass = this.closeClass.bind(this);
-    this.onChange = this.onChange.bind(this);
     this.getClasses = this.getClasses.bind(this);
-    this.addName = this.addName.bind(this);
     this.bookClass=this.bookClass.bind(this);
     this.search = this.search.bind(this);
+    
   }
 
+  getClasses(){
+    this.props.actions.getClasses({
+      email: this.props.email,
+      type:'C'
+    });
+  }
+  componentDidMount(){
+    this.getClasses();
+  }
   componentDidUpdate() {
 
   }
-  onChange(event) {
-    const field = event.target.name;
-    let classData = this.state.classData;
-    classData[field] = event.target.value;
-    return this.setState({ classData: classData });
-  }
-  checkParam(cl,field){
-   return cl[field] && cl[field].toLowerCase().indexOf(this.state.search.toLowerCase())>-1;
+  
+  checkParam(cl,field,search){
+   return cl[field] && cl[field].toLowerCase().indexOf(search.toLowerCase())>-1;
   }
   search(event){
    let search = event.target.value;
@@ -66,27 +75,9 @@ class Student extends React.Component {
    else
     this.setState({classes: this.props.classes});
   }
-  addName(event) {
-    this.props.actions.addStudentData({
-      email:this.props.email,
-      name: this.state.classData.name,
-      phoneNo:this.state.classData.phoneNo
-    });
-  }
-  getClasses() {
-    this.props.actions.addStudentData({
-      email:this.state.classData.email,
-      name: null,
-      phoneNo:null
-    });
-    this.props.actions.getClasses({
-      email: this.state.classData.email,
-      type:'C'
-    });
-    this.setState({ step: 0 });
-  }
+ 
   bookClass(cl){
-      console.log(cl);
+    if(this.props.email && this.props.name){
       this.props.actions.bookClass({
         "classId" : cl.id,
         "email":this.props.email,
@@ -94,36 +85,27 @@ class Student extends React.Component {
         "rating":"5",
         "name":this.props.name
       });
+      window.showSuccessToast("Congratulations! Class Registered successfully!");
+    }
+    else
+      !this.props.email ? this.setState({showEmail:true,showName:false, popup:true}) : this.setState({showEmail:false,showName:true,popup:true});
   }
   closeClass() {
     this.props.cancel();
   }
   render() {
-    let banner = (<div><div className="banner"><span>Beautiful thing about <b>Learning</b> is that no one can take it away from you...</span></div>
-    <div className="thank-note"><span>We appreciate efforts you are making to grow yourself.. &nbsp;&nbsp;   <i className="fa fa-thumbs-up" aria-hidden="true"></i></span></div></div>);
     return (
       <div className="col-block  view-holder">
-        {!this.props.email ?
-            <div className="content-box clearfix">
-              {banner}
-              <LoginEmail type="C"/>
-              </div> : null}
-
-              {this.props.email && !this.props.name ?
-            <div className="content-box clearfix">
-              {banner}
-              <LoginName type="C"/>
-            </div> : null
-          }
-        
-        {this.props.name && this.props.email ? <div className="content-box clearfix">
-          {banner}
-
-          <h1 className="greet-user">Hello {this.props.name}</h1>
-          <input className="big-input search-box" placeholder="I'd like to learn about.." type="text" name="search" value={this.state.search} onChange={this.search} /><br/>
-          {this.state.classes.map((cl, i) => <Card type="C" key={i} class={cl}/>)}
-
-        </div> : null}
+        <div className="content-box clearfix">
+          {this.state.classes ? this.state.classes.map((cl, i) => <Card type="C" key={i} class={cl} bookClass={this.bookClass}/>) : null}
+          {(this.props.name && this.props.email) ? 
+          <button className="add-class-btn" onClick={() => this.setState({ popup: true, showAddClass: true })}><span>{window.innerWidth>700?'Add Class' : '+'}</span></button> :null}
+          
+          <div className={this.state.popup ? "overlay" :""}></div>
+          {this.state.showEmail? <LoginEmail type="C"/> :null}
+        {this.state.showName? <LoginName type="C"/> :null}
+        {this.state.showAddClass ? <AddClass onClose={() => { this.setState({ popup: false, showAddClass: false }); this.getClasses(); window.showSuccessToast("Thanks! Your class scheduled successfully!"); }} /> : null}
+        </div> 
       </div>
     );
   }
@@ -133,9 +115,9 @@ function mapStateToProps(state, ownProps) {
 
   return {
     classes: state.classes.AllClasses,
-    email: state.classes.studentEmail,
-    name: state.classes.studentName,
-    phoneNo: state.classes.studentPhone
+    email: state.classes.userEmail,
+    name: state.classes.userName,
+    phoneNo: state.classes.userPhone
   };
 }
 function mapDispatchToProps(dispatch) {

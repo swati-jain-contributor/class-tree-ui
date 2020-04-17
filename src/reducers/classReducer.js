@@ -5,15 +5,15 @@ export default function classReducer(state = initialState.classes, action) {
   switch (action.type) {
     case types.ADD_TEACHER_EMAIL:
       {let obj = Object.assign({}, state);
-      obj.teacherEmail = action.collData.email;
-      obj.teacherPhone = action.collData.phoneNo;
-      obj.teacherName = action.collData.name;
+      obj.userEmail = action.collData.email;
+      obj.userPhone = action.collData.phoneNo;
+      obj.userName = action.collData.name;
       return obj;}
     case types.ADD_STUDENT_DATA:
       {let obj = Object.assign({}, state);
-      obj.studentEmail = action.collData.email;
-      obj.studentPhone = action.collData.phoneNo;
-      obj.studentName = action.collData.name;
+      obj.userEmail = action.collData.email;
+      obj.userPhone = action.collData.phoneNo;
+      obj.userName = action.collData.name;
       return obj;}
     case types.ADD_CLASSES_SUCCESS:
       {let obj = Object.assign({}, state);
@@ -24,8 +24,8 @@ export default function classReducer(state = initialState.classes, action) {
       {let obj = Object.assign({}, state);
       obj.TeacherClasses = action.collData;
       if(obj.TeacherClasses.length>0){
-        obj.teacherName=obj.TeacherClasses[0].TutorName;
-        obj.teacherPhone=obj.TeacherClasses[0].PhoneNo;
+        obj.userName=obj.TeacherClasses[0].TutorName;
+        obj.userPhone=obj.TeacherClasses[0].PhoneNo;
       }
         
       return obj;}
@@ -34,8 +34,8 @@ export default function classReducer(state = initialState.classes, action) {
       obj.AllClasses = action.collData;
       if(obj.AllClasses.length>0 && obj.AllClasses.find(s=>s.StudentName)){
         var cs = obj.AllClasses.find(s=>s.StudentName);
-        obj.studentName=cs.StudentName;
-        obj.studentPhone=cs.StudentPhone;
+        obj.userName=cs.StudentName;
+        obj.userPhone=cs.StudentPhone;
       }
       return obj;
     }
