@@ -27,7 +27,8 @@ class Card extends React.Component {
   render() {
     var cl = this.props.class;
     var isStudent = this.props.type=='C';
-    var isClassGoingOn = (new Date().getTime() > window.getUserLocalDate(cl.Date).getTime()) && (new Date().getTime() < window.addMinutes(window.getUserLocalDate(cl.Date),40).getTime()) ;
+    
+    var isClassGoingOn = (new Date().getTime() > window.addMinutes(window.getUserLocalDate(cl.Date),-60).getTime()) && (new Date().getTime() < window.addMinutes(window.getUserLocalDate(cl.Date),40).getTime()) ;
     return (
       <div className="card">
             <div className="topic" style={!cl.active ? {backgroundColor:'gray'}:{}}>{cl.Topic}</div>
@@ -58,7 +59,7 @@ class Card extends React.Component {
             {!cl.StudentEmail && isStudent && cl.active?
             <button className="card-btn" onClick={()=>this.bookClass(cl)}>Book Class</button>:null}
             {(cl.StudentEmail|| !isStudent) && cl.MeetingLink && isClassGoingOn ?
-            <a target="_blank" href={cl.MeetingLink}><button className="card-btn" onClick={()=>this.bookClass(cl)}>Join Class</button></a>:null}
+            <a target="_blank" href={cl.MeetingLink}><button className="card-btn" >Join Class</button></a>:null}
           </div>
 
     );
