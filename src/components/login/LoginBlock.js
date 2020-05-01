@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import PropTypes from 'prop-types';
+import React from 'react';
 import InputMask from 'react-input-mask';
 import TextField from 'material-ui/TextField';
 
@@ -39,11 +40,11 @@ const LoginBlock = ({ OnCancel, OnLogin, onChange, loginForm, onBlur, sendOTP, b
 };
 
 LoginBlock.propTypes = {
-  OnCancel: React.PropTypes.func.isRequired,
-  loginForm: React.PropTypes.object.isRequired,
-  OnLogin: React.PropTypes.func.isRequired,
-  onChange: React.PropTypes.func.isRequired,
-  errors: React.PropTypes.object
+  OnCancel: PropTypes.func.isRequired,
+  loginForm: PropTypes.object.isRequired,
+  OnLogin: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
+  errors: PropTypes.object
 };
 
 export default LoginBlock;

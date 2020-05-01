@@ -1,11 +1,10 @@
-import React, { PropTypes } from 'react';
-import Tappable from 'react-tappable/lib/Tappable';
-import groups from '../../api/groups';
+import PropTypes from 'prop-types';
+import React from 'react';
+
 import TextField from 'material-ui/TextField';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as classActions from '../../actions/classActions';
-import AddDiscussion from '../overlays/AddDiscussion';
 import ValidationService from '../common/Validation';
 import { checkELValidity, checkValidity, onChange } from '../Utils';
 class LoginEmail extends React.Component {

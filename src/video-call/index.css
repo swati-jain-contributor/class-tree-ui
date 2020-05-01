@@ -1,0 +1,21 @@
+html{
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+  height: 100%;
+  width: 100%;
+}
+
+.chat-panel button{
+    width: auto;
+}
+.chat-box{
+  /* display: block !important; */
+    position: absolute !important;
+    right: 0 !important;
+}
+

@@ -9,35 +9,6 @@ const userDetails = {
 };
 
 class LoginApi {
-  static createNewApartment(registerData) {
-    return fetch(server + "/api/apartments/register",
-      {
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          'auth-token': localStorage.token
-        },
-        credentials: 'include',
-        method: "POST",
-        body: JSON.stringify(registerData)
-      })
-      .then((resp) => resp.json())
-      .then(function (res) {
-        console.log(res);
-        // if (res.response && res.response != null) {
-        //   if (res.response.member)
-        //     alert(res.response.member.otp);
-        //   else if (res.response.members)
-        //     alert(res.response.members[0].otp);
-        // }
-        return res;
-      })
-      .catch(function (res) {
-        console.log(res);
-        //return res;
-        throw (res);
-      })
-  }
   static createSession() {
     return fetch(server + '/api/sessions/createSession', {
       method: 'get',
@@ -112,32 +83,7 @@ class LoginApi {
         throw (res);
       })
   }
-  static getApartmentAddress(reqData) {
-    //
-    return fetch(server + "/api/apartments/getApartmentAddress",
-      {
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          'auth-token': localStorage.token
-        },
-        credentials: 'include',
-        method: "POST",
-        body: JSON.stringify({
-          "id": reqData.id,
-        })
-      })
-      .then((resp) => resp.json())
-      .then(function (res) {
-        console.log(res);
-        return res;
-      })
-      .catch(function (res) {
-        console.log(res);
-        //return res;
-        throw (res);
-      })
-  }
+
   static getUserData() {
     return fetch(server + "/api/sessions/getuserdata",
       {

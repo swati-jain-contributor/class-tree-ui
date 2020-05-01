@@ -2,13 +2,15 @@
 <html lang="en">
 
 <head>
-  <title> Together We Learn </title>
+  <title>ClassTree Learn Together</title>
      <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <!-- Popper JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 
@@ -19,7 +21,9 @@
 <!-- Google Fonts -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
 
-
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet"
+  href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
      <link rel="icon" href="favicon.ico" type="image/ico" sizes="16x16">
      <!-- Google Fonts Roboto -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
@@ -28,9 +32,9 @@
 
      
      <meta charset="utf-8">
-     <meta name="description" content="ClassTree is a knowledge sharing platform, open to people to share their knowledge with people who are interested in learning. It’s a social platform and meant only for learning and sharing.."/>
+     <meta name="description" content="ClassTree is a knowledge sharing platform, open to people to share their knowledge with people who are interested in learning."/>
      <meta property="og:title" content="Together we learn  ">
-    <meta property="og:description" content="ClassTree is a knowledge sharing platform, open to people to share their knowledge with people who are interested in learning. It’s a social platform and meant only for learning and sharing..">
+    <meta property="og:description" content="ClassTree is a knowledge sharing platform, open to people to share their knowledge with people who are interested in learning.">
     <meta property="og:image" content="https://raw.githubusercontent.com/swati-jain-contributor/privacy-policy/master/logo-ct.png">
     <meta property="og:url" content="http://www.classtree.in">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
@@ -57,6 +61,7 @@
   </div>
 
   <div id="app"></div>
+
   <script src="/bundle.js"></script>
   <script>
 
@@ -104,12 +109,44 @@ var strTime = hours + ':' + minutes + ' ' + ampm;
 return strTime;
 }
 
+function getQueryParams ( params, url ) {
+  
+  let href = url;
+  //this expression is to get the query strings
+  let reg = new RegExp( '[?&]' + params + '=([^&#]*)', 'i' );
+  let queryString = reg.exec(href);
+  return queryString ? queryString[1] : null;
+};
+
 function showSuccessToast(msg){
   $(".toast").html($(".toast").html()
             .replace("$msg",msg)
             .replace("Congratulations! Class Registered successfully!",msg)
             .replace("Thanks! Your class scheduled successfully!",msg));
   $(".toast").toast("show");
+}
+
+function loadCarousel(){
+  $(".testimonials-carousel").owlCarousel({
+  autoplay: true,
+  dots: true,
+  loop: true,
+  responsive: {
+    0: {
+      items: 1
+    },
+    768: {
+      items: 1
+    },
+    900: {
+      items: 2
+    }
+  }
+});
+}
+
+function showThankyou(){
+  $("#modal-thankyou").modal();
 }
   </script>
 </body>

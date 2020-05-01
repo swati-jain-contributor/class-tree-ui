@@ -7,9 +7,7 @@ let AUTOPREFIXER_LOADER = 'autoprefixer-loader?{browsers:[' +
   '"Explorer >= 9", "iOS >= 6", "Safari >= 6"]}';
 
 export default {
-  debug: true,
   devtool: 'cheap-module-eval-source-map',
-  noInfo: false,
   entry: [
     'eventsource-polyfill', // necessary for hot reloading with IE
     'webpack-hot-middleware/client?reload=true', //note that it reloads the page if hot module reloading fails.
@@ -22,11 +20,13 @@ export default {
     filename: 'bundle.js'//loader: ExtractTextPlugin.extract("style-loader", "css-loader!less-loader")
   },
   devServer: {
+    inline: false,
     contentBase: './src'
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
+    new webpack.LoaderOptionsPlugin({ debug: true }) ,
+    new webpack.NoEmitOnErrorsPlugin(),
     new webpack.ProvidePlugin({
            $: "jquery",
            jQuery: "jquery"
@@ -34,19 +34,19 @@ export default {
     new ExtractTextPlugin("[name].css")
   ],
   module: {
-    loaders: [
-      {test: /\.js$/, include: path.join(__dirname, 'src'), loaders: ['babel']},
-      {test: /(\.css)$/, loaders: ['style', 'css']},
+    rules: [
+      {test: /\.js$/, include: path.join(__dirname, 'src'), loaders: ['babel-loader']},
+      {test: /(\.css)$/, loaders: ['style-loader', 'css-loader']},
       {test: /\.less$/,loader: 'style-loader!css-loader!less-loader'},
-      {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file"},
-      {test: /\.(woff|woff2)$/, loader: "url?prefix=font/&limit=5000"},
-      {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/octet-stream"},
-      {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=image/svg+xml"},
-      { test: /\.jpg$/, loader: 'file' },
-      { test: /\.png$/, loader: 'file' },
-      { test: /\.ico$/, loader: 'file' },
-      { test: /\.gif$/, loader: 'file' },
-      { test   : /\.(ttf|eot|woff(2)?)(\?[a-z0-9=&.]+)?$/,loader : 'file'}
+      {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file-loader"},
+      {test: /\.(woff|woff2)$/, loader: "url-loader"},
+      {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url-loader"},
+      {test: /\.svg*(\?v=\d+\.\d+\.\d+)?$/, loader: "url-loader"},
+      { test: /\.jpg$/, loader: 'file-loader' },
+      { test: /\.png$/, loader: 'file-loader' },
+      { test: /\.ico$/, loader: 'file-loader' },
+      { test: /\.gif$/, loader: 'file-loader' },
+      { test   : /\.(ttf|eot|woff(2)?)(\?[a-z0-9=&.]+)?$/,loader : 'file-loader'}
     ]
   }
 };

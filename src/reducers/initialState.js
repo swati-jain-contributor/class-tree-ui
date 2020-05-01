@@ -1,22 +1,4 @@
 const defaultState= {
-  authors: [],
-  courses: [],
-  members: [],
-  vendors: [],
-  accounts: {
-    aptFunds: {
-      currentBalance: 0,
-      transactions: []
-    },
-    maintainenceFunds: [],
-    pendingMaintainence: []
-  },
-  collaborate: {
-    complaints: [],
-    notices: [],
-    discussions: [],
-    questions: []
-  },
   classes:{
     TeacherClasses:[],
     userEmail:null,

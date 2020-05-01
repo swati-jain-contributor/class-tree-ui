@@ -1,17 +1,15 @@
-import React, { PropTypes } from 'react';
-import Tappable from 'react-tappable/lib/Tappable';
-import groups from '../../api/groups';
+import PropTypes from 'prop-types';
+import React from 'react';
 import TextField from 'material-ui/TextField';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as classActions from '../../actions/classActions';
-import AddDiscussion from '../overlays/AddDiscussion';
 import ValidationService from '../common/Validation';
 import { checkELValidity, checkValidity, onChange } from '../Utils';
 
 let initialClass ={
   startTime: "05:00 PM",
-  maxStudents:40,
+  maxStudents:80,
   date:"",
   description:"",
   topic:""
@@ -173,7 +171,7 @@ class AddClass extends React.Component {
         <br />
         <div><label>Max Students</label>
           <select name="maxStudents"  defaultValue={this.state.classData.maxStudents}>
-            {[40, 30, 20, 10].map((tl,i) => <option  key={i} value={tl}>{tl}</option>)}
+            {[100, 80 , 60, 50, 40, 30, 20, 10].map((tl,i) => <option  key={i} value={tl}>{tl}</option>)}
           </select>
         </div>
         <button type="submit" className="submit-btn" onClick={this.addClass}>Add Class</button>

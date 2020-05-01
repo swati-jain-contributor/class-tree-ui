@@ -1,4 +1,5 @@
-import React, {PropTypes} from 'react';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 const LoginBlock = ({OnLogin,OnRegister}) => {
     return (
@@ -14,8 +15,8 @@ const LoginBlock = ({OnLogin,OnRegister}) => {
 };
 
 LoginBlock.propTypes = {
-    OnLogin: React.PropTypes.func.isRequired,
-    OnRegister: React.PropTypes.func.isRequired,
+    OnLogin: PropTypes.func.isRequired,
+    OnRegister: PropTypes.func.isRequired,
 };
 
 export default LoginBlock;

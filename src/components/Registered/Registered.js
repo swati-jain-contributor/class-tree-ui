@@ -1,11 +1,10 @@
-import React, { PropTypes } from 'react';
-import Tappable from 'react-tappable/lib/Tappable';
-import groups from '../../api/groups';
+import PropTypes from 'prop-types';
+import React from 'react';
+
 import TextField from 'material-ui/TextField';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as classActions from '../../actions/classActions';
-import AddDiscussion from '../overlays/AddDiscussion';
 import ValidationService from '../common/Validation';
 import LoginEmail from '../LoginEmail/LoginEmail';
 import LoginName from '../LoginName/LoginName';
@@ -57,12 +56,12 @@ class Registered extends React.Component {
           <br />
           <br />
 
-          <span>Please login, so we can get your details</span>
+          <span>Please login/signup, so we can get your details</span>
           <br />
           <button className="submit-btn secondary" onClick={() =>
             !this.props.email ?
               this.setState({ showEmail: true, showName: false, popup: true }) :
-              this.setState({ showEmail: false, showName: true, popup: true })} >Login</button>
+              this.setState({ showEmail: false, showName: true, popup: true })} >Login / Signup</button>
         </div> :
           <div className="content-box">
             {( this.state.classes.length == 0) ?
@@ -75,12 +74,14 @@ class Registered extends React.Component {
                 </span>:<span>
                   No registered classes are found. Change your search criteria or book a class now
                   </span>}
+                  <br />
+                  <br />
                   <button className="submit-btn" onClick={()=> this.context.router.push('/student')}>Book class</button>
               </div> :
               
                 this.state.classes.map((cl, i) => <Card type="C" key={i} class={cl} />)}
           </div>}
-        <div className={this.state.popup ? "overlay" : ""}></div>
+        <div className={this.state.popup ? "overlay" : ""} onClick={()=>{!this.state.showName && this.setState({ popup: false, showAddClass: false , showEmail:false});}}></div>
         {this.state.showEmail ? <LoginEmail type="R" /> : null}
         {this.state.showName ? <LoginName type="R" /> : null}
       </div>
@@ -88,7 +89,7 @@ class Registered extends React.Component {
   }
 }
 Registered.contextTypes = {
-  router: React.PropTypes.func.isRequired
+  router: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state, ownProps) {

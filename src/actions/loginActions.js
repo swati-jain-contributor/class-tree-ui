@@ -1,33 +1,6 @@
 import LoginApi from '../api/loginApi';
-import { getAllMembers, getAllRequests } from './memberActions';
 import * as types from './actionTypes';
 import { beginAjaxCall,ajaxCallError } from './ajaxStatusActions';
-
-export function createApartmentSuccess(apartment) {
-  window.raiseAnalyticsEvent("REGISTRATION_REQUEST_SUCCESS");
-  return { type: types.CREATE_APARTMENT_SUCCESS, apartment };
-}
-export function createApartmentFailure(apartment) {
-  window.raiseAnalyticsEvent("REGISTRATION_REQUEST_FAILED");
-  return { type: types.CREATE_APARTMENT_FAILURE,data: apartment };
-}
-
-export function createApartment(registerData) {
-  return dispatch => {
-    dispatch(beginAjaxCall());
-    window.raiseAnalyticsEvent("REGISTRATION_REQUEST_SENT");
-    return LoginApi.createNewApartment(registerData).then(data => {
-      if (data.status == "SUCCESS")
-        dispatch(createApartmentSuccess(data.response));
-      else
-        dispatch(createApartmentFailure(data.errorDesc))
-    }).catch(error => {
-      dispatch(resetErrorMessage("Please check your internet connection"));
-      dispatch(ajaxCallError(error));
-      throw (error);
-    });
-  };
-}
 
 export function authenticationSuccess(session) {
   window.raiseAnalyticsEvent("AUTHENTICATION_SUCCESS");

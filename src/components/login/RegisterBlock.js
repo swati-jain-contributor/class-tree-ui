@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import PropTypes from 'prop-types';
+import React from 'react';
 import InputMask from 'react-input-mask';
 import Toggle from 'material-ui/Toggle';
 import TextField from 'material-ui/TextField';
@@ -196,11 +197,11 @@ const RegisterBlock = ({ OnCancel, getAddress, OnRegister, registerForm, onChang
 };
 
 RegisterBlock.propTypes = {
-  OnCancel: React.PropTypes.func.isRequired,
-  OnRegister: React.PropTypes.func.isRequired,
-  registerForm: React.PropTypes.object.isRequired,
-  onChange: React.PropTypes.func.isRequired,
-  errors: React.PropTypes.object
+  OnCancel: PropTypes.func.isRequired,
+  OnRegister: PropTypes.func.isRequired,
+  registerForm: PropTypes.object.isRequired,
+  onChange: PropTypes.func.isRequired,
+  errors: PropTypes.object
 };
 
 export default RegisterBlock;

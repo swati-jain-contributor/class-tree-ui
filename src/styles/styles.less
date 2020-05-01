@@ -322,6 +322,7 @@ textarea input select a {
   height: 41px;
   max-width: 200px;
 }
+
 // .overlay{
 //   display: none;
 // }
@@ -421,7 +422,7 @@ textarea {
 .desc {
   text-align: justify;
   margin-top: 5px;
-  margin-bottom: 10px;
+  margin-bottom: 16px;
 }
 
 .tag {
@@ -575,7 +576,7 @@ textarea {
   .icon-box {
     display: flex;
     float: right;
-    width: 50px;
+    width: auto;
     justify-content: space-between;
     font-size: 18px;
     margin-top: -25px;
@@ -666,15 +667,45 @@ textarea {
 
     .desc {
       color: #808080;
-      font-size: 12px;
+      font-size: 14px;
     }
 
     .card-btn {
-      height: 46px;
+      height: 52px;
       background-color: #2fd0aa;
+      font-weight: bold;
+
+      .date {
+        margin-left: 0px;
+        margin-right: 40px !important;
+      }
+
+      .book {
+        border: 1px solid #fff;
+        padding: 5px 10px;
+        border-radius: 30px;
+      }
 
       &[disabled] {
-        opacity: 0.5;
+        opacity: 0.7;
+      }
+
+      &.joining {
+        text-align: right;
+
+        .date {
+          margin-right: 90px !important;
+        }
+
+        .counter {
+          color: black;
+          font-size: 15px;
+        }
+      }
+
+      &.join {
+        font-size: 24px;
+        padding-top: 14px;
       }
     }
   }
@@ -701,6 +732,8 @@ textarea {
     min-height: 240px;
     z-index: 1000;
     padding-bottom: 30px;
+    max-height: 100vh;
+    overflow: auto;
   }
 
   .tag-registered {
@@ -719,7 +752,7 @@ textarea {
     color: #2fd0aa;
     background-color: #fff;
     height: 30px;
-    bottom: 33px;
+    bottom: 42px;
     top: auto;
     right: 28%;
 
@@ -728,7 +761,8 @@ textarea {
   .toast {
     position: fixed;
     bottom: 0;
-    background: black;
+    background: black !important;
+    background-color: black !important;
     width: 80%;
     margin: auto;
     left: 10%;
@@ -773,31 +807,31 @@ textarea {
     -moz-transition: all 0.6s;
     -ms-transition: all 0.6s;
     -o-transition: all 0.6s;
-    transition: all 0.6s;
-    max-height: 0;
-    display: block;
-    overflow: hidden;
-    opacity: 0;
+    transition: all 0.6s !important;
+    max-height: 0 !important;
+    display: block !important;
+    overflow: hidden !important;
+    opacity: 0 !important;
   }
 
   .dropdown.show .dropdown-menu {
-    max-height: 300px;
-    opacity: 1;
+    max-height: 300px !important;
+    opacity: 1 !important;
   }
 
   .dropdown-menu {
-    background: transparent;
-    padding: 5px 0px;
-    border: none;
+    background: transparent !important;
+    padding: 5px 0px !important;
+    border: none !important;
   }
 
   .dropdown-item {
-    margin-bottom: 4px;
-    background: #fff;
-    padding: 7px 24px;
-    background-color: black;
-    color: #fff;
-    opacity: 0.8;
+    margin-bottom: 4px !important;
+    background: #fff !important;
+    padding: 7px 24px !important;
+    background-color: black !important;
+    color: #fff !important;
+    opacity: 0.8 !important;
     // width: 70px;
     // height: 70px;
 
@@ -805,31 +839,65 @@ textarea {
 
   .add-class-btn {
     position: fixed;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    border-radius: 30px;
+    width: 168px;
+    height: 35px;
     bottom: 50px;
-    right: 50px;
+    right: 15px;
     z-index: 1000;
     background-color: #2fd0aa;
-    span{
+
+    span {
       display: inline-block;
-      margin-top: -14px;
-      margin-left: -9px;
-      font-size: 50px;
+      font-size: 18px;
+      margin: 0;
     }
+
+  }
+
+  #search {
+    position: relative;
+  }
+
+  .fa-search {
+    right: 10px;
+    position: absolute;
+    float: right;
+    /* margin-right: 20px; */
+    /* margin-top: 23px; */
+    font-size: 20px;
+    top: 3px;
+    opacity: 0.7;
   }
 }
 
-@media @tablet-up{
+@media @tablet-up {
 
 
   //new css
   .col-block {
     top: 0;
     background-color: transparent;
-    height: 100vh;
+    height: auto;
     position: static;
+    max-width: 1000px;
+    margin: auto;
+    margin-top: 112px;
+
+    &.on-home {
+      height: auto;
+      margin: 0 auto;
+      max-width: 1100px;
+
+      .content-box {
+        justify-content: center;
+
+        .card-mobile {
+          margin-right: 30px;
+        }
+      }
+    }
+
   }
 
   .content-box {
@@ -837,6 +905,7 @@ textarea {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
   }
 
   .back-box {
@@ -847,7 +916,7 @@ textarea {
 
   }
 
-  .menubar{
+  .menubar {
     list-style: none;
     float: right;
     display: flex;
@@ -857,16 +926,28 @@ textarea {
     color: black;
     margin-top: -28px;
     margin-right: 40px;
-    li{
+
+    li {
       padding: 8px;
       color: #4d4d4d;
     }
-    li.active{
+
+    li.active {
       border-bottom: 3px solid #2fd0aa;
     }
   }
+
+  #search {
+    width: 1000px;
+    margin: auto;
+    margin-top: 100px;
+    position: relative;
+
+  }
+
   .search-box {
-    float: right;
+    // float: right;
+    height: 40px;
     width: 87%;
     padding: 5px;
     background-color: transparent;
@@ -898,10 +979,9 @@ textarea {
   }
 
   .card-mobile {
-    margin-bottom: 20px;
+    margin-bottom: 65px;
     position: relative;
-    width: 300px;
-    margin-right: 20px;
+    width: 325px;
   }
 
   .card-details {
@@ -917,7 +997,7 @@ textarea {
     position: relative;
     overflow: hidden;
     padding-bottom: 60px;
-    height: 240px;
+    height: 312px;
 
     .card-details-header {
       margin: 0;
@@ -949,15 +1029,47 @@ textarea {
 
     .desc {
       color: #808080;
-      font-size: 12px;
+      font-size: 16px;
     }
 
     .card-btn {
-      height: 46px;
+      height: 52px;
       background-color: #2fd0aa;
+      font-weight: bold;
+
+      .date {
+        margin-left: 0px;
+        margin-right: 40px !important;
+      }
+
+      .book {
+        border: 1px solid #fff;
+        padding: 5px 10px;
+        border-radius: 30px;
+      }
 
       &[disabled] {
-        opacity: 0.5;
+        opacity: 0.7;
+      }
+
+      &.joining {
+        text-align: right;
+
+        .date {
+          margin-right: 96px !important;
+        }
+
+        .counter {
+          color: black;
+          font-size: 15px;
+        }
+      }
+
+      &.join {
+        font-size: 24px;
+        padding-top: 14px;
+
+
       }
     }
   }
@@ -988,12 +1100,13 @@ textarea {
     //for desktop
     max-width: 400px;
     margin: auto;
-    left:~"calc(50% - 200px)"; 
-    top:~"calc(50% - 100px)"; 
+    left: ~"calc(50% - 200px)";
+    top: ~"calc(50% - 100px)";
     bottom: initial;
     border-radius: 30px;
-    &.add-class{
-      top:~"calc(50% - 270px)"; 
+
+    &.add-class {
+      top: ~"calc(50% - 270px)";
     }
   }
 
@@ -1013,7 +1126,7 @@ textarea {
     color: #2fd0aa;
     background-color: #fff;
     height: 30px;
-    bottom: 33px;
+    bottom: 42px;
     top: auto;
     right: 28%;
 
@@ -1022,7 +1135,8 @@ textarea {
   .toast {
     position: fixed;
     bottom: 0;
-    background: black;
+    background: black !important;
+    background-color: #000 !important;
     width: 80%;
     margin: auto;
     left: 10%;
@@ -1049,6 +1163,7 @@ textarea {
       margin-bottom: 0px;
       ;
     }
+
     //desktop
     top: 75px;
     bottom: initial;
@@ -1059,7 +1174,7 @@ textarea {
   .search-box {
     border: 1px solid #cecece;
     width: 100%;
-    margin-bottom: 16px;
+    // margin-bottom: 16px;
     font-size: 14px;
     color: #a6a6a6;
     margin-top: -4px;
@@ -1067,8 +1182,8 @@ textarea {
 
     //desktop
     margin-top: -4px;
-    margin-bottom: -4px;
-    height: 32px;
+    margin-bottom: 20px;
+    height: 40px;
   }
 
   .dropdown .dropdown-menu {
@@ -1076,31 +1191,31 @@ textarea {
     -moz-transition: all 0.6s;
     -ms-transition: all 0.6s;
     -o-transition: all 0.6s;
-    transition: all 0.6s;
-    max-height: 0;
-    display: block;
-    overflow: hidden;
-    opacity: 0;
+    transition: all 0.6s !important;
+    max-height: 0 !important;
+    display: block !important;
+    overflow: hidden !important;
+    opacity: 0 !important;
   }
 
   .dropdown.show .dropdown-menu {
-    max-height: 300px;
-    opacity: 1;
+    max-height: 300px !important;
+    opacity: 1 !important;
   }
 
   .dropdown-menu {
-    background: transparent;
-    padding: 5px 0px;
-    border: none;
+    background: transparent !important;
+    padding: 5px 0px !important;
+    border: none !important;
   }
 
   .dropdown-item {
-    margin-bottom: 4px;
-    background: #fff;
-    padding: 7px 24px;
-    background-color: black;
-    color: #fff;
-    opacity: 0.8;
+    margin-bottom: 4px !important;
+    background: #fff !important;
+    padding: 7px 24px !important;
+    background-color: black !important;
+    color: #fff !important;
+    opacity: 0.8 !important;
     // width: 70px;
     // height: 70px;
 
@@ -1114,7 +1229,8 @@ textarea {
     bottom: 50px;
     right: 50px;
     background-color: #2fd0aa;
-    span{
+
+    span {
       display: inline-block;
       margin-top: -14px;
       margin-left: -9px;
@@ -1131,10 +1247,107 @@ textarea {
     border-radius: 30px;
     width: 168px;
     font-size: 12px;
-    
-    span{
-      margin:0;
+    margin-bottom: 10px;
+
+    span {
+      margin: 0;
       font-size: 18px;
+    }
+  }
+
+  .fa-search {
+    right: 10px;
+    position: absolute;
+    float: right;
+    /* margin-right: 20px; */
+    /* margin-top: 23px; */
+    font-size: 24px;
+    top: 5px;
+    opacity: 0.7;
+  }
+
+  .name {
+    margin-right: auto;
+    margin-left: 8px;
+    color: #000;
+    font-size: 24px;
+  }
+}
+
+.grayscale {
+  -webkit-filter: grayscale(100);
+  filter: grayscale(100);
+
+  &:hover {
+    filter: none;
+    -webkit-filter: none;
+  }
+}
+
+.modal-backdrop.show {
+  background: #fff;
+}
+
+.modal {
+  .modal-content {
+    border: none;
+  }
+
+  .line {
+    border-bottom: 2px solid #cecece;
+  }
+
+  .card-details {
+    width: 100%;
+    padding-top: 35px;
+    margin-top: 0px;
+    height: auto;
+  }
+
+  .card-details .card-details-header {
+    margin-bottom: 20px;
+  }
+}
+#modal-thankyou{
+  .modal-dialog{
+    width: 100%;
+    max-width: 1000px;
+    opacity: 0.9;
+  }
+}
+
+.thankyou-modal {
+  background-color: #009970;
+  height: 330px;
+  border-radius: 30px;
+  padding: 20px;
+  color: #fff;
+  font-size: 22px;
+  text-align: justify;
+  button{
+    background-color: #fff;
+    color: #009970 ;
+    width: auto;
+    float: right;
+    margin-left: auto;
+    margin-top: 30px;
+    font-size: 18px;
+  }
+  .clap{
+    width: 125px;
+    position: absolute;
+    right: 22px;
+    top: 63px;
+  }
+}
+
+@media @tablet-down{
+  .thankyou-modal{
+    width: 95%;
+    font-size: 16px;
+    .clap{
+      width: 64px;
+      top: 167px;
     }
   }
 }

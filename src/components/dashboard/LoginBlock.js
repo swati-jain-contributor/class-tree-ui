@@ -1,4 +1,5 @@
-import React, {PropTypes} from 'react';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 const LoginBlock = ({OnCancel}) => {
   return (
@@ -12,7 +13,7 @@ const LoginBlock = ({OnCancel}) => {
 };
 
 LoginBlock.propTypes = {
-  OnCancel: React.PropTypes.func.isRequired
+  OnCancel: PropTypes.func.isRequired
 };
 
 export default LoginBlock;

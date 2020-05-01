@@ -1,9 +1,31 @@
+
 /**
 * Template Name: Bethany - v2.0.0
 * Template URL: https://bootstrapmade.com/bethany-free-onepage-bootstrap-theme/
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
+
+window.sort = () =>{
+  $(".testimonials-carousel").owlCarousel({
+    autoplay: true,
+    dots: true,
+    loop: true,
+    responsive: {
+      0: {
+        items: 1
+      },
+      768: {
+        items: 1
+      },
+      900: {
+        items: 2
+      }
+    }
+  });
+};
+// window.loadHomePage = function(){
+
 !(function($) {
   "use strict";
 
@@ -18,7 +40,7 @@
         var scrolled = 20;
 
         if ($('#header').length) {
-          scrollto -= $('#header').outerHeight()
+          scrollto -= $('#header').outerHeight();
 
           if (!$('#header').hasClass('header-scrolled')) {
             scrollto += scrolled;
@@ -45,6 +67,11 @@
         }
         return false;
       }
+      
+    }
+    if ($(this).parents('.nav-menu, .mobile-nav').length) {
+      $('.nav-menu .active, .mobile-nav .active').removeClass('active');
+      $(this).closest('li').addClass('active');
     }
   });
 
@@ -143,19 +170,19 @@
 
   // Porfolio isotope and filter
   $(window).on('load', function() {
-    var portfolioIsotope = $('.portfolio-container').isotope({
-      itemSelector: '.portfolio-item',
-      layoutMode: 'fitRows'
-    });
+  //     var portfolioIsotope = $('.portfolio-container').isotope({
+  //   itemSelector: '.portfolio-item',
+  //   layoutMode: 'fitRows'
+  // });
 
-    $('#portfolio-flters li').on('click', function() {
-      $("#portfolio-flters li").removeClass('filter-active');
-      $(this).addClass('filter-active');
-
-      portfolioIsotope.isotope({
-        filter: $(this).data('filter')
-      });
-    });
+  //   $('#portfolio-flters li').on('click', function() {
+  //     $("#portfolio-flters li").removeClass('filter-active');
+  //     $(this).addClass('filter-active');
+  
+  //     portfolioIsotope.isotope({
+  //       filter: $(this).data('filter')
+  //     });
+  //   });
   });
 
   // Initiate venobox (lightbox feature used in portofilo)
@@ -164,30 +191,30 @@
   });
 
   // Testimonials carousel (uses the Owl Carousel library)
-  $(".testimonials-carousel").owlCarousel({
-    autoplay: true,
-    dots: true,
-    loop: true,
-    responsive: {
-      0: {
-        items: 1
-      },
-      768: {
-        items: 1
-      },
-      900: {
-        items: 2
-      }
-    }
-  });
+  // $(".testimonials-carousel").owlCarousel({
+  //   autoplay: true,
+  //   dots: true,
+  //   loop: true,
+  //   responsive: {
+  //     0: {
+  //       items: 1
+  //     },
+  //     768: {
+  //       items: 1
+  //     },
+  //     900: {
+  //       items: 2
+  //     }
+  //   }
+  // });
 
   // Portfolio details carousel
-  $(".portfolio-details-carousel").owlCarousel({
-    autoplay: true,
-    dots: true,
-    loop: true,
-    items: 1
-  });
+  // $(".portfolio-details-carousel").owlCarousel({
+  //   autoplay: true,
+  //   dots: true,
+  //   loop: true,
+  //   items: 1
+  // });
 
   // Initi AOS
   AOS.init({
@@ -198,3 +225,28 @@
   });
 
 })(jQuery);
+
+// $(".testimonials-carousel").owlCarousel({
+//   autoplay: true,
+//   dots: true,
+//   loop: true,
+//   responsive: {
+//     0: {
+//       items: 1
+//     },
+//     768: {
+//       items: 1
+//     },
+//     900: {
+//       items: 2
+//     }
+//   }
+// });
+
+// AOS.init({
+//   duration: 1000,
+//   easing: "ease-in-out",
+//   once: true,
+//   mirror: false
+// });
+// };

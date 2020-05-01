@@ -1,13 +1,11 @@
-import React, { PropTypes } from 'react';
+import PropTypes from 'prop-types';
+import React from 'react';
 // import { ReactDOM , render} from 'react-dom';
 // import { Holdable } from 'react-touch';
-import Tappable from 'react-tappable/lib/Tappable';
-import groups from '../../api/groups';
 import TextField from 'material-ui/TextField';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as classActions from '../../actions/classActions';
-import AddDiscussion from '../overlays/AddDiscussion';
 import ValidationService from '../common/Validation';
 import LoginEmail from '../LoginEmail/LoginEmail';
 import LoginName from '../LoginName/LoginName';
@@ -59,6 +57,7 @@ class Tutor extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
+      classes: [],
       classData: JSON.parse(JSON.stringify(initialClass)),
       timeList: ["12:00 AM", "12:30 AM", "01:00 AM", "01:30 AM", "02:00 AM", "02:30 AM", "03:00 AM", "03:30 AM", "04:00 AM", "04:30 AM", "05:00 AM", "05:30 AM", "06:00 AM", "06:30 AM", "07:00 AM", "07:30 AM", "08:00 AM", "08:30 AM", "09:00 AM", "09:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "01:00 PM", "01:30 PM", "02:00 PM", "02:30 PM", "03:00 PM", "03:30 PM", "04:00 PM", "04:30 PM", "05:00 PM", "05:30 PM", "06:00 PM", "06:30 PM", "07:00 PM", "07:30 PM", "08:00 PM", "08:30 PM", "09:00 PM", "09:30 PM", "10:00 PM", "10:30 PM", "11:00 PM", "11:30 PM"]
     };
@@ -186,12 +185,12 @@ class Tutor extends React.Component {
             <br />
             <br />
 
-            <span>Please login, so we can get your details</span>
+            <span>Please login / Signup, so we can get your details</span>
             <br />
             <button className="submit-btn secondary" onClick={() =>
               !this.props.email ?
                 this.setState({ showEmail: true, showName: false, popup: true }) :
-                this.setState({ showEmail: false, showName: true, popup: true })} >Login</button>
+                this.setState({ showEmail: false, showName: true, popup: true })} >Login / Signup</button>
           </div> :
           <div>
             {(this.state.classes.length == 0) ?
@@ -208,17 +207,19 @@ class Tutor extends React.Component {
                     Change your search criteria or add a class now.
             </span>
                 }
+                <br/>
+                <br/>
 
-                <button className="submit-btn" onClick={() => this.setState({ popup: true, showAddClass: true })}>+ Add Class</button>
+                <button className="submit-btn" onClick={() => this.setState({ popup: true, showAddClass: true })}>Tute a Class</button>
               </div> :
               <div>
-                <button className="add-class-btn" onClick={() => this.setState({ popup: true, showAddClass: true })}><span>{window.innerWidth>700?'Add Class' : '+'}</span></button>
+                <button className="add-class-btn" onClick={() => this.setState({ popup: true, showAddClass: true })}><span>{window.innerWidth > 700 ? 'Tute a Class' : 'Tute a class'}</span></button>
                 <div className="content-box">
                   {this.state.classes.map((cl, i) => <Card type="T" key={i} class={cl} bookClass={this.bookClass} />)}
                 </div>
               </div>}
           </div>}
-        <div className={this.state.popup ? "overlay" : ""}></div>
+        <div className={this.state.popup ? "overlay" : ""} onClick={()=>{!this.state.showName && this.setState({ popup: false, showAddClass: false , showEmail:false});}}></div>
         {this.state.showEmail ? <LoginEmail type="T" /> : null}
         {this.state.showName ? <LoginName type="T" /> : null}
         {this.state.showAddClass ? <AddClass onClose={() => { this.setState({ popup: false, showAddClass: false }); window.showSuccessToast("Thanks! Your class scheduled successfully!"); }} /> : null}

@@ -1,8 +1,7 @@
 import 'babel-polyfill';
 import React from 'react';
 import { render } from 'react-dom';
-import injectTapEventPlugin from 'react-tap-event-plugin';
-injectTapEventPlugin();
+
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import configureStore from './store/configureStore';
 import { Provider } from 'react-redux';
@@ -10,13 +9,17 @@ import { Provider } from 'react-redux';
 import { Router, browserHistory, hashHistory, useRouterHistory } from 'react-router';
 import { createHashHistory } from 'history';
 import routes from './routes';
-// import { loadCourses } from './actions/courseActions';
-// import { loadAuthors } from './actions/authorActions';
-import { getAllMembers, getAllRequests } from './actions/memberActions';
-import { addMessageSuccess } from './actions/collaborateActions';
+
 import { authenticationSuccess } from './actions/loginActions';
 import throttle from 'lodash/throttle';
-
+import './Bethany/assets/vendor/jquery.easing/jquery.easing.min.js';
+import './Bethany/assets/vendor/php-email-form/validate.js';
+import './Bethany/assets/vendor/counterup/counterup.min.js';
+import './Bethany/assets/vendor/isotope-layout/isotope.pkgd.min.js';
+import './Bethany/assets/vendor/venobox/venobox.min.js';
+// import './Bethany/assets/vendor/owl.carousel/owl.carousel.min.js';
+// import './Bethany/assets/vendor/aos/aos.js';
+import './Bethany/assets/js/main.js';
 import './styles/styles.less';
 
 // import './styles/login.less';

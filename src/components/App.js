@@ -1,6 +1,7 @@
 // This component handles the App template used on every page.
-import React, { PropTypes } from 'react';
-import Header from './common/Header';
+import PropTypes from 'prop-types';
+
+import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
@@ -11,7 +12,18 @@ import About from '../components/about/About';
 import Student from '../components/Student/Student';
 import Contact from '../components/contact/Contact';
 import Registered from '../components/Registered/Registered';
+import VideoClass from '../components/VideoClass/VideoClass';
+import Header from './home/Header';
+import HomePage from './home/HomePage';
 import { Route, IndexRoute, Switch } from 'react-router';
+<ul>
+  <li className="active"><a href="#header">Home</a></li>
+  <li><a href="#why-us">About</a></li>
+  <li><a href="#testimonials">Our Stories</a></li>
+  <li><a href="#team">Team</a></li>
+  <li><a href="#contact">Contact</a></li>
+  <li className="get-started"><a href="/student">Get Started</a></li>
+</ul>;
 
 
 class App extends React.Component {
@@ -21,11 +33,11 @@ class App extends React.Component {
       step: 0,
       imageCode: Math.floor(Math.random() * 9) + 1
     };
-
   }
   render() {
     let path = location.pathname.replace(/\//g, '');
     let child;
+    let isMobile = window.innerWidth < 700;
     switch (path) {
 
       case 'student': child = <Student search={this.state.search} />; break;
@@ -33,12 +45,16 @@ class App extends React.Component {
       case 'registered': child = <Registered search={this.state.search} />; break;
       case 'about': child = <About search={this.state.search} />; break;
       case 'contact': child = <Contact search={this.state.search} />; break;
-      default: child = <Student search={this.state.search} />; break;
+      case 'joinclass': child = <VideoClass />; break;
+      default:
+        child = isMobile ? <Student search={this.state.search} /> : <HomePage />;
+        // child = <Student search={this.state.search} />; 
+        break;
     }
 
-    let isMobile = window.innerWidth < 700;
+
     let iconBox = (<div className="icon-box">
-      <i role="button" aria-controls="search" className="fa fa-search" aria-hidden="true" data-toggle="collapse" href="#search" aria-expanded="false"  ></i>
+      {/* <i role="button" aria-controls="search" className="fa fa-search" aria-hidden="true" data-toggle="collapse" href="#search" aria-expanded="false"  ></i> */}
       <div className="dropdown">
         <i className="fa fa-bars" aria-hidden="true" id="menudropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></i>
         <ul className="dropdown-menu dropdown-menu-right">
@@ -51,29 +67,40 @@ class App extends React.Component {
       </div>
     </div>);
     let menubar = (
-        <ul className="menubar">
-          <li style={{width:'500px'}}><input className="big-input search-box" placeholder="I'd like to learn about.." type="text" name="search" value={this.state.search} onChange={(evt) => this.setState({ search: evt.target.value })} /></li>
-          <li className={path == "about" ? "active" : ""} onClick={() => this.context.router.push('/about')}>Who we are</li>
-          <li className={path == "registered" ? "active" : ""} onClick={() => this.context.router.push('/registered')}>My registered classes</li>
-          <li className={path == "tutor" ? "active" : ""} onClick={() => this.context.router.push('/tutor')}>My offered classes</li>
-          <li className={path == "student" ? "active" : ""} onClick={() => this.context.router.push('/student')}>Learn more</li>
-          <li className={path == "contact" ? "active" : ""} onClick={() => this.context.router.push('/contact')}>Contact us</li>
-        </ul>
+      <div>
+        <Header />
+      </div>
     );
+
+    let today = new Date();
+    let curHr = today.getHours();
+
+    let wish;
+    if (curHr < 12) {
+      wish = 'Good morning';
+    } else if (curHr < 18) {
+      wish = 'Good afternoon';
+    } else {
+      wish = 'Good evening';
+    }
     return (
-      <div className="ss-root">
+      path != "joinclass"? 
+      <div className="ss-root" style={{ padding: (isMobile) ? '20px' : "0" }}>
+        {(isMobile) ?
+          <span>
+            <b className="morning">{wish} {this.props.name}</b><br />
+            <span className="heading-helper">What are you learning today?</span></span> : null}
 
-        <b className="morning">Good morning</b><br />
-        <span className="heading-helper">What are you learning today?</span>
+        {isMobile ? iconBox : (path.length > 3 ? menubar : "")}
 
-        {isMobile ? iconBox : menubar}
-
-        <div id="search" className={"collapse "+ (isMobile ? "show":"")}>
-          <input className="big-input search-box" placeholder="I'd like to learn about.." type="text" name="search" value={this.state.search} onChange={(evt) => this.setState({ search: evt.target.value })} />
+        <div id="search" className={"collapse " + (((path != 'about' && path != 'contact' && path) || (!path && isMobile)) ? "show" : "")}>
+          <i className="fa fa-search" />
+          <input className="big-input search-box" placeholder="What's your learning dose today.." type="text" name="search" value={this.state.search} onChange={(evt) => this.setState({ search: evt.target.value })} >
+          </input>
         </div>
         {child}
       </div >
-
+        : child
     );
   }
 }
@@ -83,13 +110,14 @@ App.propTypes = {
   loading: PropTypes.bool.isRequired
 };
 App.contextTypes = {
-  router: React.PropTypes.func.isRequired
+  router: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
   console.log(state.ajaxCallsInProgress);
   return {
-    loading: state.ajaxCallsInProgress > 0
+    loading: state.ajaxCallsInProgress > 0,
+    name: state.classes.userName
     // isAuthenticated: state.session.authenticationStatus,
     // username: state.session.aptId + "-" + state.session.userId,
     // errorMsg: state.session.errorMsg,

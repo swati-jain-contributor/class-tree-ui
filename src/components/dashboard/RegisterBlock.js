@@ -1,4 +1,5 @@
-import React, {PropTypes} from 'react';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 const RegisterBlock = ({OnCancel}) => {
   return (
@@ -13,7 +14,7 @@ const RegisterBlock = ({OnCancel}) => {
 };
 
 RegisterBlock.propTypes = {
-  OnCancel: React.PropTypes.func.isRequired
+  OnCancel: PropTypes.func.isRequired
 };
 
 export default RegisterBlock;

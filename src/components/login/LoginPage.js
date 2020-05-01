@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -439,7 +440,7 @@ class LoginPage extends React.Component {
     }
 }
 LoginPage.contextTypes = {
-    router: React.PropTypes.func.isRequired
+    router: PropTypes.func.isRequired
 };
 function mapStateToProps(state, ownProps) {
 
