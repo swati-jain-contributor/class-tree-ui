@@ -42,12 +42,12 @@ class LoginEmail extends React.Component {
   }
   
   checkELValidity(event){
-    var el;
+    let el;
     if (!event.target)
       el = event;
     else
       el = event.target;
-    var errors = JSON.parse(JSON.stringify(this.state.errors || {}));
+    let errors = JSON.parse(JSON.stringify(this.state.errors || {}));
   
     if (el.tagName == "INPUT" || el.tagName == "TEXTAREA") {
       let name = el.getAttribute("name");
@@ -79,20 +79,20 @@ class LoginEmail extends React.Component {
     if ((event && this.checkValidity(event)) || !event) {
       if (this.props.type == "T")
         this.props.actions.addTeacherData({
-          email: this.state.classData.email,
+          email: this.state.classData.email.toLowerCase(),
           name: null,
           phoneNo: null
         });
 
       else
         this.props.actions.addStudentData({
-          email: this.state.classData.email,
+          email: this.state.classData.email.toLowerCase(),
           name: null,
           phoneNo: null
         });
 
       this.props.actions.getClasses({
-        email: this.state.classData.email,
+        email: this.state.classData.email.toLowerCase(),
         type: this.props.type
       });
     }
@@ -100,9 +100,6 @@ class LoginEmail extends React.Component {
   render() {
     return (
       <div className="popup">
-        <br />
-        <br />
-        <br />
         <form noValidate>
           <label className="big-label" htmlFor="email">Your Email Address</label> &nbsp;&nbsp;&nbsp;&nbsp;<br />
           <input className="big-input" onBlur={this.checkELValidity} placeholder="Email" required type="email" name="email" value={this.state.classData.email} onChange={this.onChange} /> <br />
@@ -118,7 +115,6 @@ class LoginEmail extends React.Component {
 function mapStateToProps(state, ownProps) {
 
   return {
-    classes: state.classes.TeacherClasses,
     email: state.classes.userEmail,
     name: state.classes.userName,
     phoneNo: state.classes.userPhone

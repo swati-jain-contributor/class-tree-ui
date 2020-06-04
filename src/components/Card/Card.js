@@ -8,6 +8,7 @@ import ValidationService from '../common/Validation';
 import { checkELValidity, checkValidity, onChange } from '../Utils';
 import Countdown from 'react-countdown-now';
 
+let cordova;
 class Card extends React.Component {
   constructor(props, context) {
     super(props, context);
@@ -22,6 +23,25 @@ class Card extends React.Component {
     this.props.bookClass(cl);
     console.log(cl);
   }
+  loadClass() {
+    let cl = this.props.class;
+    let meetingToken = btoa(JSON.stringify({
+      classId: cl.id.toString(),
+      className: cl.Topic.toString(),
+      TutorName: cl.TutorName,
+      username: this.props.name,
+      email: this.props.email,
+      type: cl.TutorEmail == this.props.email ? 'P' : 'S'
+    }));
+    let meetingUrl = "/joinclass?token=" + meetingToken;
+    let app = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
+    if (app) {
+      meetingUrl = location.pathname + "#" + meetingUrl;
+      location.href = meetingUrl;
+    }
+    else
+      this.context.router.push(meetingUrl);
+  }
   render() {
     let cl = this.props.class;
     let isStudent = this.props.type == 'C';
@@ -31,32 +51,37 @@ class Card extends React.Component {
     {window.formatAMPM(new Date(Date.parse(cl.Date.replace(/-/g, '/')) - ((new Date().getTimezoneOffset()) * (60000))))}
     </span>);
 
+    let tag;
+    if (cl.type == "course")
+      tag = <div className="tag-card">
+        {cl.remainingClasses} Classes , {cl.pattern}<br />
+        Starting from {window.getUserLocalDate(cl.Date).toDateString("en-US").substring(0, 10)}
+      </div>;
+    else
+      tag = <div className="tag-card">
+        One hour session <br />
+        Scheduled on {window.getUserLocalDate(cl.Date).toDateString("en-US").substring(0, 10)}
+      </div>;
 
     const renderer = ({ days, hours, minutes, seconds, completed }) => {
       if (completed) {
-        return <a target="_blank" href={"/joinclass?token=" + meetingToken}><button className="card-btn join">Join Now</button></a>;
+        return <a onClick={() => this.loadClass()}><button className="card-btn join">Join Now</button></a>;
       } else {
         return <button className="card-btn joining" disabled="disabled" >{date}<br /> <span className="counter">Join in {days}d {hours}h {minutes}m {seconds}s</span></button>;
       }
     };
-    let meetingToken = btoa(JSON.stringify({
-      classId: cl.id.toString(),
-      className: cl.Topic.toString(),
-      TutorName: cl.TutorName,
-      username: this.props.name,
-      email: this.props.email,
-      type: cl.TutorEmail == this.props.email ? 'P' : 'S'
-    }));
     return (
       <div className="card-mobile">
-        <div className="back-box" style={{ backgroundImage: `url(https://raw.githubusercontent.com/swati-jain-contributor/privacy-policy/master/finance-${this.state.imageCode}.jpg)` }} />
+        <div className="back-box" style={{ backgroundImage: `url(https://raw.githubusercontent.com/swati-jain-contributor/privacy-policy/master/${cl.category.split(" ")[0].toLowerCase()}-${this.state.imageCode}.png)` }} >
+          {tag}
+        </div>
         <div className="card-details">
-          <div data-toggle="modal" data-target={"#" + "modal-" + cl.id}>
+          <div onClick={() => this.context.router.push('/class/' + cl.id)}>
             <h3 className="card-details-header">{cl.Topic.length > 25 ? cl.Topic.substring(0, 25) + ".." : cl.Topic}</h3>
-            <div className="desc">{cl.Description.length > 200 ? cl.Description.substring(0, 200) + "..." : cl.Description}</div>
+            <div className="desc" dangerouslySetInnerHTML={{ __html: (cl.Description.length > 200 ? cl.Description.substring(0, 200) + "..." : cl.Description) }} />
             <span className="tutor">-{cl.TutorName}</span><br />
-            <span className="helper-info"><span>40 Minutes</span> &nbsp;&nbsp;&nbsp;
-                {isStudent ? <span>FREE</span> : <span>{cl.Attendee + ' / ' + cl.MaxStudents}</span>}
+            <span className="helper-info"><span>{(cl.id == 98) ? "3Hr class" :  "60 Minutes"}</span> &nbsp;&nbsp;&nbsp;
+                {isStudent ? <span>{cl.Paid > 0 ? (cl.Paid + " INR") : 'FREE'}</span> : <span>{cl.Attendee + ' / ' + cl.MaxStudents}</span>}
             </span>
             <div className="line" />
           </div>
@@ -70,12 +95,11 @@ class Card extends React.Component {
           /> : null}
         </div>
 
-        <div id={"modal-" + cl.id} className="modal fade" role="dialog" tabIndex="-1">
+        {/* <div id={"modal-" + cl.id} className="modal fade" role="dialog" tabIndex="-1">
           <div className="modal-dialog">
             <div className="modal-content" style={{ background: "transparent" }}>
               <div className="modal-body card-details" style={{ marginTop: "0px", height: "auto" }}>
                 <h3 className="card-details-header">{cl.Topic}</h3>
-                {/* <button type="button" className="close" data-dismiss="modal">&times;</button> */}
                 <div className="desc">{cl.Description}</div>
                 <span className="tutor">-{cl.TutorName}</span><br />
                 <span className="helper-info"><span>40 Minutes</span> &nbsp;&nbsp;&nbsp;
@@ -101,7 +125,7 @@ class Card extends React.Component {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
 
     );
@@ -110,7 +134,6 @@ class Card extends React.Component {
 
 function mapStateToProps(state, ownProps) {
   return {
-    classes: state.classes.TeacherClasses,
     email: state.classes.userEmail,
     name: state.classes.userName,
     phoneNo: state.classes.userPhone
@@ -121,5 +144,7 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators(classActions, dispatch)
   };
 }
-
+Card.contextTypes = {
+  router: PropTypes.func.isRequired
+};
 export default connect(mapStateToProps, mapDispatchToProps)(Card);

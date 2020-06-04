@@ -1,6 +1,10 @@
 /* Styles */
+@import './radio-btn.less';
+@import './class-details.less';
+
 #app {
   font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
   color: #4d4d4d;
 }
 
@@ -40,7 +44,7 @@ button,
   width: 100%;
   padding: 5px 20px;
   margin-top: 15px;
-  background-color: #FF5454;
+  background-color: #009970;
   color: #fff;
   border: none;
 }
@@ -48,7 +52,7 @@ button,
 button.sec,
 .button.sec {
   background-color: #fff;
-  color: #FF5454;
+  color: #009970;
   margin-top: 15px;
 }
 
@@ -229,7 +233,7 @@ textarea input select a {
 
 // form{
 //   width: 100%;
-//   max-width: 700px;
+//   max-width: 900px;
 //   border: 1px solid #ececec;
 //   margin-left: auto;
 //   margin-right: auto;
@@ -443,7 +447,7 @@ textarea {
 .search-box {
   float: right;
   margin-top: -30px;
-  width: 700px;
+  width: 900px;
 }
 
 .registered-user-msg {
@@ -628,7 +632,8 @@ textarea {
     min-height: 200px;
     border-radius: 30px;
     margin: auto;
-    margin-top: -168px;
+    // margin-top: -168px;
+    margin-top: -140px;
     background-color: #fff;
     box-shadow: bisque;
     box-shadow: 0px 0px 4px #cecece;
@@ -732,6 +737,7 @@ textarea {
     min-height: 240px;
     z-index: 1000;
     padding-bottom: 30px;
+    padding-top: 30px;
     max-height: 100vh;
     overflow: auto;
   }
@@ -882,7 +888,7 @@ textarea {
     position: static;
     max-width: 1000px;
     margin: auto;
-    margin-top: 112px;
+    margin-top: 20px;
 
     &.on-home {
       height: auto;
@@ -940,7 +946,7 @@ textarea {
   #search {
     width: 1000px;
     margin: auto;
-    margin-top: 100px;
+    margin-top: 0px;
     position: relative;
 
   }
@@ -989,7 +995,8 @@ textarea {
     min-height: 200px;
     border-radius: 30px;
     margin: auto;
-    margin-top: -168px;
+    // margin-top: -168px;
+    margin-top: -140px;
     background-color: #fff;
     box-shadow: bisque;
     box-shadow: 0px 0px 4px #cecece;
@@ -1096,6 +1103,7 @@ textarea {
     min-height: 240px;
     z-index: 1000;
     padding-bottom: 30px;
+    padding-top: 30px;
 
     //for desktop
     max-width: 400px;
@@ -1316,7 +1324,7 @@ textarea {
   }
 }
 
-.thankyou-modal {
+.modal-content.thankyou-modal {
   background-color: #009970;
   height: 330px;
   border-radius: 30px;
@@ -1342,12 +1350,19 @@ textarea {
 }
 
 @media @tablet-down{
-  .thankyou-modal{
+  .modal-content.thankyou-modal{
     width: 95%;
     font-size: 16px;
     .clap{
       width: 64px;
       top: 167px;
     }
+  }
+}
+
+@media (max-width: 330px){
+  .col-block{
+    min-width: 318px;
+    margin-left: -20px;
   }
 }

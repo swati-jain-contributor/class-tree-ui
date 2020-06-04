@@ -1,10 +1,29 @@
 .class-panel {
+  &.potrait{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px;
+    height: 100vh;
+    position: fixed;
+    width: 100vw;
+    left: 0;
+    .logo{
+      top: 0;
+    }
+    button{
+      height: 40px;
+      font-size: 20px;
+    }
+    z-index: 10000000;
+    background: #fff;
+  }
 
   button {
     width: auto;
   }
 
-  .logo{
+  .logo {
     overflow: hidden;
     padding: 16px 30px 12px 30px;
     background: #009970;
@@ -12,7 +31,7 @@
     z-index: 5000;
     right: 0;
 
-    h1{
+    h1 {
       font-size: 26px;
       padding: 0;
       line-height: 1;
@@ -21,7 +40,8 @@
       margin: 0;
     }
   }
-  .part-down{
+
+  .part-down {
     position: absolute;
     z-index: 2000;
     background: black;
@@ -30,7 +50,9 @@
     left: 50%;
     font-size: 20px;
   }
-  .class-bg{
+
+  .class-bg {
+    position: absolute;
     color: #fff;
     top: 0 !important;
     left: 0 !important;
@@ -40,11 +62,12 @@
     background-image: url("https://raw.githubusercontent.com/swati-jain-contributor/privacy-policy/master/Class%20Background.jpg");
     background-size: cover;
 
-    .overlay{
+    .overlay {
       z-index: 200;
-      background-color: rgba(51,51,51,0.8);
+      background-color: rgba(51, 51, 51, 0.8);
     }
-    .banner-context{
+
+    .banner-context {
       position: absolute;
       z-index: 1000;
       width: 100%;
@@ -53,21 +76,24 @@
       flex-direction: column;
       align-items: center;
 
-      .b-appreciate{
+      .b-appreciate {
         margin-top: 47px;
         font-size: 31px;
         margin-bottom: 30px;
         max-width: 1103px;
-        span{
+
+        span {
           color: #009970;
           display: block;
           margin-top: 10px;
           margin-bottom: 10px;
         }
       }
-      .b-topic{
+
+      .b-topic {
         font-size: 30px;
-        span{
+
+        span {
           color: #009970;
           margin-left: 20px;
           margin-right: 20px;
@@ -76,14 +102,15 @@
           font-weight: bold;
         }
       }
-      .b-thankful{
+
+      .b-thankful {
         font-size: 25px;
         margin-top: 100px;
       }
 
     }
   }
-  
+
   #header {
     color: #ffffff;
     background-color: #333333;
@@ -148,7 +175,7 @@
 
     //custom
     bottom: 40px;
-    top:0px;
+    top: 0px;
   }
 
 
@@ -990,60 +1017,95 @@
     height: 100%;
     margin-top: 40px;
   }
-  #localUser-stream{
+
+  #localUser-stream,
+  #remoteUsers {
     width: 200px !important;
     height: 200px !important;
     top: 0px !important;
     left: 0px !important;
     z-index: 2000;
-    &.full{
+    // position: absolute;
+    display: inline-block;
+    margin-right: 10px;
+    flex-shrink: 0;
+
+    &.full {
       width: 100% !important;
       height: 100% !important;
       z-index: 1500;
     }
   }
-  #collapseExample{
+
+  #collapseExample {
     position: absolute;
+    visibility: hidden;
+    display: block !important;
+
+    video {
+      visibility: hidden;
+    }
+
+    .carousel-item {
+      display: block !important;
+      visibility: hidden;
+    }
+
+    &.show {
+      visibility: visible;
+
+      video {
+        visibility: visible;
+      }
+
+      .carousel-item.active {
+        visibility: visible;
+      }
+    }
   }
-  .carousel{
+
+  .carousel {
     position: relative !important;
     left: 200px;
     width: 640px !important;
+    height: 212px !important;
     left: 200px !important;
-    top:auto  !important;
-    height: auto !important;
+    top: auto !important;
     padding: 7px 8px;
     background: #333;
     z-index: 3000;
     color: #fff;
-    a{
+
+
+
+    .carousel-inner {
+      height: 100%;
+    }
+
+    a {
       z-index: 5000;
     }
-    .part-up{
-      position: absolute;
-      right: -48px;
-      background-color: #333333;
-      top: 0;
-      margin-top: 0;
-      font-size: 30px;
-    }
-    .row{
+
+    .row {
       flex-wrap: nowrap;
       margin: 0;
-      .col{
+
+      .col {
         padding: 0;
       }
     }
   }
-  #screenShareUser{
+
+  #screenShareUser {
     position: absolute;
-    top:0px !important;
-    height:  ~"calc(100% - 200px)"  !important;
+    top: 0px !important;
+    height: ~"calc(100% - 200px)" !important;
     left: 0px !important;
     text-align: center;
     height: 100% !important;
 
     width: 100% !important;
+
     // &.half{
     //   width: ~"calc(100% - 400px)" !important;
     //   // height: auto !important;
@@ -1052,20 +1114,94 @@
     //   width: 100% !important;
     //   // height: auto !important;
     // }
-    video{
+    video {
       height: 100%;
       width: auto;
     }
   }
 
-  @media only screen and (max-width: 700px) {
-    #chatContainer{
-      width: 95%;
+  .participantbox {
+    position: absolute;
+    height: 230px !important;
+    background-color: #333333;
+    width: 650px !important;
+    overflow: auto;
+    z-index: 5000;
+    padding: 4px 7px;
+    display: flex;
+    max-width: 100vw;
+  }
+
+  .part-up {
+    position: absolute;
+    right: -48px;
+    background-color: #333333;
+    top: 0;
+    margin-top: 0;
+    font-size: 30px;
+    z-index: 5000;
+  }
+  #chatContainer #remoteUsers{
+    width: 100% !important;
+    margin: 0;
+    height: auto !important;
+  }
+
+  .presenting{
+    top: 50%;
+    position: absolute;
+    color: #fff;
+    width: 100%;
+    text-align: center;
+    font-size: 50px;
+  }
+  @media only screen and (max-width: 900px) {
+    #chatContainer, #participantContainer {
+      width: 95% !important;
       max-width: 400px;
+      height: ~"calc(100% - 41px)" !important;
+      &.typing{
+        max-width: 100%;
+        width: 100% !important;
+        bottom: 0;
+        height: 100%;
+        z-index: 10000000;
+        #messageInput{
+          height: 80px;
+        }
+        .message-wrap{
+          height: calc(100% - 120px);
+        }
+      }
     }
-    #localUser-stream{
+    .buttonsContent{
+      text-align: left;
+    }
+
+
+    #localUser-stream,
+    #remoteUsers {
       width: 100px !important;
       height: 100px !important;
+      margin-right: 10px;
+    }
+
+    
+
+    .part-up {
+      right: 0 !important;
+    }
+
+    .participantbox {
+      height: 130px !important;
     }
   }
+
+  @media only screen and (max-width: 900px) and (orientation : portrait) {
+    #screenShareUser video {
+      height: auto;
+      width: 100%;
+    }
+  }
+
 }

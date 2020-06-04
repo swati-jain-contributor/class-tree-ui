@@ -40,6 +40,13 @@
     right: 10px;
     top: none;
   }
+  #navParticipantButton{
+    position: absolute;
+    right: 76px;
+    height: 40px;
+    width: 130px;
+    padding: 7px;
+  }
 
   #titleContent {
     max-width: 100px;
@@ -96,9 +103,32 @@
     border: 1px solid #ffffff !important;
   }
 
+  .micButton{
+    outline: none;
+    svg{
+      width: 65px;
+      margin-top: -30px;
+      outline: none;
+    }
+  }
 
-  @media only screen and (max-width: 700px) {
+  @media only screen and (max-width: 900px) {
 
+    .micButton{
+      outline: none;
+      svg{
+        position: fixed;
+        bottom: 2px;
+        left: 1px;
+        width: 50px;
+      }
+      span{
+        font-size: 10px;
+        position: fixed;
+        left: 55px;
+        bottom: 50px;
+      }
+    }
     // #titleContent,
     // #navChatButton {
     //   display: none;
@@ -122,14 +152,17 @@
         min-width: auto !important;
       }
       .b-title{
-        font-size: 25px !important;
+        font-size: 20px !important;
+        margin-top: -45px;
       }
       .b-tagline{
-        font-size: 20px !important;
+        font-size: 17px !important;
+        margin-top: -20px;
       }
       .b-appreciate{
-        margin-top: -16px !important;
-        font-size: 22px !important;
+        margin-top: -30px !important;
+        margin-bottom: 16px !important;
+        font-size: 17px !important;
       }
       .b-topic{
         font-size: 19px !important;
@@ -143,10 +176,11 @@
         font-size: 17px !important;
       }
       #header{
-        min-width: auto !important;
+        min-width: 100vw !important;
         .buttonsContent{
-          max-width: 100% !important;
-          min-width: 100% !important;
+          max-width: 90% !important;
+          min-width: 90% !important;
+          padding-left: 55px;
         }
     }
   }

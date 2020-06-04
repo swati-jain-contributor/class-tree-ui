@@ -44,6 +44,10 @@
     // height: calc(100% - 30px);
     // width: calc(100% - 30px);
     border-radius: 20px;
+
+    canvas{
+      display: none;
+    }
   }
 
   .message-wrap {
@@ -68,6 +72,7 @@
   .msg-detail {
     width: calc(100% - 65px);
     display: inline-block;
+    width: 100%;
   }
 
   .msg-detail p {
@@ -103,7 +108,7 @@
   }
 
   .text {
-    word-break: break-all;
+    word-break: break-word;
     color: #000000;
   }
 
@@ -114,7 +119,7 @@
   }
 
   .message.left .msg-detail {
-    padding-left: 65px;
+    // padding-left: 65px;
   }
 
   .message.left .user-img {
@@ -173,7 +178,7 @@
     border-bottom-right-radius: 6px;
   }
 
-  #messageInput input {
+  #messageInput input, #messageInput textarea {
     width: 90%;
     height: 100%;
     border: none;
@@ -181,6 +186,7 @@
     font-size: 14px;
     margin-left: -6%;
     color: #000000;
+    resize: none;
   }
 
   #sendButton {

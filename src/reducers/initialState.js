@@ -1,10 +1,11 @@
-const defaultState= {
-  classes:{
-    TeacherClasses:[],
-    userEmail:null,
-    userPhone:null,
-    userName:null
-  
+const defaultState = {
+  classes: {
+    offeredClasses: [],
+    registeredClasses: [],
+    allClasses: [],
+    userEmail: null,
+    userPhone: null,
+    userName: null
   },
   session:
   {
@@ -20,22 +21,29 @@ const defaultState= {
     "name": null,
     "updatedAt": null,
     "createdAt": null,
-    "loginOTPSuccess":false,
-    "open":false,
-    "errorMsg":"",
-    "apartmentRegistrationSuccess":false,
-    "registerOTPSuccess":false
+    "loginOTPSuccess": false,
+    "open": false,
+    "errorMsg": "",
+    "apartmentRegistrationSuccess": false,
+    "registerOTPSuccess": false
   },
-  requests:[],
+  requests: [],
   ajaxCallsInProgress: 0
 };
-let initialState=defaultState;
-// try{
-//   const serializedState=localStorage.getItem("state");  
-//   if(serializedState != null)
-//     initialState= JSON.parse(serializedState);
-//   initialState.ajaxCallsInProgress=0;
-// }
-// catch(err){
-// }
+let initialState = defaultState;
+let app = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
+if (app) {
+  try {
+    const serializedState = localStorage.getItem("state");
+    if (serializedState != null)
+      initialState = JSON.parse(serializedState);
+    initialState.ajaxCallsInProgress = 0;
+    if(!initialState.userName)
+      initialState.userEmail = void 0;
+  }
+  catch (err) {
+    console(err);
+  } 
+}
+
 export default initialState;

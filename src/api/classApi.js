@@ -3,28 +3,18 @@ import server from './server';
 
 class ClassApi {
   static addClass(collData) {
-    return fetch(server+"/api/classes/addClass",
+    collData.timezone = new Date().getTimezoneOffset();
+    return fetch(server + "/api/classes/addClass",
       {
         method: 'POST',
         mode: 'cors',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
-          
+
         },
         // credentials: 'include',
-        body: JSON.stringify({
-          name: collData.name,
-          startTime: collData.startTime,
-          endTime: collData.endTime,
-          description: collData.description,
-          maxStudents: collData.maxStudents,
-          phoneNo: collData.phoneNo,
-          date: collData.date,
-          topic: collData.topic,
-          email: collData.email,
-          timezone: new Date().getTimezoneOffset()
-        })
+        body: JSON.stringify(collData)
       })
       .then((resp) => resp.json())
       .then(function (res) {
@@ -34,11 +24,37 @@ class ClassApi {
       .catch(function (res) {
         console.log(res);
         //return res;
-        throw(res);
+        throw (res);
       });
   }
-  static bookClass(collData){
-    return fetch(server+"/api/classes/bookClass",
+
+  static getClassDetails(id) {
+    return fetch(server + "/api/classes/getClassDetails",
+      {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+
+        },
+        // credentials: 'include',
+        body: JSON.stringify(id)
+      })
+      .then((resp) => resp.json())
+      .then(function (res) {
+        console.log(res);
+        return res;
+      })
+      .catch(function (res) {
+        console.log(res);
+        //return res;
+        throw (res);
+      });
+  }
+
+  static bookClass(collData) {
+    return fetch(server + "/api/classes/bookClass",
       {
         method: 'POST',
         // mode: 'cors',
@@ -64,11 +80,12 @@ class ClassApi {
       .catch(function (res) {
         console.log(res);
         //return res;
-        throw(res);
+        throw (res);
       });
   }
-  static getClasses(data){
-    return fetch(server+"/api/classes/getClasses",
+  static getClasses(data) {
+    data.token = localStorage.getItem("token");
+    return fetch(server + "/api/classes/getClasses",
       {
         method: 'POST',
         mode: 'cors',
@@ -85,11 +102,11 @@ class ClassApi {
         return res;
       })
       .catch(function (res) {
-        console.log(res);        
-        throw(res);
+        console.log(res);
+        throw (res);
       });
   }
-  
+
 }
 
 export default ClassApi;

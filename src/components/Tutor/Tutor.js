@@ -30,9 +30,13 @@ class Tutor extends React.Component {
     let classesNP = nextProps.classes;
     if (!classesNP)
       classesNP = [];
-    if (nextProps.search) {
-      let classes = classesNP.filter(cl =>
-        this.checkParam(cl, 'Topic', nextProps.search) || this.checkParam(cl, 'Description', nextProps.search) || this.checkParam(cl, 'TutorName', nextProps.search));
+    if (nextProps.search || nextProps.category != "All") {
+      let classes = classesNP;
+      if (nextProps.search)
+        classes = classesNP.filter(cl =>
+          this.checkParam(cl, 'Topic', nextProps.search) || this.checkParam(cl, 'Description', nextProps.search) || this.checkParam(cl, 'TutorName', nextProps.search));
+      if (nextProps.category && nextProps.category != 'All')
+        classes = classes.filter(cl => cl.category == nextProps.category);
       this.setState({ classes });
     }
     else
@@ -63,120 +67,43 @@ class Tutor extends React.Component {
     };
     this.addClass = this.addClass.bind(this);
     this.closeClass = this.closeClass.bind(this);
-    this.onChange = this.onChange.bind(this);
     this.getClasses = this.getClasses.bind(this);
-    this.addName = this.addName.bind(this);
-    this.checkValidity = this.checkValidity.bind(this);
-    this.checkELValidity = this.checkELValidity.bind(this);
+    this.requestLogin = this.requestLogin.bind(this);
+    this.classadded = this.classadded.bind(this);
+    this.userloginFn = this.userloginFn.bind(this);
 
   }
-  onChange(event) {
-    const field = event.target.name;
-    let classData = this.state.classData;
-    classData[field] = event.target.value;
-    return this.setState({ classData: classData });
+  getClasses() {
+    this.props.actions.getClasses({
+      email: this.props.email,
+      type: "T"
+    });
   }
-  addClass(event) {
-    event.preventDefault();
-    if (this.checkValidity(event)) {
-      let classData = {
-        email: this.props.email,
-        name: this.props.name,
-        phoneNo: this.props.phoneNo,
-        date: new Date(this.state.classData.date).toUTCString(),
-        topic: this.state.classData.topic,
-        description: this.state.classData.description,
-        maxStudents: this.state.classData.maxStudents,
-        startTime: this.state.classData.startTime
-      };
-      this.props.actions.addClass(classData);
-      this.setState({
-        classData: JSON.parse(JSON.stringify(initialClass))
-      });
-
-    }
-    event.target.form.reset();
-    window.initiateDatepicker(this);
+  requestLogin() {
+    window.dispatchEvent(new CustomEvent('askLogin', {}));
+    window.addEventListener("userloggedin", this.userloginFn);
   }
-  addName(event) {
-    event.preventDefault();
-    if ((event && this.checkValidity(event)) || !event) {
-      this.props.actions.addTeacherData({
-        email: this.props.email,
-        name: this.state.classData.name,
-        phoneNo: this.state.classData.phoneNo
-      });
-    }
+  classadded() {
+    window.removeEventListener("classadded", this.classadded);
+    this.getClasses();
   }
-  getClasses(event) {
-    event && event.preventDefault();
-    if ((event && this.checkValidity(event)) || !event) {
-      if (!this.props.name) {
-        this.props.actions.addTeacherData({
-          email: this.state.classData.email || this.props.email,
-          name: null,
-          phoneNo: null
-        });
-      }
-      this.props.actions.getClasses({
-        email: this.state.classData.email,
-        type: "T"
-      });
-    }
+  addClass() {
+    window.dispatchEvent(new CustomEvent('addClass', {}));
+    window.addEventListener("classadded", this.classadded);
+  }
+  userloginFn() {
+    window.removeEventListener("userloggedin", this.userloginFn);
+    this.props.actions.getClasses({
+      email: this.props.email,
+      type: "T"
+    });
   }
   closeClass() {
     this.props.cancel();
   }
-  checkValidity(event) {
-    if (event.target.form.checkValidity()) {
-      this.setState({ errors: {} });
-      for (let i in event.target.form.elements) {
-        let el = event.target.form.elements[i];
-        if (el.tagName == "INPUT" || el.tagName == "TEXTAREA")
-          el.style.borderColor = "black";
-      }
-      return true;
-
-    }
-    else {
-      let errors = {};
-      for (let i in event.target.form.elements) {
-        let el = event.target.form.elements[i];
-        this.checkELValidity(el);
-      }
-      return false;
-    }
-  }
-
-  checkELValidity(event) {
-    var el;
-    if (!event.target)
-      el = event;
-    else
-      el = event.target;
-    var errors = JSON.parse(JSON.stringify(this.state.errors || {}));
-
-    if (el.tagName == "INPUT" || el.tagName == "TEXTAREA") {
-      let name = el.getAttribute("name");
-      if (!el.checkValidity()) {
-        if (el.validity.valueMissing)
-          errors[name] = "Required";
-        else if (name == "email")
-          errors[name] = "Invalid email address";
-        else
-          errors[name] = "Invalid value";
-        el.style.borderColor = "red";
-      }
-      else {
-        errors[name] = void 0;
-        el.style.borderColor = "black";
-      }
-    }
-    this.setState({ errors });
-  }
   render() {
-    var banner = (<div> <div className="banner"><span>A <b>Teacher</b> plants a seed of knowledge to produce <b>Tomorrow's Dreams</b></span></div>
-      <div className="thank-note"><span>We appreciate efforts you are making to make people learn.. &nbsp;&nbsp;   <i className="fa fa-thumbs-up" aria-hidden="true"></i></span></div></div>);
+    let banner = (<div> <div className="banner"><span>A <b>Teacher</b> plants a seed of knowledge to produce <b>Tomorrow's Dreams</b></span></div>
+      <div className="thank-note"><span>We appreciate efforts you are making to make people learn.. &nbsp;&nbsp;   <i className="fa fa-thumbs-up" aria-hidden="true" /></span></div></div>);
     return (
       <div className="col-block  view-holder">
         {(!this.props.email || !this.props.name) ?
@@ -187,10 +114,7 @@ class Tutor extends React.Component {
 
             <span>Please login / Signup, so we can get your details</span>
             <br />
-            <button className="submit-btn secondary" onClick={() =>
-              !this.props.email ?
-                this.setState({ showEmail: true, showName: false, popup: true }) :
-                this.setState({ showEmail: false, showName: true, popup: true })} >Login / Signup</button>
+            <button className="submit-btn secondary" onClick={this.requestLogin} >Login / Signup</button>
           </div> :
           <div>
             {(this.state.classes.length == 0) ?
@@ -207,47 +131,17 @@ class Tutor extends React.Component {
                     Change your search criteria or add a class now.
             </span>
                 }
-                <br/>
-                <br/>
-
-                <button className="submit-btn" onClick={() => this.setState({ popup: true, showAddClass: true })}>Tute a Class</button>
+                <br />
+                <br />
+                <button className="submit-btn" onClick={this.addClass}>Tute a Class</button>
               </div> :
               <div>
-                <button className="add-class-btn" onClick={() => this.setState({ popup: true, showAddClass: true })}><span>{window.innerWidth > 700 ? 'Tute a Class' : 'Tute a class'}</span></button>
+                <button className="add-class-btn" onClick={this.addClass}><span>{window.innerWidth > 900 ? 'Tute a Class' : 'Tute a class'}</span></button>
                 <div className="content-box">
                   {this.state.classes.map((cl, i) => <Card type="T" key={i} class={cl} bookClass={this.bookClass} />)}
                 </div>
               </div>}
           </div>}
-        <div className={this.state.popup ? "overlay" : ""} onClick={()=>{!this.state.showName && this.setState({ popup: false, showAddClass: false , showEmail:false});}}></div>
-        {this.state.showEmail ? <LoginEmail type="T" /> : null}
-        {this.state.showName ? <LoginName type="T" /> : null}
-        {this.state.showAddClass ? <AddClass onClose={() => { this.setState({ popup: false, showAddClass: false }); window.showSuccessToast("Thanks! Your class scheduled successfully!"); }} /> : null}
-
-        {/* 
-        <div>
-          {(!this.props.email) ?
-            <div className="content-box clearfix">
-              {banner}
-              <LoginEmail type="T"/>
-            </div>
-            : null}
-
-          {(this.props.classes && this.props.classes.length == 0 && this.props.email && !this.props.name) ?
-            <div className="content-box clearfix">
-              {banner}
-              <LoginName type="T"/>
-            </div> : null
-          }
-        </div>
-        {(this.props.name && this.props.email) ? <div className="content-box clearfix">
-          {/* <h1 className="greet-user">Hello {this.props.name}</h1>
-          <div className="card">
-            <AddClass/>
-          </div> */}
-        {/* {this.props.classes.length==0 ? <div>{banner}</div>:""}
-          {this.props.classes.map((cl, i) => <Card type="T" class={cl} key={i}/>)}
-        </div> : null} */}
       </div>
     );
   }
@@ -256,7 +150,7 @@ class Tutor extends React.Component {
 function mapStateToProps(state, ownProps) {
 
   return {
-    classes: state.classes.TeacherClasses,
+    classes: state.classes.offeredClasses,
     email: state.classes.userEmail,
     name: state.classes.userName,
     phoneNo: state.classes.userPhone

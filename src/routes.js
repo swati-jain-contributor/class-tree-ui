@@ -6,6 +6,7 @@ import AboutPage from './components/about/About';
 
 import Student from './components/Student/Student';
 import VideoClass from './components/VideoClass/VideoClass';
+import ClassDetails from './components/ClassDetails/ClassDetails';
 
 export default (
   <Route path="/" component={App}>
@@ -14,6 +15,8 @@ export default (
     <Route path="tutor" component={AboutPage} />
     <Route path="registered" component={AboutPage} />
     <Route path="contact" component={AboutPage} />
+    <Route path="class/:id" component={ClassDetails} />
     <Route path="joinclass" component={VideoClass} />
+    <Route path="*" component={AboutPage} />
   </Route>
 );

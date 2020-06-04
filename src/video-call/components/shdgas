@@ -1,0 +1,118 @@
+ <div className="container" id="container">
+        <ToolbarComponent
+          sessionId={mySessionId}
+          user={localUser}
+          screenuser={screenShareUser}
+          showNotification={this.state.messageReceived}
+          camStatusChanged={this.camStatusChanged}
+          micStatusChanged={this.micStatusChanged}
+          screenShare={this.screenShare}
+          stopScreenShare={this.stopScreenShare}
+          toggleFullscreen={this.toggleFullscreen}
+          leaveSession={this.leaveSession}
+          toggleChat={this.toggleChat}
+          toggleParticipant={this.toggleParticipant}
+          count={participantCount}
+        />
+        <div className="logo"><h1 className="text-light"><a><span>ClassTree</span></a></h1></div>
+
+        <DialogExtensionComponent showDialog={this.state.showExtensionDialog} cancelClicked={this.closeDialogExtension} />
+        {/* <button className="btn btn-primary part-down" type="button" onClick={() => { this.setState({ showParticipants: true }); }}>
+          <i className="fa fa-user-friends" />
+          <i className="fa fa-angle-down" />
+          ({subscribers.length})
+        </button> */}
+
+        {/* <div style={{ position: "relative", width: "650px", maxWidth: "100vw", visibility: (this.state.showParticipants ? "visible" : "hidden") }}>
+          <div className="participantbox" style={{ visibility: (this.state.showParticipants ? "visible" : "hidden") }}>
+            {(localUser && !localUser.isTutor) ?
+              <div className="OT_root OT_publisher custom-class" id="localUser-stream" style={{ position: "static !important" }}>
+                <StreamComponent user={localUser} mutedSound={true}/>
+              </div>
+              : null}
+            {this.state.subscribers.map((sub, i) => (
+              (!sub.screenShareActive && !sub.isTutor) ? <div key={i} className="OT_root OT_publisher custom-class" id="remoteUsers" style={{ position: "static !important" }}>
+                <StreamComponent user={sub} streamId={sub.streamManager.stream.streamId} />
+              </div> : null
+            ))}
+          </div>
+          <button className="part-up" onClick={() => { this.setState({ showParticipants: false }); }}>
+            <i className="fa fa-angle-up" />
+          </button>
+        </div> */}
+        <div id="layout" className="bounds">
+          {/* {localUser !== undefined && localUser.getStreamManager() !== undefined && (
+                        <div className="OT_root OT_publisher custom-class" id="localUser">
+                            <StreamComponent user={localUser} handleNickname={this.nicknameChanged} />
+                        </div>
+                    )} */}
+          {/* {subscribers.map((sub, i) => (
+                        <div key={i} className="OT_root OT_publisher custom-class" id="remoteUsers">
+                            <StreamComponent user={sub} streamId={sub.streamManager.stream.streamId} />
+                        </div>
+                    ))} */}
+          {tutorUser !== undefined && tutorUser.getStreamManager() !== undefined && (
+            <div className={"OT_root OT_publisher custom-class " + ((!this.checkSomeoneShareScreen() && tutorUser.isFullScreen) ? "full" : "")} id="localUser-stream">
+              <StreamComponent user={tutorUser} canControlSize={canControlSize} toggleScreen={this.toggleScreen} />
+            </div>
+          )}
+          {/* {subscribers.map((sub, i) => (
+              <div key={i} className="OT_root OT_publisher custom-class" id="remoteUsers" style={{ position: "static !important" }}>
+                <StreamComponent user={sub} streamId={sub.streamManager.stream.streamId} />
+              </div>
+            ))} */}
+        </div>
+
+        {(screenShareSubscriber == undefined || !screenShareSubscriber.getStreamManager()) ?
+          <div className="class-bg">
+            <div className="overlay" />
+            <div className="banner-context">
+              <br />
+              <br />
+              <br />
+              <h1 className="b-title">Welcome to ClassTree</h1>
+              <br />
+              <br />
+              <h3 className="b-tagline">Share your learnings with everyone - Anytime, Anywhere , Anything</h3>
+              <br />
+              <br />
+              <span className="b-appreciate"> ClassTree appreciates <span>{this.props.userdata.TutorName}</span> for your strenuous efforts in educating the world and helping nation to grow.</span>
+              <br />
+              <span className="b-topic"> Your class on - <span>{this.props.userdata.className}</span> will start shortly.</span>
+              <br />
+              <br />
+              <span className="b-thankful">
+                We are also thankful to all participants for the commitment they are showing in learning everyday.
+                </span>
+            </div>
+          </div> : null}
+        {screenShareSubscriber !== undefined && screenShareSubscriber.getStreamManager() && (
+          <div className={"OT_root OT_publisher custom-class " + (this.state.chatDisplay == "none" ? "full" : "half")} id="screenShareUser">
+            {screenShareUser && screenShareUser.isScreenShareActive() ?
+              <div className="presenting">You are presenting screen</div> :
+              <StreamComponent user={screenShareSubscriber} mutedSound />
+            }
+          </div>
+        )}
+        {/*&& localUser.getStreamManager() !== undefined*/}
+        {localUser !== undefined && (
+          <div className="OT_root OT_publisher custom-class chat-box" style={chatDisplay}>
+            <ChatComponent
+              user={localUser}
+              chatDisplay={this.state.chatDisplay}
+              close={this.toggleChat}
+              session={this.state.session}
+              messageReceived={this.checkNotification}
+            />
+          </div>
+        )}
+
+        {localUser !== undefined && participantCount > 0 && (
+          <div className="OT_root OT_publisher custom-class chat-box" style={participantDisplay}>
+            <Participant
+              participants={participants}
+              participantDisplay={this.state.participantDisplay}
+            />
+          </div>
+        )}
+      </div>

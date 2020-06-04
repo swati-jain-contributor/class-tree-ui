@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { browserHistory } from 'react-router';
+import { browserHistory, Route, IndexRoute, Switch } from 'react-router';
 import * as loginActions from '../actions/loginActions';
 import Snackbar from 'material-ui/Snackbar';
 import Tutor from '../components/Tutor/Tutor';
@@ -15,7 +15,9 @@ import Registered from '../components/Registered/Registered';
 import VideoClass from '../components/VideoClass/VideoClass';
 import Header from './home/Header';
 import HomePage from './home/HomePage';
-import { Route, IndexRoute, Switch } from 'react-router';
+import ClassDetails from './ClassDetails/ClassDetails';
+import Overlay from './overlay/overlay';
+
 <ul>
   <li className="active"><a href="#header">Home</a></li>
   <li><a href="#why-us">About</a></li>
@@ -35,17 +37,28 @@ class App extends React.Component {
     };
   }
   render() {
-    let path = location.pathname.replace(/\//g, '');
+    let path = location.hash.replace(/#\//g, '') || location.pathname.replace(/\//g, '');
+    let pathr = path;
     let child;
-    let isMobile = window.innerWidth < 700;
-    switch (path) {
+    let login = false;
+    if (location.href.indexOf("login") > -1)
+      login = true;
+    let isMobile = window.innerWidth < 900;
+    if (path.indexOf('joinclass') > -1)
+      path = 'joinclass';
+    else if (path.indexOf('student') > -1)
+      path = 'student';
+    else if (path.indexOf('class') > -1)
+      path = 'class';
 
-      case 'student': child = <Student search={this.state.search} />; break;
-      case 'tutor': child = <Tutor search={this.state.search} />; break;
-      case 'registered': child = <Registered search={this.state.search} />; break;
+    switch (path) {
+      case 'student': child = <Student search={this.state.search} category={this.state.category} login={login} />; break;
+      case 'tutor': child = <Tutor search={this.state.search} category={this.state.category} />; break;
+      case 'registered': child = <Registered search={this.state.search} category={this.state.category} />; break;
       case 'about': child = <About search={this.state.search} />; break;
       case 'contact': child = <Contact search={this.state.search} />; break;
       case 'joinclass': child = <VideoClass />; break;
+      case 'class': child = <ClassDetails id={pathr.match(/\d+/)[0]} />; break;
       default:
         child = isMobile ? <Student search={this.state.search} /> : <HomePage />;
         // child = <Student search={this.state.search} />; 
@@ -54,20 +67,21 @@ class App extends React.Component {
 
 
     let iconBox = (<div className="icon-box">
-      {/* <i role="button" aria-controls="search" className="fa fa-search" aria-hidden="true" data-toggle="collapse" href="#search" aria-expanded="false"  ></i> */}
       <div className="dropdown">
-        <i className="fa fa-bars" aria-hidden="true" id="menudropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></i>
+        <i className="fa fa-bars" aria-hidden="true" id="menudropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" />
         <ul className="dropdown-menu dropdown-menu-right">
+          {!this.props.email ? <li className="dropdown-item" onClick={() => window.dispatchEvent(new CustomEvent('askLogin', {}))}>Login</li> : null}
           <li className="dropdown-item" onClick={() => this.context.router.push('/about')}>Who we are</li>
           <li className="dropdown-item" onClick={() => this.context.router.push('/registered')}>My registered classes</li>
           <li className="dropdown-item" onClick={() => this.context.router.push('/tutor')}>My offered classes</li>
           <li className="dropdown-item" onClick={() => this.context.router.push('/student')}>Learn more</li>
           <li className="dropdown-item" onClick={() => this.context.router.push('/contact')}>Contact us</li>
+          {this.props.email ? <li className="dropdown-item" onClick={() => { localStorage.clear(); localStorage.setItem("contactadded", true); location.reload(); }}>Logout</li> : null}
         </ul>
       </div>
     </div>);
     let menubar = (
-      <div>
+      <div style={{height:"62px"}}>
         <Header />
       </div>
     );
@@ -84,23 +98,32 @@ class App extends React.Component {
       wish = 'Good evening';
     }
     return (
-      path != "joinclass"? 
-      <div className="ss-root" style={{ padding: (isMobile) ? '20px' : "0" }}>
-        {(isMobile) ?
-          <span>
-            <b className="morning">{wish} {this.props.name}</b><br />
-            <span className="heading-helper">What are you learning today?</span></span> : null}
+      <div>
+        {(path != "joinclass" && path != "class") ?
+          <div className="ss-root" style={{ padding: (isMobile) ? '20px' : "0" }}>
+            {(isMobile) ?
+              <span>
+                <b className="morning">{wish} {this.props.name}</b><br />
+                <span className="heading-helper">What are you learning today?</span></span> : null}
 
-        {isMobile ? iconBox : (path.length > 3 ? menubar : "")}
-
-        <div id="search" className={"collapse " + (((path != 'about' && path != 'contact' && path) || (!path && isMobile)) ? "show" : "")}>
-          <i className="fa fa-search" />
-          <input className="big-input search-box" placeholder="What's your learning dose today.." type="text" name="search" value={this.state.search} onChange={(evt) => this.setState({ search: evt.target.value })} >
-          </input>
-        </div>
-        {child}
-      </div >
-        : child
+            {isMobile ? iconBox : (path.length > 3 ? menubar : "")}
+            <div className="filter-box-panel">
+              <div id="search" className={"collapse " + (((path != 'about' && path != 'contact' && path) || (!path && isMobile)) ? "show" : "")}>
+                <i className="fa fa-search" />
+                <input className="big-input search-box" placeholder="What's your learning dose today.." type="text" name="search" value={this.state.search} onChange={(evt) => this.setState({ search: evt.target.value })} />
+              </div>
+              <div id="drop" className={"collapse " + (((path != 'about' && path != 'contact' && path) || (!path && isMobile)) ? "show" : "")}>
+                <select className="browser-default custom-select" name="category" onChange={(evt) => this.setState({ category: evt.target.value })} >
+                  {["All", "Finance & Accounting", "Science", "Technology", "General"].map((tl, i) => <option key={i} value={tl}>{tl}</option>)}
+                </select>
+                <br />
+              </div>
+            </div>
+            {child}
+          </div >
+          : child}
+        <Overlay />
+      </div>
     );
   }
 }
@@ -117,7 +140,8 @@ function mapStateToProps(state, ownProps) {
   console.log(state.ajaxCallsInProgress);
   return {
     loading: state.ajaxCallsInProgress > 0,
-    name: state.classes.userName
+    name: state.classes.userName,
+    email: state.classes.userEmail
     // isAuthenticated: state.session.authenticationStatus,
     // username: state.session.aptId + "-" + state.session.userId,
     // errorMsg: state.session.errorMsg,

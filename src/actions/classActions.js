@@ -94,3 +94,26 @@ export function getClasses(collData) {
     });
   };
 }
+
+export function getClassDetailsSuccess(details) {
+  return { type: types.CLASS_DETAIL_SUCCESS, details };
+}
+export function getClassDetailsFailure(data) {
+  return { type: types.CLASS_DETAIL_FAILURE, data: data };
+}
+export function getClassDetails(id){
+  return dispatch => {
+    dispatch(beginAjaxCall());
+    return ClassApi.getClassDetails(id).then(data => {
+      if (data.status == "SUCCESS") {
+          dispatch(getClassDetailsSuccess(data.response));
+      }
+      else
+        dispatch(getClassDetailsFailure(data.errorDesc));
+    }).catch(error => {
+      dispatch(resetErrorMessage("Please check your internet connection"));
+      dispatch(ajaxCallError(error));
+      throw (error);
+    });
+  };
+}

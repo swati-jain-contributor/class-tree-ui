@@ -11,6 +11,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+<!-- <script src="https://cdn.WebRTC-Experiment.com/RecordRTC.js"></script>
+<script src="https://cdn.webrtc-experiment.com/screenshot.js"></script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script> -->
 <!-- Popper JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 
@@ -35,7 +39,7 @@
      <meta name="description" content="ClassTree is a knowledge sharing platform, open to people to share their knowledge with people who are interested in learning."/>
      <meta property="og:title" content="Together we learn  ">
     <meta property="og:description" content="ClassTree is a knowledge sharing platform, open to people to share their knowledge with people who are interested in learning.">
-    <meta property="og:image" content="https://raw.githubusercontent.com/swati-jain-contributor/privacy-policy/master/logo-ct.png">
+    <meta property="og:image" content="https://raw.githubusercontent.com/swati-jain-contributor/privacy-policy/master/logo.JPG">
     <meta property="og:url" content="http://www.classtree.in">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
       <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -47,11 +51,11 @@
 
   gtag('config', 'UA-162981138-1');
 </script>
-
+<script src='https://meet.jit.si/external_api.js'></script>
 </head>
 
 <body>
-  <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="3000">
+  <div class="toast fade hide" role="alert" aria-live="assertive" aria-atomic="true" data-delay="3000" >
     <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -62,16 +66,15 @@
 
   <div id="app"></div>
 
-  <script src="/bundle.js"></script>
+  
   <script>
 
 function initiateDatepicker(context){
   var today = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
-  today.setDate(today.getDate() + 1);
+  today.setDate(today.getDate() + 3);
   $('[name="date"]').datepicker({minDate: today, change: context.onChange,close: context.checkELValidity});
-  
-  $('[name="startTime"]').dropdown({change: context.onChange});
-  $('[name="maxStudents"]').dropdown({change: context.onChange});
+  // $('[name="startTime"]').dropdown({change: context.onChange});
+  // $('[name="maxStudents"]').dropdown({change: context.onChange});
 }
 
 Date.prototype.toMysqlFormat = function() {
@@ -145,10 +148,110 @@ function loadCarousel(){
 });
 }
 
+function notifyMe(title, msg) {
+  // Let's check if the browser supports notifications
+  if (!("Notification" in window)) {
+    alert("This browser does not support desktop notification");
+  }
+
+  // Let's check whether notification permissions have already been granted
+  else if (Notification.permission === "granted") {
+    // If it's okay let's create a notification
+    var notification = new Notification(title ,{
+      icon: 'https://raw.githubusercontent.com/swati-jain-contributor/privacy-policy/master/logo.JPG',
+   body: msg,
+   badge:'https://raw.githubusercontent.com/swati-jain-contributor/privacy-policy/master/logo.JPG'
+    });
+  }
+
+  // Otherwise, we need to ask the user for permission
+  else if (Notification.permission !== "denied") {
+    Notification.requestPermission().then(function (permission) {
+      // If the user accepts, let's create a notification
+      if (permission === "granted") {
+        var notification = new Notification(msg);
+      }
+    });
+  }
+}
+
 function showThankyou(){
   $("#modal-thankyou").modal();
 }
+// function startRecording(){
+//   var elementToShare = document.body;
+//   var canvas2d = document.createElement('canvas'); // OUR OWN invisible CANVAS
+// var context = canvas2d.getContext('2d');
+// canvas2d.width = elementToShare.clientWidth;
+// canvas2d.height = elementToShare.clientHeight;
+// canvas2d.style = 'display: none;';
+// (document.body || document.documentElement).appendChild(canvas2d);
+
+// // looper+selfinvoker method
+// (function looper() {
+//     if (recorder && recorder.getBlob() && recorder.getBlob().size) {
+//         // this line checks whether recorder is stopped
+//         return;
+//     }
+
+//     // looper keeps calling this method until recording stops
+//     html2canvas(document.body, {
+//         grabMouse: false,
+//         allowTaint:true,
+//         onrendered: function(canvas) {
+//           console.log(canvas);
+//             context.clearRect(0, 0, canvas2d.width, canvas2d.height);
+
+//             // draw html2canvas resulting canvas on our own canvas
+//             context.drawImage(canvas, 0, 0, canvas2d.width, canvas2d.height);
+
+//             // here is how looper works
+//             //setTimeout(looper, 1);
+//         }
+//     });
+// })();
+
+// var canvasStream = canvas2d.captureStream();
+// canvasStream.fullcanvas = true;
+// canvasStream.width = canvas2d.width;
+// canvasStream.height = canvas2d.height;
+//   var recorder = RecordRTC([canvasStream], {
+//     type: 'video',
+//     showMousePointer: false
+// });
+// recorder.startRecording();
+// setTimeout(()=>{
+// //   recorder.stopRecording(function(url) {
+// //     window.open(url);
+// // });
+// var recordedBlobs = recorder.getBlob();
+// var file = new File([recordedBlobs], 'video.webm', {
+//     type: 'video/webm'
+// });
+
+// invokeSaveAsDialog(file);
+// }, 10000)
+
+// }
+function loadJitsi(id, topic,name){
+  const domain = 'meet.jit.si';
+    const options = {
+      roomName: "Classtree Live Class on "+ topic + " By " + name,
+      width: window.innerWidth,
+      height: window.innerHeight,
+      parentNode: document.querySelector('#meet'),
+      interfaceConfigOverwrite: {OPEN_IN_MOBILE_BROWSER:true, SHOW_CHROME_EXTENSION_BANNER :false, MOBILE_APP_PROMO:false, JITSI_WATERMARK_LINK:"https://raw.githubusercontent.com/swati-jain-contributor/privacy-policy/master/logo.JPG" }
+    };
+    const api = new JitsiMeetExternalAPI(domain, options);
+    api.on('readyToClose', () => {
+      location.href = "/student?thankyou=true";
+    });
+    api.addEventListener('readyToClose',  function(){
+      location.href = "/student?thankyou=true";
+                                              });
+}
   </script>
+  <script src="/bundle.js"></script>
 </body>
 
 </html>

@@ -17,6 +17,7 @@ class UserModel {
         this.type = 'local';
         this.isTutor ='false';
         this.isFullScreen=false;
+        this.hasMike = false;
     }
 
     isAudioActive() {
@@ -50,6 +51,10 @@ class UserModel {
         return this.streamManager;
     }
 
+    hasMikeActive(){
+      return this.hasMike;
+    }
+    
     isLocal() {
         return this.type === 'local';
     }
@@ -85,6 +90,9 @@ class UserModel {
     }
     setIsTutor(isTutor) {
       this.isTutor=isTutor;
+    }
+    setMike(hasMike){
+      this.hasMike = hasMike;
     }
 }
 

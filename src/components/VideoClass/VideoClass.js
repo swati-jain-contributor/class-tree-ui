@@ -9,8 +9,8 @@ import { checkELValidity, checkValidity, onChange } from '../Utils';
 import VideoRoomComponent from '../../video-call/components/VideoRoomComponent';
 import '../../video-call/index.css';
 import axios from 'axios';
-import registerServiceWorker from '../../video-call/registerServiceWorker';
-registerServiceWorker();
+// import registerServiceWorker from '../../video-call/registerServiceWorker';
+// registerServiceWorker();
 class VideoClass extends React.Component {
   constructor(props, context) {
     super(props, context);
@@ -37,7 +37,6 @@ class VideoClass extends React.Component {
 function mapStateToProps(state, ownProps) {
 
   return {
-    classes: state.classes.TeacherClasses,
     email: ownProps.type == "T" ? state.classes.userEmail : state.classes.userEmail,
     name: ownProps.type == "T" ? state.classes.userName : state.classes.userName,
     phoneNo: ownProps.type == "T" ? state.classes.userPhone : state.classes.userPhone

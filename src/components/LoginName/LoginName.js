@@ -35,7 +35,6 @@ class LoginName extends React.Component {
           name: this.state.classData.name,
           phoneNo: this.state.classData.phoneNo
         });
-      
     }
   }
 
@@ -61,12 +60,12 @@ class LoginName extends React.Component {
   }
 
   checkELValidity(event) {
-    var el;
+    let el;
     if (!event.target)
       el = event;
     else
       el = event.target;
-    var errors = JSON.parse(JSON.stringify(this.state.errors || {}));
+    let errors = JSON.parse(JSON.stringify(this.state.errors || {}));
 
     if (el.tagName == "INPUT" || el.tagName == "TEXTAREA") {
       let name = el.getAttribute("name");
@@ -97,15 +96,6 @@ class LoginName extends React.Component {
   render() {
     return (
       <div className="popup">
-        {/* <br /> */}
-        {/* <br />
-        <span style={{ fontSize: "18px" }} >Hey! Welcome to <b>ClassTree!!</b></span>
-        <br />
-        <br />
-        <span>You are a <b>new member</b>, please help us with your name and phone number to create an account for you!</span> */}
-
-        <br />
-        <br />
         <form>
           <label className="big-label">Name</label><br />
           <input className="big-input" required onBlur={this.checkELValidity} placeholder="Name" maxLength="50" type="text" name="name" value={this.state.classData.name} onChange={this.onChange} /><br />
@@ -130,7 +120,6 @@ class LoginName extends React.Component {
 function mapStateToProps(state, ownProps) {
 
   return {
-    classes: state.classes.TeacherClasses,
     email: ownProps.type=="T" ? state.classes.userEmail : state.classes.userEmail,
     name: ownProps.type=="T" ?state.classes.userName:state.classes.userName,
     phoneNo: ownProps.type=="T" ?state.classes.userPhone:state.classes.userPhone
