@@ -80,8 +80,8 @@ class Card extends React.Component {
             <h3 className="card-details-header">{cl.Topic.length > 25 ? cl.Topic.substring(0, 25) + ".." : cl.Topic}</h3>
             <div className="desc" dangerouslySetInnerHTML={{ __html: (cl.Description.length > 200 ? cl.Description.substring(0, 200) + "..." : cl.Description) }} />
             <span className="tutor">-{cl.TutorName}</span><br />
-            <span className="helper-info"><span>{(cl.id == 98) ? "3Hr class" :  "60 Minutes"}</span> &nbsp;&nbsp;&nbsp;
-                {isStudent ? <span>{cl.Paid > 0 ? (cl.Paid + " INR") : 'FREE'}</span> : <span>{cl.Attendee + ' / ' + cl.MaxStudents}</span>}
+            <span className="helper-info"><span>{(cl.id == 102) ? "4 Hours Session" :  "60 Minutes"}</span> &nbsp;&nbsp;&nbsp;
+                {isStudent ? <span>{ cl.Paid != 0 ? (cl.Paid) : 'FREE'}</span> : <span>{cl.Attendee + ' / ' + cl.MaxStudents}</span>}
             </span>
             <div className="line" />
           </div>

@@ -32,8 +32,8 @@ export default class ChatComponent extends Component {
       console.log(event.from.connectionId);
       console.log(this.props.user.getConnectionId());
       let app = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
-      // if (event.from.connectionId !== this.props.user.getConnectionId() && !app)
-      //   window.notifyMe(data.nickname, data.message);
+      if (event.from.connectionId !== this.props.user.getConnectionId() && !app)
+        window.notifyMe(data.nickname, data.message);
       // const document = window.document;
       setTimeout(() => {
         // const userImg = document.getElementById('userImg-' + (this.state.messageList.length - 1));

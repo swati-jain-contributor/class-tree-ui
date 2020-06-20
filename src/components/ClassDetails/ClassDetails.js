@@ -26,6 +26,13 @@ class ClassDetails extends React.Component {
       email: this.props.email
     });
   }
+
+  componentDidUpdate() {
+    if (this.state.bookingClass && this.props.email && this.props.name) {
+      this.bookClass(this.state.bookingClass);
+      this.setState({ bookingClass: null });
+    }
+  }
   bookClass(cl) {
     if (this.props.email && this.props.name) {
       this.props.actions.bookClass({
@@ -45,12 +52,6 @@ class ClassDetails extends React.Component {
       this.setState({ bookingClass: cl });
       window.dispatchEvent(new CustomEvent('askLogin', {}));
       window.addEventListener("userloggedin", this.userloginFn);
-    }
-  }
-  componentDidUpdate() {
-    if (this.state.bookingClass && this.props.email && this.props.name) {
-      this.bookClass(this.state.bookingClass);
-      this.setState({ bookingClass: null });
     }
   }
   userloginFn() {
@@ -76,6 +77,7 @@ class ClassDetails extends React.Component {
       this.context.router.push(meetingUrl);
   }
   render() {
+
     let cl = this.props.class;
     let isStudent = this.props.email != cl.email;
     const scrollToTeacher = () => {
@@ -123,11 +125,11 @@ class ClassDetails extends React.Component {
         <b>{date}</b>
         <br />
 
-        <b className="paid">{cl.Paid > 0 ? (cl.Paid + " INR") : 'FREE'}</b>
+        <b className="paid">{cl.Paid != 0 ? (cl.Paid) : 'FREE'}</b>
         <br />
         <span><i className="fa fa-layer-group" /> &nbsp;&nbsp;&nbsp; Level - <span>{cl.level}</span></span><br />
         <span><i className="fa fa-globe" />&nbsp;&nbsp;&nbsp; Language - English</span><br />
-        <span><i className="fa fa-globe" />&nbsp;&nbsp;&nbsp;{cl.type == "course" ? ( cl.pattern + " Classes") :" One hour class"} </span>
+        <span><i className="fa fa-globe" />&nbsp;&nbsp;&nbsp;{cl.type == "course" ? (cl.pattern + " Classes") : " One hour class"} </span>
         <br />
         <br />
         <div className="cd-qbox">
@@ -137,15 +139,20 @@ class ClassDetails extends React.Component {
         <br />
         <div className="cd-qbox">
           <b>What you will get</b><br /><br />
-          <span className="cd-get"><i className="fa fa-chalkboard-teacher" />&nbsp;&nbsp;&nbsp;{cl.totalClasses} 1:1 Live classes</span>
-          <span className="cd-get"><i className="fa fa-mobile-alt" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Access on Mobile and TV</span>
-          <span className="cd-get"><i className="fa fa-certificate" />&nbsp;&nbsp;&nbsp;Certificate of completion</span>
-          <span className="cd-get"><i className="fa fa-book-reader" />&nbsp;&nbsp;&nbsp;Lifelong knowledge</span>
+          <span className="cd-get"><i className="fa fa-chalkboard-teacher" />Instructor Led Live 1:1 Sessions</span>
+          <span className="cd-get"><i className="fa fa-user-md" />Interview call to give jumpstart to your career</span>
+          <span className="cd-get"><i className="fa fa-life-ring" />Real-life Case Studies</span>
+          <span className="cd-get"><i className="fa fa-book" />Lifetime access to study material</span>
+          <span className="cd-get"><i className="fa fa-bread-slice" />Assignments</span>
+          <span className="cd-get"><i className="fa fa-certificate" />Certificate - Recognized and valued everywhere</span>
+          <span className="cd-get"><i className="fa fa-headset" />24x7 personal assistance</span>
+          <span className="cd-get"><i className="fa fa-mobile-alt" />Access on all devices - mobile/laptop/tablet</span>
+          <span className="cd-get"><i className="fa fa-book-reader" />Lifelong knowledge</span>
         </div>
         <br />
         <div className="cd-qbox">
           <b>What you should have</b><br />
-          <span dangerouslySetInnerHTML={{ __html: cl.prerequisite }}/>
+          <span dangerouslySetInnerHTML={{ __html: cl.prerequisite }} />
         </div>
         <br />
         <div className="cd-qbox" id="teacher">
