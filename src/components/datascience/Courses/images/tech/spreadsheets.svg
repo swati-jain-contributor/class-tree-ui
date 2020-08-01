@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="134" height="134" viewBox="0 0 134 134">
+    <defs>
+        <linearGradient id="b" x1="52.222%" x2="50%" y1="96.37%" y2="6.139%">
+            <stop offset="0%" stop-color="#2DA11E"/>
+            <stop offset="100%" stop-color="#A7EB8A"/>
+        </linearGradient>
+        <circle id="a" cx="67" cy="67" r="67"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <use fill="url(#b)" xlink:href="#a"/>
+        <path fill="#FFF" d="M38 33h58a8 8 0 0 1 8 8v52a8 8 0 0 1-8 8H38a8 8 0 0 1-8-8V41a8 8 0 0 1 8-8zm3 11a2 2 0 0 0-2 2v6.421a2 2 0 0 0 2 2h20.44a2 2 0 0 0 2-2V46a2 2 0 0 0-2-2H41zm0 18a2 2 0 0 0-2 2v6.421a2 2 0 0 0 2 2h20.44a2 2 0 0 0 2-2V64a2 2 0 0 0-2-2H41zm0 18a2 2 0 0 0-2 2v6.421a2 2 0 0 0 2 2h20.44a2 2 0 0 0 2-2V82a2 2 0 0 0-2-2H41zm32-36a2 2 0 0 0-2 2v6.421a2 2 0 0 0 2 2h20.44a2 2 0 0 0 2-2V46a2 2 0 0 0-2-2H73zm0 18a2 2 0 0 0-2 2v6.421a2 2 0 0 0 2 2h20.44a2 2 0 0 0 2-2V64a2 2 0 0 0-2-2H73zm0 18a2 2 0 0 0-2 2v6.421a2 2 0 0 0 2 2h20.44a2 2 0 0 0 2-2V82a2 2 0 0 0-2-2H73z"/>
+    </g>
+</svg>

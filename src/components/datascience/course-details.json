@@ -1,0 +1,1029 @@
+[{
+    "title": "Introduction to R",
+    "description": "Master the basics of data analysis by manipulating common data structures such as vectors, matrices, and data frames.",
+    "detailDescription": "In Introduction to R, you will master the basics of this widely used open source language, including factors, lists, and data frames. With the knowledge gained in this course, you will be ready to undertake your first very own data analysis. Oracle estimated over 2 million R users worldwide in 2012, cementing R as a leading programming language in statistics and data science. Every year, the number of R users grows by about 40%, and an increasing number of organizations are using it in their day-to-day activities. Begin your journey to learn R with us today!",
+    "time": "4 hours",
+    "chapters": [{
+      "title": "Intro to basics",
+      "index": "1",
+      "description": "Take your first steps with R. In this chapter, you will learn how to use the console as a calculator and how to assign variables. You will also get to know the basic data types in R. Let's get started.",
+      "parts": ["How it works", "Arithmetic with R", "Variable assignment", "Variable assignment (2)", "Variable assignment (3)", "Apples and oranges", "Basic data types in R", "What's that data type?"]
+    }, {
+      "title": "Matrices",
+      "index": "3",
+      "description": "In this chapter, you will learn how to work with matrices in R. By the end of the chapter, you will be able to create matrices and understand how to do basic computations with them. You will analyze the box office numbers of the Star Wars movies and learn how to use matrices in R. May the force be with you!",
+      "parts": ["What's a matrix?", "Analyze matrices, you shall", "Naming a matrix", "Calculating the worldwide box office", "Adding a column for the Worldwide box office", "Adding a row", "The total box office revenue for the entire saga", "Selection of matrix elements", "A little arithmetic with matrices", "A little arithmetic with matrices (2)"]
+    }, {
+      "title": "Data frames",
+      "index": "5",
+      "description": "Most datasets you will be working with will be stored as data frames. By the end of this chapter, you will be able to create a data frame, select interesting parts of a data frame, and order a data frame according to certain variables.",
+      "parts": ["What's a data frame?", "Quick, have a look at your data set", "Have a look at the structure", "Creating a data frame", "Creating a data frame (2)", "Selection of data frame elements", "Selection of data frame elements (2)", "Only planets with rings", "Only planets with rings (2)", "Only planets with rings but shorter", "Sorting", "Sorting your data frame"]
+    }, {
+      "title": "Vectors",
+      "index": "2",
+      "description": "We take you on a trip to Vegas, where you will learn how to analyze your gambling results using vectors in R. After completing this chapter, you will be able to create vectors in R, name them, select elements from them, and compare different vectors.",
+      "parts": ["Create a vector", "Create a vector (2)", "Create a vector (3)", "Naming a vector", "Naming a vector (2)", "Calculating total winnings", "Calculating total winnings (2)", "Calculating total winnings (3)", "Comparing total winnings", "Vector selection: the good times", "Vector selection: the good times (2)", "Vector selection: the good times (3)", "Vector selection: the good times (4)", "Selection by comparison - Step 1", "Selection by comparison - Step 2", "Advanced selection"]
+    }, {
+      "title": "Factors",
+      "index": "4",
+      "description": "Data often falls into a limited number of categories. For example, human hair color can be categorized as black, brown, blond, red, grey, or white—and perhaps a few more options for people who color their hair. In R, categorical data is stored in factors. Factors are very important in data analysis, so start learning how to create, subset, and compare them now.",
+      "parts": ["What's a factor and why would you use it?", "What's a factor and why would you use it? (2)", "What's a factor and why would you use it? (3)", "Factor levels", "Summarizing a factor", "Battle of the sexes", "Ordered factors", "Ordered factors (2)", "Comparing ordered factors"]
+    }, {
+      "title": "Lists",
+      "index": "6",
+      "description": "As opposed to vectors, lists can hold components of different types, just as your to-do lists can contain different categories of tasks. This chapter will teach you how to create, name, and subset these lists.",
+      "parts": ["Lists, why would you need them?", "Lists, why would you need them? (2)", "Creating a list", "Creating a named list", "Creating a named list (2)", "Selecting elements from a list", "Creating a new list for another movie"]
+    }],
+    "prerequistes": [],
+    "tracks": ["Data Analyst with R", "Data Scientist with R", "R Programming"]
+  }, {
+    "title": "Introduction to R",
+    "description": "Master the basics of data analysis by manipulating common data structures such as vectors, matrices, and data frames.",
+    "detailDescription": "In Introduction to R, you will master the basics of this widely used open source language, including factors, lists, and data frames. With the knowledge gained in this course, you will be ready to undertake your first very own data analysis. Oracle estimated over 2 million R users worldwide in 2012, cementing R as a leading programming language in statistics and data science. Every year, the number of R users grows by about 40%, and an increasing number of organizations are using it in their day-to-day activities. Begin your journey to learn R with us today!",
+    "time": "4 hours",
+    "chapters": [{
+      "title": "Intro to basics",
+      "index": "1",
+      "description": "Take your first steps with R. In this chapter, you will learn how to use the console as a calculator and how to assign variables. You will also get to know the basic data types in R. Let's get started.",
+      "parts": ["How it works", "Arithmetic with R", "Variable assignment", "Variable assignment (2)", "Variable assignment (3)", "Apples and oranges", "Basic data types in R", "What's that data type?"]
+    }, {
+      "title": "Matrices",
+      "index": "3",
+      "description": "In this chapter, you will learn how to work with matrices in R. By the end of the chapter, you will be able to create matrices and understand how to do basic computations with them. You will analyze the box office numbers of the Star Wars movies and learn how to use matrices in R. May the force be with you!",
+      "parts": ["What's a matrix?", "Analyze matrices, you shall", "Naming a matrix", "Calculating the worldwide box office", "Adding a column for the Worldwide box office", "Adding a row", "The total box office revenue for the entire saga", "Selection of matrix elements", "A little arithmetic with matrices", "A little arithmetic with matrices (2)"]
+    }, {
+      "title": "Data frames",
+      "index": "5",
+      "description": "Most datasets you will be working with will be stored as data frames. By the end of this chapter, you will be able to create a data frame, select interesting parts of a data frame, and order a data frame according to certain variables.",
+      "parts": ["What's a data frame?", "Quick, have a look at your data set", "Have a look at the structure", "Creating a data frame", "Creating a data frame (2)", "Selection of data frame elements", "Selection of data frame elements (2)", "Only planets with rings", "Only planets with rings (2)", "Only planets with rings but shorter", "Sorting", "Sorting your data frame"]
+    }, {
+      "title": "Vectors",
+      "index": "2",
+      "description": "We take you on a trip to Vegas, where you will learn how to analyze your gambling results using vectors in R. After completing this chapter, you will be able to create vectors in R, name them, select elements from them, and compare different vectors.",
+      "parts": ["Create a vector", "Create a vector (2)", "Create a vector (3)", "Naming a vector", "Naming a vector (2)", "Calculating total winnings", "Calculating total winnings (2)", "Calculating total winnings (3)", "Comparing total winnings", "Vector selection: the good times", "Vector selection: the good times (2)", "Vector selection: the good times (3)", "Vector selection: the good times (4)", "Selection by comparison - Step 1", "Selection by comparison - Step 2", "Advanced selection"]
+    }, {
+      "title": "Factors",
+      "index": "4",
+      "description": "Data often falls into a limited number of categories. For example, human hair color can be categorized as black, brown, blond, red, grey, or white—and perhaps a few more options for people who color their hair. In R, categorical data is stored in factors. Factors are very important in data analysis, so start learning how to create, subset, and compare them now.",
+      "parts": ["What's a factor and why would you use it?", "What's a factor and why would you use it? (2)", "What's a factor and why would you use it? (3)", "Factor levels", "Summarizing a factor", "Battle of the sexes", "Ordered factors", "Ordered factors (2)", "Comparing ordered factors"]
+    }, {
+      "title": "Lists",
+      "index": "6",
+      "description": "As opposed to vectors, lists can hold components of different types, just as your to-do lists can contain different categories of tasks. This chapter will teach you how to create, name, and subset these lists.",
+      "parts": ["Lists, why would you need them?", "Lists, why would you need them? (2)", "Creating a list", "Creating a named list", "Creating a named list (2)", "Selecting elements from a list", "Creating a new list for another movie"]
+    }],
+    "prerequistes": [],
+    "tracks": ["Data Analyst with R", "Data Scientist with R", "R Programming"]
+  }, {
+    "title": "Intermediate R",
+    "description": "Continue your journey to becoming an R ninja by learning about conditional statements, loops, and vector functions.",
+    "detailDescription": "Intermediate R is the next stop on your journey in mastering the R programming language. In this R training, you will learn about conditional statements, loops, and functions to power your own R scripts. Next, make your R code more efficient and readable using the apply functions. Finally, the utilities chapter gets you up to speed with regular expressions in R, data structure manipulations, and times and dates. This course will allow you to take the next step in advancing your overall knowledge and capabilities while programming in R.",
+    "time": "6 hours",
+    "chapters": [{
+      "title": "\n          Conditionals and Control Flow\n        ",
+      "index": "1",
+      "description": "\n    In this chapter, you'll learn about relational operators for comparing R objects, and logical operators like \"and\" and \"or\" for combining TRUE and FALSE values.  Then, you'll use this knowledge to build conditional statements.\n  ",
+      "parts": ["Relational Operators", "Equality", "Greater and less than", "Compare vectors", "Compare matrices", "Logical Operators", "& and |", "& and | (2)", "Reverse the result: !", "Blend it all together", "Conditional Statements", "The if statement", "Add an else", "Customize further: else if", "Else if 2.0", "Take control!"]
+    }, {
+      "title": "\n          Loops\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    Loops can come in handy on numerous occasions. While loops are like repeated if statements, the for loop is designed to iterate over all elements in a sequence. Learn about them in this chapter.\n  ",
+      "parts": ["While loop", "Write a while loop", "Throw in more conditionals", "Stop the while loop: break", "Build a while loop from scratch", "For loop", "Loop over a vector", "Loop over a list", "Loop over a matrix", "Mix it up with control flow", "Next, you break it", "Build a for loop from scratch"]
+    }, {
+      "title": "\n          Functions\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    Functions are an extremely important concept in almost every programming language, and R is no different. Learn what functions are and how to use them—then take charge by writing your own functions.\n  ",
+      "parts": ["Introduction to Functions", "Function documentation", "Use a function", "Use a function (2)", "Use a function (3)", "Functions inside functions", "Required, or optional?", "Writing Functions", "Write your own function", "Write your own function (2)", "Write your own function (3)", "Function scoping", "R passes arguments by value", "R you functional?", "R you functional? (2)", "R Packages", "Load an R Package", "Different ways to load a package"]
+    }, {
+      "title": "\n          The apply family\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    Whenever you're using a for loop, you may want to revise your code to see whether you can use the lapply function instead. Learn all about this intuitive way of applying a function over a list or a vector, and how to use its variants, sapply and vapply.\n  ",
+      "parts": ["lapply", "Use lapply with a built-in R function", "Use lapply with your own function", "lapply and anonymous functions", "Use lapply with additional arguments", "Apply functions that return NULL", "sapply", "How to use sapply", "sapply with your own function", "sapply with function returning vector", "sapply can't simplify, now what?", "sapply with functions that return NULL", "Reverse engineering sapply", "vapply", "Use vapply", "Use vapply (2)", "From sapply to vapply"]
+    }, {
+      "title": "\n          Utilities\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    Mastering R programming is not only about understanding its programming concepts. Having a solid understanding of a wide range of R functions is also important. This chapter introduces you to many useful functions for data structure manipulation, regular expressions, and working with times and dates.\n  ",
+      "parts": ["Useful Functions", "Mathematical utilities", "Find the error", "Data Utilities", "Find the error (2)", "Beat Gauss using R", "Regular Expressions", "grepl & grep", "grepl & grep (2)", "sub & gsub", "sub & gsub (2)", "Times & Dates", "Right here, right now", "Create and format dates", "Create and format times", "Calculations with Dates", "Calculations with Times", "Time is of the essence"]
+    }],
+    "prerequistes": ["Introduction to R"],
+    "tracks": ["Data Analyst with R", "Data Scientist with R", "R Programming"]
+  }, {
+    "title": "Intermediate R",
+    "description": "Continue your journey to becoming an R ninja by learning about conditional statements, loops, and vector functions.",
+    "detailDescription": "Intermediate R is the next stop on your journey in mastering the R programming language. In this R training, you will learn about conditional statements, loops, and functions to power your own R scripts. Next, make your R code more efficient and readable using the apply functions. Finally, the utilities chapter gets you up to speed with regular expressions in R, data structure manipulations, and times and dates. This course will allow you to take the next step in advancing your overall knowledge and capabilities while programming in R.",
+    "time": "6 hours",
+    "chapters": [{
+      "title": "\n          Conditionals and Control Flow\n        ",
+      "index": "1",
+      "description": "\n    In this chapter, you'll learn about relational operators for comparing R objects, and logical operators like \"and\" and \"or\" for combining TRUE and FALSE values.  Then, you'll use this knowledge to build conditional statements.\n  ",
+      "parts": ["Relational Operators", "Equality", "Greater and less than", "Compare vectors", "Compare matrices", "Logical Operators", "& and |", "& and | (2)", "Reverse the result: !", "Blend it all together", "Conditional Statements", "The if statement", "Add an else", "Customize further: else if", "Else if 2.0", "Take control!"]
+    }, {
+      "title": "\n          Loops\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    Loops can come in handy on numerous occasions. While loops are like repeated if statements, the for loop is designed to iterate over all elements in a sequence. Learn about them in this chapter.\n  ",
+      "parts": ["While loop", "Write a while loop", "Throw in more conditionals", "Stop the while loop: break", "Build a while loop from scratch", "For loop", "Loop over a vector", "Loop over a list", "Loop over a matrix", "Mix it up with control flow", "Next, you break it", "Build a for loop from scratch"]
+    }, {
+      "title": "\n          Functions\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    Functions are an extremely important concept in almost every programming language, and R is no different. Learn what functions are and how to use them—then take charge by writing your own functions.\n  ",
+      "parts": ["Introduction to Functions", "Function documentation", "Use a function", "Use a function (2)", "Use a function (3)", "Functions inside functions", "Required, or optional?", "Writing Functions", "Write your own function", "Write your own function (2)", "Write your own function (3)", "Function scoping", "R passes arguments by value", "R you functional?", "R you functional? (2)", "R Packages", "Load an R Package", "Different ways to load a package"]
+    }, {
+      "title": "\n          The apply family\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    Whenever you're using a for loop, you may want to revise your code to see whether you can use the lapply function instead. Learn all about this intuitive way of applying a function over a list or a vector, and how to use its variants, sapply and vapply.\n  ",
+      "parts": ["lapply", "Use lapply with a built-in R function", "Use lapply with your own function", "lapply and anonymous functions", "Use lapply with additional arguments", "Apply functions that return NULL", "sapply", "How to use sapply", "sapply with your own function", "sapply with function returning vector", "sapply can't simplify, now what?", "sapply with functions that return NULL", "Reverse engineering sapply", "vapply", "Use vapply", "Use vapply (2)", "From sapply to vapply"]
+    }, {
+      "title": "\n          Utilities\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    Mastering R programming is not only about understanding its programming concepts. Having a solid understanding of a wide range of R functions is also important. This chapter introduces you to many useful functions for data structure manipulation, regular expressions, and working with times and dates.\n  ",
+      "parts": ["Useful Functions", "Mathematical utilities", "Find the error", "Data Utilities", "Find the error (2)", "Beat Gauss using R", "Regular Expressions", "grepl & grep", "grepl & grep (2)", "sub & gsub", "sub & gsub (2)", "Times & Dates", "Right here, right now", "Create and format dates", "Create and format times", "Calculations with Dates", "Calculations with Times", "Time is of the essence"]
+    }],
+    "prerequistes": ["Introduction to R"],
+    "tracks": ["Data Analyst with R", "Data Scientist with R", "R Programming"]
+  },
+  {
+    "title": "Text Mining with Bag-of-Words in R",
+    "description": "Learn the bag of words technique for text mining with R.",
+    "detailDescription": "It is estimated that over 70% of potentially usable business information is unstructured, often in the form of text data. Text mining provides a collection of techniques that allows us to derive actionable insights from unstructured data. In this course, we explore the basics of text mining using the bag of words method. The first three chapters introduce a variety of essential topics for analyzing and visualizing text data. The final chapter allows you to apply everything you've learned in a real-world case study to extract insights from employee reviews of two major tech companies.",
+    "time": "4 hours",
+    "chapters": [{
+      "title": "\n          Jumping into text mining with bag of words\n        ",
+      "index": "1",
+      "description": "\n    In this chapter, you'll learn the basics of using the bag of words method for analyzing text data.\n  ",
+      "parts": ["What is text mining?", "Understanding text mining", "Quick taste of text mining", "Getting started", "Load some text", "Make the vector a VCorpus object (1)", "Make the vector a VCorpus object (2)", "Make a VCorpus from a data frame", "Cleaning and preprocessing text", "Common cleaning functions from tm", "Cleaning with qdap", "All about stop words", "Intro to word stemming and stem completion", "Word stemming and stem completion on a sentence", "Apply preprocessing steps to a corpus", "The TDM & DTM", "Understanding TDM and DTM", "Make a document-term matrix", "Make a term-document matrix"]
+    }, {
+      "title": "\n          Word clouds and more interesting visuals\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    This chapter will teach you how to visualize text data in a way that's both informative and engaging.\n  ",
+      "parts": ["Common text mining visuals", "Test your understanding of text mining", "Frequent terms with tm", "Frequent terms with qdap", "Intro to word clouds", "A simple word cloud", "Stop words and word clouds", "Plot the better word cloud", "Improve word cloud colors", "Use prebuilt color palettes", "Other word clouds and word networks", "Find common words", "Visualize common words", "Visualize dissimilar words", "Polarized tag cloud", "Visualize word networks", "Teaser: simple word clustering"]
+    }, {
+      "title": "\n          Adding to your tm skills\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    In this chapter, you'll learn more basic text mining techniques based on the bag of words method.\n  ",
+      "parts": ["Simple word clustering", "Test your understanding of text mining", "Distance matrix and dendrogram", "Make a dendrogram friendly TDM", "Put it all together: a text-based dendrogram", "Dendrogram aesthetics", "Using word association", "Getting past single words", "N-gram tokenization", "Changing n-grams", "How do bigrams affect word clouds?", "Different frequency criteria", "Changing frequency weights", "Capturing metadata in tm"]
+    }, {
+      "title": "\n          Battle of the tech giants for talent\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    This chapter ties everything together with a case study in text mining for HR analytics.\n  ",
+      "parts": ["Amazon vs. Google", "Organizing a text mining project", "Step 1: Problem definition", "Step 2: Identifying the text sources", "Step 3: Text organization", "Text organization", "Working with Google reviews", "Steps 4 & 5: Feature extraction & analysis", "Feature extraction & analysis: amzn_pros", "Feature extraction & analysis: amzn_cons", "amzn_cons dendrogram", "Word association", "Quick review of Google reviews", "Cage match! Amazon vs. Google pro reviews", "Cage match, part 2! Negative reviews", "Step 6: Reach a conclusion", "Draw conclusions, insights, or recommendations", "Draw another conclusion, insight, or recommendation", "Finished!"]
+    }],
+    "prerequistes": ["Intermediate R"],
+    "tracks": ["Text Mining with R"]
+  }, {
+    "title": "Text Mining with Bag-of-Words in R",
+    "description": "Learn the bag of words technique for text mining with R.",
+    "detailDescription": "It is estimated that over 70% of potentially usable business information is unstructured, often in the form of text data. Text mining provides a collection of techniques that allows us to derive actionable insights from unstructured data. In this course, we explore the basics of text mining using the bag of words method. The first three chapters introduce a variety of essential topics for analyzing and visualizing text data. The final chapter allows you to apply everything you've learned in a real-world case study to extract insights from employee reviews of two major tech companies.",
+    "time": "4 hours",
+    "chapters": [{
+      "title": "\n          Jumping into text mining with bag of words\n        ",
+      "index": "1",
+      "description": "\n    In this chapter, you'll learn the basics of using the bag of words method for analyzing text data.\n  ",
+      "parts": ["What is text mining?", "Understanding text mining", "Quick taste of text mining", "Getting started", "Load some text", "Make the vector a VCorpus object (1)", "Make the vector a VCorpus object (2)", "Make a VCorpus from a data frame", "Cleaning and preprocessing text", "Common cleaning functions from tm", "Cleaning with qdap", "All about stop words", "Intro to word stemming and stem completion", "Word stemming and stem completion on a sentence", "Apply preprocessing steps to a corpus", "The TDM & DTM", "Understanding TDM and DTM", "Make a document-term matrix", "Make a term-document matrix"]
+    }, {
+      "title": "\n          Word clouds and more interesting visuals\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    This chapter will teach you how to visualize text data in a way that's both informative and engaging.\n  ",
+      "parts": ["Common text mining visuals", "Test your understanding of text mining", "Frequent terms with tm", "Frequent terms with qdap", "Intro to word clouds", "A simple word cloud", "Stop words and word clouds", "Plot the better word cloud", "Improve word cloud colors", "Use prebuilt color palettes", "Other word clouds and word networks", "Find common words", "Visualize common words", "Visualize dissimilar words", "Polarized tag cloud", "Visualize word networks", "Teaser: simple word clustering"]
+    }, {
+      "title": "\n          Adding to your tm skills\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    In this chapter, you'll learn more basic text mining techniques based on the bag of words method.\n  ",
+      "parts": ["Simple word clustering", "Test your understanding of text mining", "Distance matrix and dendrogram", "Make a dendrogram friendly TDM", "Put it all together: a text-based dendrogram", "Dendrogram aesthetics", "Using word association", "Getting past single words", "N-gram tokenization", "Changing n-grams", "How do bigrams affect word clouds?", "Different frequency criteria", "Changing frequency weights", "Capturing metadata in tm"]
+    }, {
+      "title": "\n          Battle of the tech giants for talent\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    This chapter ties everything together with a case study in text mining for HR analytics.\n  ",
+      "parts": ["Amazon vs. Google", "Organizing a text mining project", "Step 1: Problem definition", "Step 2: Identifying the text sources", "Step 3: Text organization", "Text organization", "Working with Google reviews", "Steps 4 & 5: Feature extraction & analysis", "Feature extraction & analysis: amzn_pros", "Feature extraction & analysis: amzn_cons", "amzn_cons dendrogram", "Word association", "Quick review of Google reviews", "Cage match! Amazon vs. Google pro reviews", "Cage match, part 2! Negative reviews", "Step 6: Reach a conclusion", "Draw conclusions, insights, or recommendations", "Draw another conclusion, insight, or recommendation", "Finished!"]
+    }],
+    "prerequistes": ["Intermediate R"],
+    "tracks": ["Text Mining with R"]
+  }, {
+    "title": "Case Study: Exploring Baseball Pitching Data in R",
+    "description": "Use a rich baseball dataset from the MLB's Statcast system to practice your data exploration skills.",
+    "detailDescription": "",
+    "time": "4 hours",
+    "chapters": [{
+      "title": "\n          Exploring pitch velocities\n        ",
+      "index": "1",
+      "description": "\n    Velocity is a key component in the arsenal of many pitchers. In this chapter, you will examine whether there was an uptick in Zack Greinke's velocity during his impressive July in 2015. The chapter will introduce how to deal with dates, plotting distributions with histograms, and using the very handy tapply() function.\n  ",
+      "parts": ["Did Zack Greinke pitch differently in July?", "Clean the data", "Check dates", "Delimit dates", "Subsets and histograms", "Velocity distribution", "Fastball velocity distribution", "Distribution comparisons with color", "Describe the histogram", "Using tapply() for comparisons", "tapply() for velocity changes", "Game-by-game velocity changes", "Tidying the data frame", "A game-by-game line plot", "Adding jittered points", "Wrap-up"]
+    }, {
+      "title": "\n          Exploring pitch types\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    Pitchers throw various types of pitches with different velocities and trajectories in order to make it more difficult for the batter to hit the ball. This chapter will introduce pitch types and make heavy use of tables to examine changes to pitch type choices by Greinke in July, as well as in other important situations.\n  ",
+      "parts": ["Pitch mix", "Pitch mix tables", "Pitch mix table using prop.table()", "Pitch mix tables - July vs. other", "Describe fastball usage", "Pitch mix tables - changes in pitch type rates", "Describe pitch usage", "Ball-strike count and pitch usage", "Ball-strike count frequency", "Make a new variable", "Ball-strike count in July vs. other months", "Visualizing ball-strike count in July vs. other months", "Cross-tabulate pitch use in ball-strike counts", "Describe pitch count usage", "Pitch mix late in games", "Late game pitch mix - grouped barplots", "Describe late game pitching", "Wrap-up"]
+    }, {
+      "title": "\n          Exploring pitch locations\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    As with velocity and pitch type, pitch location can play a key role in pitching success. This chapter leverages the rich information about location provided in the MLB Statcast data to visualize changes in Greinke's pitch location choice in July and in different ball-strike counts. You will also make use of the very important for loop in the context of plotting data.\n  ",
+      "parts": ["Pitch location and Greinke's July", "Locational changes - summary", "Describe the locations", "Locational changes - visualization", "Locational changes - plotting a grid", "Binning locational data", "Grid percentage question", "For loops for plots", "For loops and plotting locational grid proportions", "Binned locational differences", "Plotting zone proportion differences", "Describe the figure", "Location and ball-strike count", "0-2 vs. 3-0 locational changes", "Plotting count-based locational differences", "Wrap-up"]
+    }, {
+      "title": "\n          Exploring batted ball outcomes\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    In this chapter, you'll bring it all together. Minimizing damage on each pitch is the key to run prevention by the pitcher. Therefore, you will look closely at outcomes from pitches thrown by Greinke in different months. We'll also introduce the ggplot2 package to create high quality visualizations of hitter exit speed when Greinke throws to different locations.\n  ",
+      "parts": ["Batted ball outcomes - contact rate", "Velocity impact on contact rate", "Pitch type impact on contact rate", "Velocity impact on contact by pitch type", "Greinke's out pitch?", "Describe 2-strike pitch usage", "Impact of pitch location on contact rate", "Using ggplot2", "Rethinking the use of for loops", "Contact rate with ggplot2", "Adding titles and axes to ggplot2 figure", "Making a heat map - visualizing hot and cold zones", "Adding text for contact rate values", "Batted ball outcomes - exit velocity", "Contact and exit speed", "Location and exit speed", "Plotting exit speed as a heat map", "Using tidy data and facets in ggplot2", "Wrap-up"]
+    }],
+    "prerequistes": ["Intermediate R"],
+    "tracks": []
+  }, {
+    "title": "Case Study: Exploring Baseball Pitching Data in R",
+    "description": "Use a rich baseball dataset from the MLB's Statcast system to practice your data exploration skills.",
+    "detailDescription": "",
+    "time": "4 hours",
+    "chapters": [{
+      "title": "\n          Exploring pitch velocities\n        ",
+      "index": "1",
+      "description": "\n    Velocity is a key component in the arsenal of many pitchers. In this chapter, you will examine whether there was an uptick in Zack Greinke's velocity during his impressive July in 2015. The chapter will introduce how to deal with dates, plotting distributions with histograms, and using the very handy tapply() function.\n  ",
+      "parts": ["Did Zack Greinke pitch differently in July?", "Clean the data", "Check dates", "Delimit dates", "Subsets and histograms", "Velocity distribution", "Fastball velocity distribution", "Distribution comparisons with color", "Describe the histogram", "Using tapply() for comparisons", "tapply() for velocity changes", "Game-by-game velocity changes", "Tidying the data frame", "A game-by-game line plot", "Adding jittered points", "Wrap-up"]
+    }, {
+      "title": "\n          Exploring pitch types\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    Pitchers throw various types of pitches with different velocities and trajectories in order to make it more difficult for the batter to hit the ball. This chapter will introduce pitch types and make heavy use of tables to examine changes to pitch type choices by Greinke in July, as well as in other important situations.\n  ",
+      "parts": ["Pitch mix", "Pitch mix tables", "Pitch mix table using prop.table()", "Pitch mix tables - July vs. other", "Describe fastball usage", "Pitch mix tables - changes in pitch type rates", "Describe pitch usage", "Ball-strike count and pitch usage", "Ball-strike count frequency", "Make a new variable", "Ball-strike count in July vs. other months", "Visualizing ball-strike count in July vs. other months", "Cross-tabulate pitch use in ball-strike counts", "Describe pitch count usage", "Pitch mix late in games", "Late game pitch mix - grouped barplots", "Describe late game pitching", "Wrap-up"]
+    }, {
+      "title": "\n          Exploring pitch locations\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    As with velocity and pitch type, pitch location can play a key role in pitching success. This chapter leverages the rich information about location provided in the MLB Statcast data to visualize changes in Greinke's pitch location choice in July and in different ball-strike counts. You will also make use of the very important for loop in the context of plotting data.\n  ",
+      "parts": ["Pitch location and Greinke's July", "Locational changes - summary", "Describe the locations", "Locational changes - visualization", "Locational changes - plotting a grid", "Binning locational data", "Grid percentage question", "For loops for plots", "For loops and plotting locational grid proportions", "Binned locational differences", "Plotting zone proportion differences", "Describe the figure", "Location and ball-strike count", "0-2 vs. 3-0 locational changes", "Plotting count-based locational differences", "Wrap-up"]
+    }, {
+      "title": "\n          Exploring batted ball outcomes\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    In this chapter, you'll bring it all together. Minimizing damage on each pitch is the key to run prevention by the pitcher. Therefore, you will look closely at outcomes from pitches thrown by Greinke in different months. We'll also introduce the ggplot2 package to create high quality visualizations of hitter exit speed when Greinke throws to different locations.\n  ",
+      "parts": ["Batted ball outcomes - contact rate", "Velocity impact on contact rate", "Pitch type impact on contact rate", "Velocity impact on contact by pitch type", "Greinke's out pitch?", "Describe 2-strike pitch usage", "Impact of pitch location on contact rate", "Using ggplot2", "Rethinking the use of for loops", "Contact rate with ggplot2", "Adding titles and axes to ggplot2 figure", "Making a heat map - visualizing hot and cold zones", "Adding text for contact rate values", "Batted ball outcomes - exit velocity", "Contact and exit speed", "Location and exit speed", "Plotting exit speed as a heat map", "Using tidy data and facets in ggplot2", "Wrap-up"]
+    }],
+    "prerequistes": ["Intermediate R"],
+    "tracks": []
+  },
+  {
+    "title": "Introduction to Portfolio Analysis in R",
+    "description": "Apply your finance and R skills to backtest, analyze, and optimize financial portfolios.",
+    "detailDescription": "A golden rule in investing is to always test the portfolio strategy on historical data, and, once you are trading the strategy, to constantly monitor its performance. In this course, you will learn this by critically analyzing portfolio returns using the package PerformanceAnalytics. The course also shows how to estimate the portfolio weights that optimally balance risk and return. This is a data-driven course that combines portfolio theory with the practice in R, illustrated on real-life examples of equity portfolios and asset allocation problems. If you'd like to continue exploring the data after you've finished this course, the data used in the first three chapters can be obtained using the tseries-package. The code to get them can be found here. The data used in chapter 4 can be downloaded here.",
+    "time": "5 hours",
+    "chapters": [{
+      "title": "\n          The building blocks\n        ",
+      "index": "1",
+      "description": "\n    Asset returns and portfolio weights; those are the building blocks of a portfolio return. This chapter is about computing those portfolio weights and returns in R.\n  ",
+      "parts": ["Welcome to the course", "Getting a grasp of the basics", "Get a feel for the data", "The portfolio weights", "Calculating portfolio weights when component values are given", "The weights of an equally weighted portfolio", "The weights of a market capitalization-weighted portfolio", "The portfolio return", "Calculation of portfolio returns", "From simple to gross and multi-period returns", "The asymmetric impact of gains and losses", "PerformanceAnalytics", "Buy-and-hold versus (daily) rebalancing", "The time series of asset returns", "The time series of portfolio returns", "The time series of weights"]
+    }, {
+      "title": "\n          Analyzing performance\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    The history of portfolio returns reveals valuable information about how much the investor can expect to gain or lose. This chapter introduces the R functionality to analyze the investment performance based on a statistical analysis of the portfolio returns. It includes graphical analysis and the calculation of performance statistics expressing average return, risk, and risk-adjusted return over rolling estimation samples.\n  ",
+      "parts": ["Dimensions of  portfolio performance", "Exploring the monthly S&P 500 returns", "The monthly mean and volatility", "The (annualized) Sharpe ratio", "Excess returns and the portfolio's Sharpe ratio", "Annualized mean and volatility", "Time-variation in  portfolio performance", "Effect of window length choice", "Rolling annualized mean and volatility", "Subperiod performance analysis and the function window", "Non-normality of the return distribution", "Balancing risk and reward", "Detecting non-normality using skewness and kurtosis", "Downside risk measures", "Drawdowns due to buying high, selling low"]
+    }, {
+      "title": "\n          Performance drivers\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    In addition to studying portfolio performance based on the observed portfolio return series, it is relevant to determine how individual (expected) returns, volatilities, and correlations interact to determine the total portfolio performance.\n  ",
+      "parts": ["Drivers in the case of two assets", "Driver 1: The assets' individual performance", "Driver 2: The choice of portfolio weights", "Driver 3: The correlation between the asset returns", "Interpreting correlation", "Using matrix notation", "Making a risk-reward scatter diagram", "The covariance matrix", "Matrix-based calculation of portfolio mean and variance", "Portfolio risk budget", "Who did it?"]
+    }, {
+      "title": "\n          Optimizing the portfolio\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    We have up to now considered the portfolio weights as given. In this chapter, you learn how to determine in R the portfolio weights that are optimal in terms of achieving a target return with minimum variance, while satisfying constraints on the portfolio weights.\n  ",
+      "parts": ["Modern portfolio theory  of Harry Markowitz", "Mean-variance based investing in DJIA stocks", "Exploring monthly returns of the 30 DJIA stocks", "Finding the mean-variance efficient portfolio", "Effect of the return target", "Imposing weight constraints", "The efficient frontier", "Computing the efficient frontier using a grid of target returns", "Interpreting the efficient frontier", "Properties of the efficient frontier", "The minimum variance and maximum Sharpe ratio portfolio", "In-sample vs.  out-of-sample evaluation", "Split-sample evaluation", "Out of sample performance evaluation", "It ain't over"]
+    }],
+    "prerequistes": ["Intermediate R for Finance"],
+    "tracks": ["Finance Fundamentals in R", "Quantitative Analyst with R"]
+  },
+  {
+    "title": "Introduction to Portfolio Analysis in R",
+    "description": "Apply your finance and R skills to backtest, analyze, and optimize financial portfolios.",
+    "detailDescription": "A golden rule in investing is to always test the portfolio strategy on historical data, and, once you are trading the strategy, to constantly monitor its performance. In this course, you will learn this by critically analyzing portfolio returns using the package PerformanceAnalytics. The course also shows how to estimate the portfolio weights that optimally balance risk and return. This is a data-driven course that combines portfolio theory with the practice in R, illustrated on real-life examples of equity portfolios and asset allocation problems. If you'd like to continue exploring the data after you've finished this course, the data used in the first three chapters can be obtained using the tseries-package. The code to get them can be found here. The data used in chapter 4 can be downloaded here.",
+    "time": "5 hours",
+    "chapters": [{
+      "title": "\n          The building blocks\n        ",
+      "index": "1",
+      "description": "\n    Asset returns and portfolio weights; those are the building blocks of a portfolio return. This chapter is about computing those portfolio weights and returns in R.\n  ",
+      "parts": ["Welcome to the course", "Getting a grasp of the basics", "Get a feel for the data", "The portfolio weights", "Calculating portfolio weights when component values are given", "The weights of an equally weighted portfolio", "The weights of a market capitalization-weighted portfolio", "The portfolio return", "Calculation of portfolio returns", "From simple to gross and multi-period returns", "The asymmetric impact of gains and losses", "PerformanceAnalytics", "Buy-and-hold versus (daily) rebalancing", "The time series of asset returns", "The time series of portfolio returns", "The time series of weights"]
+    }, {
+      "title": "\n          Analyzing performance\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    The history of portfolio returns reveals valuable information about how much the investor can expect to gain or lose. This chapter introduces the R functionality to analyze the investment performance based on a statistical analysis of the portfolio returns. It includes graphical analysis and the calculation of performance statistics expressing average return, risk, and risk-adjusted return over rolling estimation samples.\n  ",
+      "parts": ["Dimensions of  portfolio performance", "Exploring the monthly S&P 500 returns", "The monthly mean and volatility", "The (annualized) Sharpe ratio", "Excess returns and the portfolio's Sharpe ratio", "Annualized mean and volatility", "Time-variation in  portfolio performance", "Effect of window length choice", "Rolling annualized mean and volatility", "Subperiod performance analysis and the function window", "Non-normality of the return distribution", "Balancing risk and reward", "Detecting non-normality using skewness and kurtosis", "Downside risk measures", "Drawdowns due to buying high, selling low"]
+    }, {
+      "title": "\n          Performance drivers\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    In addition to studying portfolio performance based on the observed portfolio return series, it is relevant to determine how individual (expected) returns, volatilities, and correlations interact to determine the total portfolio performance.\n  ",
+      "parts": ["Drivers in the case of two assets", "Driver 1: The assets' individual performance", "Driver 2: The choice of portfolio weights", "Driver 3: The correlation between the asset returns", "Interpreting correlation", "Using matrix notation", "Making a risk-reward scatter diagram", "The covariance matrix", "Matrix-based calculation of portfolio mean and variance", "Portfolio risk budget", "Who did it?"]
+    }, {
+      "title": "\n          Optimizing the portfolio\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    We have up to now considered the portfolio weights as given. In this chapter, you learn how to determine in R the portfolio weights that are optimal in terms of achieving a target return with minimum variance, while satisfying constraints on the portfolio weights.\n  ",
+      "parts": ["Modern portfolio theory  of Harry Markowitz", "Mean-variance based investing in DJIA stocks", "Exploring monthly returns of the 30 DJIA stocks", "Finding the mean-variance efficient portfolio", "Effect of the return target", "Imposing weight constraints", "The efficient frontier", "Computing the efficient frontier using a grid of target returns", "Interpreting the efficient frontier", "Properties of the efficient frontier", "The minimum variance and maximum Sharpe ratio portfolio", "In-sample vs.  out-of-sample evaluation", "Split-sample evaluation", "Out of sample performance evaluation", "It ain't over"]
+    }],
+    "prerequistes": ["Intermediate R for Finance"],
+    "tracks": ["Finance Fundamentals in R", "Quantitative Analyst with R"]
+  }, {
+    "title": "Credit Risk Modeling in R",
+    "description": "Apply statistical modeling in a real-life setting using logistic regression and decision trees to model credit risk.",
+    "detailDescription": "",
+    "time": "4 hours",
+    "chapters": [{
+      "title": "\n          Introduction and data preprocessing\n        ",
+      "index": "1",
+      "description": "\n    This chapter begins with a general introduction to credit risk models. We'll explore a real-life data set, then preprocess the data set such that it's in the appropriate format before applying the credit risk models.\n  ",
+      "parts": ["Introduction and data structure", "Exploring the credit data", "Interpreting a CrossTable()", "Histograms and outliers", "Histograms", "Outliers", "Missing data and coarse classification", "Deleting missing data", "Replacing missing data", "Keeping missing data", "Data splitting and confusion matrices", "Splitting the data set", "Creating a confusion matrix"]
+    }, {
+      "title": "\n          Logistic regression\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    Logistic regression is still a widely used method in credit risk modeling. In this chapter, you will learn how to apply logistic regression models on credit data in R.\n  ",
+      "parts": ["Logistic regression: introduction", "Basic logistic regression", "Interpreting the odds for a categorical variable", "Multiple variables in a logistic regression model", "Interpreting significance levels", "Logistic regression:  predicting the probability of default", "Predicting the probability of default", "Making more discriminative models", "Evaluating the logistic regression model result", "Specifying a cut-off", "Comparing two cut-offs", "Wrap-up and remarks", "Comparing link functions for a given cut-off"]
+    }, {
+      "title": "\n          Decision trees\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    Classification trees are another popular method in the world of credit risk modeling. In this chapter, you will learn how to build classification trees using credit data in R.\n  ",
+      "parts": ["What is a decision tree?", "Computing the gain for a tree", "Changing one Gini...", "Building decision trees using the rpart()-package", "Undersampling the training set", "Changing the prior probabilities", "Including a loss matrix", "Pruning the decision tree", "Pruning the tree with changed prior probabilities", "Pruning the tree with the loss matrix", "Other tree options and  the construction of confusion matrices", "One final tree using more options", "Confusion matrices and accuracy of our final trees", "Optimizing the accuracy"]
+    }, {
+      "title": "\n          Evaluating a credit risk model\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    In this chapter, you'll learn how you can evaluate and compare the results obtained through several credit risk models.\n  ",
+      "parts": ["Finding the right cut-off: the strategy curve", "Computing a bad rate given a fixed acceptance rate", "The strategy table and strategy curve", "To tree or not to tree?", "The ROC-curve", "ROC-curves for comparison of logistic regression models", "ROC-curves for comparison of tree-based models", "Input selection based on the AUC", "Another round of pruning based on AUC", "Best of four", "Further model reduction?", "Course wrap-up"]
+    }],
+    "prerequistes": ["Intermediate R for Finance"],
+    "tracks": ["Applied Finance in R", "Quantitative Analyst with R"]
+  }, {
+    "title": "Credit Risk Modeling in R",
+    "description": "Apply statistical modeling in a real-life setting using logistic regression and decision trees to model credit risk.",
+    "detailDescription": "",
+    "time": "4 hours",
+    "chapters": [{
+        "title": "\n          Introduction and data preprocessing\n        ",
+        "index": "1",
+        "description": "\n    This chapter begins with a general introduction to credit risk models. We'll explore a real-life data set, then preprocess the data set such that it's in the appropriate format before applying the credit risk models.\n  ",
+        "parts": ["Introduction and data structure", "Exploring the credit data", "Interpreting a CrossTable()", "Histograms and outliers", "Histograms", "Outliers", "Missing data and coarse classification", "Deleting missing data", "Replacing missing data", "Keeping missing data", "Data splitting and confusion matrices", "Splitting the data set", "Creating a confusion matrix"]
+      }, {
+        "title": "\n          Logistic regression\n        ",
+        "index": "\n\n  \n    \n  \n\n",
+        "description": "\n    Logistic regression is still a widely used method in credit risk modeling. In this chapter, you will learn how to apply logistic regression models on credit data in R.\n  ",
+        "parts": ["Logistic regression: introduction", "Basic logistic regression", "Interpreting the odds for a categorical variable", "Multiple variables in a logistic regression model", "Interpreting significance levels", "Logistic regression:  predicting the probability of default", "Predicting the probability of default", "Making more discriminative models", "Evaluating the logistic regression model result", "Specifying a cut-off", "Comparing two cut-offs", "Wrap-up and remarks", "Comparing link functions for a given cut-off"]
+      },
+      {
+        "title": "\n          Decision trees\n        ",
+        "index": "\n\n  \n    \n  \n\n",
+        "description": "\n    Classification trees are another popular method in the world of credit risk modeling. In this chapter, you will learn how to build classification trees using credit data in R.\n  ",
+        "parts": ["What is a decision tree?", "Computing the gain for a tree", "Changing one Gini...", "Building decision trees using the rpart()-package", "Undersampling the training set", "Changing the prior probabilities", "Including a loss matrix", "Pruning the decision tree", "Pruning the tree with changed prior probabilities", "Pruning the tree with the loss matrix", "Other tree options and  the construction of confusion matrices", "One final tree using more options", "Confusion matrices and accuracy of our final trees", "Optimizing the accuracy"]
+      }, {
+        "title": "\n          Evaluating a credit risk model\n        ",
+        "index": "\n\n  \n    \n  \n\n",
+        "description": "\n    In this chapter, you'll learn how you can evaluate and compare the results obtained through several credit risk models.\n  ",
+        "parts": ["Finding the right cut-off: the strategy curve", "Computing a bad rate given a fixed acceptance rate", "The strategy table and strategy curve", "To tree or not to tree?", "The ROC-curve", "ROC-curves for comparison of logistic regression models", "ROC-curves for comparison of tree-based models", "Input selection based on the AUC", "Another round of pruning based on AUC", "Best of four", "Further model reduction?", "Course wrap-up"]
+      }
+    ],
+    "prerequistes": ["Intermediate R for Finance"],
+    "tracks": ["Applied Finance in R", "Quantitative Analyst with R"]
+  }, {
+    "title": "Machine Learning with caret in R",
+    "description": "This course teaches the big ideas in machine learning like how to build and evaluate predictive models.",
+    "detailDescription": "Machine learning is the study and application of algorithms that learn from and make predictions on data. From search results to self-driving cars, it has manifested itself in all areas of our lives and is one of the most exciting and fast growing fields of research in the world of data science. This course teaches the big ideas in machine learning: how to build and evaluate predictive models, how to tune them for optimal performance, how to preprocess data for better results, and much more. The popular caret R package, which provides a consistent interface to all of R's most powerful machine learning facilities, is used throughout the course.",
+    "time": "4 hours",
+    "chapters": [{
+      "title": "\n          Regression models: fitting them and evaluating their performance\n        ",
+      "index": "1",
+      "description": "\n    In the first chapter of this course, you'll fit regression models with train() and evaluate their out-of-sample performance using cross-validation and root-mean-square error (RMSE).\n  ",
+      "parts": ["Welcome to the Toolbox", "In-sample RMSE for linear regression", "In-sample RMSE for linear regression on diamonds", "Out-of-sample error measures", "Out-of-sample RMSE for linear regression", "Randomly order the data frame", "Try an 80/20 split", "Predict on test set", "Calculate test set RMSE by hand", "Comparing out-of-sample RMSE to in-sample RMSE", "Cross-validation", "Advantage of cross-validation", "10-fold cross-validation", "5-fold cross-validation", "5 x 5-fold cross-validation", "Making predictions on new data"]
+    }, {
+      "title": "\n          Classification models: fitting them and evaluating their performance\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    In this chapter, you'll fit classification models with train() and evaluate their out-of-sample performance using cross-validation and area under the curve (AUC).\n  ",
+      "parts": ["Logistic regression on sonar", "Why a train/test split?", "Try a 60/40 split", "Fit a logistic regression model", "Confusion matrix", "Confusion matrix takeaways", "Calculate a confusion matrix", "Calculating accuracy", "Calculating true positive rate", "Calculating true negative rate", "Class probabilities and predictions", "Probabilities and classes", "Try another threshold", "From probabilites to confusion matrix", "Introducing the  ROC curve", "What's the value of a ROC curve?", "Plot an ROC curve", "Area under the  curve (AUC)", "Model, ROC, and AUC", "Customizing trainControl", "Using custom trainControl"]
+    }, {
+      "title": "\n          Tuning model parameters to improve performance\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    In this chapter, you will use the train() function to tweak model parameters through cross-validation and grid search.\n  ",
+      "parts": ["Random forests and wine", "Random forests vs. linear models", "Fit a random forest", "Explore a wider  model space", "Advantage of a longer tune length", "Try a longer tune length", "Custom tuning grids", "Advantages of a custom tuning grid", "Fit a random forest with custom tuning", "Introducing glmnet", "Advantage of glmnet", "Make a custom trainControl", "Fit glmnet with custom trainControl", "glmnet with custom tuning grid", "Why a custom tuning grid?", "glmnet with custom trainControl and tuning", "Interpreting glmnet plots"]
+    }, {
+      "title": "\n          Preprocessing your data\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    In this chapter, you will practice using train() to preprocess data before fitting models, improving your ability to making accurate predictions.\n  ",
+      "parts": ["Median imputation", "Median imputation vs. omitting rows", "Apply median imputation", "KNN imputation", "Comparing KNN imputation to median imputation", "Use KNN imputation", "Compare KNN and median imputation", "Multiple preprocessing methods", "Order of operations", "Combining preprocessing methods", "Handling low-information predictors", "Why remove near zero variance predictors?", "Remove near zero variance predictors", "preProcess() and nearZeroVar()", "Fit model on reduced blood-brain data", "Principle components analysis (PCA)", "Using PCA as an alternative to nearZeroVar()"]
+    }, {
+      "title": "\n          Selecting models: a case study in churn prediction\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    In the final chapter of this course, you'll learn how to use resamples() to compare multiple models and select (or ensemble) the best one(s).\n  ",
+      "parts": ["Reusing a trainControl", "Why reuse a trainControl?", "Make custom train/test indices", "Reintroducing glmnet", "glmnet as a baseline model", "Fit the baseline model", "Reintroducing random forest", "Random forest drawback", "Random forest with custom trainControl", "Comparing models", "Matching train/test indices", "Create a resamples object", "More on resamples", "Create a box-and-whisker plot", "Create a scatterplot", "Ensembling models", "Summary"]
+    }],
+    "prerequistes": ["Introduction to R", "Intermediate R", "Correlation and Regression in R"],
+    "tracks": ["Machine Learning Fundamentals in R", "Machine Learning Scientist with R"]
+  }, {
+    "title": "Machine Learning with caret in R",
+    "description": "This course teaches the big ideas in machine learning like how to build and evaluate predictive models.",
+    "detailDescription": "Machine learning is the study and application of algorithms that learn from and make predictions on data. From search results to self-driving cars, it has manifested itself in all areas of our lives and is one of the most exciting and fast growing fields of research in the world of data science. This course teaches the big ideas in machine learning: how to build and evaluate predictive models, how to tune them for optimal performance, how to preprocess data for better results, and much more. The popular caret R package, which provides a consistent interface to all of R's most powerful machine learning facilities, is used throughout the course.",
+    "time": "4 hours",
+    "chapters": [{
+      "title": "\n          Regression models: fitting them and evaluating their performance\n        ",
+      "index": "1",
+      "description": "\n    In the first chapter of this course, you'll fit regression models with train() and evaluate their out-of-sample performance using cross-validation and root-mean-square error (RMSE).\n  ",
+      "parts": ["Welcome to the Toolbox", "In-sample RMSE for linear regression", "In-sample RMSE for linear regression on diamonds", "Out-of-sample error measures", "Out-of-sample RMSE for linear regression", "Randomly order the data frame", "Try an 80/20 split", "Predict on test set", "Calculate test set RMSE by hand", "Comparing out-of-sample RMSE to in-sample RMSE", "Cross-validation", "Advantage of cross-validation", "10-fold cross-validation", "5-fold cross-validation", "5 x 5-fold cross-validation", "Making predictions on new data"]
+    }, {
+      "title": "\n          Classification models: fitting them and evaluating their performance\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    In this chapter, you'll fit classification models with train() and evaluate their out-of-sample performance using cross-validation and area under the curve (AUC).\n  ",
+      "parts": ["Logistic regression on sonar", "Why a train/test split?", "Try a 60/40 split", "Fit a logistic regression model", "Confusion matrix", "Confusion matrix takeaways", "Calculate a confusion matrix", "Calculating accuracy", "Calculating true positive rate", "Calculating true negative rate", "Class probabilities and predictions", "Probabilities and classes", "Try another threshold", "From probabilites to confusion matrix", "Introducing the  ROC curve", "What's the value of a ROC curve?", "Plot an ROC curve", "Area under the  curve (AUC)", "Model, ROC, and AUC", "Customizing trainControl", "Using custom trainControl"]
+    }, {
+      "title": "\n          Tuning model parameters to improve performance\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    In this chapter, you will use the train() function to tweak model parameters through cross-validation and grid search.\n  ",
+      "parts": ["Random forests and wine", "Random forests vs. linear models", "Fit a random forest", "Explore a wider  model space", "Advantage of a longer tune length", "Try a longer tune length", "Custom tuning grids", "Advantages of a custom tuning grid", "Fit a random forest with custom tuning", "Introducing glmnet", "Advantage of glmnet", "Make a custom trainControl", "Fit glmnet with custom trainControl", "glmnet with custom tuning grid", "Why a custom tuning grid?", "glmnet with custom trainControl and tuning", "Interpreting glmnet plots"]
+    }, {
+      "title": "\n          Preprocessing your data\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    In this chapter, you will practice using train() to preprocess data before fitting models, improving your ability to making accurate predictions.\n  ",
+      "parts": ["Median imputation", "Median imputation vs. omitting rows", "Apply median imputation", "KNN imputation", "Comparing KNN imputation to median imputation", "Use KNN imputation", "Compare KNN and median imputation", "Multiple preprocessing methods", "Order of operations", "Combining preprocessing methods", "Handling low-information predictors", "Why remove near zero variance predictors?", "Remove near zero variance predictors", "preProcess() and nearZeroVar()", "Fit model on reduced blood-brain data", "Principle components analysis (PCA)", "Using PCA as an alternative to nearZeroVar()"]
+    }, {
+      "title": "\n          Selecting models: a case study in churn prediction\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    In the final chapter of this course, you'll learn how to use resamples() to compare multiple models and select (or ensemble) the best one(s).\n  ",
+      "parts": ["Reusing a trainControl", "Why reuse a trainControl?", "Make custom train/test indices", "Reintroducing glmnet", "glmnet as a baseline model", "Fit the baseline model", "Reintroducing random forest", "Random forest drawback", "Random forest with custom trainControl", "Comparing models", "Matching train/test indices", "Create a resamples object", "More on resamples", "Create a box-and-whisker plot", "Create a scatterplot", "Ensembling models", "Summary"]
+    }],
+    "prerequistes": ["Introduction to R", "Intermediate R", "Correlation and Regression in R"],
+    "tracks": ["Machine Learning Fundamentals in R", "Machine Learning Scientist with R"]
+  }, {
+    "title": "Manipulating Time Series Data with xts and zoo in R",
+    "description": "The xts and zoo packages make the task of managing and manipulating ordered observations fast and mistake free.",
+    "detailDescription": "Time series are all around us, from server logs to high frequency financial data. Managing and manipulating ordered observations is central to all time series analysis. The xts and zoo packages provide a set of powerful tools to make this task fast and mistake free. In this course, you will learn everything from the basics of xts to advanced tips and tricks for working with time series data in R.",
+    "time": "4 hours",
+    "chapters": [{
+      "title": "\n          Introduction to eXtensible Time Series, using xts and zoo for time series\n        ",
+      "index": "1",
+      "description": "\n    xts and zoo are just two of the many different types of objects that exist in R. This chapter will introduce the basic objects in xts and zoo and their components, and offers examples of how to construct and examine the data.\n  ",
+      "parts": ["Introducing xts and zoo objects", "What is an xts object?", "More than a matrix", "Your first xts object", "Deconstructing xts", "Time based indices", "Importing, exporting and  converting time series", "Converting xts objects", "Importing data", "Exporting xts objects"]
+    }, {
+      "title": "\n          First Order of Business - Basic Manipulations\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    Now that you can create basic xts objects, it's time to see how powerful they can be. This chapter will cover the basics of one of the most useful features of xts: time based subsetting. From there you'll explore additional ways to extract data using time phrases, and conclude with how to do basic operations like adding and subtracting your xts objects.\n  ",
+      "parts": ["Introducing  time based queries", "The ISO-8601 standard", "Querying for dates", "Extracting recurring intraday intervals", "Alternative  extraction techniques", "Row selection with time objects", "Update and replace elements", "Methods to find  periods in your data", "Find the first or last period of time", "Combining first and last", "Math operations  using xts", "Matrix arithmetic - add, subtract, multiply, and divide in time!", "Math with non-overlapping indexes"]
+    }, {
+      "title": "\n          Merging and modifying time series\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    One of the most important parts of working with time series data involves creating derived time series. To do this effectively, it is critical to keep track of dates and times. In this chapter you will look at how xts handles merging new columns and rows into existing data, how to deal with the inevitable missing observations in time series, and how to shift your series in time.\n  ",
+      "parts": ["Merging time series", "Combining xts by column with merge", "Combining xts by row with rbind", "What types of data can be combined using merge?", "Handling missingness", "Fill missing values using last or previous observation", "NA interpolation using na.approx()", "Lags and differences", "Combine a leading and lagging time series", "Calculate a difference of a series using diff()", "What is the key difference in lag between xts and zoo"]
+    }, {
+      "title": "\n          Apply and aggregate by time\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    Now the fun begins! A very common usage pattern for time series is to calculate values for disjoint periods of time or aggregate values from a higher frequency to a lower frequency. For most series, you'll often want to see the weekly mean of a price or measurement. You may even find yourself looking at data that has different frequencies and you need to normalize to the lowest frequency. This chapter is where it all happens. Hang tight, and lets get going!\n  ",
+      "parts": ["Apply functions by time", "Find intervals by time in xts", "Apply a function by time period(s)", "Using lapply() and split() to apply functions on intervals", "Selection by endpoints vs. split-lapply-rbind", "Converting periodicity", "Convert univariate series to OHLC data", "Convert a series to a lower frequency", "Rolling functions", "Calculate basic rolling value of series by month", "Calculate the rolling standard deviation of a time series"]
+    }, {
+      "title": "\n          Extra features of xts\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    Now that you are comfortable with most of the core features, its time to explore some of the lesser known (but powerful!) aspects of working with xts. In this final chapter you will use the internals of the index to find repeating itervals, see how xts provides intuitive time zone support, and experiment with ways to explore your data by time - including identifying frequency and coverage in time. Let's finish this course!\n  ",
+      "parts": ["Index, attributes,  and time zones", "Time via index()", "Class attributes - tclass, tzone, and tformat", "Time Zones (and why you should care!)", "Periods, periodicity  and timestamps", "Determining periodicity", "Find the number of periods in your data", "Secret index tools", "Modifying timestamps", "Congratulations!"]
+    }],
+    "prerequistes": ["Intermediate R for Finance"],
+    "tracks": ["Finance Fundamentals in R", "Quantitative Analyst with R", "Time Series with R"]
+  }, {
+    "title": "Manipulating Time Series Data with xts and zoo in R",
+    "description": "The xts and zoo packages make the task of managing and manipulating ordered observations fast and mistake free.",
+    "detailDescription": "Time series are all around us, from server logs to high frequency financial data. Managing and manipulating ordered observations is central to all time series analysis. The xts and zoo packages provide a set of powerful tools to make this task fast and mistake free. In this course, you will learn everything from the basics of xts to advanced tips and tricks for working with time series data in R.",
+    "time": "4 hours",
+    "chapters": [{
+      "title": "\n          Introduction to eXtensible Time Series, using xts and zoo for time series\n        ",
+      "index": "1",
+      "description": "\n    xts and zoo are just two of the many different types of objects that exist in R. This chapter will introduce the basic objects in xts and zoo and their components, and offers examples of how to construct and examine the data.\n  ",
+      "parts": ["Introducing xts and zoo objects", "What is an xts object?", "More than a matrix", "Your first xts object", "Deconstructing xts", "Time based indices", "Importing, exporting and  converting time series", "Converting xts objects", "Importing data", "Exporting xts objects"]
+    }, {
+      "title": "\n          First Order of Business - Basic Manipulations\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    Now that you can create basic xts objects, it's time to see how powerful they can be. This chapter will cover the basics of one of the most useful features of xts: time based subsetting. From there you'll explore additional ways to extract data using time phrases, and conclude with how to do basic operations like adding and subtracting your xts objects.\n  ",
+      "parts": ["Introducing  time based queries", "The ISO-8601 standard", "Querying for dates", "Extracting recurring intraday intervals", "Alternative  extraction techniques", "Row selection with time objects", "Update and replace elements", "Methods to find  periods in your data", "Find the first or last period of time", "Combining first and last", "Math operations  using xts", "Matrix arithmetic - add, subtract, multiply, and divide in time!", "Math with non-overlapping indexes"]
+    }, {
+      "title": "\n          Merging and modifying time series\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    One of the most important parts of working with time series data involves creating derived time series. To do this effectively, it is critical to keep track of dates and times. In this chapter you will look at how xts handles merging new columns and rows into existing data, how to deal with the inevitable missing observations in time series, and how to shift your series in time.\n  ",
+      "parts": ["Merging time series", "Combining xts by column with merge", "Combining xts by row with rbind", "What types of data can be combined using merge?", "Handling missingness", "Fill missing values using last or previous observation", "NA interpolation using na.approx()", "Lags and differences", "Combine a leading and lagging time series", "Calculate a difference of a series using diff()", "What is the key difference in lag between xts and zoo"]
+    }, {
+      "title": "\n          Apply and aggregate by time\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    Now the fun begins! A very common usage pattern for time series is to calculate values for disjoint periods of time or aggregate values from a higher frequency to a lower frequency. For most series, you'll often want to see the weekly mean of a price or measurement. You may even find yourself looking at data that has different frequencies and you need to normalize to the lowest frequency. This chapter is where it all happens. Hang tight, and lets get going!\n  ",
+      "parts": ["Apply functions by time", "Find intervals by time in xts", "Apply a function by time period(s)", "Using lapply() and split() to apply functions on intervals", "Selection by endpoints vs. split-lapply-rbind", "Converting periodicity", "Convert univariate series to OHLC data", "Convert a series to a lower frequency", "Rolling functions", "Calculate basic rolling value of series by month", "Calculate the rolling standard deviation of a time series"]
+    }, {
+      "title": "\n          Extra features of xts\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    Now that you are comfortable with most of the core features, its time to explore some of the lesser known (but powerful!) aspects of working with xts. In this final chapter you will use the internals of the index to find repeating itervals, see how xts provides intuitive time zone support, and experiment with ways to explore your data by time - including identifying frequency and coverage in time. Let's finish this course!\n  ",
+      "parts": ["Index, attributes,  and time zones", "Time via index()", "Class attributes - tclass, tzone, and tformat", "Time Zones (and why you should care!)", "Periods, periodicity  and timestamps", "Determining periodicity", "Find the number of periods in your data", "Secret index tools", "Modifying timestamps", "Congratulations!"]
+    }],
+    "prerequistes": ["Intermediate R for Finance"],
+    "tracks": ["Finance Fundamentals in R", "Quantitative Analyst with R", "Time Series with R"]
+  }, {
+    "title": "Time Series Analysis in R",
+    "description": "Learn the core techniques necessary to extract meaningful insights from time series data.",
+    "detailDescription": "Many phenomena in our day-to-day lives, such as the movement of stock prices, are measured in intervals over a period of time. Time series analysis methods are extremely useful for analyzing these special data types. In this course, you will be introduced to some core time series analysis concepts and techniques.",
+    "time": "4 hours",
+    "chapters": [{
+      "title": "\n          Exploratory time series data analysis\n        ",
+      "index": "1",
+      "description": "\n    This chapter will give you insights on how to organize and visualize time series data in R. You will learn several simplifying assumptions that are widely used in time series analysis, and common characteristics of financial time series.\n  ",
+      "parts": ["Welcome to the course!", "Exploring raw time series", "Basic time series plots", "What does the time index tell us?", "Sampling frequency", "Identifying the sampling frequency", "When is the sampling frequency exact?", "Missing values", "Basic time series objects", "Creating a time series object with ts()", "Testing whether an object is a time series", "Plotting a time series object"]
+    }, {
+      "title": "\n          Predicting the future\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    In this chapter, you will conduct some trend spotting, and learn the white noise (WN) model, the random walk (RW) model, and the definition of stationary processes.\n  ",
+      "parts": ["Trend spotting!", "Random or not random?", "Name that trend", "Removing trends in variability via the logarithmic transformation", "Removing trends in level by differencing", "Removing seasonal trends with seasonal differencing", "The white noise (WN) model", "Simulate the white noise model", "Estimate the white noise model", "The random walk (RW) model", "Simulate the random walk model", "Simulate the random walk model with a drift", "Estimate the random walk model", "Stationary processes", "Stationary or not?", "Are the white noise model or the random walk model stationary?"]
+    }, {
+      "title": "\n          Correlation analysis and the autocorrelation function\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    In this chapter, you will review the correlation coefficient, use it to compare two time series, and also apply it to compare a time series with its past, as an autocorrelation. You will discover the autocorrelation function (ACF) and practice estimating and visualizing autocorrelations for time series data.\n  ",
+      "parts": ["Scatterplots", "Asset prices vs. asset returns", "Characteristics of financial time series", "Plotting pairs of data", "Covariance and correlation", "Calculating sample covariances and correlations", "Guess the correlation coefficient", "Autocorrelation", "Calculating autocorrelations", "The autocorrelation function", "Visualizing the autocorrelation function"]
+    }, {
+      "title": "\n          Autoregression\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    In this chapter, you will learn the autoregressive (AR) model and several of its basic properties. You will also practice simulating and estimating the AR model in R, and compare the AR model with the random walk (RW) model.\n  ",
+      "parts": ["The autoregressive model", "Simulate the autoregressive model", "Estimate the autocorrelation function (ACF) for an autoregression", "Persistence and anti-persistence", "Compare the random walk (RW) and autoregressive (AR) models", "AR model estimation  and forecasting", "Estimate the autoregressive (AR) model", "Simple forecasts from an estimated AR model"]
+    }, {
+      "title": "\n          A simple moving average\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    In this chapter, you will learn the simple moving average (MA) model and several of its basic properties. You will also practice simulating and estimating the MA model in R, and compare the MA model with the autoregressive (AR) model.\n  ",
+      "parts": ["The simple moving average model", "Simulate the simple moving average model", "Estimate the autocorrelation function (ACF) for a moving average", "MA model estimation  and forecasting", "Estimate the simple moving average model", "Simple forecasts from an estimated MA model", "Compare AR and  MA models", "AR vs MA models", "Name that model by time series plot", "Name that model by ACF plot", "Congratulations!"]
+    }],
+    "prerequistes": ["Intermediate R"],
+    "tracks": ["Quantitative Analyst with R", "Time Series with R"]
+  }, {
+    "title": "Time Series Analysis in R",
+    "description": "Learn the core techniques necessary to extract meaningful insights from time series data.",
+    "detailDescription": "Many phenomena in our day-to-day lives, such as the movement of stock prices, are measured in intervals over a period of time. Time series analysis methods are extremely useful for analyzing these special data types. In this course, you will be introduced to some core time series analysis concepts and techniques.",
+    "time": "4 hours",
+    "chapters": [{
+      "title": "\n          Exploratory time series data analysis\n        ",
+      "index": "1",
+      "description": "\n    This chapter will give you insights on how to organize and visualize time series data in R. You will learn several simplifying assumptions that are widely used in time series analysis, and common characteristics of financial time series.\n  ",
+      "parts": ["Welcome to the course!", "Exploring raw time series", "Basic time series plots", "What does the time index tell us?", "Sampling frequency", "Identifying the sampling frequency", "When is the sampling frequency exact?", "Missing values", "Basic time series objects", "Creating a time series object with ts()", "Testing whether an object is a time series", "Plotting a time series object"]
+    }, {
+      "title": "\n          Predicting the future\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    In this chapter, you will conduct some trend spotting, and learn the white noise (WN) model, the random walk (RW) model, and the definition of stationary processes.\n  ",
+      "parts": ["Trend spotting!", "Random or not random?", "Name that trend", "Removing trends in variability via the logarithmic transformation", "Removing trends in level by differencing", "Removing seasonal trends with seasonal differencing", "The white noise (WN) model", "Simulate the white noise model", "Estimate the white noise model", "The random walk (RW) model", "Simulate the random walk model", "Simulate the random walk model with a drift", "Estimate the random walk model", "Stationary processes", "Stationary or not?", "Are the white noise model or the random walk model stationary?"]
+    }, {
+      "title": "\n          Correlation analysis and the autocorrelation function\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    In this chapter, you will review the correlation coefficient, use it to compare two time series, and also apply it to compare a time series with its past, as an autocorrelation. You will discover the autocorrelation function (ACF) and practice estimating and visualizing autocorrelations for time series data.\n  ",
+      "parts": ["Scatterplots", "Asset prices vs. asset returns", "Characteristics of financial time series", "Plotting pairs of data", "Covariance and correlation", "Calculating sample covariances and correlations", "Guess the correlation coefficient", "Autocorrelation", "Calculating autocorrelations", "The autocorrelation function", "Visualizing the autocorrelation function"]
+    }, {
+      "title": "\n          Autoregression\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    In this chapter, you will learn the autoregressive (AR) model and several of its basic properties. You will also practice simulating and estimating the AR model in R, and compare the AR model with the random walk (RW) model.\n  ",
+      "parts": ["The autoregressive model", "Simulate the autoregressive model", "Estimate the autocorrelation function (ACF) for an autoregression", "Persistence and anti-persistence", "Compare the random walk (RW) and autoregressive (AR) models", "AR model estimation  and forecasting", "Estimate the autoregressive (AR) model", "Simple forecasts from an estimated AR model"]
+    }, {
+      "title": "\n          A simple moving average\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    In this chapter, you will learn the simple moving average (MA) model and several of its basic properties. You will also practice simulating and estimating the MA model in R, and compare the MA model with the autoregressive (AR) model.\n  ",
+      "parts": ["The simple moving average model", "Simulate the simple moving average model", "Estimate the autocorrelation function (ACF) for a moving average", "MA model estimation  and forecasting", "Estimate the simple moving average model", "Simple forecasts from an estimated MA model", "Compare AR and  MA models", "AR vs MA models", "Name that model by time series plot", "Name that model by ACF plot", "Congratulations!"]
+    }],
+    "prerequistes": ["Intermediate R"],
+    "tracks": ["Quantitative Analyst with R", "Time Series with R"]
+  }, {
+    "title": "Financial Trading in R",
+    "description": "This course covers the basics of financial trading and how to use quantstrat to build signal-based trading strategies.",
+    "detailDescription": "This course will cover the basics on financial trading and will give you an overview of how to use quantstrat to build signal-based trading strategies in R. It will teach you how to set up a quantstrat strategy, apply transformations of market data called indicators, create signals based on the interactions of those indicators, and even simulate orders. Lastly, it will explain how to analyze your results both from statistical and visual perspectives.",
+    "time": "5 hours",
+    "chapters": [{
+      "title": "\n          Trading basics\n        ",
+      "index": "1",
+      "description": "\n    In this chapter, you will learn the definition of trading, the philosophies of trading, and the pitfalls that exist in trading. This chapter covers both momentum and oscillation trading, along with some phrases to identify these types of philosophies. You will learn about overfitting and how to avoid it, obtaining and plotting financial data, and using a well-known indicator in trading.\n  ",
+      "parts": ["Why do people trade?", "Identifying types of trading philosophies - I", "Identifying types of trading philosophies - II", "Identifying types of trading philosophies - III", "Pitfalls of various trading systems", "How to prevent overfitting", "Getting financial data", "Plotting financial data", "Adding indicators to financial data", "Adding a moving average to financial data"]
+    }, {
+      "title": "\n          A boilerplate for quantstrat strategies\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    Before building a strategy, the quantstrat package requires you to initialize some settings. In this chapter you will learn how this is done. You will cover a series of functions that deal with initializing a time zone, currency, the instruments you'll be working with, along with quantstrat's various frameworks that will allow it to perform analytics. Once this is done, you will have the knowledge to set up a quantstrat initialization file, and know how to change it.\n  ",
+      "parts": ["Setting up a strategy I", "Understanding initialization settings - I", "Understanding initialization settings - II", "Setting up a strategy II", "Understanding initialization settings - III", "Understanding initialization settings - IV"]
+    }, {
+      "title": "\n          Indicators\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    Indicators are crucial for your trading strategy. They are transformations of market data that allow a clearer understanding of its overall behavior, usually in exchange for lagging the market behavior. Here, you will be working with both trend types of indicators as well as oscillation indicators. You will also learn how to use pre-programmed indicators available in other libraries as well as implement one of your own.\n  ",
+      "parts": ["Introduction to  indicators", "The SMA and RSI functions", "Visualize an indicator and guess its purpose - I", "Visualize an indicator and guess its purpose - II", "Indicator mechanics", "Implementing an indicator - I", "Implementing an indicator - II", "Implementing an indicator - III", "Indicator structure review", "Code your own indicator - I", "Code your own indicator - II", "Apply your own indicator"]
+    }, {
+      "title": "\n          Signals\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    When constructing a quantstrat strategy, you want to see how the market interacts with indicators and how indicators interact with each other. In this chapter you'll learn how indicators can generate signals in quantstrat. Signals are interactions of market data with indicators, or indicators with other indicators. There are four types of signals in quantstrat: sigComparison, sigCrossover, sigThreshold, and sigFormula. By the end of this chapter, you'll know all about these signals, what they do, and how to use them.\n  ",
+      "parts": ["Introduction to signals", "Signal or not? - I", "Signal or not? - II", "sigComparison and sigCrossover", "Using sigComparison", "Using sigCrossover", "sigThreshold", "Using sigThreshold - I", "Using sigThreshold() - II", "sigFormula", "Using sigFormula()", "Combining signals - I", "Combining signals - II"]
+    }, {
+      "title": "\n          Rules\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    In this chapter, you'll learn how to shape your trading transaction once you decide to execute on a signal. This chapter will cover a basic primer on rules, and how to enter and exit positions. You'll also learn how to send inputs to order-sizing functions. By the end of this chapter, you'll learn the gist of how rules function, and where you can continue learning about them.\n  ",
+      "parts": ["Introduction to rules", "Using add.rule() to implement an exit rule", "Specifying sigcol in add.rule()", "Specifying sigval in add.rule()", "More rule mechanics", "Specifying orderqty in add.rule()", "Specifying ordertype in add.rule()", "Specifying orderside in add.rule()", "More rule mechanics II", "Specifying replace in add.rule()", "Specifying prefer in add.rule()", "Using add.rule() to implement an entry rule", "Order sizing functions", "Implementing a rule with an order sizing function"]
+    }, {
+      "title": "\n          Analyzing results\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    After a quantstrat strategy has been constructed, it's vital to know how to actually analyze the strategy's performance. This chapter details just that. You will learn how to read vital trade statistics, and view the performance of your trading strategy over time. You will also learn how to get a reward to risk ratio called the Sharpe ratio in two different ways. This is the last chapter.\n  ",
+      "parts": ["Analyzing your strategy", "Running your strategy", "Profit factor", "Percent positive", "Visualizing your strategy", "Using chart.Posn()", "Adding an indicator to a chart.Posn() chart", "Additional analytics", "Cash Sharpe ratio", "Returns Sharpe ratio in quantstrat"]
+    }],
+    "prerequistes": ["Intermediate R for Finance"],
+    "tracks": ["Applied Finance in R", "Quantitative Analyst with R"]
+  }, {
+    "title": "Financial Trading in R",
+    "description": "This course covers the basics of financial trading and how to use quantstrat to build signal-based trading strategies.",
+    "detailDescription": "This course will cover the basics on financial trading and will give you an overview of how to use quantstrat to build signal-based trading strategies in R. It will teach you how to set up a quantstrat strategy, apply transformations of market data called indicators, create signals based on the interactions of those indicators, and even simulate orders. Lastly, it will explain how to analyze your results both from statistical and visual perspectives.",
+    "time": "5 hours",
+    "chapters": [{
+      "title": "\n          Trading basics\n        ",
+      "index": "1",
+      "description": "\n    In this chapter, you will learn the definition of trading, the philosophies of trading, and the pitfalls that exist in trading. This chapter covers both momentum and oscillation trading, along with some phrases to identify these types of philosophies. You will learn about overfitting and how to avoid it, obtaining and plotting financial data, and using a well-known indicator in trading.\n  ",
+      "parts": ["Why do people trade?", "Identifying types of trading philosophies - I", "Identifying types of trading philosophies - II", "Identifying types of trading philosophies - III", "Pitfalls of various trading systems", "How to prevent overfitting", "Getting financial data", "Plotting financial data", "Adding indicators to financial data", "Adding a moving average to financial data"]
+    }, {
+      "title": "\n          A boilerplate for quantstrat strategies\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    Before building a strategy, the quantstrat package requires you to initialize some settings. In this chapter you will learn how this is done. You will cover a series of functions that deal with initializing a time zone, currency, the instruments you'll be working with, along with quantstrat's various frameworks that will allow it to perform analytics. Once this is done, you will have the knowledge to set up a quantstrat initialization file, and know how to change it.\n  ",
+      "parts": ["Setting up a strategy I", "Understanding initialization settings - I", "Understanding initialization settings - II", "Setting up a strategy II", "Understanding initialization settings - III", "Understanding initialization settings - IV"]
+    }, {
+      "title": "\n          Indicators\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    Indicators are crucial for your trading strategy. They are transformations of market data that allow a clearer understanding of its overall behavior, usually in exchange for lagging the market behavior. Here, you will be working with both trend types of indicators as well as oscillation indicators. You will also learn how to use pre-programmed indicators available in other libraries as well as implement one of your own.\n  ",
+      "parts": ["Introduction to  indicators", "The SMA and RSI functions", "Visualize an indicator and guess its purpose - I", "Visualize an indicator and guess its purpose - II", "Indicator mechanics", "Implementing an indicator - I", "Implementing an indicator - II", "Implementing an indicator - III", "Indicator structure review", "Code your own indicator - I", "Code your own indicator - II", "Apply your own indicator"]
+    }, {
+      "title": "\n          Signals\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    When constructing a quantstrat strategy, you want to see how the market interacts with indicators and how indicators interact with each other. In this chapter you'll learn how indicators can generate signals in quantstrat. Signals are interactions of market data with indicators, or indicators with other indicators. There are four types of signals in quantstrat: sigComparison, sigCrossover, sigThreshold, and sigFormula. By the end of this chapter, you'll know all about these signals, what they do, and how to use them.\n  ",
+      "parts": ["Introduction to signals", "Signal or not? - I", "Signal or not? - II", "sigComparison and sigCrossover", "Using sigComparison", "Using sigCrossover", "sigThreshold", "Using sigThreshold - I", "Using sigThreshold() - II", "sigFormula", "Using sigFormula()", "Combining signals - I", "Combining signals - II"]
+    }, {
+      "title": "\n          Rules\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    In this chapter, you'll learn how to shape your trading transaction once you decide to execute on a signal. This chapter will cover a basic primer on rules, and how to enter and exit positions. You'll also learn how to send inputs to order-sizing functions. By the end of this chapter, you'll learn the gist of how rules function, and where you can continue learning about them.\n  ",
+      "parts": ["Introduction to rules", "Using add.rule() to implement an exit rule", "Specifying sigcol in add.rule()", "Specifying sigval in add.rule()", "More rule mechanics", "Specifying orderqty in add.rule()", "Specifying ordertype in add.rule()", "Specifying orderside in add.rule()", "More rule mechanics II", "Specifying replace in add.rule()", "Specifying prefer in add.rule()", "Using add.rule() to implement an entry rule", "Order sizing functions", "Implementing a rule with an order sizing function"]
+    }, {
+      "title": "\n          Analyzing results\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    After a quantstrat strategy has been constructed, it's vital to know how to actually analyze the strategy's performance. This chapter details just that. You will learn how to read vital trade statistics, and view the performance of your trading strategy over time. You will also learn how to get a reward to risk ratio called the Sharpe ratio in two different ways. This is the last chapter.\n  ",
+      "parts": ["Analyzing your strategy", "Running your strategy", "Profit factor", "Percent positive", "Visualizing your strategy", "Using chart.Posn()", "Adding an indicator to a chart.Posn() chart", "Additional analytics", "Cash Sharpe ratio", "Returns Sharpe ratio in quantstrat"]
+    }],
+    "prerequistes": ["Intermediate R for Finance"],
+    "tracks": ["Applied Finance in R", "Quantitative Analyst with R"]
+  }, {
+    "title": "Importing and Managing Financial Data in R",
+    "description": "Learn how to access financial data from local files as well as from internet sources.",
+    "detailDescription": "If you've ever done anything with financial or economic time series, you know the data come in various shapes, sizes, and periodicities. Getting the data into R can be stressful and time-consuming, especially when you need to merge data from several different sources into one data set. This course will cover importing data from local files as well as from internet sources.",
+    "time": "5 hours",
+    "chapters": [{
+      "title": "\n          Introduction and downloading data\n        ",
+      "index": "1",
+      "description": "\n    A wealth of financial and economic data are available online. Learn how getSymbols() and Quandl() make it easy to access data from a variety of sources.\n  ",
+      "parts": ["Welcome to the course!", "Introducing getSymbols()", "Data sources", "Make getSymbols() return the data it retrieves", "Introduction to Quandl", "Introducing Quandl()", "Return data type", "Finding data from  internet sources", "Find stock ticker from Yahoo Finance", "Download exchange rate data from Oanda", "Find and import Unemployment Rate data from FRED"]
+    }, {
+      "title": "\n          Extracting and transforming data\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    You've learned how to import data from online sources, now it's time to see how to extract columns from the imported data. After you've learned how to extract columns from a single object, you will explore how to import, transform, and extract data from multiple instruments.\n  ",
+      "parts": ["Extracting columns from financial time series", "Extract one column from one instrument", "Extract multiple columns from one instrument", "Use getPrice to extract other columns", "Importing and transforming multiple instruments", "Use Quandl to download weekly returns data", "Combine many instruments into one object", "Extract the Close column from many instruments"]
+    }, {
+      "title": "\n          Managing data from multiple sources\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    Learn how to simplify and streamline your workflow by taking advantage of the ability to customize default arguments to `getSymbols()`. You will see how to customize defaults by data source, and then how to customize defaults by symbol. You will also learn how to handle problematic instrument symbols.\n  ",
+      "parts": ["Setting default arguments for getSymbols()", "Set a default data source", "Set default arguments for a getSymbols source", "Setting per-instrument default arguments", "Set default data source for one symbol", "Save and load symbol lookup table", "How *not* to specify the getSymbols() source", "Handling instrument symbols  that clash or are not  valid R names", "Access the object using get() or backticks", "Create valid name for one instrument", "Create valid names for multiple instruments"]
+    }, {
+      "title": "\n          Aligning data with different periodicities\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    You've learned how to import, extract, and transform data from multiple data sources. You often have to manipulate data from different sources in order to combine them into a single data set. First, you will learn how to convert sparse, irregular data into a regular series.  Then you will review how to aggregate dense data to a lower frequency. Finally, you will learn how to handle issues with intra-day data.\n  ",
+      "parts": ["Making irregular data  regular", "Create a zero-width and regular xts object", "Use merge to make an irregular index regular", "Aggregating to lower frequency", "Aggregate daily data and merge with monthly data", "Align series to first and last day of month", "Aggregate to weekly, ending on Wednesdays", "Aggregating and  combining  intraday data", "Combine data that have timezones", "Make irregular intraday-day data regular", "Fill missing values by trading day", "Aggregate irregular intraday-day data"]
+    }, {
+      "title": "\n          Importing text data, and adjusting for corporate actions\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    You've learned the core workflow of importing and manipulating financial data. Now you will see how to import data from text files of various formats. Then you will learn how to check data for weirdness and handle missing values. Finally, you will learn how to adjust stock prices for splits and dividends.\n  ",
+      "parts": ["Importing text files", "Import well-formatted daily OHLC data", "Import text files in other formats", "Handle date and time in separate columns", "Read text file containing multiple instruments", "Checking for  weirdness", "Handle missing values", "Visualize imported data", "Cross reference sources", "Adjusting for corporate actions", "Adjust for stock splits and dividends", "Download split and dividend data", "Adjust univariate data for splits and dividends", "When to adjust data", "Congratulations!"]
+    }],
+    "prerequistes": ["Manipulating Time Series Data with xts and zoo in R"],
+    "tracks": ["Finance Fundamentals in R", "Quantitative Analyst with R"]
+  }, {
+    "title": "Importing and Managing Financial Data in R",
+    "description": "Learn how to access financial data from local files as well as from internet sources.",
+    "detailDescription": "If you've ever done anything with financial or economic time series, you know the data come in various shapes, sizes, and periodicities. Getting the data into R can be stressful and time-consuming, especially when you need to merge data from several different sources into one data set. This course will cover importing data from local files as well as from internet sources.",
+    "time": "5 hours",
+    "chapters": [{
+      "title": "\n          Introduction and downloading data\n        ",
+      "index": "1",
+      "description": "\n    A wealth of financial and economic data are available online. Learn how getSymbols() and Quandl() make it easy to access data from a variety of sources.\n  ",
+      "parts": ["Welcome to the course!", "Introducing getSymbols()", "Data sources", "Make getSymbols() return the data it retrieves", "Introduction to Quandl", "Introducing Quandl()", "Return data type", "Finding data from  internet sources", "Find stock ticker from Yahoo Finance", "Download exchange rate data from Oanda", "Find and import Unemployment Rate data from FRED"]
+    }, {
+      "title": "\n          Extracting and transforming data\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    You've learned how to import data from online sources, now it's time to see how to extract columns from the imported data. After you've learned how to extract columns from a single object, you will explore how to import, transform, and extract data from multiple instruments.\n  ",
+      "parts": ["Extracting columns from financial time series", "Extract one column from one instrument", "Extract multiple columns from one instrument", "Use getPrice to extract other columns", "Importing and transforming multiple instruments", "Use Quandl to download weekly returns data", "Combine many instruments into one object", "Extract the Close column from many instruments"]
+    }, {
+      "title": "\n          Managing data from multiple sources\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    Learn how to simplify and streamline your workflow by taking advantage of the ability to customize default arguments to `getSymbols()`. You will see how to customize defaults by data source, and then how to customize defaults by symbol. You will also learn how to handle problematic instrument symbols.\n  ",
+      "parts": ["Setting default arguments for getSymbols()", "Set a default data source", "Set default arguments for a getSymbols source", "Setting per-instrument default arguments", "Set default data source for one symbol", "Save and load symbol lookup table", "How *not* to specify the getSymbols() source", "Handling instrument symbols  that clash or are not  valid R names", "Access the object using get() or backticks", "Create valid name for one instrument", "Create valid names for multiple instruments"]
+    }, {
+      "title": "\n          Aligning data with different periodicities\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    You've learned how to import, extract, and transform data from multiple data sources. You often have to manipulate data from different sources in order to combine them into a single data set. First, you will learn how to convert sparse, irregular data into a regular series.  Then you will review how to aggregate dense data to a lower frequency. Finally, you will learn how to handle issues with intra-day data.\n  ",
+      "parts": ["Making irregular data  regular", "Create a zero-width and regular xts object", "Use merge to make an irregular index regular", "Aggregating to lower frequency", "Aggregate daily data and merge with monthly data", "Align series to first and last day of month", "Aggregate to weekly, ending on Wednesdays", "Aggregating and  combining  intraday data", "Combine data that have timezones", "Make irregular intraday-day data regular", "Fill missing values by trading day", "Aggregate irregular intraday-day data"]
+    }, {
+      "title": "\n          Importing text data, and adjusting for corporate actions\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    You've learned the core workflow of importing and manipulating financial data. Now you will see how to import data from text files of various formats. Then you will learn how to check data for weirdness and handle missing values. Finally, you will learn how to adjust stock prices for splits and dividends.\n  ",
+      "parts": ["Importing text files", "Import well-formatted daily OHLC data", "Import text files in other formats", "Handle date and time in separate columns", "Read text file containing multiple instruments", "Checking for  weirdness", "Handle missing values", "Visualize imported data", "Cross reference sources", "Adjusting for corporate actions", "Adjust for stock splits and dividends", "Download split and dividend data", "Adjust univariate data for splits and dividends", "When to adjust data", "Congratulations!"]
+    }],
+    "prerequistes": ["Manipulating Time Series Data with xts and zoo in R"],
+    "tracks": ["Finance Fundamentals in R", "Quantitative Analyst with R"]
+  }, {
+    "title": "Case Study: Exploratory Data Analysis in R",
+    "description": "Use data manipulation and visualization skills to explore the historical voting of the United Nations General Assembly.",
+    "detailDescription": "Once you've started learning tools for data manipulation and visualization like dplyr and ggplot2, this course gives you a chance to use them in action on a real dataset. You'll explore the historical voting of the United Nations General Assembly, including analyzing differences in voting between countries, across time, and among international issues. In the process you'll gain more practice with the dplyr and ggplot2 packages, learn about the broom package for tidying model output, and experience the kind of start-to-finish exploratory analysis common in data science.",
+    "time": "4 hours",
+    "chapters": [{
+      "title": "\n          Data cleaning and summarizing with dplyr\n        ",
+      "index": "1",
+      "description": "\n    The best way to learn data wrangling skills is to apply them to a specific case study. Here you'll learn how to clean and filter the United Nations voting dataset using the dplyr package, and how to summarize it into smaller, interpretable units.\n  ",
+      "parts": ["The United Nations Voting Dataset", "Filtering rows", "Adding a year column", "Adding a country column", "Grouping and summarizing", "Summarizing the full dataset", "Summarizing by year", "Summarizing by country", "Sorting and filtering summarized data", "Sorting by percentage of \"yes\" votes", "Filtering summarized output"]
+    }, {
+      "title": "\n          Data visualization with ggplot2\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    Once you've cleaned and summarized data, you'll want to visualize them to understand trends and extract insights. Here you'll use the ggplot2 package to explore trends in United Nations voting within each country over time.\n  ",
+      "parts": ["Visualization with ggplot2", "Choosing an aesthetic", "Plotting a line over time", "Other ggplot2 layers", "Visualizing by country", "Summarizing by year and country", "Plotting just the UK over time", "Plotting multiple countries", "Faceting by country", "Faceting the time series", "Faceting with free y-axis", "Choose your own countries"]
+    }, {
+      "title": "\n          Tidy modeling with broom\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    While visualization helps you understand one country at a time, statistical modeling lets you quantify trends across many countries and interpret them together. Here you'll learn to use the tidyr, purrr, and broom packages to fit linear models to each country, and understand and compare their outputs.\n  ",
+      "parts": ["Linear regression", "Linear regression on the United States", "Finding the slope of a linear regression", "Finding the p-value of a linear regression", "Tidying models with broom", "Tidying a linear regression model", "Combining models for multiple countries", "Nesting for multiple models", "Nesting a data frame", "List columns", "Unnesting", "Fitting multiple models", "Performing linear regression on each nested dataset", "Tidy each linear regression model", "Unnesting a data frame", "Working with many tidy models", "Filtering model terms", "Filtering for significant countries", "Sorting by slope"]
+    }, {
+      "title": "\n          Joining and tidying\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    In this chapter, you'll learn to combine multiple related datasets, such as incorporating information about each resolution's topic into your vote analysis. You'll also learn how to turn untidy data into tidy data, and see how tidy data can guide your exploration of topics and countries over time.\n  ",
+      "parts": ["Joining datasets", "Joining datasets with inner_join", "Filtering the joined dataset", "Visualizing colonialism votes", "Tidy data", "Tidy data observations", "Using gather to tidy a dataset", "Recoding the topics", "Summarize by country, year, and topic", "Visualizing trends in topics for one country", "Tidy modeling by topic and country", "Nesting by topic and country", "Interpreting tidy models", "Steepest trends by topic", "Checking models visually", "Conclusion"]
+    }],
+    "prerequistes": ["Introduction to Data Visualization with ggplot2"],
+    "tracks": ["Data Analyst with R", "Data Manipulation with R", "Data Scientist with R"]
+  },{
+    "title": "Introduction to Importing Data in R",
+    "description": "In this course, you will learn to read CSV, XLS, and text files in R using tools like readxl and data.table.",
+    "detailDescription": "Importing data into R should be the easiest step in your analysis. Unfortunately, that is almost never the case. Data can come in many formats, ranging from .csv and text files, to statistical software files, to databases and HTML data. Knowing which approach to use is key to getting started with the actual analysis. In this course, you’ll start by learning how to read .csv and text files in R. You will then cover the readr and data.table packages to easily and efficiently import flat file data. After that, you will learn how to read .xls files in R using readxl and gdata.",
+    "time": "3 hours",
+    "chapters": [{
+      "title": "\n          Importing data from flat files with utils\n        ",
+      "index": "1",
+      "description": "\n    A lot of data comes in the form of flat files: simple tabular text files. Learn how to import the common formats of flat file data with base R functions.\n  ",
+      "parts": ["Introduction & read.csv", "read.csv", "stringsAsFactors", "Any changes?", "read.delim & read.table", "read.delim", "read.table", "Arguments", "Column classes", "Final Thoughts"]
+    }, {
+      "title": "\n          readr & data.table\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    In addition to base R, there are dedicated packages to easily and efficiently import flat file data. We'll talk about two such packages: readr and data.table.\n  ",
+      "parts": ["readr: read_csv & read_tsv", "read_csv", "read_tsv", "readr: read_delim", "read_delim", "skip and n_max", "col_types", "col_types with collectors", "data.table: fread", "fread", "fread: more advanced use", "Dedicated classes"]
+    }, {
+      "title": "\n          Importing Excel data\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    Excel is a widely used data analysis tool. If you prefer to do your analyses in R, though, you'll need an understanding of how to import  .csv data into R. This chapter will show you how to use readxl and gdata to do so.\n  ",
+      "parts": ["readxl (1)", "List the sheets of an Excel file", "Import an Excel sheet", "Reading a workbook", "readxl (2)", "The col_names argument", "The skip argument", "gdata", "Import a local file", "read.xls() wraps around read.table()", "Work that Excel data!"]
+    }, {
+      "title": "\n          Reproducible Excel work with XLConnect\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    Beyond importing data from Excel, you can take things one step further with XLConnect. Learn all about it and bridge the gap between R and Excel.\n  ",
+      "parts": ["Reading sheets", "Connect to a workbook", "List and read Excel sheets", "Customize readWorksheet", "Adapting sheets", "Add worksheet", "Populate worksheet", "Renaming sheets", "Removing sheets"]
+    }],
+    "prerequistes": ["Introduction to R"],
+    "tracks": ["Data Analyst with R", "Data Scientist with R", "Importing & Cleaning Data with R"]
+  }, {
+    "title": "Introduction to Importing Data in R",
+    "description": "In this course, you will learn to read CSV, XLS, and text files in R using tools like readxl and data.table.",
+    "detailDescription": "Importing data into R should be the easiest step in your analysis. Unfortunately, that is almost never the case. Data can come in many formats, ranging from .csv and text files, to statistical software files, to databases and HTML data. Knowing which approach to use is key to getting started with the actual analysis. In this course, you’ll start by learning how to read .csv and text files in R. You will then cover the readr and data.table packages to easily and efficiently import flat file data. After that, you will learn how to read .xls files in R using readxl and gdata.",
+    "time": "3 hours",
+    "chapters": [{
+      "title": "\n          Importing data from flat files with utils\n        ",
+      "index": "1",
+      "description": "\n    A lot of data comes in the form of flat files: simple tabular text files. Learn how to import the common formats of flat file data with base R functions.\n  ",
+      "parts": ["Introduction & read.csv", "read.csv", "stringsAsFactors", "Any changes?", "read.delim & read.table", "read.delim", "read.table", "Arguments", "Column classes", "Final Thoughts"]
+    }, {
+      "title": "\n          readr & data.table\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    In addition to base R, there are dedicated packages to easily and efficiently import flat file data. We'll talk about two such packages: readr and data.table.\n  ",
+      "parts": ["readr: read_csv & read_tsv", "read_csv", "read_tsv", "readr: read_delim", "read_delim", "skip and n_max", "col_types", "col_types with collectors", "data.table: fread", "fread", "fread: more advanced use", "Dedicated classes"]
+    }, {
+      "title": "\n          Importing Excel data\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    Excel is a widely used data analysis tool. If you prefer to do your analyses in R, though, you'll need an understanding of how to import  .csv data into R. This chapter will show you how to use readxl and gdata to do so.\n  ",
+      "parts": ["readxl (1)", "List the sheets of an Excel file", "Import an Excel sheet", "Reading a workbook", "readxl (2)", "The col_names argument", "The skip argument", "gdata", "Import a local file", "read.xls() wraps around read.table()", "Work that Excel data!"]
+    }, {
+      "title": "\n          Reproducible Excel work with XLConnect\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    Beyond importing data from Excel, you can take things one step further with XLConnect. Learn all about it and bridge the gap between R and Excel.\n  ",
+      "parts": ["Reading sheets", "Connect to a workbook", "List and read Excel sheets", "Customize readWorksheet", "Adapting sheets", "Add worksheet", "Populate worksheet", "Renaming sheets", "Removing sheets"]
+    }],
+    "prerequistes": ["Introduction to R"],
+    "tracks": ["Data Analyst with R", "Data Scientist with R", "Importing & Cleaning Data with R"]
+  }, {
+    "title": "Intermediate Importing Data in R",
+    "description": "Parse data in any format. Whether it's flat files, statistical software, databases, or data right from the web.",
+    "detailDescription": "In this course, you will take a deeper dive into the wide range of data formats out there. More specifically, you'll learn how to import data from relational databases and how to import and work with data coming from the web. Finally, you'll get hands-on experience with importing data from statistical software packages such as SAS, STATA, and SPSS.",
+    "time": "3 hours",
+    "chapters": [{
+      "title": "\n          Importing data from databases (Part 1)\n        ",
+      "index": "1",
+      "description": "\n    Many companies store their information in relational databases. The R community has also developed R packages to get data from these architectures. You'll learn how to connect to a database and how to retrieve data from it.\n  ",
+      "parts": ["Connect to a database", "Establish a connection", "Inspect the connection", "Import table data", "List the database tables", "Import users", "Import all tables", "How do the tables relate?"]
+    }, {
+      "title": "\n          Importing data from databases (Part 2)\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    Importing an entire table from a database while you might only need a tiny bit of information seems like a lot of unncessary work. In this chapter, you'll learn about SQL queries, which will help you make things more efficient by performing some computations on the database side.\n  ",
+      "parts": ["SQL Queries from inside R", "Query tweater (1)", "Query tweater (2)", "Query tweater (3)", "Query tweater (4)", "Join the query madness!", "DBI internals", "Send - Fetch - Clear", "Be polite and ..."]
+    }, {
+      "title": "\n          Importing data from the web (Part 1)\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    More and more of the information that data scientists are using resides on the web. Importing this data into R requires an understanding of the protocols used on the web. In this chapter, you'll get a crash course in HTTP and learn to perform your own HTTP requests from inside R.\n  ",
+      "parts": ["HTTP", "Import flat files from the web", "Secure importing", "Downloading files", "Import Excel files from the web", "Downloading any file, secure or not", "Reading a text file from the web", "HTTP? httr! (1)", "HTTP? httr! (2)"]
+    }, {
+      "title": "\n          Importing data from the web (Part 2)\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    Importing data from the web is one thing; actually being able to extract useful information is another. Learn more about the JSON format to get one step closer to web domination.\n  ",
+      "parts": ["APIs & JSON", "From JSON to R", "Quandl API", "OMDb API", "JSON & jsonlite", "JSON practice (1)", "JSON practice (2)", "toJSON()", "Minify and prettify"]
+    }, {
+      "title": "\n          Importing data from statistical software packages\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    Next to R, there are also other commonly used statistical software packages: SAS, STATA and SPSS. Each of them has their own file format. Learn how to use the haven and foreign packages to get them into R with remarkable ease!\n  ",
+      "parts": ["haven", "Import SAS data with haven", "Import STATA data with haven", "What does the graphic tell?", "Import SPSS data with haven", "Factorize, round two", "foreign", "Import STATA data with foreign (1)", "Import STATA data with foreign (2)", "Do you know your data?", "Import SPSS data with foreign (1)", "Excursion: Correlation", "Import SPSS data with foreign (2)"]
+    }],
+    "prerequistes": ["Introduction to Importing Data in R"],
+    "tracks": ["Data Analyst with R", "Data Scientist with R", "Importing & Cleaning Data with R"]
+  },  {
+    "title": "Intermediate Importing Data in R",
+    "description": "Parse data in any format. Whether it's flat files, statistical software, databases, or data right from the web.",
+    "detailDescription": "In this course, you will take a deeper dive into the wide range of data formats out there. More specifically, you'll learn how to import data from relational databases and how to import and work with data coming from the web. Finally, you'll get hands-on experience with importing data from statistical software packages such as SAS, STATA, and SPSS.",
+    "time": "3 hours",
+    "chapters": [{
+      "title": "\n          Importing data from databases (Part 1)\n        ",
+      "index": "1",
+      "description": "\n    Many companies store their information in relational databases. The R community has also developed R packages to get data from these architectures. You'll learn how to connect to a database and how to retrieve data from it.\n  ",
+      "parts": ["Connect to a database", "Establish a connection", "Inspect the connection", "Import table data", "List the database tables", "Import users", "Import all tables", "How do the tables relate?"]
+    }, {
+      "title": "\n          Importing data from databases (Part 2)\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    Importing an entire table from a database while you might only need a tiny bit of information seems like a lot of unncessary work. In this chapter, you'll learn about SQL queries, which will help you make things more efficient by performing some computations on the database side.\n  ",
+      "parts": ["SQL Queries from inside R", "Query tweater (1)", "Query tweater (2)", "Query tweater (3)", "Query tweater (4)", "Join the query madness!", "DBI internals", "Send - Fetch - Clear", "Be polite and ..."]
+    }, {
+      "title": "\n          Importing data from the web (Part 1)\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    More and more of the information that data scientists are using resides on the web. Importing this data into R requires an understanding of the protocols used on the web. In this chapter, you'll get a crash course in HTTP and learn to perform your own HTTP requests from inside R.\n  ",
+      "parts": ["HTTP", "Import flat files from the web", "Secure importing", "Downloading files", "Import Excel files from the web", "Downloading any file, secure or not", "Reading a text file from the web", "HTTP? httr! (1)", "HTTP? httr! (2)"]
+    }, {
+      "title": "\n          Importing data from the web (Part 2)\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    Importing data from the web is one thing; actually being able to extract useful information is another. Learn more about the JSON format to get one step closer to web domination.\n  ",
+      "parts": ["APIs & JSON", "From JSON to R", "Quandl API", "OMDb API", "JSON & jsonlite", "JSON practice (1)", "JSON practice (2)", "toJSON()", "Minify and prettify"]
+    }, {
+      "title": "\n          Importing data from statistical software packages\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    Next to R, there are also other commonly used statistical software packages: SAS, STATA and SPSS. Each of them has their own file format. Learn how to use the haven and foreign packages to get them into R with remarkable ease!\n  ",
+      "parts": ["haven", "Import SAS data with haven", "Import STATA data with haven", "What does the graphic tell?", "Import SPSS data with haven", "Factorize, round two", "foreign", "Import STATA data with foreign (1)", "Import STATA data with foreign (2)", "Do you know your data?", "Import SPSS data with foreign (1)", "Excursion: Correlation", "Import SPSS data with foreign (2)"]
+    }],
+    "prerequistes": ["Introduction to Importing Data in R"],
+    "tracks": ["Data Analyst with R", "Data Scientist with R", "Importing & Cleaning Data with R"]
+  },
+  {
+    "title": "Data Visualization in R",
+    "description": "This course provides a comprehensive introduction to working with base graphics in R.",
+    "detailDescription": "",
+    "time": "4 hours",
+    "chapters": [{
+      "title": "\n          A quick introduction to base R graphics\n        ",
+      "index": "1",
+      "description": "\n    This chapter gives a brief overview of some of the things you can do with base graphics in R. This graphics system is one of four available in R and it forms the basis for this course because it is both the easiest to learn and extremely useful both in preparing exploratory data visualizations to help you see what's in a dataset and in preparing explanatory data visualizations to help others see what we have found.\n  ",
+      "parts": ["The world of data visualization", "Creating an exploratory plot array", "Creating an explanatory scatterplot", "The plot() function is generic", "A preview of some more and less useful techniques", "Adding details to a plot using point shapes, color, and reference lines", "Creating multiple plot arrays", "Avoid pie charts"]
+    }, {
+      "title": "\n          Different plot types\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    This chapter introduces several Base R supported plot types that are particularly useful for visualizing important features in a dataset. We start with simple tools like histograms and density plots for characterizing one variable at a time, move on to scatter plots and other useful tools for showing how two variables relate, and finally introduce some tools for visualizing more complex relationships in our dataset.\n  ",
+      "parts": ["Characterizing a single variable", "The hist() and truehist() functions", "Density plots as smoothed histograms", "Using the qqPlot() function to see many details in data", "Visualizing relations between two variables", "The sunflowerplot() function for repeated numerical data", "Useful options for the boxplot() function", "Using the mosaicplot() function", "Showing more complex relations between variables", "Using the bagplot() function", "Plotting correlation matrices with the corrplot() function", "Building and plotting rpart() models"]
+    }, {
+      "title": "\n          Adding details to plots\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    Most base R graphics functions support many optional arguments and parameters that allow us to customize our plots to get exactly what we want. In this chapter, we will learn how to modify point shapes and sizes, line types and widths, add points and lines to plots, add explanatory text and generate multiple plot arrays.\n  ",
+      "parts": ["The plot() function and its options", "Introduction to the par() function", "Exploring the type option", "The surprising utility of the type \"n\" option", "Adding lines and points to plots", "The lines() function and line types", "The points() function and point types", "Adding trend lines from linear regression models", "Adding text to plots", "Using the text() function to label plot features", "Adjusting text position, size, and font", "Rotating text with the srt argument", "Adding or modifying other plot details", "Using the legend() function", "Adding custom axes with the axis() function", "Using the supsmu() function to add smooth trend curves"]
+    }, {
+      "title": "\n          How much is too much?\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    As we have seen, base R graphics provides tremendous flexibility in creating plots with multiple lines, points of different shapes and sizes, and added text, along with arrays of multiple plots. If we attempt to add too many details to a plot or too many plots to an array, however, the result can become too complicated to be useful. This chapter focuses on how to manage this visual complexity so the results remain useful to ourselves and to others.\n  ",
+      "parts": ["Managing visual complexity", "Too much is too much", "Deciding how many scatterplots is too many", "How many words is too many?", "Creating plot arrays with the mfrow parameter", "The Anscombe quartet", "The utility of common scaling and individual titles", "Using multiple plots to give multiple views of a dataset", "Creating plot arrays with the layout() function", "Constructing and displaying layout matrices", "Creating a triangular array of plots", "Creating arrays with different sized plots"]
+    }, {
+      "title": "\n          Advanced plot customization and beyond\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    This final chapter introduces a number of important topics, including the use of numerical plot details returned invisibly by functions like barplot() to enhance our plots, and saving plots to external files so they don't vanish when we end our current R session. This chapter also offers some guidelines for using color effectively in data visualizations, and it concludes with a brief introduction to the other three graphics systems in R.\n  ",
+      "parts": ["Creating and saving more complex plots", "Some plot functions also return useful information", "Using the symbols() function to display relations between more than two variables", "Saving plot results as files", "Using color effectively", "Iliinsky and Steele's 12 recommended colors", "Using color to enhance a bubbleplot", "Using color to enhance stacked barplots", "Other graphics systems in R", "The tabplot package and grid graphics", "A lattice graphics example", "A ggplot2 graphics example"]
+    }],
+    "prerequistes": ["Introduction to R"],
+    "tracks": ["Data Visualization with R"]
+  },
+  {
+    "title": "Data Visualization in R",
+    "description": "This course provides a comprehensive introduction to working with base graphics in R.",
+    "detailDescription": "",
+    "time": "4 hours",
+    "chapters": [{
+      "title": "\n          A quick introduction to base R graphics\n        ",
+      "index": "1",
+      "description": "\n    This chapter gives a brief overview of some of the things you can do with base graphics in R. This graphics system is one of four available in R and it forms the basis for this course because it is both the easiest to learn and extremely useful both in preparing exploratory data visualizations to help you see what's in a dataset and in preparing explanatory data visualizations to help others see what we have found.\n  ",
+      "parts": ["The world of data visualization", "Creating an exploratory plot array", "Creating an explanatory scatterplot", "The plot() function is generic", "A preview of some more and less useful techniques", "Adding details to a plot using point shapes, color, and reference lines", "Creating multiple plot arrays", "Avoid pie charts"]
+    }, {
+      "title": "\n          Different plot types\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    This chapter introduces several Base R supported plot types that are particularly useful for visualizing important features in a dataset. We start with simple tools like histograms and density plots for characterizing one variable at a time, move on to scatter plots and other useful tools for showing how two variables relate, and finally introduce some tools for visualizing more complex relationships in our dataset.\n  ",
+      "parts": ["Characterizing a single variable", "The hist() and truehist() functions", "Density plots as smoothed histograms", "Using the qqPlot() function to see many details in data", "Visualizing relations between two variables", "The sunflowerplot() function for repeated numerical data", "Useful options for the boxplot() function", "Using the mosaicplot() function", "Showing more complex relations between variables", "Using the bagplot() function", "Plotting correlation matrices with the corrplot() function", "Building and plotting rpart() models"]
+    }, {
+      "title": "\n          Adding details to plots\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    Most base R graphics functions support many optional arguments and parameters that allow us to customize our plots to get exactly what we want. In this chapter, we will learn how to modify point shapes and sizes, line types and widths, add points and lines to plots, add explanatory text and generate multiple plot arrays.\n  ",
+      "parts": ["The plot() function and its options", "Introduction to the par() function", "Exploring the type option", "The surprising utility of the type \"n\" option", "Adding lines and points to plots", "The lines() function and line types", "The points() function and point types", "Adding trend lines from linear regression models", "Adding text to plots", "Using the text() function to label plot features", "Adjusting text position, size, and font", "Rotating text with the srt argument", "Adding or modifying other plot details", "Using the legend() function", "Adding custom axes with the axis() function", "Using the supsmu() function to add smooth trend curves"]
+    }, {
+      "title": "\n          How much is too much?\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    As we have seen, base R graphics provides tremendous flexibility in creating plots with multiple lines, points of different shapes and sizes, and added text, along with arrays of multiple plots. If we attempt to add too many details to a plot or too many plots to an array, however, the result can become too complicated to be useful. This chapter focuses on how to manage this visual complexity so the results remain useful to ourselves and to others.\n  ",
+      "parts": ["Managing visual complexity", "Too much is too much", "Deciding how many scatterplots is too many", "How many words is too many?", "Creating plot arrays with the mfrow parameter", "The Anscombe quartet", "The utility of common scaling and individual titles", "Using multiple plots to give multiple views of a dataset", "Creating plot arrays with the layout() function", "Constructing and displaying layout matrices", "Creating a triangular array of plots", "Creating arrays with different sized plots"]
+    }, {
+      "title": "\n          Advanced plot customization and beyond\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    This final chapter introduces a number of important topics, including the use of numerical plot details returned invisibly by functions like barplot() to enhance our plots, and saving plots to external files so they don't vanish when we end our current R session. This chapter also offers some guidelines for using color effectively in data visualizations, and it concludes with a brief introduction to the other three graphics systems in R.\n  ",
+      "parts": ["Creating and saving more complex plots", "Some plot functions also return useful information", "Using the symbols() function to display relations between more than two variables", "Saving plot results as files", "Using color effectively", "Iliinsky and Steele's 12 recommended colors", "Using color to enhance a bubbleplot", "Using color to enhance stacked barplots", "Other graphics systems in R", "The tabplot package and grid graphics", "A lattice graphics example", "A ggplot2 graphics example"]
+    }],
+    "prerequistes": ["Introduction to R"],
+    "tracks": ["Data Visualization with R"]
+  },
+  {
+    "title": "Introduction to Statistical Modeling in R",
+    "description": "This course is designed to get you up to speed with the most important and powerful methodologies in statistics.",
+    "detailDescription": "",
+    "time": "4 hours",
+    "chapters": [{
+      "title": "\n          What is statistical modeling?\n        ",
+      "index": "1",
+      "description": "\n    This chapter explores what a statistical model is, R objects which build models, and the basic R notation, called formulas used for models.\n  ",
+      "parts": ["Welcome to statistical modeling!", "A mathematical model", "Running experiments on the toy model", "From experimental results to a prediction", "R objects for statistical modeling", "Accessing data", "Starting with formulas", "Graphics with formulas"]
+    }, {
+      "title": "\n          Designing, training, and evaluating models\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    In this chapter, you'll start building models: specifying what variables models should relate to one another and training models on the available data. You'll also provide new inputs to models to generate the corresponding outputs.\n  ",
+      "parts": ["Designing and training models", "Modeling running times", "Using the recursive partitioning model architecture", "Will they run again?", "Evaluating models", "From inputs to outputs", "Extrapolation", "Typical values of data"]
+    }, {
+      "title": "\n          Assessing prediction performance\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    This chapter is about techniques for deciding whether an explanatory variable improves the prediction performance of a model. You'll use cross validation to compare different models.\n  ",
+      "parts": ["Choosing explanatory variables", "Conceptual warm-up", "Running experience", "Prediction performance", "Where's the statistics?", "Cross validation", "Tidying up", "Testing and training datasets", "Repeating random trials", "To add or not to add (an explanatory variable)?"]
+    }, {
+      "title": "\n          Exploring data with models\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    This chapter is about constructing models to explore masses of data, for instance to generate hypotheses about what factors are important in how a system works. You'll see how the recursive partitioning model architecture, which has an internal logic for selecting explanatory variables, can be used to explore potentially complex relationships among variables. The chapter also covers the evaluation of prediction performance in models where the response variable is categorical, that is, models used for classification.\n  ",
+      "parts": ["Prediction error for categorical response variables", "The maximum error rate", "A non-null model", "A better model?", "Exploring data for relationships", "Evaluating a recursive partitioning model", "Exploring birth-weight data", "Exploring more broadly"]
+    }, {
+      "title": "\n          Covariates and effect size\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    Real-world systems are complicated. To faithfully reflect that complexity, models can incorporate multiple explanatory variables. This chapter introduces the notion of covariates and how they allow you to model the effect of an explanatory variable while taking into account the effects of other variables.\n  ",
+      "parts": ["Covariates", "House prices", "Crime and poverty", "Equal pay?", "Effect size", "Sex and death", "Comparing effect sizes", "How do GPAs compare?", "Housing units"]
+    }],
+    "prerequistes": ["Introduction to R", "Introduction to the Tidyverse"],
+    "tracks": []
+  },
+  {
+    "title": "Introduction to Statistical Modeling in R",
+    "description": "This course is designed to get you up to speed with the most important and powerful methodologies in statistics.",
+    "detailDescription": "",
+    "time": "4 hours",
+    "chapters": [{
+      "title": "\n          What is statistical modeling?\n        ",
+      "index": "1",
+      "description": "\n    This chapter explores what a statistical model is, R objects which build models, and the basic R notation, called formulas used for models.\n  ",
+      "parts": ["Welcome to statistical modeling!", "A mathematical model", "Running experiments on the toy model", "From experimental results to a prediction", "R objects for statistical modeling", "Accessing data", "Starting with formulas", "Graphics with formulas"]
+    }, {
+      "title": "\n          Designing, training, and evaluating models\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    In this chapter, you'll start building models: specifying what variables models should relate to one another and training models on the available data. You'll also provide new inputs to models to generate the corresponding outputs.\n  ",
+      "parts": ["Designing and training models", "Modeling running times", "Using the recursive partitioning model architecture", "Will they run again?", "Evaluating models", "From inputs to outputs", "Extrapolation", "Typical values of data"]
+    }, {
+      "title": "\n          Assessing prediction performance\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    This chapter is about techniques for deciding whether an explanatory variable improves the prediction performance of a model. You'll use cross validation to compare different models.\n  ",
+      "parts": ["Choosing explanatory variables", "Conceptual warm-up", "Running experience", "Prediction performance", "Where's the statistics?", "Cross validation", "Tidying up", "Testing and training datasets", "Repeating random trials", "To add or not to add (an explanatory variable)?"]
+    }, {
+      "title": "\n          Exploring data with models\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    This chapter is about constructing models to explore masses of data, for instance to generate hypotheses about what factors are important in how a system works. You'll see how the recursive partitioning model architecture, which has an internal logic for selecting explanatory variables, can be used to explore potentially complex relationships among variables. The chapter also covers the evaluation of prediction performance in models where the response variable is categorical, that is, models used for classification.\n  ",
+      "parts": ["Prediction error for categorical response variables", "The maximum error rate", "A non-null model", "A better model?", "Exploring data for relationships", "Evaluating a recursive partitioning model", "Exploring birth-weight data", "Exploring more broadly"]
+    }, {
+      "title": "\n          Covariates and effect size\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    Real-world systems are complicated. To faithfully reflect that complexity, models can incorporate multiple explanatory variables. This chapter introduces the notion of covariates and how they allow you to model the effect of an explanatory variable while taking into account the effects of other variables.\n  ",
+      "parts": ["Covariates", "House prices", "Crime and poverty", "Equal pay?", "Effect size", "Sex and death", "Comparing effect sizes", "How do GPAs compare?", "Housing units"]
+    }],
+    "prerequistes": ["Introduction to R", "Introduction to the Tidyverse"],
+    "tracks": []
+  },
+  {
+    "title": "Intermediate Statistical Modeling in R",
+    "description": "In this follow-up course, you will expand your stat modeling skills from the introduction and dive into more advanced concepts.",
+    "detailDescription": "Statistical Modeling in R is a multi-part course designed to get you up to speed with the most important and powerful methodologies in statistics. In this intermediate course 2, we'll take a look at effect size and interaction, the concepts of total and partial change, sampling variability and mathematical transforms, and the implications of something called collinearity. This course has been written from scratch, specifically for DataCamp users. As you'll see, by using computing and concepts from machine learning, we'll be able to leapfrog many of the marginal and esoteric topics encountered in traditional 'regression' courses.",
+    "time": "4 hours",
+    "chapters": [{
+      "title": "\n          Effect size and interaction\n        ",
+      "index": "1",
+      "description": "\n    Effect sizes were introduced in Part 1 of this course series as a way to quantify how each explanatory variable is connected to the response. In this chapter, you'll meet some high-level tools that make it easier to calculate and visualize effect sizes. You'll see how to extend the notion of effect size to models with a categorical response variable. And you'll start to use interactions in constructing models to reflect the way that one explanatory variable can influence the effect size of another explanatory variable on the response.\n  ",
+      "parts": ["Multiple explanatory variables", "Graphing a model of house prices", "Body-mass index (BMI)", "Categorical response variables", "Eager runners", "Who are the mellow runners?", "Smoking and survival", "Interactions among explanatory variables", "With and without an interaction term", "Working together", "Mileage and age interacting", "Interactions and effect size", "Optimal temperature"]
+    }, {
+      "title": "\n          Total and partial change\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    In many circumstances, an effect size tells you exactly what you need to know: how much the model output will change when one, and only one, explanatory variable changes. This is called partial change. In other situations, you will want to look at total change, which combines the effects of two or more explanatory variables. You'll also see an additional, but limited way of quantifying the extent to which the explanatory variables influence the response: R-squared. Finally, we'll describe the notion of degrees of freedom, a way of describing the complexity of a model.\n  ",
+      "parts": ["Total and partial change", "Another bedroom?", "Calculating total change", "Car prices", "R-squared", "Calculating R-squared", "Warming in Minneapolis?", "R-squared goes up", "Degrees of freedom", "Rules for counting", "Is bigger R-squared better? (1)", "Is bigger R-squared better? (2)", "Accidental \"perfection\""]
+    }, {
+      "title": "\n          Sampling variability and mathematical transforms\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    This chapter examines the precision with which a model can estimate an effect size. The lack of precision comes from sampling variability, which can be quantified using resampling and bootstrapping. You'll also see some ways to improve precision using mathematical transformations of variables.\n  ",
+      "parts": ["Bootstrapping and precision", "A bootstrap trial", "From a bootstrap ensemble to the standard error", "Example: fireplaces", "Scales and transformations", "Typical values of data", "Exponential growth", "Prediction with log transforms", "Confidence intervals on log-transformed models"]
+    }, {
+      "title": "\n          Variables working together\n        ",
+      "index": "\n\n  \n    \n  \n\n",
+      "description": "\n    In this final chapter, you'll learn about why you'd want to avoid collinearity, a common phenomenon in statistical modeling. You'll wrap up the course by discussing some of the ways models can be improved by involving the modeler in the design of the data collecting process.\n  ",
+      "parts": ["Confidence and collinearity", "Collinearity and inflation (1)", "Collinearity and inflation (2)", "Inflation and interaction", "Modeling SAT scores", "Start modeling!"]
+    }],
+    "prerequistes": ["Introduction to Statistical Modeling in R"],
+    "tracks": []
+  }
+
+]

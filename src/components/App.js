@@ -17,6 +17,9 @@ import Header from './home/Header';
 import HomePage from './home/HomePage';
 import ClassDetails from './ClassDetails/ClassDetails';
 import Overlay from './overlay/overlay';
+import DataScience from './datascience/DataScience';
+import Book from './datascience/books/Book';
+import BookRead from './datascience/bookread/BookRead';
 
 <ul>
   <li className="active"><a href="#header">Home</a></li>
@@ -50,6 +53,8 @@ class App extends React.Component {
       path = 'student';
     else if (path.indexOf('class') > -1)
       path = 'class';
+    else if (path.indexOf('book') > -1 && path.indexOf("books")==-1)
+      path = 'book';
 
     switch (path) {
       case 'student': child = <Student search={this.state.search} category={this.state.category} login={login} />; break;
@@ -59,6 +64,9 @@ class App extends React.Component {
       case 'contact': child = <Contact search={this.state.search} />; break;
       case 'joinclass': child = <VideoClass />; break;
       case 'class': child = <ClassDetails id={pathr.match(/\d+/)[0]} />; break;
+      case 'datascience': child = <DataScience />; break;
+      case 'books': child = <Book />; break;
+      case 'book': child = <BookRead />; break;
       default:
         child = isMobile ? <Student search={this.state.search} /> : <HomePage />;
         // child = <Student search={this.state.search} />; 
@@ -99,7 +107,7 @@ class App extends React.Component {
     }
     return (
       <div>
-        {(path != "joinclass" && path != "class") ?
+        {(path != "joinclass" && path != "class" && path != "datascience" && path!="books" && path!="book") ?
           <div className="ss-root" style={{ padding: (isMobile) ? '20px' : "0" }}>
             {(isMobile) ?
               <span>
