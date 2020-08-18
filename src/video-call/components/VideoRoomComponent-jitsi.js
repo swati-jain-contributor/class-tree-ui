@@ -21,9 +21,9 @@ class VideoRoomComponent extends Component {
 
   render() {
     return <div className="classpanel">
-      <div className="logo"><h1 className="text-light"><a><span>ClassTree</span></a></h1></div>
+      <div className="logo"><h1 className="text-light"><a><span>BakeMinds</span></a></h1></div>
       {this.state.isMobile ? <span className="request-desktop">
-        Please enable request desktop site in settings to load ClassTree
+        Please enable request desktop site in settings to load BakeMinds
       </span>:null}
       <div id="meet" />
     </div>;

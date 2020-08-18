@@ -1,4 +1,34 @@
+//export const pythoncourses =[];
 export const pythoncourses =[
+  {
+    "title": "Introduction to Python",
+    "description": "Master the basics of data analysis in Python. Expand your skillset by learning scientific computing with numpy.",
+    "detailDescription": "Python is a general-purpose programming language that is becoming ever more popular for data science. Companies worldwide are using Python to harvest insights from their data and gain a competitive edge. Unlike other Python tutorials, this course focuses on Python specifically for data science. In our Introduction to Python course, you’ll learn about powerful ways to store and manipulate data, and helpful data science tools to begin conducting your own analyses. Start DataCamp’s online Python curriculum now.",
+    "time": "4 hours",
+    "chapters": [{
+      "title": "Python Basics",
+      "index": "1",
+      "description": "An introduction to the basic concepts of Python. Learn how to use Python interactively and by using a script. Create your first variables and acquaint yourself with Python's basic data types.",
+      "parts": ["Hello Python!", "The Python Interface", "When to use Python?", "Any comments?", "Python as a calculator", "Variables and Types", "Variable Assignment", "Calculations with variables", "Other variable types", "Guess the type", "Operations with other types", "Type conversion", "Can Python handle everything?"]
+    }, {
+      "title": "Functions and Packages",
+      "index": "3",
+      "description": "You'll learn how to use functions, methods, and packages to efficiently leverage the code that brilliant Python developers have written. The goal is to reduce the amount of code you need to solve challenging problems!",
+      "parts": ["Functions", "Familiar functions", "Help!", "Multiple arguments", "Methods", "String Methods", "List Methods", "List Methods (2)", "Packages", "Import package", "Selective import", "Different ways of importing"]
+    }, {
+      "title": "Python Lists",
+      "index": "2",
+      "description": "Learn to store, access, and manipulate data in lists: the first step toward efficiently working with huge amounts of data.",
+      "parts": ["Python Lists", "Create a list", "Create list with different types", "Select the valid list", "List of lists", "Subsetting Lists", "Subset and conquer", "Subset and calculate", "Slicing and dicing", "Slicing and dicing (2)", "Subsetting lists of lists", "Manipulating Lists", "Replace list elements", "Extend a list", "Delete list elements", "Inner workings of lists"]
+    }, {
+      "title": "NumPy",
+      "index": "4",
+      "description": "NumPy is a fundamental Python package to efficiently practice data science. Learn to work with powerful tools in the NumPy array, and get started with data exploration.",
+      "parts": ["Numpy", "Your First NumPy Array", "Baseball players' height", "Baseball player's BMI", "Lightweight baseball players", "NumPy Side Effects", "Subsetting NumPy Arrays", "2D Numpy Arrays", "Your First 2D NumPy Array", "Baseball data in 2D form", "Subsetting 2D NumPy Arrays", "2D Arithmetic", "Numpy: Basic Statistics", "Average versus median", "Explore the baseball data", "Blend it all together"]
+    }],
+    "prerequistes": [],
+    "tracks": ["Data Science for Everyone", "Machine Learning for Everyone", "Data Scientist with Python", "Python Programming"]
+  },
   {
      "title":"Interactive Data Visualization with Bokeh",
      "description":"Learn how to create versatile and interactive data visualizations using Bokeh.",
@@ -2331,7 +2361,7 @@ export const pythoncourses =[
      ]
   },
   {
-     "title":"Customer Analytics and A/B Testing in Python",
+     "title":"Customer Analytics and A-B Testing in Python",
      "description":"Learn how to use Python to create, run, and analyze A/B tests to make proactive business decisions.",
      "detailDescription":"The most successful companies today are the ones that know their customers so well that they can anticipate their needs. Customer analytics and in particular A/B Testing are crucial parts of leveraging quantitative know-how to help make business decisions that generate value. This course covers the ins and outs of how to use Python to analyze customer behavior and business trends as well as how to create, run, and analyze A/B tests to make proactive, data-driven business decisions.",
      "time":"4 hours",
@@ -2375,7 +2405,7 @@ export const pythoncourses =[
            ]
         },
         {
-           "title":"\n          The Design and Application of A/B Testing\n        ",
+           "title":"\n          The Design and Application of A-B Testing\n        ",
            "index":"\n\n  \n    \n  \n\n",
            "description":"\n    In this chapter you will dive fully into A/B testing. You will learn the mathematics and knowledge needed to design and successfully plan an A/B test from determining an experimental unit to finding how large a sample size is needed. Accompanying this will be an introduction to the functions and code needed to calculate the various quantities associated with a statistical test of this type.\n  ",
            "parts":[
@@ -12894,4 +12924,4 @@ export const pythoncourses =[
 
      ]
   }
-]
+];

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import '../header.less';
 import '../reset.less';
@@ -8,16 +9,20 @@ class Blogs extends React.Component {
     super(props, context);
     this.state = {
     };
+    this.redirect = this.redirect.bind(this);
   }
+  redirect(e){
+    e.preventDefault(); 
+    this.context.router.push(e.currentTarget.href); 
+    window.scrollTo(0, 0); 
+}
   componentDidMount() {
-    setTimeout(() => {
-
-    }, 0);
+    document.title="Online Data Science blogs";
   }
   render() {
     return (
       <div>
-        <section className="banner-section bg-banner">
+        {/* <section className="banner-section bg-banner">
 
           <div className="container">
             <div className="breadcrumb-share clearfix hidden-xs">
@@ -50,14 +55,14 @@ class Blogs extends React.Component {
 
           </div>
 
-        </section>
+        </section> */}
         <section className="blog-list">
           {blogs.map(b => <div className="blog" key={b.id}>
-            <a href={"/blog/" + b.uniqueid}>
+            <a href={"/blog/" + b.uniqueid} onClick={this.redirect}>
               <div className="read-content">
                 <span className="author">{b.author}</span>
                 <span className="date">{b.date} &nbsp;&nbsp;.&nbsp;&nbsp; {b.readtime} min read</span>
-                <img src={b.img} />
+                <img src={b.img} alt={b.topic}/>
                 <h2>{b.topic}</h2>
                 <p>{b.initialContent} ...</p>
                 <span className="read">Read more...</span>
@@ -74,3 +79,6 @@ class Blogs extends React.Component {
 }
 
 export default Blogs;
+Blogs.contextTypes = {
+  router: PropTypes.func.isRequired
+};

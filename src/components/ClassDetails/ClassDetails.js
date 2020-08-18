@@ -1,15 +1,13 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import TextField from 'material-ui/TextField';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as classActions from '../../actions/classActions';
-import ValidationService from '../common/Validation';
+
 import { checkELValidity, checkValidity, onChange } from '../Utils';
 import Countdown from 'react-countdown-now';
-import LoginEmail from '../LoginEmail/LoginEmail';
-import LoginName from '../LoginName/LoginName';
-
+import crypto from 'crypto';
+import swal from 'sweetalert2';
 class ClassDetails extends React.Component {
   constructor(props, context) {
     super(props, context);
@@ -19,34 +17,105 @@ class ClassDetails extends React.Component {
       step: 0,
       imageCode: Math.floor(Math.random() * 3) + 1
     };
+    this.makePayment = this.makePayment.bind(this);
   }
   componentDidMount() {
     this.props.actions.getClassDetails({
       id: this.props.id,
-      email: this.props.email
+      email: (this.props.user ? this.props.user.email : null)
     });
   }
 
   componentDidUpdate() {
-    if (this.state.bookingClass && this.props.email && this.props.name) {
+    if (this.state.bookingClass && this.props.user) {
       this.bookClass(this.state.bookingClass);
       this.setState({ bookingClass: null });
     }
   }
+  makePayment(cl) {
+    let txnId = cl.id + '-' + (new Date).getTime();
+    let key = 'ABfWbhJg';
+    let salt = '0uBSIFCm3a';
+    let cryp = crypto.createHash('sha512');
+    let amount = parseInt(cl.Paid);
+    let text = key + '|' + txnId + '|' + amount + '|' + cl.Topic + '|' + this.props.user.firstname + '|' + this.props.user.email + '|||||' + 'CLASSDETAILS_BAKEMINDS' + '||||||' + salt;
+    cryp.update(text);
+    let hash = cryp.digest('hex');
+    let data = {
+      key: key,
+      txnid: txnId,
+      hash: hash,
+      amount: amount,
+      firstname: this.props.user.firstname,
+      email: this.props.user.email,
+      phone: this.props.user.mobile,
+      productinfo: cl.Topic,
+      udf5: 'CLASSDETAILS_BAKEMINDS',
+      surl: location.href,
+      furl: location.href
+      // mode: 'mode'// non-mandatory for Customized Response Handling
+    };
+    let handler = {
+
+      responseHandler: (BOLT) => {
+        console.log(BOLT);
+
+        if (BOLT.response.txnStatus == 'SUCCESS') {
+          this.props.actions.bookClass({
+            "classId": cl.id,
+            "email": this.props.user.email,
+            "phoneNo": this.props.user.mobile,
+            "rating": "5",
+            "name": this.props.user.firstname + " " + this.props.user.lastname
+          });
+          this.props.actions.getClassDetails({
+            id: this.props.id,
+            email: this.props.user.email
+          });
+          window.showSuccessToast("Congratulations! Class Registered successfully!"); this.props.actions.bookClass({
+            "classId": cl.id,
+            "email": this.props.user.email,
+            "phoneNo": this.props.user.mobile,
+            "rating": "5",
+            "name": this.props.user.firstname + " " + this.props.user.lastname
+          });
+          this.props.actions.getClassDetails({
+            id: this.props.id,
+            email: this.props.user.email
+          });
+          window.showSuccessToast("Congratulations! Class Registered successfully!");
+        }
+        else {
+          swal.fire( "Oops" ,  "Your payment failed! Please try again!" ,  "error" );
+        }
+      },
+      catchException: function (BOLT) {
+        console.log(BOLT);
+        // the code you use to handle the integration errors goes here
+
+      }
+    };
+    window.bolt.launch(data, handler);
+  }
   bookClass(cl) {
-    if (this.props.email && this.props.name) {
-      this.props.actions.bookClass({
-        "classId": cl.id,
-        "email": this.props.email,
-        "phoneNo": this.props.phoneNo,
-        "rating": "5",
-        "name": this.props.name
-      });
-      this.props.actions.getClassDetails({
-        id: this.props.id,
-        email: this.props.email
-      });
-      window.showSuccessToast("Congratulations! Class Registered successfully!");
+    if (this.props.user) {
+      if (!cl.Paid || cl.Paid == 0) {
+        this.props.actions.bookClass({
+          "classId": cl.id,
+          "email": this.props.user.email,
+          "phoneNo": this.props.user.mobile,
+          "rating": "5",
+          "name": this.props.user.firstname + " " + this.props.user.lastname
+        });
+        this.props.actions.getClassDetails({
+          id: this.props.id,
+          email: this.props.user.email
+        });
+        window.showSuccessToast("Congratulations! Class Registered successfully!");
+      }
+      else {
+        this.makePayment(cl);
+      }
     }
     else {
       this.setState({ bookingClass: cl });
@@ -59,27 +128,29 @@ class ClassDetails extends React.Component {
   }
   loadClass() {
     let cl = this.props.class;
-    let meetingToken = btoa(JSON.stringify({
-      classId: cl.id.toString(),
-      className: cl.Topic.toString(),
-      TutorName: cl.TutorName,
-      username: this.props.name,
-      email: this.props.email,
-      type: cl.TutorEmail == this.props.email ? 'P' : 'S'
-    }));
-    let meetingUrl = "/joinclass?token=" + meetingToken;
-    let app = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
-    if (app) {
-      meetingUrl = location.pathname + "#" + meetingUrl;
-      location.href = meetingUrl;
+    if (this.props.user) {
+      let meetingToken = btoa(JSON.stringify({
+        classId: cl.id.toString(),
+        className: cl.Topic.toString(),
+        TutorName: cl.TutorName,
+        username: this.props.user.firstname + " " + this.props.user.lastname,
+        email: this.props.user.email,
+        type: cl.TutorEmail == this.props.user.email ? 'P' : 'S'
+      }));
+      let meetingUrl = "/joinclass?token=" + meetingToken;
+      let app = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
+      if (app) {
+        meetingUrl = location.pathname + "#" + meetingUrl;
+        location.href = meetingUrl;
+      }
+      else
+        this.context.router.push(meetingUrl);
     }
-    else
-      this.context.router.push(meetingUrl);
   }
   render() {
 
     let cl = this.props.class;
-    let isStudent = this.props.email != cl.email;
+    let isStudent = (this.props.user ? (this.props.user.email != cl.email) : null);
     const scrollToTeacher = () => {
       $([document.documentElement, document.body]).animate({
         scrollTop: $("#teacher").offset().top
@@ -179,10 +250,8 @@ class ClassDetails extends React.Component {
 function mapStateToProps(state, ownProps) {
 
   return {
-    email: state.classes.userEmail,
-    name: state.classes.userName,
-    phoneNo: state.classes.userPhone,
-    class: state.classes.selectedClass || { category: "" }
+    class: state.classes.selectedClass || { category: "" },
+    user: state.session.user
   };
 }
 function mapDispatchToProps(dispatch) {

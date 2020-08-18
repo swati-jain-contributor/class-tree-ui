@@ -1,0 +1,131 @@
+.popup {
+  border-radius: 10px !important;
+  padding: 0px !important;
+  width: 600px !important;
+  max-width: 600px !important;
+
+  input {
+    border-style: solid;
+    border-width: 1px;
+  }
+
+  .multi-input {
+    display: flex;
+
+    select {
+      width: 68%;
+      border-radius: 0px;
+      border-left: none;
+      border-right: none;
+      border-top: none;
+    }
+  }
+
+  .row {
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+
+    a {
+      width: 50%;
+      text-align: center !important;
+      flex: 0 0 50%;
+      max-width: 50%;
+      color: #BABABA;
+      padding: 30px;
+      border-bottom: 1px solid #000000;
+
+      &.register {
+        border-right: 1px solid #000000;
+      }
+
+      &.login {
+        border-left: 1px solid #000000;
+      }
+
+      &.active {
+        color: #009970;
+        border: 0;
+
+      }
+    }
+  }
+
+  .form-content {
+    padding: 30px;
+  }
+
+  button {
+    background-color: #009970;
+    color: #fff;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 30px;
+    display: block;
+
+    &:hover {
+      color: #fff;
+    }
+  }
+}
+
+
+.datascience {
+  .overlay {
+    opacity: 0.7;
+    background: #000 !important;
+  }
+  .fa-times{
+    z-index: 20000;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+  }
+
+  .popup {
+    .col-md-6 {
+      padding: 0 10px !important;
+
+    }
+  }
+
+  .form_md input[type=datepicker],
+  .form_md input[type=email],
+  .form_md input[type=number],
+  .form_md input[type=password],
+  .form_md input[type=tel],
+  .form_md input[type=text] {
+    margin-bottom: 0px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .popup {
+    max-width: 100% !important;
+    border-radius: 0px !important;
+    .form-content{
+      padding: 0;
+      form{
+        padding-top: 20px;
+      }
+    }
+    button{
+      width: 200px;
+    }
+    .row{
+      margin-bottom: 0;
+      .col-md-6,.col-md-12{
+        margin-bottom: 5px;
+        padding: 0 10px !important;
+      }
+    }
+    .fa-times{
+      z-index: 20000;
+      right: 10px;
+      top: 10px;
+      cursor: pointer;
+    }
+  }
+}

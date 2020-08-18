@@ -1,10 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import TextField from 'material-ui/TextField';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as classActions from '../../actions/classActions';
-import ValidationService from '../common/Validation';
 import { checkELValidity, checkValidity, onChange } from '../Utils';
 import Countdown from 'react-countdown-now';
 
@@ -29,9 +27,9 @@ class Card extends React.Component {
       classId: cl.id.toString(),
       className: cl.Topic.toString(),
       TutorName: cl.TutorName,
-      username: this.props.name,
-      email: this.props.email,
-      type: cl.TutorEmail == this.props.email ? 'P' : 'S'
+      username: this.props.user.firstname + " " + this.props.user.lastname,
+      email: this.props.user.email,
+      type: cl.TutorEmail == this.props.user.email ? 'P' : 'S'
     }));
     let meetingUrl = "/joinclass?token=" + meetingToken;
     let app = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
@@ -94,38 +92,6 @@ class Card extends React.Component {
             renderer={renderer}
           /> : null}
         </div>
-
-        {/* <div id={"modal-" + cl.id} className="modal fade" role="dialog" tabIndex="-1">
-          <div className="modal-dialog">
-            <div className="modal-content" style={{ background: "transparent" }}>
-              <div className="modal-body card-details" style={{ marginTop: "0px", height: "auto" }}>
-                <h3 className="card-details-header">{cl.Topic}</h3>
-                <div className="desc">{cl.Description}</div>
-                <span className="tutor">-{cl.TutorName}</span><br />
-                <span className="helper-info"><span>40 Minutes</span> &nbsp;&nbsp;&nbsp;
-                {isStudent ? <span>FREE</span> : <span>{cl.Attendee + ' / ' + cl.MaxStudents}</span>}
-                </span>
-                <div className="line" />
-                <div className="helper-info" style={{ marginTop: "5px", marginBottom: "40px" }}>
-                  <span>Share - </span>
-                  <span>
-                    <a className="grayscale" style={{ marginRight: "8px" }} href="http://www.facebook.com/sharer.php?u=https://www.classtree.in/student" target="_blank"><img src="https://image.flaticon.com/icons/svg/1384/1384053.svg" alt="Facebook" className="shared-svg" /></a>
-                    <a className="grayscale" href="http://www.linkedin.com/shareArticle?mini=true&url=https://www.classtree.in/student" target="_blank"><img src="https://image.flaticon.com/icons/svg/174/174857.svg" alt="Linkedin" className="shared-svg" /></a>
-                  </span>
-                </div>
-
-                {!cl.active ? <button style={{ backgroundColor: "lightgrey", fontWeight: "bold", fontSize: "20px" }} className="card-btn">Registration closed</button> : null}
-                {!cl.StudentEmail && isStudent && cl.active ?
-                  <button className="card-btn" data-dismiss="modal" onClick={() => this.bookClass(cl)}>{date}   <span className="book">Book</span></button> : null}
-                {(isStudent && cl.StudentEmail) ? <span className="tag tag-registered"><i className="fa fa-id-badge" /> &nbsp;Registered</span> : null}
-                {(((cl.StudentEmail && isStudent) || !isStudent) && cl.active) ? <Countdown
-                  date={window.addMinutes(window.getUserLocalDate(cl.Date), -10)}
-                  renderer={renderer}
-                /> : null}
-              </div>
-            </div>
-          </div>
-        </div> */}
       </div>
 
     );
@@ -134,9 +100,7 @@ class Card extends React.Component {
 
 function mapStateToProps(state, ownProps) {
   return {
-    email: state.classes.userEmail,
-    name: state.classes.userName,
-    phoneNo: state.classes.userPhone
+    user: state.session.user
   };
 }
 function mapDispatchToProps(dispatch) {

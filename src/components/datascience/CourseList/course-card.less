@@ -1,0 +1,80 @@
+.course {
+  width: 260px;
+  height: 400px;
+  color: #4d5356;
+  margin: 24px 0 32px;
+  padding: 32px 15px 0;
+  position: relative;
+  text-align: center;
+  transition: transform 0.25s ease-in-out;
+  box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.15);
+  background-color: #fff;
+  .live-instuctor{
+    position: absolute;
+    top: 160px;
+    background-color: rgb(0, 152, 112);
+    color: rgb(255, 255, 255);
+    width: 100%;
+    padding: 0px 10px;
+    left: 0;
+  }
+  .price{
+    position: absolute;
+    bottom: 20px;
+    width: 230px;
+    padding-top: 3px;
+    border-top: 1px solid #BABABA;
+    .actual-price{
+      text-decoration: line-through;
+      opacity: .3;
+    }
+    span.sale-price{
+      margin-left: 8px;
+    font-weight: bold;
+    }
+  }
+  .time{
+    position: absolute;
+    bottom: -6px;
+    span{
+      font-size: 14px;
+    padding-left: 6px;
+    color: gray;
+    }
+  }
+  &:hover{
+    transform: scale(1.05);
+  }
+  .tech-img {
+    position: absolute;
+    transform: translate(50%, -50%);
+    width: 40px;
+    right: 0;
+    bottom: 0;
+  }
+  .course-img{
+    width: 100%;
+    position: static;
+    width: calc(100% + 30px);
+    transform: none;
+    margin: -34px -15px;
+    height: 174px;
+    border-bottom: 6px solid #CDD99E;
+  }
+  h3{
+    font-size: 17px;
+    margin-top: 50px;
+    color: #000;
+    font-weight: bold;
+    text-align: left;
+  }
+  p{
+    text-align: left;
+    margin-top: -10px;
+    color: #000;
+    font-size: 16px;
+  }
+  .fa{
+    color: #019970;
+  }
+}

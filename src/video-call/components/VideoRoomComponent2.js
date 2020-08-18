@@ -17,7 +17,7 @@ class VideoRoomComponent extends Component {
         super(props);
         this.OPENVIDU_SERVER_URL = this.props.openviduServerUrl
             ? this.props.openviduServerUrl
-            : 'https://api.classtree.in';
+            : 'https://api.bakeminds.com';
         this.OPENVIDU_SERVER_SECRET = this.props.openviduSecret ? this.props.openviduSecret : 'MY_SECRET';
         this.hasBeenUpdated = false;
         this.layout = new OpenViduLayout();

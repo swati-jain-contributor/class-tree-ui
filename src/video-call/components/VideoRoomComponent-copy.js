@@ -16,7 +16,7 @@ class VideoRoomComponent extends Component {
     super(props);
     this.OPENVIDU_SERVER_URL = this.props.openviduServerUrl
       ? this.props.openviduServerUrl
-      : 'https://api.classtree.in';
+      : 'https://api.bakemnds.coms';
     this.OPENVIDU_SERVER_SECRET = this.props.openviduSecret ? this.props.openviduSecret : 'MY_SECRET';
     let sessionName = this.props.userdata.className ? this.props.userdata.className : 'SessionA';
     let userName = this.props.userdata.username ? this.props.userdata.username : 'OpenVidu_User' + Math.floor(Math.random() * 100);
@@ -85,7 +85,7 @@ class VideoRoomComponent extends Component {
 
   connectToSession(onlyscreen) {
     if (this.props.userdata.isrecording) {
-      this.connect("wss://api.classtree.in?sessionId=" + this.props.userdata.classId + '&secret=' + "MY_SECRET" + "&recorder=true");
+      this.connect("wss://api.bakeminds.com?sessionId=" + this.props.userdata.classId + '&secret=' + "MY_SECRET" + "&recorder=true");
     }
     else {
       this.getToken().then((token) => {
@@ -469,7 +469,7 @@ class VideoRoomComponent extends Component {
     let canControlSize = !this.checkSomeoneShareScreen() && localUser && localUser.isTutor;
     return (
       <div className="container" id="container">
-        <div className="logo"><h1 className="text-light"><a><span>ClassTree</span></a></h1></div>
+        <div className="logo"><h1 className="text-light"><a><span>BakeMinds</span></a></h1></div>
 
         <DialogExtensionComponent showDialog={this.state.showExtensionDialog} cancelClicked={this.closeDialogExtension} />
         <button className="btn btn-primary part-down" type="button" onClick={() => { window.innerWidth > 900 && this.setState({ showParticipants: true }); }}>
@@ -508,13 +508,13 @@ class VideoRoomComponent extends Component {
                 <br />
                 <br />
                 <br />
-                <h1 className="b-title">Welcome to ClassTree</h1>
+                <h1 className="b-title">Welcome to BakeMinds</h1>
                 <br />
                 <br />
                 <h3 className="b-tagline">Share your learnings with everyone - Anytime, Anywhere , Anything</h3>
                 <br />
                 <br />
-                <span className="b-appreciate"> ClassTree appreciates <span>{this.props.userdata.TutorName}</span> for your strenuous efforts in educating the world and helping nation to grow.</span>
+                <span className="b-appreciate"> BakeMinds appreciates <span>{this.props.userdata.TutorName}</span> for your strenuous efforts in educating the world and helping nation to grow.</span>
                 <br />
                 <span className="b-topic"> Your class on - <span>{this.props.userdata.className}</span> will start shortly.</span>
                 <br />
@@ -577,7 +577,7 @@ class VideoRoomComponent extends Component {
   getTokenParam() {
     return new Promise((resolve) => {
       axios
-        .post("https://api.classtree.in/api/video/generateToken", this.props.userdata)
+        .post("https://api.bakeminds.com/api/video/generateToken", this.props.userdata)
         .then((response) => {
           console.log('CREATE SESION', response);
           console.log(response.data.response);

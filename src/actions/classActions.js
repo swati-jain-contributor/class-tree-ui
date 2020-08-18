@@ -1,7 +1,6 @@
 import ClassApi from '../api/classApi';
 import * as types from './actionTypes';
 import { beginAjaxCall, ajaxCallError } from './ajaxStatusActions';
-import { resetErrorMessage } from './loginActions';
 
 export function addClassSuccess(collData) {
   return { type: types.ADD_CLASSES_SUCCESS, collData };
@@ -22,7 +21,6 @@ export function addClass(collData) {
         type: 'T'
       }));
     }).catch(error => {
-      dispatch(resetErrorMessage("Please check your internet connection"));
       dispatch(ajaxCallError(error));
       throw (error);
     });
@@ -49,7 +47,6 @@ export function bookClass(collData) {
         type: 'C'
       }));
     }).catch(error => {
-      dispatch(resetErrorMessage("Please check your internet connection"));
       dispatch(ajaxCallError(error));
       throw (error);
     });
@@ -88,7 +85,6 @@ export function getClasses(collData) {
       else
         dispatch(getClassFailure(data.errorDesc));
     }).catch(error => {
-      dispatch(resetErrorMessage("Please check your internet connection"));
       dispatch(ajaxCallError(error));
       throw (error);
     });
@@ -111,7 +107,6 @@ export function getClassDetails(id){
       else
         dispatch(getClassDetailsFailure(data.errorDesc));
     }).catch(error => {
-      dispatch(resetErrorMessage("Please check your internet connection"));
       dispatch(ajaxCallError(error));
       throw (error);
     });

@@ -469,6 +469,9 @@ textarea {
   display: inline-flex;
   margin-left: 10px;
 }
+.gj-picker{
+  z-index: 25000 !important;
+}
 
 @tablet-down: ~'(max-width: 767px)';
 @tablet-up: ~'(min-width: 767px)';
@@ -735,7 +738,7 @@ textarea {
     padding: 10px 30px;
     box-shadow: 0px 0px 4px #cecece;
     min-height: 240px;
-    z-index: 1000;
+    z-index: 10000;
     padding-bottom: 30px;
     padding-top: 30px;
     max-height: 100vh;
@@ -1101,21 +1104,20 @@ textarea {
     padding: 10px 30px;
     box-shadow: 0px 0px 4px #cecece;
     min-height: 240px;
-    z-index: 1000;
+    z-index: 10000;
     padding-bottom: 30px;
     padding-top: 30px;
 
     //for desktop
     max-width: 400px;
     margin: auto;
-    left: ~"calc(50% - 200px)";
-    top: ~"calc(50% - 100px)";
     bottom: initial;
     border-radius: 30px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 
-    &.add-class {
-      top: ~"calc(50% - 270px)";
-    }
+    
   }
 
   .tag-registered {

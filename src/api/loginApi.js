@@ -1,12 +1,5 @@
-import delay from './delay';
+
 import server from './server';
-// This file mocks a web API by working with the hard-coded data below.
-// It uses setTimeout to simulate the delay of an AJAX call.
-// All calls return promises.
-const userDetails = {
-  username: '',
-  password: ''
-};
 
 class LoginApi {
   static createSession() {
@@ -52,7 +45,7 @@ class LoginApi {
         console.log(res);
         //return res;
         throw (res);
-      })
+      });
   }
   static sendOTP(reqData) {
     //
@@ -81,7 +74,7 @@ class LoginApi {
         console.log(res);
         //return res;
         throw (res);
-      })
+      });
   }
 
   static getUserData() {
@@ -106,7 +99,7 @@ class LoginApi {
         console.log(res);
         //return res;
         throw (res);
-      })
+      });
   }
 }
 

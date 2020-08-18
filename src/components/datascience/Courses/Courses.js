@@ -5,70 +5,71 @@ import '../reset.less';
 import '../style.less';
 import './courses.less';
 import '../typer.js';
+import CourseCard from '../CourseList/CourseCard';
 import { courses } from '../data-camp-courses';
 
 const techs = ["r", "python", "sql", "git", "shell", "spreadsheets", "tableau", "power_bi", "scala", "excel", "theory"];
-const skills=[{
-  name:"Data Engineering",
-  unique_id:"data-engineering",
-  image_id:"engineering"
+const skills = [{
+  name: "Data Engineering",
+  unique_id: "data-engineering",
+  image_id: "engineering"
 },
 {
-  name:"Programming",
-  unique_id:"programming",
-  image_id:"programming"
+  name: "Programming",
+  unique_id: "programming",
+  image_id: "programming"
 },
 {
-  name:"Importing & Cleaning Data",
-  unique_id:"cleaning",
-  image_id:"cleaning"
+  name: "Importing & Cleaning Data",
+  unique_id: "cleaning",
+  image_id: "cleaning"
 },
 {
-  name:"Data Manipulation",
-  unique_id:"manipulation",
-  image_id:"manipulation"
+  name: "Data Manipulation",
+  unique_id: "manipulation",
+  image_id: "manipulation"
 },
 {
-  name:"Data Visualization",
-  unique_id:"visualization",
-  image_id:"visualization"
+  name: "Data Visualization",
+  unique_id: "visualization",
+  image_id: "visualization"
 },
 {
-  name:"Probability & Statistics",
-  unique_id:"probability",
-  image_id:"probability"
+  name: "Probability & Statistics",
+  unique_id: "probability",
+  image_id: "probability"
 },
 {
-  name:"Machine Learning",
-  unique_id:"machine",
-  image_id:"machine"
+  name: "Machine Learning",
+  unique_id: "machine",
+  image_id: "machine"
 },
 {
-  name:"Applied Finance",
-  unique_id:"finance",
-  image_id:"Finance"
+  name: "Applied Finance",
+  unique_id: "finance",
+  image_id: "Finance"
 },
 {
-  name:"Reporting",
-  unique_id:"reporting",
-  image_id:"reporting"
+  name: "Reporting",
+  unique_id: "reporting",
+  image_id: "reporting"
 },
 {
-  name:"Case Studies",
-  unique_id:"case",
-  image_id:"casestudy"
+  name: "Case Studies",
+  unique_id: "case",
+  image_id: "casestudy"
 },
 {
-  name:"Management",
-  unique_id:"management",
-  image_id:"management"
+  name: "Management",
+  unique_id: "management",
+  image_id: "management"
 },
 {
-  name:"Other",
-  unique_id:"other",
-  image_id:"other"
+  name: "Other",
+  unique_id: "other",
+  image_id: "other"
 }];
-const shuffle = (array) =>{
+const shuffle = (array) => {
   let currentIndex = array.length, temporaryValue, randomIndex;
 
   // While there remain elements to shuffle...
@@ -91,12 +92,13 @@ class Courses extends React.Component {
     setTimeout(() => {
       $('[data-typer-targets]').typer();
     }, 0);
+    document.title="Online certification training on Data Science";
   }
   render() {
     return (
       <div className="courses-page">
         <div className="course-banner">
-          <img src="https://raw.githubusercontent.com/swati-jain-contributor/privacy-policy/master/smart-datascience.jpg" />
+          <img src="https://raw.githubusercontent.com/swati-jain-contributor/privacy-policy/master/smart-datascience.jpg" alt={"Courses for Data Science"} />
           <div className="container info-container">
             <h2>This is your year to excel</h2>
             <p>Instead of finding excuses for not doing it, find reasons to do it..</p>
@@ -107,31 +109,35 @@ class Courses extends React.Component {
               </h4>
 
             </h3>
-            <a href="/courses" >Browse all courses</a>
+            <a href="/search-courses" onClick={(e) => { 
+            e.preventDefault(); 
+            this.context.router.push('/search-courses'); 
+            window.scrollTo(0, 0); 
+            }} >Browse all courses</a>
           </div>
         </div>
+
         <div>
           <br />
           <br />
-          <h2>Trending Courses</h2>
+          <h2>Explore our course library</h2>
           <div className="class-list">
-            {courses.slice(0, 3).map((pc, i) => <article className="course" key={i} onClick={()=>{this.context.router.push('/course/'+pc.title.toLowerCase().replace(/ /g,"-")); window.scrollTo(0,0);}}>
-              <h3>{pc.title}</h3>
-              <p>{pc.description}</p>
-              <p>{pc.time}</p>
-              <p>{pc.stream}</p>
-              <p>{pc.technology}</p>
-              <img src={"https://raw.githubusercontent.com/swati-jain-contributor/privacy-policy/40433fe05f5c2d47ea516f0d865506d40bfa8cf4/tech/" + pc.technology + ".svg"} />
-            </article>)}
+            {shuffle(courses).slice(0, 8).map((pc, i) => <CourseCard course={pc} />)}
           </div>
+          <a href="/search-courses" onClick={(e) => { 
+            e.preventDefault(); 
+            this.context.router.push('/search-courses'); 
+            window.scrollTo(0, 0); 
+            }} className="all-courses">See all courses</a>
         </div>
+
         <div className="select-tech">
           <h2>Browse by technology</h2>
           <br />
           <br />
           <div className="tech-list">
-            {techs.map((t, i) => <article key={i} onClick={()=>{this.context.router.push('/course-list/'+t); window.scrollTo(0,0);}}>
-              <img src={"https://raw.githubusercontent.com/swati-jain-contributor/privacy-policy/00fff168c1ea7a30add9c8718b3bd3452321da7b/tech/" + t + ".svg"} />
+            {techs.map((t, i) => <article key={i} onClick={() => { this.context.router.push('/course-list/' + t); window.scrollTo(0, 0); }}>
+              <img src={"https://raw.githubusercontent.com/swati-jain-contributor/privacy-policy/00fff168c1ea7a30add9c8718b3bd3452321da7b/tech/" + t + ".svg"} alt={t.replace("_", " ")} />
               <div>
                 <h4>{t.replace("_", " ")}</h4>
               </div>
@@ -143,8 +149,8 @@ class Courses extends React.Component {
           <br />
           <br />
           <div className="tech-list">
-            {skills.map((t, i) => <article key={i} onClick={()=>{this.context.router.push('/course-list/'+t.unique_id); window.scrollTo(0,0);}}>
-              <img src={"https://raw.githubusercontent.com/swati-jain-contributor/privacy-policy/master/skills/" + t.image_id + ".png"} />
+            {skills.map((t, i) => <article key={i} onClick={() => { this.context.router.push('/course-list/' + t.unique_id); window.scrollTo(0, 0); }}>
+              <img src={"https://raw.githubusercontent.com/swati-jain-contributor/privacy-policy/master/skills/" + t.image_id + ".png"} alt={t.name}/>
               <div>
                 <h4>{t.name}</h4>
               </div>
@@ -152,20 +158,12 @@ class Courses extends React.Component {
           </div>
         </div>
         <div>
-          <br/>
-          <br/>
-          <h2>Explore our course library</h2>
+          <br />
+          <br />
+          <h2>Trending Courses</h2>
           <div className="class-list">
-            {shuffle(courses).slice(0, 6).map((pc, i) => <article className="course" key={i} onClick={()=>{this.context.router.push('/course/'+pc.title.toLowerCase().replace(/ /g,"-")); window.scrollTo(0,0);}}>
-              <h3>{pc.title}</h3>
-              <p>{pc.description}</p>
-              <p>{pc.time}</p>
-              <p>{pc.stream}</p>
-              <p>{pc.technology}</p>
-              <img src={"https://raw.githubusercontent.com/swati-jain-contributor/privacy-policy/40433fe05f5c2d47ea516f0d865506d40bfa8cf4/tech/" + pc.technology + ".svg"} />
-            </article>)}
+            {courses.slice(0, 4).map((pc, i) => <CourseCard course={pc} />)}
           </div>
-          <a href="/courses" className="all-courses">See all courses</a>
         </div>
       </div>);
   }

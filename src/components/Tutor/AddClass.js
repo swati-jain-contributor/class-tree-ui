@@ -1,10 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import TextField from 'material-ui/TextField';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as classActions from '../../actions/classActions';
-import ValidationService from '../common/Validation';
 import { checkELValidity, checkValidity, onChange } from '../Utils';
 
 let initialClass = {
@@ -53,9 +51,9 @@ class AddClass extends React.Component {
     // event.preventDefault();
     // if (this.checkValidity(event)) {
       let classData = {
-        email: this.props.email,
-        name: this.props.name,
-        phoneNo: this.props.phoneNo,
+        email: this.props.user.email,
+        name: this.props.user.firstname + " " + this.props.user.lastname,
+        phoneNo: this.props.user.mobile,
         date: window.getMySQLDate(this.state.classData.date, this.state.classData.startTime),
         topic: this.state.classData.topic,
         description: this.state.classData.description,
@@ -76,9 +74,6 @@ class AddClass extends React.Component {
         classData: JSON.parse(JSON.stringify(initialClass))
       });
       this.props.onClose();
-    // }
-    // event.target.form.reset();
-    // window.initiateDatepicker(this);
   }
 
   addName(event) {
@@ -86,13 +81,13 @@ class AddClass extends React.Component {
     if ((event && this.checkValidity(event)) || !event) {
       if (this.props.type == "T")
         this.props.actions.addTeacherData({
-          email: this.props.email,
+          email: this.props.user.email,
           name: this.state.classData.name,
           phoneNo: this.state.classData.phoneNo
         });
       else
         this.props.actions.addStudentData({
-          email: this.props.email,
+          email: this.props.user.email,
           name: this.state.classData.name,
           phoneNo: this.state.classData.phoneNo
         });
@@ -356,7 +351,7 @@ class AddClass extends React.Component {
                 <ul className="tips">
                   <li>Communicate with students one on one.</li>
                   <li>Be sure you have a good stable internet and power backup.</li>
-                  <li>If for some reason, you have to cancel the class, please raise it to ClassTree support before hand.</li>
+                  <li>If for some reason, you have to cancel the class, please raise it to BakeMinds support before hand.</li>
                   <li>To share any material or link with students, drop a message to +91-8886080289</li>
                   <li>Last but not least , We are happy to have you onboard. We know you would be great teacher.</li>
                 </ul>
@@ -383,9 +378,7 @@ class AddClass extends React.Component {
 function mapStateToProps(state, ownProps) {
 
   return {
-    email: state.classes.userEmail,
-    name: state.classes.userName,
-    phoneNo: state.classes.userPhone
+    user:state.session.user
   };
 }
 function mapDispatchToProps(dispatch) {

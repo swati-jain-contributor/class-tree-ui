@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import '../header.less';
 import '../reset.less';
 import '../style.less';
-import tune from 'material-ui/svg-icons/image/tune';
+
 
 const videos = [{
   id: 1,
@@ -157,6 +158,7 @@ class Videos extends React.Component {
     this.selectVideo = this.selectVideo.bind(this);
   }
   componentDidMount() {
+    document.title ="Videos on Data Science";
   }
   selectVideo(id){
     let videos = this.state.videos;
@@ -176,7 +178,7 @@ class Videos extends React.Component {
       <div className="video-section">
         <div className={"video-banner " + (this.state.isplaying ? "playing" :"")}>
           { !this.state.isplaying ? <a onClick={()=>{this.setState({isplaying:true});}} className="video-cover" href="javascript: void(0);" data-action="video" data-id="147" style={{ opacity: 1 }}>
-            <img width="1500" height="500" src={selectedVideo.img} className="attachment-vlog-cover-full size-vlog-cover-full wp-post-image" alt="" />
+            <img width="1500" height="500" src={selectedVideo.img} className="attachment-vlog-cover-full size-vlog-cover-full wp-post-image" alt={selectedVideo.topic} />
             <span className="vlog-format-action large"><i className="fa fa-play" /></span>
           </a> :
           <div>
@@ -220,7 +222,7 @@ class Videos extends React.Component {
                         <article onClick={()=>this.selectVideo(a.id)} key={i} className="vlog-lay-e vlog-cat col-lg-4 col-sm-4 col-md-4 col-xs-12 post-4 page type-page status-publish hentry">
                           <div className="entry-image">
                             <a title={a.topic}>
-                              <img width="344" height="193" src={a.img} className="attachment-vlog-lay-e-full size-vlog-lay-e-full wp-post-image" alt="" />	       		        <span className="vlog-format-action small"><i className="fa fa-play" /></span>
+                              <img width="344" height="193" src={a.img} className="attachment-vlog-lay-e-full size-vlog-lay-e-full wp-post-image" alt={a.topic} />	       		        <span className="vlog-format-action small"><i className="fa fa-play" /></span>
                             </a>
                           </div>
                           <div className="entry-header">
@@ -239,7 +241,7 @@ class Videos extends React.Component {
 
           </div>
         </section>
-        <section>
+        <section className="courses-section">
           <div className="vlog-section vlog-no-sid vlog-bg ">
 
             <div className="container">
@@ -255,7 +257,7 @@ class Videos extends React.Component {
                       <div className="text-center" >
                         <h2>You will love our courses</h2>
                         <p>Our courses is a carefully crafted based on market demand with focus on learner mindset. We provide customize courses based on your requirement and timing! One of the best corporate personal trainer would be alotted to you who would make sure that you are growing well.</p>
-                        <button className="vlog-button" href="/courses">Know more</button>
+                        <button className="vlog-button" onClick={() => {this.context.router.push('/courses'); window.scrollTo(0, 0); }}>Know more</button>
                       </div>		</div>
 
                   </div>
@@ -299,7 +301,7 @@ class Videos extends React.Component {
                           <div className="col-lg-6 col-md-6  col-sm-6 col-xs-12">
                             <div className="entry-image">
                               <a  title="Take advantage of different weather forecasts" className="" data-id="92">
-                                <img width="366" height="205" src={v.img} className="attachment-vlog-lay-b size-vlog-lay-b wp-post-image" alt="" sizes="(max-width: 366px) 100vw, 366px" />                                                     </a>
+                                <img width="366" height="205" src={v.img} className="attachment-vlog-lay-b size-vlog-lay-b wp-post-image" alt={v.topic} sizes="(max-width: 366px) 100vw, 366px" />                                                     </a>
                             </div>
                           </div>
 
@@ -352,3 +354,6 @@ class Videos extends React.Component {
 }
 
 export default Videos;
+Videos.contextTypes = {
+  router: PropTypes.func.isRequired
+};

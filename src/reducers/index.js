@@ -1,13 +1,13 @@
 import {combineReducers} from 'redux';
 
-import requests from './requestReducer';
 import classes from './classReducer';
+import session from './sessionReducer';
 
 import ajaxCallsInProgress from './ajaxStatusReducer';
 
 const rootReducer = combineReducers({
-  requests,
   classes,
+  session,
   ajaxCallsInProgress
 });
 

@@ -3,16 +3,13 @@ import PropTypes from 'prop-types';
 import '../header.less';
 import '../reset.less';
 import '../style.less';
-const urls=[
-  "https://raw.githubusercontent.com/swati-jain-contributor/privacy-policy/master/bringing-the-best-out-of-jupyter-notebooks-for-data-science-f087.html",
-  "https://raw.githubusercontent.com/swati-jain-contributor/privacy-policy/master/sample.html",
-  "https://raw.githubusercontent.com/swati-jain-contributor/privacy-policy/master/visual-wake-words-with-tensorflow-lite-micro-8578e59ea6f9.html",
-  "https://raw.githubusercontent.com/swati-jain-contributor/privacy-policy/master/using-tensorflow-2-for-state-of-the-art-natural-language-process",
-  "https://raw.githubusercontent.com/swati-jain-contributor/privacy-policy/master/stop-installing-tensorflow-using-pip-for-performance-sake-5854f9",
-];
+import {blogs} from '../blogs';
+
 class BlogRead extends React.Component {
   constructor(props, context) {
     super(props, context);
+    let blog = blogs.find(b => b.uniqueid == this.props.params.uniqueid) ;
+    this.setState({ b: blog});
     this.state = {
     };
   }
@@ -36,11 +33,11 @@ class BlogRead extends React.Component {
         // document.querySelector("article h1").nextElementSibling.style.display="none";
       });
     }, 0);
+    document.title= this.state.b.topic;
   }
   render() {
     return (
       <div className="blog-read">
-        <h4>{this.state.topic}</h4>
         <div className="article" />
       </div>);
   }

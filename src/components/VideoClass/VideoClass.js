@@ -1,14 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import TextField from 'material-ui/TextField';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as classActions from '../../actions/classActions';
-import ValidationService from '../common/Validation';
-import { checkELValidity, checkValidity, onChange } from '../Utils';
 import VideoRoomComponent from '../../video-call/components/VideoRoomComponent';
 import '../../video-call/index.css';
-import axios from 'axios';
 // import registerServiceWorker from '../../video-call/registerServiceWorker';
 // registerServiceWorker();
 class VideoClass extends React.Component {
@@ -28,7 +24,8 @@ class VideoClass extends React.Component {
   render() {
     return (
       <div className="class-panel">
-        <VideoRoomComponent userdata={JSON.parse(atob(this.getQueryParams("token",location.href)))}/>
+        {this.props.user?<VideoRoomComponent userdata={JSON.parse(atob(this.getQueryParams("token",location.href)))}/>:null}
+        
       </div>
     );
   }
@@ -37,9 +34,10 @@ class VideoClass extends React.Component {
 function mapStateToProps(state, ownProps) {
 
   return {
-    email: ownProps.type == "T" ? state.classes.userEmail : state.classes.userEmail,
-    name: ownProps.type == "T" ? state.classes.userName : state.classes.userName,
-    phoneNo: ownProps.type == "T" ? state.classes.userPhone : state.classes.userPhone
+    email: state.session.user?state.session.user.email:null,
+    name:  state.session.user? state.session.user.firstname + " " + state.session.user.lastname : null,
+    phoneNo: state.session.user?  state.session.user.mobile:null,
+    user:state.session.user
   };
 }
 function mapDispatchToProps(dispatch) {

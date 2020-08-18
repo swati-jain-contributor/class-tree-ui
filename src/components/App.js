@@ -4,9 +4,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { browserHistory, Route, IndexRoute, Switch } from 'react-router';
-import * as loginActions from '../actions/loginActions';
-import Snackbar from 'material-ui/Snackbar';
+import { browserHistory, Route, IndexRoute } from 'react-router';
 import Tutor from '../components/Tutor/Tutor';
 import About from '../components/about/About';
 import Student from '../components/Student/Student';
@@ -20,6 +18,8 @@ import Overlay from './overlay/overlay';
 import DataScience from './datascience/DataScience';
 import Book from './datascience/books/Book';
 import BookRead from './datascience/bookread/BookRead';
+import SessionApi from '../api/sessionApi';
+import * as sessionActions from '../actions/sessionActions';
 
 <ul>
   <li className="active"><a href="#header">Home</a></li>
@@ -38,6 +38,32 @@ class App extends React.Component {
       step: 0,
       imageCode: Math.floor(Math.random() * 9) + 1
     };
+  }
+  componentDidMount() {
+    this.getUserDetails();
+  }
+  logout() {
+    SessionApi.logout().then((res)=>{
+      sessionStorage.user = undefined;
+      this.setState({ user: undefined });
+      this.props.actions.addUserDetails(null);
+      location.reload();
+    });
+  }  
+  getUserDetails() {
+    SessionApi.getUserData().then((res)=>{
+      if (res.status == "SUCCESS") {
+        if (res.response.email) {
+          sessionStorage.user = JSON.stringify(res.response);
+          this.setState({ user: res.response });
+          this.props.actions.addUserDetails(res.response);
+        }
+        else {
+          sessionStorage.sessionid = res.response;
+          this.setState({ sessionid: res.response });
+        }
+      }
+    });
   }
   render() {
     let path = location.hash.replace(/#\//g, '') || location.pathname.replace(/\//g, '');
@@ -64,7 +90,6 @@ class App extends React.Component {
       case 'contact': child = <Contact search={this.state.search} />; break;
       case 'joinclass': child = <VideoClass />; break;
       case 'class': child = <ClassDetails id={pathr.match(/\d+/)[0]} />; break;
-      case 'datascience': child = <DataScience />; break;
       case 'books': child = <Book />; break;
       case 'book': child = <BookRead />; break;
       default:
@@ -78,13 +103,13 @@ class App extends React.Component {
       <div className="dropdown">
         <i className="fa fa-bars" aria-hidden="true" id="menudropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" />
         <ul className="dropdown-menu dropdown-menu-right">
-          {!this.props.email ? <li className="dropdown-item" onClick={() => window.dispatchEvent(new CustomEvent('askLogin', {}))}>Login</li> : null}
+          {!this.props.user ? <li className="dropdown-item" onClick={() => window.dispatchEvent(new CustomEvent('askLogin', {}))}>Login</li> : null}
           <li className="dropdown-item" onClick={() => this.context.router.push('/about')}>Who we are</li>
           <li className="dropdown-item" onClick={() => this.context.router.push('/registered')}>My registered classes</li>
           <li className="dropdown-item" onClick={() => this.context.router.push('/tutor')}>My offered classes</li>
           <li className="dropdown-item" onClick={() => this.context.router.push('/student')}>Learn more</li>
           <li className="dropdown-item" onClick={() => this.context.router.push('/contact')}>Contact us</li>
-          {this.props.email ? <li className="dropdown-item" onClick={() => { localStorage.clear(); localStorage.setItem("contactadded", true); location.reload(); }}>Logout</li> : null}
+          {this.props.user ? <li className="dropdown-item" onClick={() => { localStorage.clear(); localStorage.setItem("contactadded", true); this.logout();}}>Logout</li> : null}
         </ul>
       </div>
     </div>);
@@ -111,7 +136,7 @@ class App extends React.Component {
           <div className="ss-root" style={{ padding: (isMobile) ? '20px' : "0" }}>
             {(isMobile) ?
               <span>
-                <b className="morning">{wish} {this.props.name}</b><br />
+                <b className="morning">{wish} {this.props.user ? this.props.user.firstname :""}</b><br />
                 <span className="heading-helper">What are you learning today?</span></span> : null}
 
             {isMobile ? iconBox : (path.length > 3 ? menubar : "")}
@@ -148,8 +173,7 @@ function mapStateToProps(state, ownProps) {
   console.log(state.ajaxCallsInProgress);
   return {
     loading: state.ajaxCallsInProgress > 0,
-    name: state.classes.userName,
-    email: state.classes.userEmail
+    user:state.session.user
     // isAuthenticated: state.session.authenticationStatus,
     // username: state.session.aptId + "-" + state.session.userId,
     // errorMsg: state.session.errorMsg,
@@ -158,7 +182,7 @@ function mapStateToProps(state, ownProps) {
 }
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(loginActions, dispatch)
+    actions: bindActionCreators(sessionActions, dispatch)
   };
 }
 

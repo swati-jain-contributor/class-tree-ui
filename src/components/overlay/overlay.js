@@ -1,13 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { browserHistory, Route, IndexRoute, Switch } from 'react-router';
-import Snackbar from 'material-ui/Snackbar';
-import ValidationService from '../common/Validation';
-import LoginEmail from '../LoginEmail/LoginEmail';
-import LoginName from '../LoginName/LoginName';
 import AddClass from '../Tutor/AddClass';
+import LoginPopup from '../login/login-popup';
 
 class Overlay extends React.Component {
 
@@ -15,8 +10,7 @@ class Overlay extends React.Component {
     super(props, context);
     this.state ={
       popup: false,
-      showEmail:false,
-      showName:false,
+      showLogin:false,
       showAddClass:false
     };
     this.login = this.login.bind(this);
@@ -27,37 +21,35 @@ class Overlay extends React.Component {
     window.addEventListener("askLogin", this.login);
     window.addEventListener("addClass", this.addClass);
     if (this.getQueryParams("login", location.href))
-      this.setState({ popup: true, showEmail: true, showName: false, firstLoad: true });
+      this.setState({ popup: true, showLogin:true, firstLoad: true });
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.login == true && !nextProps.email) {
-      this.setState({ popup: true, showEmail: true, showName: false, firstLoad: true });
+    if (nextProps.login == true && !nextProps.user) {
+      this.setState({ popup: true, showLogin: true, firstLoad: true });
     }
     else {
       if (!this.state.firstLoad) {
-        if ((nextProps.email && nextProps.name) || (!nextProps.email && !nextProps.name)) {
-          this.setState({ popup: false, showEmail: false, showName: false });
+        if (nextProps.user) {
+          this.setState({ popup: false, showLogin: false});
         }
-        else
-          this.setState({ popup: true, showEmail: false, showName: true });
       }
       else
         this.setState({ firstLoad: false });
     }
-    if(nextProps.email && !nextProps.name){
-      this.setState({ showEmail: false, showName: true, popup: true });
-    }
-    if(nextProps.email && nextProps.name){
+    if(!this.props.user && nextProps.user){
       let evt = new CustomEvent('userloggedin', { nextProps});
       window.dispatchEvent(evt);
     }
-    if(nextProps.email && nextProps.name && this.state.addingClass){
+    if(!this.props.user && nextProps.user && this.state.addingClass){
       this.addClass();
+    }
+    if(!this.props.user && nextProps.user){
+      this.setState({ popup: false, showLogin:false});
     }
   }
   componentDidUpdate(){
-    if (this.state.addingClass && this.props.email && this.props.name) {
+    if (this.state.addingClass && this.props.user) {
       this.setState({ popup: true, showAddClass: true, addingClass: false });
     }
   }
@@ -70,21 +62,20 @@ class Overlay extends React.Component {
     return queryString ? queryString[1] : null;
   }
   addClass() {
-    if (!this.props.email) {
-      this.setState({ showEmail: true, showName: false, popup: true, addingClass: true });
+    if (!this.props.user) {
+      this.setState({ showLogin: true, popup: true, addingClass: true });
     }
     else
       this.setState({ popup: true, showAddClass: true, addingClass:false });
   }
   login() {
-    this.setState({ showEmail: true, showName: false, popup: true});
+    this.setState({ popup: true, showLogin:true});
   }
   render() {
     return (
       <div>
-        <div className={this.state.popup ? "overlay" : ""} onClick={() => { !this.state.showName && this.setState({ popup: false, showAddClass: false, showEmail: false }); }} />
-        {this.state.showEmail ? <LoginEmail type="C" /> : null}
-        {this.state.showName ? <LoginName type="C" /> : null}
+        <div className={(this.state.showLogin|| this.state.showAddClass)? "overlay" : ""} onClick={() => { this.setState({ popup: false, showAddClass: false,  showLogin:false }); }} />
+        {this.state.showLogin ? <LoginPopup onClose={()=> this.setState({popup:false, showLogin:false})} /> : null}
         {this.state.showAddClass ? <AddClass onClose={(classNotAdded) => { this.setState({ popup: false, showAddClass: false }); if (!classNotAdded) { window.dispatchEvent(new CustomEvent('classadded', { }));  window.showSuccessToast("Thanks! Your class scheduled successfully!"); } }} /> : null}
       </div>
     );
@@ -94,9 +85,7 @@ class Overlay extends React.Component {
 function mapStateToProps(state, ownProps) {
 
   return {
-    email: state.classes.userEmail,
-    name: state.classes.userName,
-    phoneNo: state.classes.userPhone
+    user:state.session.user
   };
 }
 function mapDispatchToProps(dispatch) {

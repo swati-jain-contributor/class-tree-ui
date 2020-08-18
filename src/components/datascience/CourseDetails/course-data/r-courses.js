@@ -1,3 +1,4 @@
+// export const rCourses =[];
 export const rCourses =[
   {
      "title":"Text Mining with Bag-of-Words in R",
@@ -10206,7 +10207,7 @@ export const rCourses =[
      ]
   },
   {
-     "title":"A/B Testing in R",
+     "title":"A-B Testing in R",
      "description":"Learn A/B testing: including hypothesis testing, experimental design, and confounding variables.",
      "detailDescription":"In this course, you will learn the foundations of A/B testing, including hypothesis testing, experimental design, and confounding variables. You will also be exposed to a couple more advanced topics, sequential analysis and multivariate testing. The first dataset will be a generated example of a cat adoption website. You will investigate if changing the homepage image affects conversion rates (the percentage of people who click a specific button). For the remainder of the course you will use another generated dataset of a hypothetical data visualization website.",
      "time":"4 hours",

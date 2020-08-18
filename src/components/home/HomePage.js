@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 
 import '../../Bethany/assets/vendor/bootstrap/css/bootstrap.min.css';
-import '../../Bethany/assets/vendor/boxicons/css/boxicons.min.css';
+// import '../../Bethany/assets/vendor/boxicons/css/boxicons.min.css';
 import '../../Bethany/assets/vendor/venobox/venobox.css';
 import '../../Bethany/assets/vendor/owl.carousel/assets/owl.carousel.min.css';
 import '../../Bethany/assets/vendor/aos/aos.css';
@@ -107,7 +107,7 @@ class HomePage extends React.Component {
           <Contact />
         </main>
 
-        <a href="#" className="back-to-top"><i className="fa fa-chevron-up"></i></a>
+        <a href="#" className="back-to-top"><i className="fa fa-chevron-up" /></a>
       </div>
     );
   }

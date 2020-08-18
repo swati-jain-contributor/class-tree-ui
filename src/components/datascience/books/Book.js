@@ -1,9 +1,9 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import '../header.less';
 import '../reset.less';
 import '../style.less';
-import { ImageFilterFrames } from 'material-ui/svg-icons';
-import {books} from '../books.js';
+import { books } from '../books.js';
 
 // function chunkArray(myArray, chunk_size) {
 //   let index = 0;
@@ -20,16 +20,26 @@ import {books} from '../books.js';
 // }
 // let bookSets = chunkArray(books, 3);
 class Book extends React.Component {
-  componentDidMount() {
-    setTimeout(() => {
 
-    }, 0);
+  constructor(props, context) {
+    super(props, context);
+    this.redirect = this.redirect.bind(this);
+  }
+  redirect(e) {
+    if (e.target.href) {
+      e.preventDefault();
+      this.context.router.push(e.currentTarget.href);
+      window.scrollTo(0, 0);
+    }
+  }
+  componentDidMount() {
+    document.title="Data Science Books";
   }
   render() {
 
     return (
       <div>
-        <section className="banner-section bg-banner">
+        {/* <section className="banner-section bg-banner">
 
           <div className="container">
             <div className="breadcrumb-share clearfix hidden-xs">
@@ -62,30 +72,23 @@ class Book extends React.Component {
 
           </div>
 
-        </section>
+        </section> */}
         <section className="book-list row">
           {books.map((b, i) => <React.Fragment key={b.id}>
             <div className="col-xs-4 col-md-2 parent">
-              <a href={'/book/'+b.uniqueName}><img src={b["img"]} className="img-responsive book" /></a>
+              <a href={'/book/' + b.uniqueName} onClick={this.redirect}><img src={b["img"]} className="img-responsive book" alt={"Book "+b.name} /></a>
             </div>
-            {(((i + 1) % 3 == 0) && ((i + 1) % 6 == 0)) ? <div className="col-xs-12 shelf" /> : null}
-            {(((i + 1) % 3 == 0) && ((i + 1) % 6 != 0)) ? <div className="col-xs-12 shelf hidden-md hidden-lg" /> : null}
+            {(((i + 1) % 3 == 0) && ((i + 1) % 6 == 0) && screen.width > 1000) ? <div className="col-xs-12 shelf" /> : null}
+            {(((i + 1) % 3 == 0) && ((i + 1) % 6 != 0) && screen.width > 1000) ? <div className="col-xs-12 shelf hidden-md hidden-lg" /> : null}
+            {screen.width < 1000 ? <div className="col-xs-12 shelf" /> : null}
           </React.Fragment>)}
           {
-            ((books.length % 6) != 0)?
-            <React.Fragment>
-            {new Array(books.length % 6).fill(0).map(s=><div className="col-xs-4 col-md-2 parent" key={s}/>)}
-            <div className="col-xs-12 shelf" />
-            </React.Fragment> : null
+            ((books.length % 6) != 0 && screen.width > 1000) ?
+              <React.Fragment>
+                {new Array(books.length % 6).fill(0).map(s => <div className="col-xs-4 col-md-2 parent" key={s} />)}
+                <div className="col-xs-12 shelf" />
+              </React.Fragment> : null
           }
-        
-          {/* {loadBooks()} */}
-          {/* {bookSets.map(set => <div className="shelf">
-            <div className="wood" />
-            {set.map(b => <div className="book"><img src={b.img} /> <h4>{b.name}</h4> <span>{b.author}</span> <span>{b.reads} Reads</span> <div><button><a href={"/book/" + b.uniqueName}>Read Now</a></button></div></div>)}</div>)} */}
-          {/* <div className="books"> */}
-          {/* {books.map(b => <div className="book"><img src={b.img} /> <h4>{b.name}</h4> <span>{b.author}</span> <span>{b.reads} Reads</span> <div><button><a href={"/book/" + b.uniqueName}>Read Now</a></button></div></div>)} */}
-          {/* </div> */}
         </section>
 
       </div>);
@@ -93,3 +96,6 @@ class Book extends React.Component {
 }
 
 export default Book;
+Book.contextTypes = {
+  router: PropTypes.func.isRequired
+};

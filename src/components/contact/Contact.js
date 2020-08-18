@@ -1,12 +1,13 @@
 import React from 'react';
 import '../../Bethany/assets/vendor/bootstrap/css/bootstrap.min.css';
 import '../../Bethany/assets/vendor/icofont/icofont.min.css';
-import '../../Bethany/assets/vendor/boxicons/css/boxicons.min.css';
+// import '../../Bethany/assets/vendor/boxicons/css/boxicons.min.css';
 // import '../../Bethany/assets/vendor/remixicon/remixicon.css';
 import '../../Bethany/assets/vendor/venobox/venobox.css';
 import '../../Bethany/assets/vendor/owl.carousel/assets/owl.carousel.min.css';
 import '../../Bethany/assets/vendor/aos/aos.css';
 import '../../Bethany/assets/css/style.css';
+import server from '../../api/server';
 
 
 class Contact extends React.Component {
@@ -29,6 +30,8 @@ class Contact extends React.Component {
                   <div className="section-title">
                     <h2>Contact</h2>
                     <p><b style={{color:'#009970', display:'block'}}>Dont be Stranger, Just say Hello</b><br />Feel free to get in touch with us. We are always open to discussing new projects, creative ideas or opportunities to be part of your vision. If nothing specific, then we can discuss some receipe as well.</p>
+                    <br/>
+                    <b>BakeMinds ia a brand owned by Shri Jugla & Sons</b>
                   </div>
                 </div>
 
@@ -55,7 +58,7 @@ class Contact extends React.Component {
                     </div>
                   </div>
 
-                  <form action="https://api.classtree.in/api/classes/contact" method="post" role="form" className="php-email-form mt-4">
+                  <form action={server+ "/api/classes/contact"} method="post" role="form" className="php-email-form mt-4">
                     <div className="form-row">
                       <div className="col-md-6 form-group">
                         <input type="text" name="name" className="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />

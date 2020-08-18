@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../Bethany/assets/vendor/bootstrap/css/bootstrap.min.css';
-import '../../Bethany/assets/vendor/boxicons/css/boxicons.min.css';
+// import '../../Bethany/assets/vendor/boxicons/css/boxicons.min.css';
 import '../../Bethany/assets/vendor/venobox/venobox.css';
 import '../../Bethany/assets/vendor/owl.carousel/assets/owl.carousel.min.css';
 import '../../Bethany/assets/vendor/aos/aos.css';
@@ -38,55 +38,55 @@ class Testimonials extends React.Component {
 
                 <div className="testimonial-item">
                   <p>
-                    <i className="bx bxs-quote-alt-left quote-icon-left" />
-                    Through ClassTree, I have met so many brilliant and interesting people whom I may not have otherwise met. I have also learned so much, and with the help of my wonderful Spanish teacher, I aim to become fluent by the end of the year! My brain and I are grateful for ClassTree!.
-       <i className="bx bxs-quote-alt-right quote-icon-right" />
+                    <i className="bx bxs-quote-alt-left fa fa-quote-left quote-icon-left" />
+                    Through BakeMinds, I have met so many brilliant and interesting people whom I may not have otherwise met. I have also learned so much, and with the help of my wonderful Spanish teacher, I aim to become fluent by the end of the year! My brain and I are grateful for BakeMinds!.
+       <i className="bx bxs-quote-alt-right fa fa-quote-right quote-icon-right" />
                   </p>
-                  <img src={t1} className="testimonial-img" alt="" />
+                  <img src={t1} className="testimonial-img" alt={"Saul"} />
                   <h3>Saul Goodman</h3>
                   <h4>Ceo &amp; Founder</h4>
                 </div>
 
                 <div className="testimonial-item">
                   <p>
-                    <i className="bx bxs-quote-alt-left quote-icon-left" />
-                    I have truly enjoyed my experience thus far with ClassTree. Sessions can be easily booked through the website. I have met some incredible individuals through my learning experiences on ClassTree and I hope more people join and add to the knowledge pool!
-       <i className="bx bxs-quote-alt-right quote-icon-right" />
+                    <i className="bx bxs-quote-alt-left fa fa-quote-left quote-icon-left" />
+                    I have truly enjoyed my experience thus far with BakeMinds. Sessions can be easily booked through the website. I have met some incredible individuals through my learning experiences on BakeMinds and I hope more people join and add to the knowledge pool!
+       <i className="bx bxs-quote-alt-right fa fa-quote-right quote-icon-right" />
                   </p>
-                  <img src={t2} className="testimonial-img" alt="" />
+                  <img src={t2} className="testimonial-img" alt={"Sara"} />
                   <h3>Sara Wilsson</h3>
                   <h4>Designer</h4>
                 </div>
 
                 <div className="testimonial-item">
                   <p>
-                    <i className="bx bxs-quote-alt-left quote-icon-left" />
-                    I have had an amazing experience with ClassTree. The platform makes it easy to find and connect with students with minimal effort. I would highly recommend becoming a provider on ClassTree!
-       <i className="bx bxs-quote-alt-right quote-icon-right" />
+                    <i className="bx bxs-quote-alt-left fa fa-quote-left quote-icon-left" />
+                    I have had an amazing experience with BakeMinds. The platform makes it easy to find and connect with students with minimal effort. I would highly recommend becoming a provider on BakeMinds!
+       <i className="bx bxs-quote-alt-right fa fa-quote-right quote-icon-right" />
                   </p>
-                  <img src={t3} className="testimonial-img" alt="" />
+                  <img src={t3} className="testimonial-img" alt={"Jena"} />
                   <h3>Jena Karlis</h3>
                   <h4>Store Owner</h4>
                 </div>
 
                 <div className="testimonial-item">
                   <p>
-                    <i className="bx bxs-quote-alt-left quote-icon-left" />
-                    I am impressed with the high quality of students and tutors on ClassTree. There is a market to be made here and kudos for being the first to create it. All the best!!
-       <i className="bx bxs-quote-alt-right quote-icon-right" />
+                    <i className="bx bxs-quote-alt-left fa fa-quote-left quote-icon-left" />
+                    I am impressed with the high quality of students and tutors on BakeMinds. There is a market to be made here and kudos for being the first to create it. All the best!!
+       <i className="bx bxs-quote-alt-right fa fa-quote-right quote-icon-right" />
                   </p>
-                  <img src={t4} className="testimonial-img" alt="" />
+                  <img src={t4} className="testimonial-img" alt={"Matt"} />
                   <h3>Matt Brandon</h3>
                   <h4>Freelancer</h4>
                 </div>
 
                 <div className="testimonial-item">
                   <p>
-                    <i className="bx bxs-quote-alt-left quote-icon-left" />
-                    As a fitness instructor I never thought I'd be able to work remotely, but ClassTree has allowed me greater schedule flexibility, and access to a broad range of students!
-       <i className="bx bxs-quote-alt-right quote-icon-right" />
+                    <i className="bx bxs-quote-alt-left fa fa-quote-left quote-icon-left" />
+                    As a fitness instructor I never thought I'd be able to work remotely, but BakeMinds has allowed me greater schedule flexibility, and access to a broad range of students!
+       <i className="bx bxs-quote-alt-right fa fa-quote-right quote-icon-right" />
                   </p>
-                  <img src={t5} className="testimonial-img" alt="" />
+                  <img src={t5} className="testimonial-img" alt={"John"} />
                   <h3>John Larson</h3>
                   <h4>Entrepreneur</h4>
                 </div>

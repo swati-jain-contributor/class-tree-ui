@@ -106,7 +106,44 @@ class ClassApi {
         throw (res);
       });
   }
-
+  static enrollDSClass(data){
+    return fetch(server + "/api/classes/enrollDSClass",
+      {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({data}),
+        credentials: 'include'
+      })
+      .then((resp) => resp.json())
+      .then(function (res) {
+        return res;
+      })
+      .catch(function (res) {
+        throw (res);
+      });
+  }
+  static sendFeedback(data){
+    return fetch(server + "/api/classes/contact",
+      {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data),
+        credentials: 'include'
+      })
+      .then((resp) => resp.json())
+      .then(function (res) {
+        return res;
+      })
+      .catch(function (res) {
+        throw (res);
+      });
+  }
 }
 
 export default ClassApi;

@@ -1,0 +1,104 @@
+.all-courses-pages {
+
+  .all-course-view {
+    display: flex;
+    width: 1200px;
+    flex-wrap: wrap;
+    margin: auto;
+    flex-direction: row;
+
+    .filter-col {
+      width: 260px;
+      text-align: left;
+      border-right: 1px solid black;
+      margin-right: 40px;
+      color: #000;
+    }
+    .class-col{
+      font-size: 24px;
+      text-align: left;
+      .search-box{
+        padding: 20px 0;
+        border-top: 1px solid #000;
+        border-bottom: 1px solid #000;
+        margin-bottom: 20px;
+        border-left: none;
+        border-right: none;
+        height: auto;
+        position: relative;
+        input{
+          width: 500px;
+          padding: 6px 0 6px 15px;
+          border-radius: 27px;
+          border-color: #ececec;
+          border-width: 1px;
+          border: 1px solid gray;
+          font-size: 22px;
+        }
+        .fa{
+          left: 470px;
+          top: 32px;
+          color: #000;
+          font-size: 20px;
+        }
+      }
+    }
+  }
+
+  .class-list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 900px;
+    margin: auto;
+  }
+
+  @media (max-width: 1100px) {
+    .all-course-view{
+      margin: auto;
+      flex-direction: row;
+      width: 100%;
+      flex-direction: column;
+      .filter-btn{
+        background: #BABABA;
+        color: #fff;
+        padding: 7px;
+        border-radius: 46px;
+        margin-bottom: 20px;
+        font-size: 20px;
+      }
+      .filter-col{
+        border: none;
+        padding: 20px;
+        background: #ececec;
+        width: 100%;
+        margin-bottom: 20px;
+        display: none;
+        &.show-filter{
+          display: block;
+        }
+      }
+      .class-col{
+        width: 100%;
+        .search-box{
+          input{
+            max-width: 100%;
+          }
+          .fa{
+            left: 90%;
+          }
+        }
+        .class-list{
+          margin: auto;
+          max-width: 100%;
+          flex-direction: column;
+          margin-top: 20px;
+          .course{
+            margin: auto;
+            margin-bottom: 20px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../Bethany/assets/vendor/bootstrap/css/bootstrap.min.css';
-import '../../Bethany/assets/vendor/boxicons/css/boxicons.min.css';
+// import '../../Bethany/assets/vendor/boxicons/css/boxicons.min.css';
 import '../../Bethany/assets/vendor/venobox/venobox.css';
 import '../../Bethany/assets/vendor/owl.carousel/assets/owl.carousel.min.css';
 import '../../Bethany/assets/vendor/aos/aos.css';
@@ -33,7 +33,7 @@ class MyTeams extends React.Component {
 
                 <div className="col-lg-6">
                   <div className="member" data-aos="zoom-in" data-aos-delay="100">
-                    <div className="pic"><img src={swati} className="img-fluid" alt="" /></div>
+                    <div className="pic"><img src={swati} className="img-fluid" alt={"Chief Technical Officer"} /></div>
                     <div className="member-info">
                       <h4>Swati Jain</h4>
                       <span>Chief Technical Officer</span>
@@ -44,7 +44,7 @@ class MyTeams extends React.Component {
 
                 <div className="col-lg-6 mt-4 mt-lg-0">
                   <div className="member" data-aos="zoom-in" data-aos-delay="200">
-                    <div className="pic"><img src={sweety} className="img-fluid" alt="" /></div>
+                    <div className="pic"><img src={sweety} className="img-fluid"  alt={"Chief Executive Officer"}  /></div>
                     <div className="member-info">
                       <h4>Sweety Jain</h4>
                       <span>Chief Executive Officer</span>

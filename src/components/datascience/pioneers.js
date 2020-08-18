@@ -13,7 +13,7 @@ export const pioneers=[{
 {
   id:3,
   name:"Demis Hassabis",
-  about:"You likely heard about Demis Hassabis’ company, DeepMind, when it was purchased by Google in 2014 for more than $500 million. Then, you may have heard about the firm again in 2016 when its AI program AlphaGo beat Go world champion Lee Sedol in a highly publicized televised competition. DeepMind is often considered to be one of the world’s leading AI companies, and co-founder and CEO Hassabis has a reputation that is just as illustrious. He has been hailed as “the superhero of artificial intelligence” and “London’s megamind” by various media organizations. If you want to stay abreast of DeepMind developments, it would be wise to follow Hassabis on Twitter, where he primarily posts company-related updates.",
+  about:"You likely heard about Demis Hassabis’ company, DeepMind, when it was purchased by Google in 2014 for more than $500 million. Then, you may have heard about the firm again in 2016 when its AI program AlphaGo beat Go world champion Lee Sedol in a highly publicized televised competition. DeepMind is often considered to be one of the world’s leading AI companies, and co-founder and CEO Hassabis has a reputation that is just as illustrious. He has been hailed as “the superhero of artificial intelligence” and “London’s megamind” by various media organizations. If you want to stay abreast of DeepMind developments, it would be wise to follow Hassabis on Twitter, where he posts updates.",
   img:""
 },
 {

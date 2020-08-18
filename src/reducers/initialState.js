@@ -2,30 +2,29 @@ const defaultState = {
   classes: {
     offeredClasses: [],
     registeredClasses: [],
-    allClasses: [],
-    userEmail: null,
-    userPhone: null,
-    userName: null
+    allClasses: []
   },
   session:
   {
-    "_id": null,
-    "memberid": null,
-    "status": null,
-    "role": null,
-    "userId": null,
-    "authCode": null,
-    "__v": 0,
-    "aptId": null,
-    "authenticationStatus": false,
-    "name": null,
-    "updatedAt": null,
-    "createdAt": null,
-    "loginOTPSuccess": false,
-    "open": false,
-    "errorMsg": "",
-    "apartmentRegistrationSuccess": false,
-    "registerOTPSuccess": false
+    user:null,
+    sessionid:null
+    // "_id": null,
+    // "memberid": null,
+    // "status": null,
+    // "role": null,
+    // "userId": null,
+    // "authCode": null,
+    // "__v": 0,
+    // "aptId": null,
+    // "authenticationStatus": false,
+    // "name": null,
+    // "updatedAt": null,
+    // "createdAt": null,
+    // "loginOTPSuccess": false,
+    // "open": false,
+    // "errorMsg": "",
+    // "apartmentRegistrationSuccess": false,
+    // "registerOTPSuccess": false
   },
   requests: [],
   ajaxCallsInProgress: 0
@@ -39,7 +38,7 @@ if (app) {
       initialState = JSON.parse(serializedState);
     initialState.ajaxCallsInProgress = 0;
     if(!initialState.userName)
-      initialState.userEmail = void 0;
+      initialState.user = void 0;
   }
   catch (err) {
     console(err);

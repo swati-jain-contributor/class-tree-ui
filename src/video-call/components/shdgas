@@ -14,7 +14,7 @@
           toggleParticipant={this.toggleParticipant}
           count={participantCount}
         />
-        <div className="logo"><h1 className="text-light"><a><span>ClassTree</span></a></h1></div>
+        <div className="logo"><h1 className="text-light"><a><span>BakeMinds</span></a></h1></div>
 
         <DialogExtensionComponent showDialog={this.state.showExtensionDialog} cancelClicked={this.closeDialogExtension} />
         {/* <button className="btn btn-primary part-down" type="button" onClick={() => { this.setState({ showParticipants: true }); }}>
@@ -70,13 +70,13 @@
               <br />
               <br />
               <br />
-              <h1 className="b-title">Welcome to ClassTree</h1>
+              <h1 className="b-title">Welcome to BakeMinds</h1>
               <br />
               <br />
               <h3 className="b-tagline">Share your learnings with everyone - Anytime, Anywhere , Anything</h3>
               <br />
               <br />
-              <span className="b-appreciate"> ClassTree appreciates <span>{this.props.userdata.TutorName}</span> for your strenuous efforts in educating the world and helping nation to grow.</span>
+              <span className="b-appreciate"> BakeMinds appreciates <span>{this.props.userdata.TutorName}</span> for your strenuous efforts in educating the world and helping nation to grow.</span>
               <br />
               <span className="b-topic"> Your class on - <span>{this.props.userdata.className}</span> will start shortly.</span>
               <br />

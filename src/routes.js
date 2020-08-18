@@ -18,8 +18,9 @@ import CourseList from './components/datascience/CourseList/CourseList';
 import Videos from './components/datascience/videos/Videos';
 import Corporate from './components/datascience/Corporate/Corporate';
 import Home from './components/datascience/Home/Home';
+import AllCourses from './components/datascience/AllCourse/AllCourses';
 export default (
-  (location.href.indexOf("5000") > -1) ?
+  (location.href.indexOf("5000") > -1 || location.href.indexOf("datascience") > -1) ?
     <Route path="/" component={DataScience}>
        <IndexRoute component={Home} />
       <Route path="books" component={Book} />
@@ -27,6 +28,7 @@ export default (
       <Route path="blogs" component={Blogs} />
       <Route path="blog/:uniqueid" component={BlogRead} />
       <Route path="courses" component={Courses} />
+      <Route path="search-courses" component={AllCourses} />
       <Route path="course-list/:uniqueid" component={CourseList} />
       <Route path="course/:uniqueid" component={CourseDetails} />
       <Route path="videos" component={Videos} />

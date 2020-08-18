@@ -10,7 +10,8 @@ import Participant from './participant/Participant';
 import OpenViduLayout from '../layout/openvidu-layout';
 import UserModel from '../models/user-model';
 import ToolbarComponent from './toolbar/ToolbarComponent';
-
+import server from '../../api/server';
+import swal from 'sweetalert2';
 let localUser = new UserModel();
 let screenShareUser = new UserModel();
 
@@ -19,7 +20,7 @@ class VideoRoomComponent extends Component {
     super(props);
     this.OPENVIDU_SERVER_URL = this.props.openviduServerUrl
       ? this.props.openviduServerUrl
-      : 'https://api.classtree.in';
+      : 'https://api.bakeminds.com';
     this.OPENVIDU_SERVER_SECRET = this.props.openviduSecret ? this.props.openviduSecret : 'MY_SECRET';
     this.hasBeenUpdated = false;
     this.layout = new OpenViduLayout();
@@ -170,7 +171,7 @@ class VideoRoomComponent extends Component {
   }
   connectToSession(onlyscreen) {
     if (this.props.userdata.isrecording) {
-      this.connect("wss://api.classtree.in?sessionId=" + this.props.userdata.classId + '&secret=' + "MY_SECRET" + "&recorder=true");
+      this.connect("wss://api.bakeminds.com?sessionId=" + this.props.userdata.classId + '&secret=' + "MY_SECRET" + "&recorder=true");
     }
     else {
       this.getToken().then((token) => {
@@ -619,7 +620,7 @@ class VideoRoomComponent extends Component {
       });
     }
     else {
-      alert("someone else is sharing screen");
+      swal.fire({text:"someone else is sharing screen", icon:"info"});
     }
 
   }
@@ -716,7 +717,7 @@ class VideoRoomComponent extends Component {
   getTokenParam() {
     return new Promise((resolve) => {
       axios
-        .post("https://api.classtree.in/api/video/generateToken", this.props.userdata)
+        .post(server+"/api/video/generateToken", this.props.userdata)
         .then((response) => {
           console.log('CREATE SESION', response);
           console.log(response.data.response);
@@ -789,7 +790,7 @@ class VideoRoomComponent extends Component {
     return (
       <div className="container" id="container">
         {(window.innerWidth < window.innerHeight) ? <div className="class-panel potrait">
-          <div className="logo"><h1 className="text-light"><a><span>ClassTree</span></a></h1></div>
+          <div className="logo"><h1 className="text-light"><a><span>BakeMinds</span></a></h1></div>
           <h5> Your class is waiting for you to join.</h5>
 
           {/* {window.screen.orientation ? <button onClick={() => this.changeOrientation()}>JOIN CLASS</button> : */}
@@ -814,7 +815,7 @@ class VideoRoomComponent extends Component {
           isMikeFree={this.whoHasMike()}
         />
 
-        <div className="logo"><h1 className="text-light"><a><span>ClassTree</span></a></h1></div>
+        <div className="logo"><h1 className="text-light"><a><span>BakeMinds</span></a></h1></div>
 
         <DialogExtensionComponent showDialog={this.state.showExtensionDialog} cancelClicked={this.closeDialogExtension} />
 
@@ -838,13 +839,13 @@ class VideoRoomComponent extends Component {
               <br />
               <br />
               <br />
-              <h1 className="b-title">Welcome to ClassTree</h1>
+              <h1 className="b-title">Welcome to BakeMinds</h1>
               <br />
               <br />
               <h3 className="b-tagline">Share your learnings with everyone - Anytime, Anywhere , Anything</h3>
               <br />
               <br />
-              <span className="b-appreciate"> ClassTree appreciates <span>{this.props.userdata.TutorName}</span> for your strenuous efforts in educating the world and helping nation to grow.</span>
+              <span className="b-appreciate"> BakeMinds appreciates <span>{this.props.userdata.TutorName}</span> for your strenuous efforts in educating the world and helping nation to grow.</span>
               <br />
               <span className="b-topic"> Your class on - <span>{this.props.userdata.className}</span> will start shortly.</span>
               <br />

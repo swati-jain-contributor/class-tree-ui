@@ -6,6 +6,7 @@ import '../style.less';
 import './course-list.less';
 import '../typer.js';
 import { courses } from '../data-camp-courses';
+import CourseCard from './CourseCard';
 
 const techs = ["R", "Python", "SQL", "Git", "Shell", "Spreadsheets", "Tableau", "Power BI", "Scala", "Excel", "Theory"];
 const skills = [{
@@ -75,7 +76,7 @@ class CourseList extends React.Component {
     let uid= this.props.params.uniqueid;
     let selectedcourses = courses.filter(c => c.technology == uid);
     if (selectedcourses.length == 0) {
-      selectedcourses = courses.filter(t => t.stream.toLowerCase().indexOf(uid) > -1);
+      selectedcourses = courses.filter(t => t.stream.replace(" ","-").toLowerCase().indexOf(uid) > -1);
     }
 
     this.state = {
@@ -87,24 +88,17 @@ class CourseList extends React.Component {
     setTimeout(() => {
       $('[data-typer-targets]').typer();
     }, 0);
+    document.title= "Data science courses on "+ this.state.selectedStream.replace("_"," ");
   }
   render() {
     return (
       <div className="courses-page">
-        <div className="course-banner" />
         <div>
           <br />
           <br />
           <h2 style={{textTransform:"capitalize"}}>All {this.state.selectedStream.replace("_"," ")} Courses</h2>
           <div className="class-list">
-            {this.state.courses.map((pc, i) => <article className="course" key={i} onClick={()=>{this.context.router.push('/course/'+pc.title.toLowerCase().replace(/ /g,"-")); window.scrollTo(0,0);}}>
-              <h3>{pc.title}</h3>
-              <p>{pc.description}</p>
-              <p>{pc.time}</p>
-              <p>{pc.stream}</p>
-              <p>{pc.technology}</p>
-              <img src={"https://raw.githubusercontent.com/swati-jain-contributor/privacy-policy/40433fe05f5c2d47ea516f0d865506d40bfa8cf4/tech/" + pc.technology + ".svg"} />
-            </article>)}
+            {this.state.courses.map((pc, i) => <CourseCard course={pc}/>)}
           </div>
         </div>
       </div>);
