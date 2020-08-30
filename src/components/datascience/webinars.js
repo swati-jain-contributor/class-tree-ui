@@ -2,14 +2,14 @@ export const webinars=[{
   id:1,
   type:'data_science',
   topic:"Natural Language Processing",
-  date: "18 AUG 2020 7:00PM",
+  date: "10 SEP 2020 7:00PM",
   img:""
 },
 {
   id:2,
   type:'data_science',
   topic:"Tableau Vs Power BI",
-  date: "31 AUG 2020 7:00PM",
+  date: "18 SEP 2020 7:00PM",
   img:""
 }
 // ,

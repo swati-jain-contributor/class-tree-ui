@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import '../header.less';
 import '../reset.less';
 import '../style.less';
 import Header from '../header';
 import './course-details.less';
-import { pythoncourses } from './course-data/p-courses';
-import { rCourses } from './course-data/r-courses';
-import { othercourses } from './course-data/other-courses';
+// import { pythoncourses } from './course-data/p-courses';
+// import { rCourses } from './course-data/r-courses';
+// import { othercourses } from './course-data/other-courses';
 import sha512 from 'sha512';
 import { courses } from '../data-camp-courses';
 import { reviews } from '../reviews';
@@ -132,15 +132,39 @@ class CourseDetails extends React.Component {
     let course = courses.find(a => a.title.toLowerCase().replace(/ /g, "-") == uid);
     let selectedList;
     if (course.technology == 'r') {
-      selectedList = rCourses;
+      import('./course-data/r-courses').then((module) => {
+        selectedList = module.rCourses;
+        this.setState({
+          selectedCourse: course,
+          courseDetails: selectedList.find(l => l.title == course.title)
+        });
+      });
     }
-    else if (course.technology == 'python')
-      selectedList = pythoncourses;
-    else
-      selectedList = othercourses;
+    else if (course.technology == 'python') {
+      import('./course-data/p-courses').then((module) => {
+        selectedList = module.pythoncourses;
+        this.setState({
+          selectedCourse: course,
+          courseDetails: selectedList.find(l => l.title == course.title)
+        });
+      });
+    }
+    else {
+      import('./course-data/other-courses').then((module) => {
+        selectedList = module.othercourses;
+        this.setState({
+          selectedCourse: course,
+          courseDetails: selectedList.find(l => l.title == course.title)
+        });
+      });
+    }
+    // else if (course.technology == 'python')
+    //   selectedList = pythoncourses;
+    // else
+    //   selectedList = othercourses;
     this.state = {
       selectedCourse: course,
-      courseDetails: selectedList.find(l => l.title == course.title)
+      // courseDetails: selectedList.find(l => l.title == course.title)
     };
     this.makePayment = this.makePayment.bind(this);
     this.enrollClass = this.enrollClass.bind(this);
@@ -150,21 +174,54 @@ class CourseDetails extends React.Component {
     this.scrollTo = this.scrollTo.bind(this);
     this.userloginFn = this.userloginFn.bind(this);
   }
+  // shouldComponentUpdate(nextprops) {
+  //   console.log(nextprops);
+  //   return true;
+  // }
+  shouldComponentUpdate(nextprops, nextState) {
+    // let stateuid = this.state.selectedCourse.title.toLowerCase().replace(/ /g, "-");
+    // let course = this.state.selectedCourse;
+    let selectedList;
+    if (!nextState.selectedCourse) {
+      let course = courses.find(a => a.title.toLowerCase().replace(/ /g, "-") == nextprops.routeParams.uniqueid);
+      if (course.technology == 'r') {
+        import('./course-data/r-courses').then((module) => {
+          selectedList = module.rCourses;
+          this.setState({
+            selectedCourse: course,
+            courseDetails: selectedList.find(l => l.title == course.title)
+          });
+        });
+      }
+      else if (course.technology == 'python') {
+        import('./course-data/p-courses').then((module) => {
+          selectedList = module.pythoncourses;
+          this.setState({
+            selectedCourse: course,
+            courseDetails: selectedList.find(l => l.title == course.title)
+          });
+        });
+      }
+      else {
+        import('./course-data/other-courses').then((module) => {
+          selectedList = module.othercourses;
+          this.setState({
+            selectedCourse: course,
+            courseDetails: selectedList.find(l => l.title == course.title)
+          });
+        });
+      }
+    }
+    return true;
+  }
   static getDerivedStateFromProps(props, state) {
     let stateuid = state.selectedCourse.title.toLowerCase().replace(/ /g, "-");
     let currentuid = props.params.uniqueid;
     if (stateuid != currentuid) {
       let course = courses.find(a => a.title.toLowerCase().replace(/ /g, "-") == currentuid);
-      let selectedList;
-      if (course.technology == 'r')
-        selectedList = rCourses;
-      else if (course.technology == 'python')
-        selectedList = pythoncourses;
-      else
-        selectedList = othercourses;
       return {
-        selectedCourse: course,
-        courseDetails: selectedList.find(l => l.title == course.title)
+        selectedCourse: null,
+        courseDetails: null
       };
     }
   }
@@ -259,30 +316,35 @@ class CourseDetails extends React.Component {
     window.bolt.launch(data, handler);
   }
   render() {
+    let relatedCourses;
+    
+    let foldername;
     let course = this.state.selectedCourse;
     let courseDetail = this.state.courseDetails;
-    let relatedCourses = courses.filter(c => course.stream.split(",").indexOf(st => c.stream.indexOf(st) > -1));
     let pc = course;
-    let foldername;
-    if (pc.technology == "sql")
-      foldername = "SQL";
-    else if (pc.stream.indexOf("Machine Learning") > -1)
-      foldername = "machine-learning";
-    else if (pc.stream.indexOf("Probability") > -1)
-      foldername = "probability";
-    else if (['excel', 'spreadsheets', 'theory', 'scala', 'tableau', 'power_bi', 'git', 'shell'].indexOf(pc.technology) > -1)
-      foldername = pc.technology;
-    else if (pc.stream.indexOf("Visualization") > -1)
-      foldername = "visualization";
-    else if (pc.technology == "r" && pc.stream.indexOf('Programming') > -1)
-      foldername = "r";
-    else if (pc.technology == "python" && pc.stream.indexOf('Programming') > -1)
-      foldername = "python";
-    else if (pc.stream.indexOf('Cleaning') > -1)
-      foldername = "cleaning";
-    else
-      foldername = "others";
+    if (course) {
+      relatedCourses = courses.filter(c => course.stream.split(",").indexOf(st => c.stream.indexOf(st) > -1));
+      if (pc.technology == "sql")
+        foldername = "SQL";
+      else if (pc.stream.indexOf("Machine Learning") > -1)
+        foldername = "machine-learning";
+      else if (pc.stream.indexOf("Probability") > -1)
+        foldername = "probability";
+      else if (['excel', 'spreadsheets', 'theory', 'scala', 'tableau', 'power_bi', 'git', 'shell'].indexOf(pc.technology) > -1)
+        foldername = pc.technology;
+      else if (pc.stream.indexOf("Visualization") > -1)
+        foldername = "visualization";
+      else if (pc.technology == "r" && pc.stream.indexOf('Programming') > -1)
+        foldername = "r";
+      else if (pc.technology == "python" && pc.stream.indexOf('Programming') > -1)
+        foldername = "python";
+      else if (pc.stream.indexOf('Cleaning') > -1)
+        foldername = "cleaning";
+      else
+        foldername = "others";
+    }
     const settings = {
+      lazyLoad: 'ondemand',
       infinite: true,
       slidesToShow: 5,
       dots: false,
@@ -335,205 +397,209 @@ class CourseDetails extends React.Component {
     ];
     return (
       <div className="course-details">
-        <div className="course-banner">
-          <img src={"https://raw.githubusercontent.com/swati-jain-contributor/privacy-policy/master/courses/" + foldername + "/" + pc.id + ".webp"} alt={course.title} />
-          <div className="info">
-            <p className="instructor-tag">Instructor Led 1:1 Personal Session based on your availability and requirements</p>
-            <div className="course-info">
-              <div className="crumb-container">
-                <a href="/search-courses" onClick={this.redirect}> All Courses </a>
-                <i className="fa-caret-right fa" />
-                <a href={"/course-list/" + course.technology} onClick={this.redirect}> {course.technology}</a>
-              </div>
-              <div className="specilization-summary summary">
-                <h1 className="section-title">{course.title}</h1>
-                <div>
-                  <div className="special-ribbon">
-                    {/* <i><img src="/catalog/assets/v2/img/single-course/specialization-icon.svg" /></i> */}
-                    <p>{course.description}</p>
-                  </div>
-                </div>
-                <div className="price-and-info d-block">
-                  <div>
-                    <button className="btn btn-dark add-to-cart-button" data-itemtype="Subscription" onClick={this.enrollClass}><span className="actual-price">{course.price * 1.60} INR</span><span className="sale-price">{course.price} INR</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Book Now <i className="fal fa-chevron-right ml-1" /></button>
-                  </div>
-                  <div className="access-free-text">
-                    <b>100% money back gurantee.</b> If you are not satisfied after first 3 classes, 100% money is refunded back to your account without any question&nbsp;&nbsp;<b className="know-more" onClick={(e) => {
-                      $([document.documentElement, document.body]).animate({
-                        scrollTop: $("#contact-us").offset().top
-                      }, 1500);
-                    }}>Know More</b>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-        <section className="course-anchors">
-          <div className="d-flex justify-content-center flex-wrap easeScroll">
-            <a id="scroll-to" className="scrollTo" href="#overview" data-scrollto="#overview" onClick={this.scrollTo}>Overview</a>
-            <a id="scroll-to" className="scrollTo" href="#course-outline" data-scrollto="#course-outline" onClick={this.scrollTo}>What You'll Learn</a>
-            <a id="scroll-to" className="scrollTo" href="#features" data-scrollto="#features" onClick={this.scrollTo}>Features</a>
-            <a id="scroll-to" className="scrollTo" href="#certificate" data-scrollto="#certificate" onClick={this.scrollTo}>Certificate</a>
-            <a id="scroll-to" className="scrollTo" href="#reviews" data-scrollto="#reviews" onClick={this.scrollTo}>User Reviews</a>
-            <a id="scroll-to" className="scrollTo" href="#contact-us" data-scrollto="#contact-us" onClick={this.scrollTo}>Contact Us</a>
-            <a id="scroll-to" className="scrollTo" href="#faqs" data-scrollto="#contact-us" onClick={this.scrollTo}>FAQs</a>
-          </div>
-        </section>
-        <section className="meta-section" id="overview">
-          <div className="meta-wrapper">
-            <div className="meta-item">
-              <label>ESTIMATED TIME</label>
-              <span>{course.time}</span>
-              <span className="help-text">When you are available</span>
-            </div>
-            <div className="meta-item">
-              <label>Language</label>
-              <span>English</span>
-              <span className="help-text">What you are comfortable with</span>
-            </div>
-            <div className="meta-item prereq-meta">
-              <label>PREREQUISTES</label>
-              {courseDetail.prerequistes.length > 0 ? courseDetail.prerequistes.map(t => <span className="prereq-link" onClick={() => { this.context.router.push('/course/' + t.toLowerCase().replace(/ /g, "-")); window.scrollTo(0, 0); }}>{t}</span>) : <span>PASSION to LEARN</span>}
-            </div>
-          </div>
-        </section>
-        <section className="course-outline" id="course-outline">
-          <div className="what-learn">
-            <h3>What You Will Learn</h3>
-            {/* <button>Book Your Demo Class</button> */}
-          </div>
-          <div className="course-content">
-            <div className="row-1">
-              <h6 className="syllabus">SYLLABUS</h6>
-              <div className="course--description">
-                <h3 className="title">{course.title}</h3>
-                <p className="description">{courseDetail.detailDescription}</p>
-              </div>
+        {courseDetail ?
+          <Fragment>
+            <div className="course-banner">
               <img src={"https://raw.githubusercontent.com/swati-jain-contributor/privacy-policy/master/courses/" + foldername + "/" + pc.id + ".webp"} alt={course.title} />
+              <div className="info">
+                <p className="instructor-tag">Instructor Led 1:1 Personal Session based on your availability and requirements</p>
+                <div className="course-info">
+                  <div className="crumb-container">
+                    <a href="/search-courses" onClick={this.redirect}> All Courses </a>
+                    <i className="fa-caret-right fa" />
+                    <a href={"/course-list/" + course.technology} onClick={this.redirect}> {course.technology}</a>
+                  </div>
+                  <div className="specilization-summary summary">
+                    <h1 className="section-title">{course.title}</h1>
+                    <div>
+                      <div className="special-ribbon">
+                        {/* <i><img src="/catalog/assets/v2/img/single-course/specialization-icon.svg" /></i> */}
+                        <p>{course.description}</p>
+                      </div>
+                    </div>
+                    <div className="price-and-info d-block">
+                      <div>
+                        <button className="btn btn-dark add-to-cart-button" data-itemtype="Subscription" onClick={this.enrollClass}><span className="actual-price">{course.price * 1.60} INR</span><span className="sale-price">{course.price} INR</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Book Now <i className="fal fa-chevron-right ml-1" /></button>
+                      </div>
+                      <div className="access-free-text">
+                        <b>100% money back gurantee.</b> If you are not satisfied after first 3 classes, 100% money is refunded back to your account without any question&nbsp;&nbsp;<b className="know-more" onClick={(e) => {
+                          $([document.documentElement, document.body]).animate({
+                            scrollTop: $("#contact-us").offset().top
+                          }, 1500);
+                        }}>Know More</b>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
             </div>
-            <div className="prereq-box">
-              <h6>PREREQUISITE KNOWLEDGE</h6>
-              {courseDetail.prerequistes.length > 0 ?
-                <p>This program has been created specifically for students who are interested in {course.stream.split(",").map(t => <span>{t} , </span>)}, and who have a knowledge of {courseDetail.prerequistes.map(t => <span>{t} ,</span>)} . Outside of that, it's a beginner-friendly program. <b>Passion to Learn is must</b></p>
-                :
-                <p>This program has been created specifically for students who are interested in {course.stream.split(",").map(t => <span>{t} , </span>)}. Outside of that, it's a beginner-friendly program. <b>Passion to Learn is must</b></p>}
-            </div>
-            <div>
-              <div className="chapter-list">
-                {courseDetail.chapters.map((ch, i) => <div key={i} className="chapter">
-                  <h4>{ch.title}</h4>
-                  <p>{ch.description}</p>
-                  <ul>
-                    {ch.parts.map(p => <li><h5>{p}</h5></li>)}
-                  </ul>
+
+            <section className="course-anchors">
+              <div className="d-flex justify-content-center flex-wrap easeScroll">
+                <a id="scroll-to" className="scrollTo" href="#overview" data-scrollto="#overview" onClick={this.scrollTo}>Overview</a>
+                <a id="scroll-to" className="scrollTo" href="#course-outline" data-scrollto="#course-outline" onClick={this.scrollTo}>What You'll Learn</a>
+                <a id="scroll-to" className="scrollTo" href="#features" data-scrollto="#features" onClick={this.scrollTo}>Features</a>
+                <a id="scroll-to" className="scrollTo" href="#certificate" data-scrollto="#certificate" onClick={this.scrollTo}>Certificate</a>
+                <a id="scroll-to" className="scrollTo" href="#reviews" data-scrollto="#reviews" onClick={this.scrollTo}>User Reviews</a>
+                <a id="scroll-to" className="scrollTo" href="#contact-us" data-scrollto="#contact-us" onClick={this.scrollTo}>Contact Us</a>
+                <a id="scroll-to" className="scrollTo" href="#faqs" data-scrollto="#contact-us" onClick={this.scrollTo}>FAQs</a>
+              </div>
+            </section>
+            <section className="meta-section" id="overview">
+              <div className="meta-wrapper">
+                <div className="meta-item">
+                  <label>ESTIMATED TIME</label>
+                  <span>{course.time}</span>
+                  <span className="help-text">When you are available</span>
+                </div>
+                <div className="meta-item">
+                  <label>Language</label>
+                  <span>English</span>
+                  <span className="help-text">What you are comfortable with</span>
+                </div>
+                <div className="meta-item prereq-meta">
+                  <label>PREREQUISITES</label>
+                  {courseDetail.prerequistes.length > 0 ? courseDetail.prerequistes.map(t => <span className="prereq-link" onClick={() => { this.context.router.push('/course/' + t.toLowerCase().replace(/ /g, "-")); window.scrollTo(0, 0); }}>{t}</span>) : <span>PASSION to LEARN</span>}
+                </div>
+              </div>
+            </section>
+            <section className="course-outline" id="course-outline">
+              <div className="what-learn">
+                <h3>What You Will Learn</h3>
+                {/* <button>Book Your Demo Class</button> */}
+              </div>
+              <div className="course-content">
+                <div className="row-1">
+                  <h6 className="syllabus">SYLLABUS</h6>
+                  <div className="course--description">
+                    <h3 className="title">{course.title}</h3>
+                    <p className="description">{courseDetail.detailDescription}</p>
+                  </div>
+                  <img src={"https://raw.githubusercontent.com/swati-jain-contributor/privacy-policy/master/courses/" + foldername + "/" + pc.id + ".webp"} alt={course.title} />
+                </div>
+                <div className="prereq-box">
+                  <h6>PREREQUISITE KNOWLEDGE</h6>
+                  {courseDetail.prerequistes.length > 0 ?
+                    <p>This program has been created specifically for students who are interested in {course.stream.split(",").map(t => <span>{t} , </span>)}, and who have a knowledge of {courseDetail.prerequistes.map(t => <span>{t} ,</span>)} . Outside of that, it's a beginner-friendly program. <b>Passion to Learn is must</b></p>
+                    :
+                    <p>This program has been created specifically for students who are interested in {course.stream.split(",").map(t => <span>{t} , </span>)}. Outside of that, it's a beginner-friendly program. <b>Passion to Learn is must</b></p>}
+                </div>
+                <div>
+                  <div className="chapter-list">
+                    {courseDetail.chapters.map((ch, i) => <div key={i} className="chapter">
+                      <h4>{ch.title}</h4>
+                      <p>{ch.description}</p>
+                      <ul>
+                        {ch.parts.map(p => <li><h5>{p}</h5></li>)}
+                      </ul>
+                    </div>)}
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section className="course-feature" id="features">
+              <h3>All Our Programs Include</h3>
+              <div className="feature-list">
+                {features.map(f => <div className="feature">
+                  <img src={"https://raw.githubusercontent.com/swati-jain-contributor/privacy-policy/master/features/" + f.image} alt={f.title} />
+                  <div>
+                    <h4>{f.title}</h4>
+                    <p >{f.description}</p>
+                  </div>
                 </div>)}
-              </div>
-            </div>
-          </div>
-        </section>
-        <section className="course-feature" id="features">
-          <h3>All Our Programs Include</h3>
-          <div className="feature-list">
-            {features.map(f => <div className="feature">
-              <img src={"https://raw.githubusercontent.com/swati-jain-contributor/privacy-policy/master/features/" + f.image} alt={f.title} />
-              <div>
-                <h4>{f.title}</h4>
-                <p >{f.description}</p>
-              </div>
-            </div>)}
 
-          </div>
-        </section>
-        <section className="certificate-panel" id="certificate">
-          <div className="certificate-board">
-            <div className="txt-panel">
-              <h3>{course.title + " Certification"}</h3>
-              <p>On successful completion of course, you will get certificate from BakeMinds with unique certification id. You can use this certification id to claim your knowledge anytime in your career.</p>
-              <p>You can share your Course Certificates in the Certifications section of your LinkedIn profile, on printed resumes, CVs, or other documents.</p>
-            </div>
-            <div className="picture-panel">
-              <img src={"https://raw.githubusercontent.com/swati-jain-contributor/privacy-policy/master/features/certificate.png"} alt={"Certification for " + course.title} />
-            </div>
-          </div>
+              </div>
+            </section>
+            <section className="certificate-panel" id="certificate">
+              <div className="certificate-board">
+                <div className="txt-panel">
+                  <h3>{course.title + " Certification"}</h3>
+                  <p>On successful completion of course, you will get certificate from BakeMinds with unique certification id. You can use this certification id to claim your knowledge anytime in your career.</p>
+                  <p>You can share your Course Certificates in the Certifications section of your LinkedIn profile, on printed resumes, CVs, or other documents.</p>
+                </div>
+                <div className="picture-panel">
+                  <img src={"https://raw.githubusercontent.com/swati-jain-contributor/privacy-policy/master/features/certificate.png"} alt={"Certification for " + course.title} />
+                </div>
+              </div>
 
-        </section>
-        <section className="user-reviews" id="reviews">
-          <h1>What other says about us</h1>
-          <span className="section-separator" />
-          <div className="list-carousel">
-            <Slider {...settingreview} ref={c => (this.settingslider = c)}>
-              {reviews.map((c, i) => <div className="review-wrapper" key={i}><div className="review" key={"review" + i}>
-                {/* <div className="pic-box">
+            </section>
+            <section className="user-reviews" id="reviews">
+              <h1>What other says about us</h1>
+              <span className="section-separator" />
+              <div className="list-carousel">
+                <Slider {...settingreview} ref={c => (this.settingslider = c)}>
+                  {reviews.map((c, i) => <div className="review-wrapper" key={i}><div className="review" key={"review" + i}>
+                    {/* <div className="pic-box">
                 <img src={"https://raw.githubusercontent.com/swati-jain-contributor/privacy-policy/master/pioneers/"+c.name.split(" ")[0].toLowerCase()+".jpeg"} alt={c.name}/>
                 </div> */}
-                <div className="content-box">
-                  <h5>{c.name}</h5><br /> {c.review}</div></div></div>)}
-            </Slider>
-            {/* <div className="swiper-button-prev sw-btn" onClick={() => this.previous(this.pioneerslider)}><i className="fa fa-arrow-left" /></div>
+                    <div className="content-box">
+                      <h5>{c.name}</h5><br /> {c.review}</div></div></div>)}
+                </Slider>
+                {/* <div className="swiper-button-prev sw-btn" onClick={() => this.previous(this.pioneerslider)}><i className="fa fa-arrow-left" /></div>
             <div className="swiper-button-next sw-btn" onClick={() => this.next(this.pioneerslider)}><i className="fa fa-arrow-right" /></div> */}
-          </div>
-        </section>
-        <section className="contact-queries" id="contact-us">
-          <h3>Have More Questions? Need More Customisation? Any Queries ... Just let us know.</h3>
-          <div className="contact">
-            <div className="row">
-              <div className="col-lg-4 mt-4">
-                <div className="info">
-                  <i className="fa fa-envelope" />
-                  <h4>Email:</h4>
-                  <a href="mailto:care@bakeminds.com">care@bakeminds.com</a>
+              </div>
+            </section>
+            <section className="contact-queries" id="contact-us">
+              <h3>Have More Questions? Need More Customisation? Any Queries ... Just let us know.</h3>
+              <div className="contact">
+                <div className="row">
+                  <div className="col-lg-4 mt-4">
+                    <div className="info">
+                      <i className="fa fa-envelope" />
+                      <h4>Email:</h4>
+                      <a href="mailto:care@bakeminds.com">care@bakeminds.com</a>
+                    </div>
+                  </div>
+                  <div className="col-lg-4">
+                    <div className="info w-100 mt-4">
+                      <i className="fa fa-phone fa-rotate-90" />
+                      <h4>Call / Whatsapp:</h4>
+                      <a href="tel:+918886080289">+91 888 60 80 289</a>
+                    </div>
+                  </div>
+                  <div className="col-lg-4">
+                    <div className="info w-100 mt-4">
+                      <i className="fab fa-whatsapp" />
+                      <h4>Send messsage:</h4>
+                      <a href="https://wa.me/918886080289?text=Hello%20Bakeminds!">Click here</a>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div className="col-lg-4">
-                <div className="info w-100 mt-4">
-                  <i className="fa fa-phone fa-rotate-90" />
-                  <h4>Call / Whatsapp:</h4>
-                  <a href="tel:+918886080289">+91 888 60 80 289</a>
-                </div>
+            </section>
+            <section className="faq-list" id="faqs">
+              <div>
+                <h3>Frequently Asked Questions</h3>
               </div>
-              <div className="col-lg-4">
-                <div className="info w-100 mt-4">
-                  <i className="fab fa-whatsapp" />
-                  <h4>Send messsage:</h4>
-                  <a href="https://wa.me/918886080289?text=Hello%20Bakeminds!">Click here</a>
-                </div>
+              <div className="panel-group" id="accordion">
+                {faqs.map((faq, i) => <div className="panel panel-default">
+                  <div className="panel-heading">
+                    <h4 className="panel-title">
+                      <svg className="_ufjrdd" aria-hidden="true" focusable="false" viewBox="0 0 48 48" role="img" aria-labelledby="ChevronRight2b4c6981-e5b3-4b85-f56b-8fbe6ba01804 ChevronRight2b4c6981-e5b3-4b85-f56b-8fbe6ba01804Desc" xmlns="http://www.w3.org/2000/svg"><polygon transform="translate(23.999500, 24.000000) scale(-1, 1) translate(-23.999500, -24.000000)" points="16 24 30.585 40 31.999 38.586 18.828 24 31.999 9.415 30.585 8" role="presentation" /></svg>
+                      <a data-toggle="collapse" data-parent="#accordion" href={"#faq" + i}>
+                        {faq.question}</a>
+                    </h4>
+                  </div>
+                  <div id={"faq" + i} className="panel-collapse collapse">
+                    <div className="panel-body">{faq.answer}</div>
+                  </div>
+                </div>)}
               </div>
-            </div>
-          </div>
-        </section>
-        <section className="faq-list" id="faqs">
-          <div>
-            <h3>Frequently Asked Questions</h3>
-          </div>
-          <div className="panel-group" id="accordion">
-            {faqs.map((faq, i) => <div className="panel panel-default">
-              <div className="panel-heading">
-                <h4 className="panel-title">
-                  <svg className="_ufjrdd" aria-hidden="true" focusable="false" viewBox="0 0 48 48" role="img" aria-labelledby="ChevronRight2b4c6981-e5b3-4b85-f56b-8fbe6ba01804 ChevronRight2b4c6981-e5b3-4b85-f56b-8fbe6ba01804Desc" xmlns="http://www.w3.org/2000/svg"><polygon transform="translate(23.999500, 24.000000) scale(-1, 1) translate(-23.999500, -24.000000)" points="16 24 30.585 40 31.999 38.586 18.828 24 31.999 9.415 30.585 8" role="presentation" /></svg>
-                  <a data-toggle="collapse" data-parent="#accordion" href={"#faq" + i}>
-                    {faq.question}</a>
-                </h4>
+            </section>
+            <section className="related-courses">
+              <div className="title-section">
+                <h3>Related Courses</h3>
               </div>
-              <div id={"faq" + i} className="panel-collapse collapse">
-                <div className="panel-body">{faq.answer}</div>
+              <div className="list-carousel">
+                <Slider {...settings} ref={c => (this.courseslider = c)}>
+                  {shuffle(relatedCourses).map((c, i) => <CourseCard course={c} />)}
+                </Slider>
+                <div className="swiper-button-prev sw-btn" onClick={() => this.previous(this.courseslider)}><i className="fa fa-arrow-left" /></div>
+                <div className="swiper-button-next sw-btn" onClick={() => this.next(this.courseslider)}><i className="fa fa-arrow-right" /></div>
               </div>
-            </div>)}
-          </div>
-        </section>
-        <section className="related-courses">
-          <div className="title-section">
-            <h3>Related Courses</h3>
-          </div>
-          <div className="list-carousel">
-            <Slider {...settings} ref={c => (this.courseslider = c)}>
-              {shuffle(relatedCourses).map((c, i) => <CourseCard course={c} />)}
-            </Slider>
-            <div className="swiper-button-prev sw-btn" onClick={() => this.previous(this.courseslider)}><i className="fa fa-arrow-left" /></div>
-            <div className="swiper-button-next sw-btn" onClick={() => this.next(this.courseslider)}><i className="fa fa-arrow-right" /></div>
-          </div>
-        </section>
+            </section>
+          </Fragment> : null}
       </div>);
   }
 }

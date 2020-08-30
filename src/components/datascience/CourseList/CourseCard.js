@@ -35,7 +35,7 @@ class CourseCard extends React.Component {
         <a href={'/course/' + pc.title.toLowerCase().replace(/ /g, "-")} onClick={(e)=>e.preventDefault()}>
           <article className="course" onClick={() => { this.context.router.push('/course/' + pc.title.toLowerCase().replace(/ /g, "-")); window.scrollTo(0, 0); }}>
             <p className="live-instuctor">Instructor Led 1:1 Personal Session</p>
-            <img alt={pc.title} className="course-img" src={"https://raw.githubusercontent.com/swati-jain-contributor/privacy-policy/master/courses/" + foldername + "/" + pc.id + ".webp"} />
+            <img alt={pc.title} className="course-img" loading="lazy" src={"https://raw.githubusercontent.com/swati-jain-contributor/privacy-policy/master/courses/" + foldername + "/" + pc.id + ".webp"} />
             <h3>{pc.title}</h3>
             <p>{pc.description.length > 80 ? pc.description.substring(0, 80) + "..." : pc.description}</p>
             <p className="time"><i className="fa fa-clock" aria-hidden="true" /> &nbsp;&nbsp; {pc.time} <span>When you are available</span></p>

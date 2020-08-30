@@ -9,8 +9,9 @@ class BlogRead extends React.Component {
   constructor(props, context) {
     super(props, context);
     let blog = blogs.find(b => b.uniqueid == this.props.params.uniqueid) ;
-    this.setState({ b: blog});
+    // this.setState({ b: blog});
     this.state = {
+      b:blog
     };
   }
   componentDidMount() {

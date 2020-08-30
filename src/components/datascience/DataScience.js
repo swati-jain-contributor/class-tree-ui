@@ -40,7 +40,7 @@ class DataScience extends React.Component {
   }
   //es-lint-disabble-next-line
   componentDidMount() {
-    document.title = "▷ Learn Data Science | BakeMinds";
+    // document.title = "▷ Learn Data Science | BakeMinds";
   }
   getQueryParams(params, url) {
 

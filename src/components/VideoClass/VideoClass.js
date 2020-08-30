@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as classActions from '../../actions/classActions';
-import VideoRoomComponent from '../../video-call/components/VideoRoomComponent';
+const VideoRoomComponent = lazy(() => import('../../video-call/components/VideoRoomComponent'));
 import '../../video-call/index.css';
 // import registerServiceWorker from '../../video-call/registerServiceWorker';
 // registerServiceWorker();
@@ -24,8 +24,9 @@ class VideoClass extends React.Component {
   render() {
     return (
       <div className="class-panel">
-        {this.props.user?<VideoRoomComponent userdata={JSON.parse(atob(this.getQueryParams("token",location.href)))}/>:null}
-        
+        {(this.props.user) ? <Suspense fallback={<h1>Loading profile...</h1>}>
+          <VideoRoomComponent userdata={JSON.parse(atob(this.getQueryParams("token", location.href)))} />
+        </Suspense>: null}
       </div>
     );
   }
@@ -34,10 +35,10 @@ class VideoClass extends React.Component {
 function mapStateToProps(state, ownProps) {
 
   return {
-    email: state.session.user?state.session.user.email:null,
-    name:  state.session.user? state.session.user.firstname + " " + state.session.user.lastname : null,
-    phoneNo: state.session.user?  state.session.user.mobile:null,
-    user:state.session.user
+    email: state.session.user ? state.session.user.email : null,
+    name: state.session.user ? state.session.user.firstname + " " + state.session.user.lastname : null,
+    phoneNo: state.session.user ? state.session.user.mobile : null,
+    user: state.session.user
   };
 }
 function mapDispatchToProps(dispatch) {

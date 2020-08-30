@@ -1,10 +1,4 @@
 import React from 'react';
-import '../../Bethany/assets/vendor/bootstrap/css/bootstrap.min.css';
-// import '../../Bethany/assets/vendor/boxicons/css/boxicons.min.css';
-import '../../Bethany/assets/vendor/venobox/venobox.css';
-import '../../Bethany/assets/vendor/owl.carousel/assets/owl.carousel.min.css';
-import '../../Bethany/assets/vendor/aos/aos.css';
-import '../../Bethany/assets/css/style.css';
 import t1 from "../../Bethany/assets/img/testimonials/testimonials-1.jpg";
 import t2 from "../../Bethany/assets/img/testimonials/testimonials-2.jpg";
 import t3 from "../../Bethany/assets/img/testimonials/testimonials-3.jpg";

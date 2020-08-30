@@ -70,7 +70,7 @@ class Header extends React.Component {
                 <span className="icon-bar" />
                 <span className="icon-bar" />
               </button>
-              <a className="btn bg-red color-1 free-trail" href="#parallax-section" id="form_button">Try Live Demo</a>
+              <a className="btn bg-red color-1 free-trail" href="/demo" id="form_button">Try Live Demo</a>
               <a className="navbar-brand" href="/">
                 DataScience@<span>BakeMinds</span>
               </a>
@@ -85,12 +85,14 @@ class Header extends React.Component {
                 {/* <li><a href="/corporate-training">Employers</a></li> */}
                 <li>
                   <a className="btn bg-red color-1" id="form_button" 
-                  href="#demo-section" onClick={(e)=>{
-                    e.preventDefault();
-                    $([document.documentElement, document.body]).animate({
-                      scrollTop: $("#demo-section").offset().top
-                    }, 1500);
-                }}>Try Live Demo</a>
+                  href="/demo" 
+                //   onClick={(e)=>{
+                //     e.preventDefault();
+                //     $([document.documentElement, document.body]).animate({
+                //       scrollTop: $("#demo-section").offset().top
+                //     }, 1500);
+                // }}
+                >Try Live Demo</a>
                 </li>
                 {user ? <li>
                   <div className="dropdown">

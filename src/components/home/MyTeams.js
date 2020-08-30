@@ -1,10 +1,4 @@
 import React from 'react';
-import '../../Bethany/assets/vendor/bootstrap/css/bootstrap.min.css';
-// import '../../Bethany/assets/vendor/boxicons/css/boxicons.min.css';
-import '../../Bethany/assets/vendor/venobox/venobox.css';
-import '../../Bethany/assets/vendor/owl.carousel/assets/owl.carousel.min.css';
-import '../../Bethany/assets/vendor/aos/aos.css';
-import '../../Bethany/assets/css/style.css';
 import swati from '../../Bethany/assets/img/team/team-4.jpg';
 import sweety from "../../Bethany/assets/img/team/team-2.jpg";
 

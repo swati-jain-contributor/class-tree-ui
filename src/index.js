@@ -2,7 +2,7 @@ import 'babel-polyfill';
 import React from 'react';
 import { render } from 'react-dom';
 
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+// import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import configureStore from './store/configureStore';
 import { Provider } from 'react-redux';
 
@@ -10,12 +10,6 @@ import { Router, browserHistory, useRouterHistory } from 'react-router';
 import { createHashHistory } from 'history';
 import routes from './routes';
 import throttle from 'lodash/throttle';
-import './Bethany/assets/vendor/jquery.easing/jquery.easing.min.js';
-import './Bethany/assets/vendor/php-email-form/validate.js';
-import './Bethany/assets/vendor/counterup/counterup.min.js';
-import './Bethany/assets/vendor/isotope-layout/isotope.pkgd.min.js';
-import './Bethany/assets/vendor/venobox/venobox.min.js';
-import './Bethany/assets/js/main.js';
 import './styles/styles.less';
 
 
@@ -49,9 +43,9 @@ function startApp() {
   }
   render(
     <Provider store={store} >
-      <MuiThemeProvider>
+      {/* <MuiThemeProvider> */}
         <Router history={history} routes={routes} />
-      </MuiThemeProvider>
+      {/* </MuiThemeProvider> */}
     </Provider >,
     document.getElementById('app')
   );

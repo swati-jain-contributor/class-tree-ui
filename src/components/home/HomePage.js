@@ -1,13 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router';
-
-import '../../Bethany/assets/vendor/bootstrap/css/bootstrap.min.css';
-// import '../../Bethany/assets/vendor/boxicons/css/boxicons.min.css';
-import '../../Bethany/assets/vendor/venobox/venobox.css';
-import '../../Bethany/assets/vendor/owl.carousel/assets/owl.carousel.min.css';
-import '../../Bethany/assets/vendor/aos/aos.css';
-import '../../Bethany/assets/css/style.css';
-
 import Student from '../../components/Student/Student';
 import Contact from '../contact/Contact';
 import MyTeams from './MyTeams';
@@ -17,7 +8,7 @@ import Counts from './Counts';
 import WhyTeach from './WhyTeach';
 import Clients from './Clients';
 import Header from './Header';
-
+import('../../Bethany/index');
 class HomePage extends React.Component {
   componentDidMount() {
     setTimeout(() => window.loadCarousel(), 1000);

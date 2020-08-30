@@ -19,6 +19,7 @@ import Videos from './components/datascience/videos/Videos';
 import Corporate from './components/datascience/Corporate/Corporate';
 import Home from './components/datascience/Home/Home';
 import AllCourses from './components/datascience/AllCourse/AllCourses';
+import Demo from './components/datascience/demo/demo';
 export default (
   (location.href.indexOf("5000") > -1 || location.href.indexOf("datascience") > -1) ?
     <Route path="/" component={DataScience}>
@@ -33,6 +34,7 @@ export default (
       <Route path="course/:uniqueid" component={CourseDetails} />
       <Route path="videos" component={Videos} />
       <Route path="corporate-training" component={Corporate} />
+      <Route path="demo" component={Demo}/>
       <Route path="*" component={Home} />
     </Route>
 
